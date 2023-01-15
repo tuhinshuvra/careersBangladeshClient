@@ -1,81 +1,99 @@
-import React, { useContext, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import Logo from '../../assets/logo/cb-logo.png';
+import { FaBeer, FaFacebook, FaGithub, FaGoogle, FaTwitter } from 'react-icons/fa';
+import '../Signin/Signin.css';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const [signUpError, setSignUpError] = useState('');
-    const [createdUserEmail, setCreatedUserEmail] = useState('');
-
-
-    const submitHandler = (data) => {
-        console.log(data);
-    }
-
-
-
     return (
-        <div className=' flex justify-center items-center my-16 '>
-            <div className=' w-96 p-4'>
-                <h2 className=' text-2xl font-bold  text-center'>Register</h2>
-                <form onSubmit={handleSubmit(submitHandler)}>
-                    {signUpError && <p className=' text-red-600'>{signUpError}</p>}
-                    <div className="form-control w-full">
-                        <label className="label"><span className="label-text">Name</span> </label>
-                        <input type="name"
-                            name='name'
-                            {...register("name", { required: true })}
-                            placeholder="Name"
-                            className="input input-bordered w-full"
-                        />
-                        {errors.name && <p className='text-red-600'>Name is required</p>}
+        <div>
+            <section class="h-100 gradient-form" style={{ backgroundColor: "#eee" }}>
+                <div class="container py-5 h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-xl-10">
+                            <div class="card text-black">
+                                <div class="row g-0  rounded-5">
+                                    <div class="col-lg-5 d-flex flex-column justify-content-center align-items-center logo-area" style={{ backgroundColor: "#505b79" }}>
+                                        <div class="px-3 py-lg-4 p-md-5  mx-auto">
+                                            <img className='logo' src={Logo} alt="" />
+                                        </div>
+                                        <h2 class=" mb-lg-4 text-white text-center">Careers Bangladesh</h2>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="card-body login-form" style={{ backgroundColor: "#EEF1F6" }}>
+                                            {/* <div class="text-center">
+                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                                                    style={{ width: " 185px" }} alt="logo" />
+                                                <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+                                            </div> */}
+
+                                            <form className=' rounded rounded-2 bg-sm p-5 '>
+                                                <div className=''>
+                                                    <h5>Please create your account</h5>
+
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="username">Full Name</label>
+                                                        <input type="username" id="username" class="form-control"
+                                                            placeholder="Enter your full name" />
+                                                    </div>
+
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="username">Username</label>
+                                                        <input type="email" id="username" class="form-control"
+                                                            placeholder="Enter phone number or email address" />
+                                                    </div>
+
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="password">Password</label>
+                                                        <input type="password" placeholder='Enter password' id="password" class="form-control" />
+                                                    </div>
+
+                                                    <div class="text-center pt-1 mb-5 pb-1">
+                                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">
+                                                            Register
+                                                        </button>
+                                                        {/* <a class="text-muted m-2 " href="#!">Forgot password?</a> */}
+                                                    </div>
+
+                                                    <div class="d-flex align-items-center justify-content-center pb-4">
+                                                        <p class="mb-0 me-2">Already have an account?</p>
+                                                        <Link to="/signin"><button type="button" class="btn btn-outline-primary">Go SignIn</button></Link>
+                                                    </div>
+
+                                                    <div className="text-center">
+                                                        <p>or sign up with:</p>
+                                                        <button type="button" className="btn btn-link btn-floating mx-1">
+                                                            {/* <i className="fab fa-facebook-f"></i> */}
+                                                            <FaFacebook />
+                                                        </button>
+
+                                                        <button type="button" className="btn btn-link btn-floating mx-1">
+                                                            {/* <i className="fab fa-google"></i> */}
+                                                            <FaGoogle />
+                                                        </button>
+
+                                                        <button type="button" className="btn btn-link btn-floating mx-1">
+                                                            {/* <i className="fab fa-twitter"></i> */}
+                                                            <FaTwitter />
+                                                        </button>
+
+                                                        <button type="button" className="btn btn-link btn-floating mx-1">
+                                                            {/* <i className="fab fa-github"></i> */}
+                                                            <FaGithub />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div className="form-control w-full">
-                        <label className="label"><span className="label-text">User Type</span> </label>
-                        <select type="text"
-                            {...register("userType")}
-                            className="input input-bordered w-full">
-                            <option selected value="jobseeker">Job Seeker</option>
-                            <option value="employer">Employer</option>
-                        </select>
-                        {/* {errors.userType && <p className='text-red-500'>{errors.userType.message}</p>} */}
-                    </div>
-
-                    <div className="form-control w-full">
-                        <label className="label"><span className="label-text">Email</span> </label>
-                        <input type="email"
-                            name='email'
-                            {...register("email", { required: true })}
-                            placeholder="Email"
-                            className="input input-bordered w-full"
-                        />
-                        {errors.email && <p className='text-red-600'>Email is required</p>}
-                    </div>
-
-                    <div className="form-control w-full">
-                        <label className="label"><span className="label-text">Password</span> </label>
-                        <input
-                            type="password"
-                            name='password'
-                            {...register("password",
-                                {
-                                    required: true,
-                                    minLength: { value: 6, message: "Password length must be minimum 6" },
-                                    pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password must have uppercase, number and special characters' }
-                                },
-                            )}
-
-                            placeholder="Password"
-                            className="input input-bordered w-full"
-                        />
-                        {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
-                    </div>
-
-                    <input className=' mt-3 btn btn-primary form-control w-full' type="submit" value='SingUp' />
-                    <p className=' my-3 text-center'> <b> Already have an account?</b> <Link to='/signin'> <span className=' text-accent '>Go to login</span></Link> </p>
-                </form>
-            </div>
+                </div>
+            </section>
         </div>
     );
 };

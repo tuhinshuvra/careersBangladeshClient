@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from '../../assets/logo/cb-logo.png';
 import { FaBeer, FaFacebook, FaGithub, FaGoogle, FaTwitter } from 'react-icons/fa';
 import './Signin.css';
+import { Link } from 'react-router-dom';
 
 const Singin = () => {
     return (
@@ -30,6 +31,8 @@ const Singin = () => {
                                                 <div className=''>
                                                     <h5>Please login to your account</h5>
 
+
+
                                                     <div class="form-outline mb-4">
                                                         <label class="form-label" for="username">Username</label>
                                                         <input type="email" id="username" class="form-control"
@@ -38,19 +41,19 @@ const Singin = () => {
 
                                                     <div class="form-outline mb-4">
                                                         <label class="form-label" for="password">Password</label>
-                                                        <input type="password" id="password" class="form-control" />
+                                                        <input type="password" id="password" class="form-control" placeholder='Enter password' />
                                                     </div>
 
                                                     <div class="text-center pt-1 mb-5 pb-1">
                                                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">
-                                                            Log In
+                                                            Sign In
                                                         </button>
                                                         <a class="text-muted m-2 " href="#!">Forgot password?</a>
                                                     </div>
 
                                                     <div class="d-flex align-items-center justify-content-center pb-4">
                                                         <p class="mb-0 me-2">Don't have an account?</p>
-                                                        <button type="button" class="btn btn-outline-primary">Create new</button>
+                                                        <Link to="/register"><button type="button" class="btn btn-outline-primary">Create new</button></Link>
                                                     </div>
 
                                                     <div className="text-center">
