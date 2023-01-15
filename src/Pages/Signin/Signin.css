@@ -1,0 +1,24 @@
+@media (min-width: 992px) {
+    .bg-sm {
+        background-color: white;
+    }
+
+    .login-form {
+        padding: 100px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767.98px) {
+    /* .bg-sm {
+        background-color: #505b79;
+    } */
+
+    .logo-area {
+        padding: 10px;
+    }
+
+    .logo {
+        width: 64px;
+    }
+
+}

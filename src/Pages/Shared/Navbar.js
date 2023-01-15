@@ -33,7 +33,7 @@ const Navbar = () => {
                                 <Link to='/dashboardEmployers' className="nav-link fw-bold">MyJobs</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to='/singin' className="nav-link fw-bold">Signin</Link>
+                                <Link to='/signin' className="nav-link fw-bold">Signin</Link>
                             </li>
                         </ul>
                     </div>

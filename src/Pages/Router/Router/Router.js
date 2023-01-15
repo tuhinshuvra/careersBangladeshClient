@@ -1,7 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Home from '../../Home/Home';
-import Signin from '../../Signin/Signin';
 import Register from '../../Register/Register';
 import About from '../../About/About';
 import Contact from '../../Contact/Contact';
@@ -19,6 +18,7 @@ import JobPrimaryPost from '../../Profile/Employers/JobPrimaryPost';
 import JobDetailsPost from '../../Profile/Employers/JobDetailsPost';
 import WrongRoute from '../../Shared/ErrorDisplay/WrongRoute';
 import MyJobDashboard from '../../../layout/MyJobDashboard';
+import Singin from '../../Signin/Singin';
 
 const router = createBrowserRouter([
     {
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/signin',
-                element: <Signin></Signin>
+                element: <Singin></Singin>
             },
             {
                 path: '/register',
