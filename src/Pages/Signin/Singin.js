@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 const Singin = () => {
     return (
         <div>
-            <section class="h-100 gradient-form" style={{ backgroundColor: "#eee" }}>
-                <div class="container py-5 h-100">
-                    <div class="row d-flex justify-content-center align-items-center h-100">
+            <section class="  gradient-form" style={{ backgroundColor: "#eee" }}>
+                <div class="container py-5">
+                    <div class="row d-flex justify-content-center align-items-center">
                         <div class="col-xl-10">
                             <div class="card text-black">
                                 <div class="row g-0  rounded-5">
@@ -29,9 +29,7 @@ const Singin = () => {
 
                                             <form className=' rounded rounded-2 bg-sm p-5 '>
                                                 <div className=''>
-                                                    <h5>Please login to your account</h5>
-
-
+                                                    <h5 className=' mb-4'>Please login to your account</h5>
 
                                                     <div class="form-outline mb-4">
                                                         <label class="form-label" for="username">Username</label>

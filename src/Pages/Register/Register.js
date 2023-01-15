@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 const Register = () => {
     return (
         <div>
-            <section class="h-100 gradient-form" style={{ backgroundColor: "#eee" }}>
-                <div class="container py-5 h-100">
-                    <div class="row d-flex justify-content-center align-items-center h-100">
+            <section class="gradient-form" style={{ backgroundColor: "#eee" }}>
+                <div class="container py-5">
+                    <div class="row d-flex justify-content-center align-items-center">
                         <div class="col-xl-10">
                             <div class="card text-black">
                                 <div class="row g-0  rounded-5">
@@ -29,33 +29,33 @@ const Register = () => {
 
                                             <form className=' rounded rounded-2 bg-sm p-5 '>
                                                 <div className=''>
-                                                    <h5>Please create your account</h5>
+                                                    <h5 className='mb-4 '>Please create your account</h5>
 
-                                                    <div class="form-outline mb-4">
+                                                    <div class="form-outline mb-3">
                                                         <label class="form-label" for="username">Full Name</label>
                                                         <input type="username" id="username" class="form-control"
                                                             placeholder="Enter your full name" />
                                                     </div>
 
-                                                    <div class="form-outline mb-4">
+                                                    <div class="form-outline mb-3">
                                                         <label class="form-label" for="username">Username</label>
                                                         <input type="email" id="username" class="form-control"
                                                             placeholder="Enter phone number or email address" />
                                                     </div>
 
-                                                    <div class="form-outline mb-4">
+                                                    <div class="form-outline mb-3">
                                                         <label class="form-label" for="password">Password</label>
                                                         <input type="password" placeholder='Enter password' id="password" class="form-control" />
                                                     </div>
 
-                                                    <div class="text-center pt-1 mb-5 pb-1">
-                                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">
+                                                    <div class="text-center pt-1 mb-4">
+                                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2" type="button">
                                                             Register
                                                         </button>
                                                         {/* <a class="text-muted m-2 " href="#!">Forgot password?</a> */}
                                                     </div>
 
-                                                    <div class="d-flex align-items-center justify-content-center pb-4">
+                                                    <div class="d-flex align-items-center justify-content-center mb-3">
                                                         <p class="mb-0 me-2">Already have an account?</p>
                                                         <Link to="/signin"><button type="button" class="btn btn-outline-primary">Go SignIn</button></Link>
                                                     </div>
