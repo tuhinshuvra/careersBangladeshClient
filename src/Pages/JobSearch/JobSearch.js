@@ -1,17 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './JobSearch.css';
 
 const JobSearch = () => {
     return (
-        <div className=' my-24  '>
-            <h2 className=' text-center text-2xl font-bold my-8 capitalize'>LETS FIND YOUR JOB</h2>
+        <div className='my-5'>
+            <h2 className=' text-center fw-bold'>LETS FIND YOUR JOB</h2>
             {/* <div className=" grid lg:grid-cols-4 lg:gap-10 md:grid-cols-2 sm:grid-cols-1 mx-auto"> */}
-            <div className=" text-center">
-                <input type="text" placeholder="Keyword" className="input input-bordered lg:w-1/6 sm:w-2/3 mx-2 " />
-                <input type="text" placeholder="Organization Type" className="input input-bordered lg:w-1/6 sm:w-2/3 mx-2 " />
-                <input type="text" placeholder="Location" className="input input-bordered lg:w-1/6 sm:w-2/3 mx-2 " />
-                <button className='btn btn-primary w-1/6 mx-2 '>Search</button>
+            <div className="d-flex  justify-content-center mt-4">
+                <input type="text" placeholder="Keyword" className="form-control  w-25 " id="keword" aria-describedby="kewordHelp" />
+                <input type="text" placeholder="Organization Type" className="form-control seach  mx-2 w-25" id="organization-type" aria-describedby="locationHelp" />
+                <input type="text" placeholder="Location" className="form-control  w-25" id="location" aria-describedby="locationHelp" />
+                {/* <input type="text" placeholder="Organization Type" className="input input-bordered lg:w-1/6 sm:w-2/3 mx-2 " /> */}
+                {/* <input type="text" placeholder="Location" className="input input-bordered lg:w-1/6 sm:w-2/3 mx-2 " /> */}
+                <button className='btn btn-primary mx-2'>Search</button>
             </div>
+
+
 
 
 

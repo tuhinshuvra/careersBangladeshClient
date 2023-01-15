@@ -9,8 +9,8 @@ import ELearning from '../ELearning/ELearning';
 const Home = () => {
     return (
         <div>
-            <AnimatedBanner></AnimatedBanner>
-            {/* <JobSearch></JobSearch> */}
+            {/* <AnimatedBanner></AnimatedBanner> */}
+            <JobSearch></JobSearch>
             {/* <JobCategory></JobCategory> */}
             {/* <HotJobs></HotJobs> */}
             {/* <JobAlert></JobAlert> */}
