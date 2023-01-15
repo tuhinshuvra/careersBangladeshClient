@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import { FaFacebook, FaGithub, FaGoogle, FaTwitter } from 'react-icons/fa';
 import './JobSearch.css';
 
 const JobSearch = () => {
+    const coffee = <FontAwesomeIcon icon={faCoffee} />
     return (
         <div className='my-5'>
             <h2 className=' text-center fw-bold'>LETS FIND YOUR JOB</h2>
@@ -14,39 +18,35 @@ const JobSearch = () => {
                 <button className='btn btn-primary mx-2'>Search</button>
             </div>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="card-counter primary">
-                            <i class="fa fa-code-fork"></i>
-                            <span class="count-numbers">12</span>
-                            <span class="count-name">Flowz</span>
+            <div class=" my-5">
+
+                <div class="row justify-content-center">
+
+                    <div class=" col-md-3 gap-2 ">
+                        <div class="counter-box ">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            <i>{coffee} </i>
+                            <span class="counter">21471</span>
+                            <p>Live Jobs</p>
+                        </div>
+                    </div>
+                    <div class=" col-md-3 gap-2">
+                        <div class="counter-box ">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            <i>{coffee} </i>
+                            <span class="counter">2343</span>
+                            <p>Companies</p>
+                        </div>
+                    </div>
+                    <div class=" col-md-3 gap-2">
+                        <div class="counter-box ">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            <i>{coffee} </i>
+                            <span class="counter">2147</span>
+                            <p>Employers</p>
                         </div>
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="card-counter danger">
-                            <i class="fa fa-ticket"></i>
-                            <span class="count-numbers">599</span>
-                            <span class="count-name">Instances</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="card-counter success">
-                            <i class="fa fa-database"></i>
-                            <span class="count-numbers">6875</span>
-                            <span class="count-name">Data</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="card-counter info">
-                            <i class="fa fa-users"></i>
-                            <span class="count-numbers">35</span>
-                            <span class="count-name">Users</span>
-                        </div>
-                    </div>
                 </div>
             </div>
 
