@@ -14,19 +14,20 @@ const PersonalDetails = () => {
 
                 {/* <div className="collapse-content"> */}
                 {/* <p>tabIndex={0} attribute is necessary to make the div focusable</p> */}
-                <div className="grid md:grid-cols-2 md:gap-6">
+                <div className=" row ">
                     {/* <div className="form-control w-full max-w-xs"> */}
-                    <div>
+                    <div className=' col-lg-5'>
                         <label className="label">
                             <span className="label-text text-md font-bold ">First Name</span>
                         </label>
-                        <input type="text" id='first-name' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" id='first-name' placeholder="Type here" className="input form-control input-bordered w-full max-w-xs" />
                     </div>
-                    <div>
+
+                    <div className=' col-lg-5'>
                         <label className="label">
                             <span className="label-text text-md font-bold ">Last Name</span>
                         </label>
-                        <input type="text" id='last-name' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" id='last-name' placeholder="Type here" className="input form-control input-bordered w-full max-w-xs" />
                     </div>
                 </div>
 
@@ -36,13 +37,13 @@ const PersonalDetails = () => {
                         <label className="label">
                             <span className="label-text text-md font-bold ">Father's Name</span>
                         </label>
-                        <input type="text" id='fathers-name' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" id='fathers-name' placeholder="Type here" className="input form-control input-bordered w-full max-w-xs" />
                     </div>
                     <div>
                         <label className="label">
                             <span className="label-text text-md font-bold ">Mother's Name</span>
                         </label>
-                        <input type="text" id='mothers-name' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" id='mothers-name' placeholder="Type here" className="input form-control input-bordered w-full max-w-xs" />
                     </div>
                 </div>
 
@@ -52,7 +53,7 @@ const PersonalDetails = () => {
                         <label className="label">
                             <span className="label-text text-md font-bold ">Date of Birth</span>
                         </label>
-                        <input type="date" id='birth-dath' className="input input-bordered w-full max-w-xs" />
+                        <input type="date" id='birth-dath' className="input form-control input-bordered w-full max-w-xs" />
                     </div>
                     <div>
                         <label className="label">
@@ -109,13 +110,13 @@ const PersonalDetails = () => {
 
                         {/* <label className="label cursor-pointer"> </label> */}
 
-                        <input type="text" id='nationality' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" id='nationality' placeholder="Type here" className="input form-control input-bordered w-full max-w-xs" />
                     </div>
                     <div>
                         <label className="label">
                             <span className="label-text text-md font-bold ">National ID</span>
                         </label>
-                        <input type="text" id='national-id' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" id='national-id' placeholder="Type here" className="input form-control input-bordered w-full max-w-xs" />
                     </div>
                 </div>
 
@@ -126,13 +127,13 @@ const PersonalDetails = () => {
                         <label className="label">
                             <span className="label-text text-md font-bold ">Passport Number</span>
                         </label>
-                        <input type="text" id='passport-number' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" id='passport-number' placeholder="Type here" className="input form-control input-bordered w-full max-w-xs" />
                     </div>
                     <div>
                         <label className="label">
                             <span className="label-text text-md font-bold ">Passport Issue Date</span>
                         </label>
-                        <input type="date" id='passport-issue-date' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                        <input type="date" id='passport-issue-date' placeholder="Type here" className="input form-control input-bordered w-full max-w-xs" />
                     </div>
                 </div>
 
@@ -143,14 +144,14 @@ const PersonalDetails = () => {
                         <label className="label">
                             <span className="label-text text-md font-bold ">Primary Mobile</span>
                         </label>
-                        <input type="text" id='primary-mobile' placeholder="880 1123456789" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" id='primary-mobile' placeholder="880 1123456789" className="input form-control input-bordered w-full max-w-xs" />
                     </div>
 
                     <div>
                         <label className="label">
                             <span className="label-text text-md font-bold ">Secondary Mobile</span>
                         </label>
-                        <input type="text" id='secondary-mobile' placeholder="880 1123456789" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" id='secondary-mobile' placeholder="880 1123456789" className="input form-control input-bordered w-full max-w-xs" />
                     </div>
 
                 </div>
@@ -161,14 +162,14 @@ const PersonalDetails = () => {
                         <label className="label">
                             <span className="label-text text-md font-bold ">Emergency Contact</span>
                         </label>
-                        <input type="text" id='primary-mobile' placeholder="880 1123456789" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" id='primary-mobile' placeholder="880 1123456789" className="input form-control input-bordered w-full max-w-xs" />
                     </div>
 
                     <div>
                         <label className="label">
                             <span className="label-text text-md font-bold ">Change User ID</span>
                         </label>
-                        <input type="email" id='user-id' placeholder="Email ID" className="input input-bordered w-full max-w-xs" />
+                        <input type="email" id='user-id' placeholder="Email ID" className="input form-control input-bordered w-full max-w-xs" />
                     </div>
 
                 </div>
@@ -179,7 +180,7 @@ const PersonalDetails = () => {
                         <label className="label">
                             <span className="label-text text-md font-bold ">Alternate Email</span>
                         </label>
-                        <input type="email" id='alternate-email' placeholder="Email address" className="input input-bordered w-full max-w-xs" />
+                        <input type="email" id='alternate-email' placeholder="Email address" className="input form-control input-bordered w-full max-w-xs" />
                     </div>
 
                     <div>
@@ -207,13 +208,13 @@ const PersonalDetails = () => {
                         <label className="label">
                             <span className="label-text text-md font-bold ">Height (Inch)</span>
                         </label>
-                        <input type="text" id='height' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" id='height' placeholder="Type here" className="input form-control input-bordered w-full max-w-xs" />
                     </div>
                     <div>
                         <label className="label">
                             <span className="label-text text-md font-bold ">Weight(kg)</span>
                         </label>
-                        <input type="text" id='weight' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" id='weight' placeholder="Type here" className="input form-control input-bordered w-full max-w-xs" />
                     </div>
                 </div>
                 <div className=' flex justify-between my-10'>
