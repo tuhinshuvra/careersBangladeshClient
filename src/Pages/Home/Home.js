@@ -11,7 +11,7 @@ const Home = () => {
         <div>
             {/* <AnimatedBanner></AnimatedBanner> */}
             <JobSearch></JobSearch>
-            {/* <JobCategory></JobCategory> */}
+            <JobCategory></JobCategory>
             {/* <HotJobs></HotJobs> */}
             {/* <JobAlert></JobAlert> */}
             {/* <ELearning></ELearning> */}

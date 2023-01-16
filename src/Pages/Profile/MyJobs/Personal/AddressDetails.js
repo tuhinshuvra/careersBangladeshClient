@@ -9,7 +9,7 @@ const AddressDetails = () => {
                 </h2>
 
                 <form action="">
-                    <div class="">
+                    <div className="">
                         <div>
                             <label className="label">
                                 <span className="label-text text-md font-bold ">Present Address</span>
@@ -19,7 +19,7 @@ const AddressDetails = () => {
                         </div>
                     </div>
 
-                    <div class="grid md:grid-cols-2 md:gap-6 mt-2">
+                    <div className="grid md:grid-cols-2 md:gap-6 mt-2">
                         <div>
                             <select className="select select-bordered w-56 ">
                                 <option disabled selected>Select District</option>
@@ -47,7 +47,7 @@ const AddressDetails = () => {
                     </div>
                     <input className='input input-bordered w-full my-5 ' type="text" placeholder='Type your house no/road/village' />
 
-                    <div class="grid md:grid-cols-2 md:gap-6 mt-4">
+                    <div className="grid md:grid-cols-2 md:gap-6 mt-4">
                         <div>
                             <label className="label">
                                 <span className="label-text text-md font-bold ">Permanent Address</span>
@@ -57,7 +57,7 @@ const AddressDetails = () => {
                         </div>
                     </div>
 
-                    <div class="grid md:grid-cols-2 md:gap-6 mt-2">
+                    <div className="grid md:grid-cols-2 md:gap-6 mt-2">
                         <div>
                             <select className="select select-bordered w-56 ">
                                 <option disabled selected>Select District</option>

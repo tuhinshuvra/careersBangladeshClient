@@ -30,7 +30,7 @@ const Signin99 = () => {
                         <button className='btn btn-primary'>Employers</button>
                         <button className='btn btn-secondary'>Job Seeker</button>
                         <FaGoogle></FaGoogle>
-                        {/* <button class="btn bg-violet-400 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 ...">Job Seeker</button> */}
+                        {/* <button className="btn bg-violet-400 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 ...">Job Seeker</button> */}
                     </div>
 
                     <div> {loginError && <p className=' text-red-600'>{loginError}</p>}</div>

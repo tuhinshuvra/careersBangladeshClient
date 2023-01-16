@@ -20,28 +20,28 @@ const JobSearch = () => {
                 <button className='btn btn-primary mx-2'>Search</button>
             </div>
 
-            <div class=" my-5">
+            <div className=" my-5">
 
-                <div class="row justify-content-center">
+                <div className="row justify-content-center">
 
-                    <div class=" col-md-3  ">
-                        <div class="counter-box ">
+                    <div className=" col-md-3  ">
+                        <div className="counter-box ">
                             <i>{chair} </i>
-                            <span class="counter">21471</span>
+                            <span className="counter">21471</span>
                             <p>Live Jobs</p>
                         </div>
                     </div>
-                    <div class=" col-md-3 ">
-                        <div class="counter-box ">
+                    <div className=" col-md-3 ">
+                        <div className="counter-box ">
                             <i>{company} </i>
-                            <span class="counter">2343</span>
+                            <span className="counter">2343</span>
                             <p>Companies</p>
                         </div>
                     </div>
-                    <div class=" col-md-3 ">
-                        <div class="counter-box ">
+                    <div className=" col-md-3 ">
+                        <div className="counter-box ">
                             <i>{person} </i>
-                            <span class="counter">2147</span>
+                            <span className="counter">2147</span>
                             <p>Employers</p>
                         </div>
                     </div>

@@ -7,57 +7,57 @@ import { Link } from 'react-router-dom';
 const Register = () => {
     return (
         <div>
-            <section class="gradient-form" style={{ backgroundColor: "#eee" }}>
-                <div class="container py-5">
-                    <div class="row d-flex justify-content-center align-items-center">
-                        <div class="col-xl-10">
-                            <div class="card text-black">
-                                <div class="row g-0  rounded-5">
-                                    <div class="col-lg-5 d-flex flex-column justify-content-center align-items-center logo-area" style={{ backgroundColor: "#505b79" }}>
-                                        <div class="px-3 py-lg-4 p-md-5  mx-auto">
+            <section className="gradient-form" style={{ backgroundColor: "#eee" }}>
+                <div className="container py-5">
+                    <div className="row d-flex justify-content-center align-items-center">
+                        <div className="col-xl-10">
+                            <div className="card text-black">
+                                <div className="row g-0  rounded-5">
+                                    <div className="col-lg-5 d-flex flex-column justify-content-center align-items-center logo-area" style={{ backgroundColor: "#505b79" }}>
+                                        <div className="px-3 py-lg-4 p-md-5  mx-auto">
                                             <img className='logo' src={Logo} alt="" />
                                         </div>
-                                        <h2 class=" mb-lg-4 text-white text-center">Careers Bangladesh</h2>
+                                        <h2 className=" mb-lg-4 text-white text-center">Careers Bangladesh</h2>
                                     </div>
-                                    <div class="col-lg-7">
-                                        <div class="card-body login-form" style={{ backgroundColor: "#EEF1F6" }}>
-                                            {/* <div class="text-center">
+                                    <div className="col-lg-7">
+                                        <div className="card-body login-form" style={{ backgroundColor: "#EEF1F6" }}>
+                                            {/* <div className="text-center">
                                                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                                                     style={{ width: " 185px" }} alt="logo" />
-                                                <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+                                                <h4 className="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
                                             </div> */}
 
                                             <form className=' rounded rounded-2 bg-sm p-5 '>
                                                 <div className=''>
                                                     <h5 className='mb-4 '>Please create your account</h5>
 
-                                                    <div class="form-outline mb-3">
-                                                        <label class="form-label" for="username">Full Name</label>
-                                                        <input type="username" id="username" class="form-control"
+                                                    <div className="form-outline mb-3">
+                                                        <label className="form-label" for="username">Full Name</label>
+                                                        <input type="username" id="username" className="form-control"
                                                             placeholder="Enter your full name" />
                                                     </div>
 
-                                                    <div class="form-outline mb-3">
-                                                        <label class="form-label" for="username">Username</label>
-                                                        <input type="email" id="username" class="form-control"
+                                                    <div className="form-outline mb-3">
+                                                        <label className="form-label" for="username">Username</label>
+                                                        <input type="email" id="username" className="form-control"
                                                             placeholder="Enter phone number or email address" />
                                                     </div>
 
-                                                    <div class="form-outline mb-3">
-                                                        <label class="form-label" for="password">Password</label>
-                                                        <input type="password" placeholder='Enter password' id="password" class="form-control" />
+                                                    <div className="form-outline mb-3">
+                                                        <label className="form-label" for="password">Password</label>
+                                                        <input type="password" placeholder='Enter password' id="password" className="form-control" />
                                                     </div>
 
-                                                    <div class="text-center pt-1 mb-4">
-                                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2" type="button">
+                                                    <div className="text-center pt-1 mb-4">
+                                                        <button className="btn btn-primary btn-block fa-lg gradient-custom-2" type="button">
                                                             Register
                                                         </button>
-                                                        {/* <a class="text-muted m-2 " href="#!">Forgot password?</a> */}
+                                                        {/* <a className="text-muted m-2 " href="#!">Forgot password?</a> */}
                                                     </div>
 
-                                                    <div class="d-flex align-items-center justify-content-center mb-3">
-                                                        <p class="mb-0 me-2">Already have an account?</p>
-                                                        <Link to="/signin"><button type="button" class="btn btn-outline-primary">Go SignIn</button></Link>
+                                                    <div className="d-flex align-items-center justify-content-center mb-3">
+                                                        <p className="mb-0 me-2">Already have an account?</p>
+                                                        <Link to="/signin"><button type="button" className="btn btn-outline-primary">Go SignIn</button></Link>
                                                     </div>
 
                                                     <div className="text-center">
