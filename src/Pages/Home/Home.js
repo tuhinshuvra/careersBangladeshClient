@@ -13,8 +13,8 @@ const Home = () => {
             <JobSearch></JobSearch>
             <JobCategory></JobCategory>
             <HotJobs></HotJobs>
-            {/* <JobAlert></JobAlert> */}
-            {/* <ELearning></ELearning> */}
+            <JobAlert></JobAlert>
+            <ELearning></ELearning>
         </div>
     );
 };

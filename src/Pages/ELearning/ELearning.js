@@ -3,14 +3,15 @@ import React from 'react';
 const ELearning = () => {
     return (
         <div>
-            {/* <h2>This is ELearning Section</h2> */}
-            <div className="hero h-80 " style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
-                <div className="hero-overlay bg-opacity-60"></div>
-                <div className="hero-content text-center text-neutral-content">
-                    <div className="max-w-md">
-                        <h1 className="mb-5 text-5xl font-bold">Welcome to your eLearning</h1>
-                        <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button className="btn btn-primary">Get Started</button>
+            <div className="  px-4 py-5 text-center " style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
+                <div className="py-2   bg-transparent ">
+                    <h1 className="display-5 fw-bold text-white">Welcome to your eLearning</h1>
+                    <div className="col-lg-6 mx-auto">
+                        <p className="fs-5 mb-4 text-white">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+                        <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                            <button type="button" className="btn btn-info btn-lg px-4 me-sm-3 fw-bold">Get Started</button>
+                            {/* <button type="button" className="btn btn-outline-light btn-lg px-4">Secondary</button> */}
+                        </div>
                     </div>
                 </div>
             </div>
