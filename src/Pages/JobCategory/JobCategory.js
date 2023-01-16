@@ -17,7 +17,7 @@ const JobCategory = () => {
     }, [])
 
     return (
-        <div>
+        <div className=' common-margin '>
             <h2 className=' text-center fw-bold my-5'>JOB CATEGORIES</h2>
             {/* <div className=' grid lg:grid-cols-4 sm:grid-cols-1 gap-2 lg:mx-0 sm:mx-16 mb-40'> */}
             <div className=' job-category'>
