@@ -79,7 +79,6 @@ const router = createBrowserRouter([
                 path: '/dashboardMyJobs/applied',
                 element: <AppliedJobList></AppliedJobList>
             },
-
         ]
     },
     {
