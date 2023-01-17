@@ -9,10 +9,10 @@ const Personal = () => {
     return (
         <div>
             <PersonalDetails></PersonalDetails>
-            <AddressDetails></AddressDetails>
-            <CarrerAndApplication></CarrerAndApplication>
-            <PreferredAreas></PreferredAreas>
-            <OtherRelevantInformation></OtherRelevantInformation>
+            {/* <AddressDetails></AddressDetails> */}
+            {/* <CarrerAndApplication></CarrerAndApplication> */}
+            {/* <PreferredAreas></PreferredAreas> */}
+            {/* <OtherRelevantInformation></OtherRelevantInformation> */}
         </div>
     );
 };
