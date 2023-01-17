@@ -8,8 +8,8 @@ import OtherRelevantInformation from './OtherRelevantInformation';
 const Personal = () => {
     return (
         <div>
-            <PersonalDetails></PersonalDetails>
-            {/* <AddressDetails></AddressDetails> */}
+            {/* <PersonalDetails></PersonalDetails> */}
+            <AddressDetails></AddressDetails>
             {/* <CarrerAndApplication></CarrerAndApplication> */}
             {/* <PreferredAreas></PreferredAreas> */}
             {/* <OtherRelevantInformation></OtherRelevantInformation> */}
