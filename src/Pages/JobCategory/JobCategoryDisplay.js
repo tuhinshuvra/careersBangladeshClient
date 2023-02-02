@@ -13,14 +13,11 @@ const JobCategoryDisplay = ({ category }) => {
                         </div>
                     </div> */}
 
-            <div className="card">
+            <div className="card ">
                 <div className="card-body">
-                    <Link className=' text-decoration-none catetory_link' to='/'>
-                        <p className=' fw-bold'>&#10148; {name}</p>
-                    </Link>
+                    <Link to="/" className=" fw-bold text-decoration-none category_link ">&#10148; {name}</Link>
                 </div>
             </div>
-
         </div>
     );
 };

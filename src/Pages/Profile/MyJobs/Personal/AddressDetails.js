@@ -15,16 +15,16 @@ const AddressDetails = () => {
                                 <span className="label-text text-md font-bold ">Present Address</span>
                             </label>
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="inside-bangladesh" id="inside-bangladesh" />
-                                <label class="form-check-label" htmlFor="inside-bangladesh">Inside Bangladesh</label>
-                                <input class="form-check-input  ms-3 " type="radio" name="outside-bangladesh" id="outside-bangladesh" /><label htmlFor="">Outside Bangladesh</label>
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="inside-bangladesh" id="inside-bangladesh" />
+                                <label className="form-check-label" htmlFor="inside-bangladesh">Inside Bangladesh</label>
+                                <input className="form-check-input  ms-3 " type="radio" name="outside-bangladesh" id="outside-bangladesh" /><label htmlFor="">Outside Bangladesh</label>
                             </div>
                         </div>
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                            <label class="form-check-label" htmlFor="flexRadioDefault2">
+                        <div className="form-check">
+                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                            <label className="form-check-label" htmlFor="flexRadioDefault2">
                                 Default checked radio
                             </label>
                         </div>

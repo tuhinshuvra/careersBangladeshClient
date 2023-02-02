@@ -11,3 +11,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.careers_title_one {
+  color: #A51E67;
+  font-size: 45px;
+}
+
+.careers_title_two {
+  color: #A51E67;
+  font-size: 33px;
+  line-height: 45px !important;
+}
+
+.custom_btn {
+  background-color: #A51E67;
+  font-size: 19px;
+  color: white;
+  font-weight: bold;
+  padding: 6px 15px;
+  border: none;
+  border-radius: 10px;
+}
+
+.custom_btn:hover {
+  color: #A51E67;
+  background-color: rgba(0, 128, 0, 0.642);
+}

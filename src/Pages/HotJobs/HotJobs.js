@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import '../JobCategory/JobCategory.css';
 import HotJobCategoryDisplay from './HotJobCategoryDisplay';
+import '../JobCategory/JobCategory.css';
 
 const HotJobs = () => {
     const [categories, setCategories] = useState([]);
     let newCategories = categories.slice(0, 12)
-    // fetch('https://jsonplaceholder.typicode.com/albums')
 
     useEffect(() => {
         fetch('job-categories.json')
@@ -18,8 +17,7 @@ const HotJobs = () => {
 
     return (
         <div className=' common-margin '>
-            <h2 className=' text-center fw-bold my-5'>HOT JOBS</h2>
-            {/* <div className=' grid lg:grid-cols-4 sm:grid-cols-1 gap-2 lg:mx-0 sm:mx-16 mb-40'> */}
+            <h2 className=' text-center fw-bold my-5 careers_title_one'>HOT JOB CATEGORIES</h2>
             <div className=' job-category'>
                 {newCategories.map(category => <HotJobCategoryDisplay
                     key={category.id}
@@ -29,5 +27,4 @@ const HotJobs = () => {
         </div>
     );
 };
-
 export default HotJobs;
