@@ -24,7 +24,7 @@ const EmployersDashboard = () => {
 
                         <div className=" col-lg-9  drawer-content">
                             <Outlet></Outlet>
-                            {/* <label htmlFor="dashboard-drawer" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
+                            {/* <label  htmlFor="dashboard-drawer" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
                         </div>
                     </div>
 

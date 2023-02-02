@@ -19,19 +19,19 @@ const Contact = () => {
                         <form className="p-4 p-md-5 border rounded-3 bg-light">
                             <div className="form-floating mb-3">
                                 <input type="text" className="form-control" id="floatingInput" placeholder="Input full name" />
-                                <label for="floatingInput">Full Name</label>
+                                <label htmlFor="floatingInput">Full Name</label>
                             </div>
                             <div className="form-floating mb-3">
                                 <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                                <label for="floatingInput">Email address</label>
+                                <label htmlFor="floatingInput">Email address</label>
                             </div>
                             <div className="form-floating mb-3">
                                 <input type="text" className="form-control" id="floatingInput" placeholder="0123456789" />
-                                <label for="floatingInput">Phone No</label>
+                                <label htmlFor="floatingInput">Phone No</label>
                             </div>
                             <div className="form-floating mb-3">
                                 <textarea type="message" className="form-control" id="floatingInput" placeholder="Input message" />
-                                <label for="floatingInput">Message</label>
+                                <label htmlFor="floatingInput">Message</label>
                             </div>
 
                             {/* <div className="checkbox mb-3">
@@ -42,11 +42,11 @@ const Contact = () => {
                             <button className="w-100 btn btn-lg btn-outline-primary" type="submit">Submit</button>
                             {/* <hr className="my-4" /> */}
                             {/* <small className="text-muted">By clicking Sign up, you agree to the terms of use.</small> */}
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        </form >
+                    </div >
+                </div >
+            </div >
+        </div >
     );
 };
 

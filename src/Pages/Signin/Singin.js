@@ -32,13 +32,13 @@ const Singin = () => {
                                                     <h5 className=' mb-4'>Please login to your account</h5>
 
                                                     <div className="form-outline mb-4">
-                                                        <label className="form-label" for="username">Username</label>
+                                                        <label className="form-label" htmlFor="username">Username</label>
                                                         <input type="email" id="username" className="form-control"
                                                             placeholder="Phone number or email address" />
                                                     </div>
 
                                                     <div className="form-outline mb-4">
-                                                        <label className="form-label" for="password">Password</label>
+                                                        <label className="form-label" htmlFor="password">Password</label>
                                                         <input type="password" id="password" className="form-control" placeholder='Enter password' />
                                                     </div>
 

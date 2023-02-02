@@ -5,7 +5,7 @@ const Photograph = () => {
         <div>
             <h2 className=' my-10 text-center text-xl font-bold '>Image Upload</h2>
             <form className=' w-1/2 mx-auto'>
-                <label for="avatar" className=' text-md font-bold'>Choose a profile picture:</label>
+                <label htmlFor="avatar" className=' text-md font-bold'>Choose a profile picture:</label>
                 <div className=' my-10'>
                     <input className=' text-center' type="file"
                         id="avatar" name="avatar"
@@ -17,7 +17,7 @@ const Photograph = () => {
                     <button className=' btn btn-warning'>Delete</button>
                 </div>
             </form>
-        </div>
+        </div >
     );
 };
 

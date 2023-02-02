@@ -14,7 +14,7 @@ const JobAlert = () => {
                     <form className="p-4 p-md-5 border rounded-3 bg-light">
                         <div className="form-floating mb-3">
                             <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                            <label for="floatingInput">Email address</label>
+                            <label htmlFor="floatingInput">Email address</label>
                         </div>
 
                         <div className="checkbox mb-3">
@@ -27,8 +27,8 @@ const JobAlert = () => {
                         <small className="text-muted">By clicking Sign up, you agree to the terms of use.</small>
                     </form>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
         // </div>
     );
 };

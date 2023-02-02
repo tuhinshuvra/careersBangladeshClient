@@ -24,7 +24,7 @@ const AddressDetails = () => {
 
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                            <label class="form-check-label" for="flexRadioDefault2">
+                            <label class="form-check-label" htmlFor="flexRadioDefault2">
                                 Default checked radio
                             </label>
                         </div>

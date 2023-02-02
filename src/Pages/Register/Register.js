@@ -32,19 +32,19 @@ const Register = () => {
                                                     <h5 className='mb-4 '>Please create your account</h5>
 
                                                     <div className="form-outline mb-3">
-                                                        <label className="form-label" for="username">Full Name</label>
+                                                        <label className="form-label" htmlFor="username">Full Name</label>
                                                         <input type="username" id="username" className="form-control"
                                                             placeholder="Enter your full name" />
                                                     </div>
 
                                                     <div className="form-outline mb-3">
-                                                        <label className="form-label" for="username">Username</label>
+                                                        <label className="form-label" htmlFor="username">Username</label>
                                                         <input type="email" id="username" className="form-control"
                                                             placeholder="Enter phone number or email address" />
                                                     </div>
 
                                                     <div className="form-outline mb-3">
-                                                        <label className="form-label" for="password">Password</label>
+                                                        <label className="form-label" htmlFor="password">Password</label>
                                                         <input type="password" placeholder='Enter password' id="password" className="form-control" />
                                                     </div>
 
