@@ -1,46 +1,46 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../../assets/logo/carriers-bangladesh-logo.png';
+import Logo from '../../assets/logo/carreers-bangladesh-small.png'
+import './Navbar.css'
 
-const Navbar2 = () => {
-
-    const menuItems = <React.Fragment>
-        <li className='font-bold'><Link to="/">Home</Link></li>
-        <li className='lg:mx-2 font-bold active:bg-violet-700 '><Link to="/about">About</Link></li>
-        <li className='lg:mx-2 font-bold active:bg-violet-700 '><Link to="/contact">Contact Us</Link></li>
-        <li className='lg:mx-2 font-bold active:bg-violet-700 '><Link to="/dashboardEmployers">Employers</Link></li>
-        <li className='lg:mx-2 font-bold active:bg-violet-700 '><Link to="/dashboardMyJobs">MyJobs</Link></li>
-        <li className='lg:mx-2 font-bold active:bg-violet-700 '><Link to="/signin">Signin</Link></li>
-    </React.Fragment>
-
+const Navbar = () => {
     return (
         <div>
-            <div className="navbar  bg-base-100 justify-between">
-                <div className="navbar-start">
-                    <div className="dropdown">
-                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                        </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                            {menuItems}
+            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+                <div className="container-fluid">
+                    <Link to='/' className="navbar-brand fw-bold d-flex justify-content-center align-items-center " href="#">
+                        <img className='navlogo' src={Logo} alt="" />
+                        <h3>Careers Bangladesh</h3>
+                    </Link>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <Link to='/' className="nav_btn" aria-current="page" href="#">Home</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to='/about' className="nav_btn" href="#">About</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to='/contact' className="nav_btn">Contact</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to='/dashboardMyJobs' className="nav_btn">Emplyeer</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to='/dashboardEmployers' className="nav_btn">MyJobs</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to='/signin' className="nav_btn">Signin</Link>
+                            </li>
                         </ul>
                     </div>
-                    <Link to="/" className="btn btn-ghost normal-case text-3xl font-bold ">
-                        <img className=' w-20 className="transition ease-in-out delay-150  hover:scale-150  duration-300' src={Logo} alt="" />
-                        Careers Bangladesh
-                    </Link>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                        {menuItems}
-                    </ul>
-                </div>
-                <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                </label>
-            </div>
+            </nav>
         </div>
     );
 };
 
-export default Navbar2;
+export default Navbar;

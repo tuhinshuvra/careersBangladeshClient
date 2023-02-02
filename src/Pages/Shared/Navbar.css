@@ -1,3 +1,19 @@
 .navlogo {
     width: 17%;
 }
+
+
+.nav_btn {
+    color: #A51E67;
+    text-decoration: none;
+    padding: 4px;
+    border-radius: 10px;
+    border: 0;
+    font-weight: bold;
+}
+
+.nav_btn:hover {
+    color: white;
+    background-color: #A51E67;
+    border-radius: 8px;
+}

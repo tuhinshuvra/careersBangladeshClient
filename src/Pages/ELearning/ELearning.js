@@ -3,7 +3,7 @@ import React from 'react';
 const ELearning = () => {
     return (
         <div>
-            <div className="  px-4 py-5 text-center " style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
+            <div className="  px-4 py-5 text-center  " style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
                 <div className="py-2   bg-transparent ">
                     <h1 className="display-5 fw-bold careers_title_one">Welcome to your eLearning</h1>
                     <div className="col-lg-6 mx-auto">

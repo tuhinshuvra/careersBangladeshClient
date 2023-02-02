@@ -1,11 +1,18 @@
+.login_form {
+    /* padding: 200px; */
+}
+
 @media (min-width: 992px) {
     .bg-sm {
         background-color: white;
     }
 
-    .login-form {
+    /* .login-form {
         padding: 100px;
-    }
+    } */
+    /* .form_area {
+        padding: 150px;
+    }*/
 }
 
 @media (min-width: 320px) and (max-width: 767.98px) {

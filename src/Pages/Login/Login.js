@@ -1,10 +1,37 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Logo from '../../assets/logo/cb-logo.png';
-import { FaBeer, FaFacebook, FaGithub, FaGoogle, FaTwitter } from 'react-icons/fa';
-import './Signin.css';
+import { FaFacebook, FaGithub, FaGoogle, FaTwitter } from 'react-icons/fa';
+import './Login.css';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { useForm } from 'react-hook-form';
+import { AuthContext } from '../Authentication/AuthProvider';
 
-const Singin = () => {
+const Login = () => {
+
+    const { signIn } = useContext(AuthContext);
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [loginError, setLoginError] = useState('');
+    const [loginUserEmail, setLoginUserEmail] = useState('');
+
+    const handleLogin = (data) => {
+        setLoginError('');
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                toast.success('User Login Successfully.')
+                console.log(user);
+                setLoginUserEmail(data.email);
+
+            })
+            .catch(error => {
+                setLoginError(error.message);
+                toast.error(error.message);
+                console.log(error);
+            })
+        console.log(data);
+    }
+
     return (
         <div>
             <section className="  gradient-form" style={{ backgroundColor: "#eee" }}>
@@ -20,59 +47,61 @@ const Singin = () => {
                                         <h2 className=" mb-lg-4 text-white text-center">Careers Bangladesh</h2>
                                     </div>
                                     <div className="col-lg-7">
-                                        <div className="card-body login-form" style={{ backgroundColor: "#EEF1F6" }}>
-                                            {/* <div className="text-center">
-                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                                                    style={{ width: " 185px" }} alt="logo" />
-                                                <h4 className="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
-                                            </div> */}
+                                        <div className="card-body login_form p-5" style={{ backgroundColor: "#EEF1F6" }}>
 
-                                            <form className=' rounded rounded-2 bg-sm p-5 '>
+
+                                            <form onSubmit={handleSubmit(handleLogin)} className=' rounded rounded-2 bg-sm p-5 '>
+                                                {loginError && <p className=' font-bold text-red-600'>{loginError}</p>}
                                                 <div className=''>
                                                     <h5 className=' mb-4'>Please login to your account</h5>
 
                                                     <div className="form-outline mb-4">
                                                         <label className="form-label" htmlFor="username">Username</label>
-                                                        <input type="email" id="username" className="form-control"
+                                                        <input type="email" id="username"
+                                                            {...register("email", { required: "Email address is required" })}
+                                                            className="form-control"
                                                             placeholder="Phone number or email address" />
                                                     </div>
 
                                                     <div className="form-outline mb-4">
                                                         <label className="form-label" htmlFor="password">Password</label>
-                                                        <input type="password" id="password" className="form-control" placeholder='Enter password' />
+                                                        <input type="password" id="password"
+                                                            {...register("password",
+                                                                {
+                                                                    required: "Password is required",
+                                                                    minLength: { value: 6, message: 'Password must be minimum 6 characters' }
+                                                                })}
+                                                            className="form-control" placeholder='Enter password' />
                                                     </div>
+                                                    {errors.password && <p className=' text-red-600' role="alert">{errors.password?.message}</p>}
 
                                                     <div className="text-center pt-1 mb-5 pb-1">
-                                                        <button className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">
-                                                            Sign In
+                                                        <button className="custom_btn mb-3" type="submit" value='login'>
+                                                            Log In
                                                         </button>
-                                                        <a className="text-muted m-2 " href="#!">Forgot password?</a>
+                                                        <Link className="text-muted m-2 text-decoration-none " to="#">Forgot password?</Link>
                                                     </div>
 
                                                     <div className="d-flex align-items-center justify-content-center pb-4">
                                                         <p className="mb-0 me-2">Don't have an account?</p>
-                                                        <Link to="/register"><button type="button" className="btn btn-outline-primary">Create new</button></Link>
+                                                        <Link to="/register"><button type="button" className=" custom_btn">Create new</button></Link>
                                                     </div>
 
                                                     <div className="text-center">
                                                         <p>or sign up with:</p>
                                                         <button type="button" className="btn btn-link btn-floating mx-1">
-                                                            {/* <i className="fab fa-facebook-f"></i> */}
                                                             <FaFacebook />
                                                         </button>
 
                                                         <button type="button" className="btn btn-link btn-floating mx-1">
-                                                            {/* <i className="fab fa-google"></i> */}
                                                             <FaGoogle />
                                                         </button>
 
                                                         <button type="button" className="btn btn-link btn-floating mx-1">
-                                                            {/* <i className="fab fa-twitter"></i> */}
                                                             <FaTwitter />
                                                         </button>
 
                                                         <button type="button" className="btn btn-link btn-floating mx-1">
-                                                            {/* <i className="fab fa-github"></i> */}
                                                             <FaGithub />
                                                         </button>
                                                     </div>
@@ -92,4 +121,4 @@ const Singin = () => {
     );
 };
 
-export default Singin;
+export default Login;

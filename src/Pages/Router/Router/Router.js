@@ -18,7 +18,7 @@ import JobPrimaryPost from '../../Profile/Employers/JobPrimaryPost';
 import JobDetailsPost from '../../Profile/Employers/JobDetailsPost';
 import WrongRoute from '../../Shared/ErrorDisplay/WrongRoute';
 import MyJobDashboard from '../../../layout/MyJobDashboard';
-import Singin from '../../Signin/Singin';
+import Login from '../../Login/Login';
 
 const router = createBrowserRouter([
     {
@@ -38,8 +38,8 @@ const router = createBrowserRouter([
                 element: <Contact></Contact>
             },
             {
-                path: '/signin',
-                element: <Singin></Singin>
+                path: '/login',
+                element: <Login></Login>
             },
             {
                 path: '/register',

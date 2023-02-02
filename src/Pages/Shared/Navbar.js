@@ -1,39 +1,66 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../../assets/logo/carreers-bangladesh-small.png'
-import './Navbar.css'
+import Logo from '../../assets/logo/carriers-bangladesh-logo.png';
+import { FaSearch } from 'react-icons/fa';
+import './Navbar.css';
+import useTitle from '../Hooks/useTitle';
+import { AuthContext } from '../Authentication/AuthProvider';
+import { Button } from 'react-bootstrap';
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext)
+    useTitle('Header');
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch((error) => { console.log("Error : ", error); })
+    }
+
     return (
         <div>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <nav className="navbar nav_bg navbar-expand-lg">
                 <div className="container-fluid">
-                    <Link to='/' className="navbar-brand fw-bold d-flex justify-content-center align-items-center " href="#">
+                    <Link to="/" className="navbar-brand spin_logo">
                         <img className='navlogo' src={Logo} alt="" />
-                        <h3>Careers Bangladesh</h3>
                     </Link>
+
+                    {/* <p><i class="fa fa-spinner w3-spin" style="font-size:64px"></i></p> */}
+
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link to='/' className="nav-link fw-bold " aria-current="page" href="#">Home</Link>
+                        <ul className=" navbar-nav d-flex justify-content-center align-items-center mx-auto ">
+                            <li className="nav-item mb-2">
+                                <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/">Home</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link to='/about' className="nav-link fw-bold " href="#">About</Link>
+
+
+                            <li className="nav-item mb-2">
+                                <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/about">AboutUs</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link to='/contact' className="nav-link fw-bold">Contact</Link>
+
+                            <li className="nav-item mb-2">
+                                <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/contact">Contact</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link to='/dashboardMyJobs' className="nav-link fw-bold">Emplyeer</Link>
+
+
+                            <li className="nav-item mb-2">
+                                <Link to='/dashboardMyJobs' className=" border-0  mx-lg-1  fw-bold nav_btn">Emplyeer</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link to='/dashboardEmployers' className="nav-link fw-bold">MyJobs</Link>
+
+                            <li className="nav-item mb-2">
+                                <Link to='/dashboardEmployers' className=" border-0  mx-lg-1  fw-bold nav_btn">MyJobs</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link to='/signin' className="nav-link fw-bold">Signin</Link>
+
+                            <li className="nav-item mb-2">
+                                {user?.uid ?
+                                    <>
+                                        <Link onClick={handleLogOut} className=' border-0  mx-lg-1  fw-bold nav_btn'>Logout</Link>
+                                    </> : <>
+                                        <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/login">Login</Link>
+                                    </>}
                             </li>
                         </ul>
                     </div>
