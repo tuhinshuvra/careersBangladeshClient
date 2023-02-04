@@ -10,7 +10,7 @@ const EmployersDashboard = () => {
         <div className='container mx-auto'>
             <Navbar></Navbar>
             <div className='row'>
-                <div className="col-lg-3 mt-lg-5">
+                <div className="col-lg-3 mt-lg-3">
                     <ul className=" list-group">
                         <li className='list-group-item' ><Link className=' nav_btn' to='/dashboardEmployers/employerDetails'>Employer Details</Link></li>
                         <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboardEmployers/jobprimarypost'>Job Primary Post</Link></li>

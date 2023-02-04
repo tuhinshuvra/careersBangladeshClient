@@ -9,36 +9,43 @@ const MyCV = () => {
 
             <article className="resume-wrapper text-center position-relative">
                 <div className="resume-wrapper-inner mx-auto text-start bg-white shadow-lg">
-                    <header className="resume-header pt-4 pt-md-0">
-                        <div className="row">
-                            <div className="col-block col-md-auto resume-picture-holder text-center text-md-start">
+                    <header className="resume-header pt-4">
+                        <div className=' d-flex justify-content-evenly'>
+                            <div className="col-lg-3 ">
                                 <img className="profile_pic" src={ProfilePic} alt="" />
                             </div>
                             {/* <!--//col--> */}
-                            <div className="col">
-                                <div className="row p-4 justify-content-center justify-content-md-between">
-                                    <div className="primary-info col-auto">
-                                        <h1 className="name mt-0 mb-1 text-white text-uppercase text-uppercase">Abdur Razzak</h1>
-                                        <div className="title mb-3">Full Stack Developer</div>
-                                        <ul className="list-unstyled">
-                                            <li className="mb-2"><Link className="text-link" to="#"><i className="far fa-envelope fa-fw me-2" data-fa-transform="grow-3"></i>Steve.Doe@website.com</Link></li>
-                                            <li><Link className="text-link" to="#"><i className="fas fa-mobile-alt fa-fw me-2" data-fa-transform="grow-6"></i>0123 456 78900</Link></li>
-                                        </ul>
-                                    </div>
-                                    {/* <!--//primary-info--> */}
-                                    <div className="secondary-info col-auto mt-2">
-                                        <ul className="resume-social list-unstyled">
-                                            <li className="mb-3"><Link className="text-link" to="#"><span className="fa-container text-center me-2"><i className="fab fa-linkedin-in fa-fw"></i></span>linkedin.com/in/stevedoe</Link></li>
-                                            <li className="mb-3"><Link className="text-link" to="#"><span className="fa-container text-center me-2"><i className="fab fa-github-alt fa-fw"></i></span>github.com/username</Link></li>
-                                            <li className="mb-3"><Link className="text-link" to="#"><span className="fa-container text-center me-2"><i className="fab fa-codepen fa-fw"></i></span>codepen.io/username/</Link></li>
-                                            <li><Link className="text-link" to="#"><span className="fa-container text-center me-2"><i className="fas fa-globe"></i></span>yourwebsite.com</Link></li>
-                                        </ul>
-                                    </div>
-                                    {/* <!--//secondary-info--> */}
-                                </div>
-                                {/* <!--//row--> */}
+                            <div className="col-lg-9">
+                                <div className="row">
+                                    <div className=' d-flex justify-content-evenly gap-1 mt-lg-4'>
+                                        <div className=' col-lg-8'>
+                                            <div className="primary-info col-auto">
+                                                <h1 className="name mt-0 mb-1 text-uppercase">Abdur Razzak</h1>
+                                                <div className="title mb-3 fw-bold">Full Stack Developer</div>
+                                                <ul className="list-unstyled">
+                                                    <li className="mb-2"><Link className="text-link text-decoration-none" to="#"><i className="far fa-envelope fa-fw" data-fa-transform="grow-3"></i>abdurrazzak@gmail.com</Link></li>
+                                                    <li><Link className="text-link text-decoration-none" to="#"><i className="fas fa-mobile-alt fa-fw" data-fa-transform="grow-6"></i>0123 456 78900</Link></li>
+                                                </ul>
+                                            </div>
+                                        </div>
 
+                                        {/* <!--//primary-info--> */}
+                                        <div className=' col-lg-4'>
+                                            <div className="secondary-info col-auto mt-2">
+                                                <ul className="resume-social list-unstyled">
+                                                    <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-linkedin-in fa-fw"></i></span>linkedin.com/in/stevedoe</Link></li>
+                                                    <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-github-alt fa-fw"></i></span>github.com/username</Link></li>
+                                                    <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-codepen fa-fw"></i></span>codepen.io/username/</Link></li>
+                                                    <li><Link className="text-link" to="#"><span className="fa-container text-center"><i className="fas fa-globe"></i></span>yourwebsite.com</Link></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        {/* <!--//secondary-info--> */}
+                                    </div>
+                                    {/* <!--//row--> */}
+                                </div>
                             </div>
+
                             {/* <!--//col--> */}
                         </div>
                         {/* <!--//row--> */}
