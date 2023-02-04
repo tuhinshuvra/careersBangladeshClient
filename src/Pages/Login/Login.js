@@ -6,9 +6,10 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../Authentication/AuthProvider';
+import useTitle from '../Hooks/useTitle';
 
 const Login = () => {
-
+    useTitle('Login');
     const { signIn } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [loginError, setLoginError] = useState('');

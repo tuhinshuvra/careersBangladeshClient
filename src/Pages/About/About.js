@@ -1,6 +1,8 @@
 import React from 'react';
+import useTitle from '../Hooks/useTitle';
 
 const About = () => {
+    useTitle('About Us')
     return (
         <div>
             <div className="px-4 pt-5 my-5 text-center border-bottom">

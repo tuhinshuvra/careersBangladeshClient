@@ -4,11 +4,13 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBuildingUser, faChair, faPerson } from '@fortawesome/free-solid-svg-icons'
 import './JobSearch.css';
+import useTitle from '../Hooks/useTitle';
 
 const JobSearch = () => {
     const company = <FontAwesomeIcon icon={faBuildingUser} />
     const person = <FontAwesomeIcon icon={faPerson} />
     const chair = <FontAwesomeIcon icon={faChair} />
+    // useTitle('Job Search');
 
     return (
         <div className='my-5 col-lg-10 mx-auto'>

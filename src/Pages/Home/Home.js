@@ -5,8 +5,12 @@ import JobCategory from '../JobCategory/JobCategory';
 import HotJobs from '../HotJobs/HotJobs';
 import JobAlert from '../JobAlert/JobAlert';
 import ELearning from '../ELearning/ELearning';
+import useTitle from '../Hooks/useTitle';
 
 const Home = () => {
+
+    useTitle('Home');
+
     return (
         <div>
             {/* <AnimatedBanner></AnimatedBanner> */}
