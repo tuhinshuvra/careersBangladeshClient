@@ -3,7 +3,7 @@ import React from 'react';
 const Employment = () => {
     return (
         <div>
-            <div className=' mx-52  my-16'>
+            <div className=''>
                 {/* <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100  rounded-md "> */}
                 <h2 className=" text-center text-2xl font-medium my-5">
                     Employment History
@@ -11,87 +11,49 @@ const Employment = () => {
 
                 <form action="">
 
-                    {/* <div className="collapse-content"> */}
-                    {/* <p>tabIndex={0} attribute is necessary to make the div focusable</p> */}
-                    <div className="grid md:grid-cols-2 md:gap-6">
-                        {/* <div className="form-control w-full max-w-xs"> */}
-                        <div>
-                            <label className="label">
-                                <span className="label-text text-md font-bold ">Company Name</span>
-                            </label>
-                            <input type="text" id='first-name' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                    <div className="row my-lg-4">
+                        <div className=' col-lg-4'>
+                            <input className='input form-control' id="company-name" type="text" placeholder='Company Name' />
                         </div>
-                        <div>
-                            <label className="label">
-                                <span className="label-text text-md font-bold ">Company Business</span>
-                            </label>
-                            <input type="text" id='last-name' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+
+                        <div className=' col-lg-4'>
+                            <input className='input form-control' id="company-business" type="text" placeholder='Company Business' />
+                        </div>
+
+                        <div className=' col-lg-4'>
+                            <input className='input form-control' id="department" type="text" placeholder='Your Department' />
                         </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 md:gap-6 mt-2">
-                        {/* <div className="form-control w-full max-w-xs"> */}
-                        <div>
-                            <label className="label">
-                                <span className="label-text text-md font-bold ">Designation</span>
-                            </label>
-                            <input type="text" id='fathers-name' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                    <div className="row my-lg-4">
+                        <div className=' col-lg-4'>
+                            <input className='input form-control' id="designation" type="text" placeholder='Designation' />
                         </div>
-                        <div>
-                            <label className="label">
-                                <span className="label-text text-md font-bold ">Department</span>
-                            </label>
-                            <input type="text" id='mothers-name' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+
+                        <div className=' col-lg-4'>
+                            <input className='input form-control' id="emp-period" type="text" placeholder='Employment Period' />
+                        </div>
+
+                        <div className=' col-lg-4'>
+                            <input className='input form-control' id="responsibilities" type="text" placeholder='Responsibilities' />
                         </div>
                     </div>
 
-                    <div className="mt-2">
-                        {/* <div className="form-control w-full max-w-xs"> */}
-                        <label className="label">
-                            <span className="label-text text-md font-bold ">Employment Period</span>
-                        </label>
-                        <div className=' grid lg:grid-cols-2 lg:gap-5'>
-                            <input type="date" id='birth-dath' className="input input-bordered w-full max-w-xs" />
-                            <input type="date" id='birth-dath' className="input input-bordered w-full max-w-xs" />
-                        </div>
+                    <div className="my-lg-4">
+                        <input className='input form-control' id="company-location" type="text" placeholder='Company Location' />
                     </div>
 
-                    <div className="mt-2">
-                        {/* <div className="form-control w-full max-w-xs"> */}
-                        <div>
-                            <label className="label">
-                                <span className="label-text text-md font-bold ">Responsibilities</span>
-                            </label>
-                            <textarea type="text" id='responsibilities' placeholder="Write Responsibilities" className="input input-bordered w-full" />
-                        </div>
-                    </div>
-                    <div className="mt-2">
-                        {/* <div className="form-control w-full max-w-xs"> */}
-                        <div>
-                            <label className="label">
-                                <span className="label-text text-md font-bold ">Company Location</span>
-                            </label>
-                            <input type="text" id='company-location' placeholder="Write Company Location" className="input input-bordered w-full" />
-                        </div>
+                    <div className="my-lg-4">
+                        <textarea className='input form-control w-100' id="others" type="text" placeholder='Others' />
                     </div>
 
-                    <div className="mt-2">
-                        {/* <div className="form-control w-full max-w-xs"> */}
-                        <div>
-                            <label className="label">
-                                <span className="label-text text-md font-bold ">Others</span>
-                            </label>
-                            <textarea type="text" id='emplyment-others' placeholder="Write if have any others" className="input input-bordered w-full" />
-                        </div>
-                    </div>
-
-                    <div className=' flex justify-between my-10'>
+                    <div className=' d-flex justify-content-between my-4 '>
                         <button className="btn btn-warning">Cancel</button>
                         <button type='submit' name='submit' className="btn btn-primary">Save</button>
                     </div>
                 </form>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 

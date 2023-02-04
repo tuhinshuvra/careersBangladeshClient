@@ -7,7 +7,7 @@ import Contact from '../../Contact/Contact';
 import Personal from '../../Profile/MyJobs/Personal/Personal';
 import EducationTraining from '../../Profile/MyJobs/Education-Training/EducationTraining';
 import Employment from '../../Profile/MyJobs/Employment/Employment';
-import OtherRelevantInformation from '../../Profile/MyJobs/Personal/OtherRelevantInformation';
+import OtherInformation from '../../Profile/MyJobs/Personal/OtherInformation';
 import Photograph from '../../Profile/MyJobs/Photograph/Photograph';
 import MainLayout from '../../../layout/MainLayout';
 import PostedJobList from '../../Profile/Employers/PostedJobList';
@@ -19,6 +19,7 @@ import JobDetailsPost from '../../Profile/Employers/JobDetailsPost';
 import WrongRoute from '../../Shared/ErrorDisplay/WrongRoute';
 import MyJobDashboard from '../../../layout/MyJobDashboard';
 import Login from '../../Login/Login';
+import MyCV from '../../Profile/MyJobs/Personal/MyCV';
 
 const router = createBrowserRouter([
     {
@@ -69,11 +70,15 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboardMyJobs/other-information',
-                element: <OtherRelevantInformation></OtherRelevantInformation>
+                element: <OtherInformation></OtherInformation>
             },
             {
                 path: '/dashboardMyJobs/photograph',
                 element: <Photograph></Photograph>
+            },
+            {
+                path: '/dashboardMyJobs/myProfile',
+                element: <MyCV></MyCV>
             },
             {
                 path: '/dashboardMyJobs/applied',

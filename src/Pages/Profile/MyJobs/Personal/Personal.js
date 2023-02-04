@@ -3,7 +3,7 @@ import PersonalDetails from './PersonalDetails';
 import AddressDetails from './AddressDetails';
 import CarrerAndApplication from './CarrerAndApplication';
 import PreferredAreas from './PreferredAreas';
-import OtherRelevantInformation from './OtherRelevantInformation';
+import OtherInformation from './OtherInformation';
 
 const Personal = () => {
     return (

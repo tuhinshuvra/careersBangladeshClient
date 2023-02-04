@@ -18,6 +18,7 @@ const MyJobDashboard = () => {
                         <li className='list-group-item '><Link className=' nav_btn' to='/dashboardMyJobs/employment'>Employment</Link></li>
                         <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboardMyJobs/other-information'>Other Information</Link></li>
                         <li className='list-group-item '><Link className=' nav_btn' to='/dashboardMyJobs/photograph'>Photograph</Link></li>
+                        <li className='list-group-item '><Link className=' nav_btn' to='/dashboardMyJobs/myProfile'>MyCV</Link></li>
                         <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboardMyJobs/applied'>Applied Job List</Link></li>
                     </ul>
                 </div>
