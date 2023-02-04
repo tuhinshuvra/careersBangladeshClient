@@ -3,7 +3,7 @@ import React from 'react';
 const AddressDetails = () => {
     return (
         <div>
-            <div className=' mx-52  my-16'>
+            <div className=''>
                 <h2 className=" text-center text-2xl font-medium">
                     Address Details
                 </h2>
@@ -35,9 +35,11 @@ const AddressDetails = () => {
                         <div className=' col-lg-4 '>
                             <select className="form-select">
                                 <option disabled selected>Select District</option>
-                                <option value={0}>Male</option>
-                                <option value={1}>Female</option>
-                                <option value={2}>Others</option>
+                                <option value={0}>Bagerhat</option>
+                                <option value={1}>Barishal</option>
+                                <option value={2}>Comilla</option>
+                                <option value={3}>Dhaka</option>
+                                <option value={4}>Rangpur</option>
                             </select>
                         </div>
                         <div className=' col-lg-4 '>

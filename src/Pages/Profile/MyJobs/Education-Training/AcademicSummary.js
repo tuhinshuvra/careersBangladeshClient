@@ -13,120 +13,66 @@ const AcademicSummary = () => {
                 {/* <div className="collapse-content"> */}
                 {/* <p>tabIndex={0} attribute is necessary to make the div focusable</p> */}
                 <form action="">
-                    <div className="grid md:grid-cols-2 md:gap-6">
-                        {/* <div className="form-control w-full max-w-xs"> */}
-                        <div>
-                            <label className="label">
-                                <span className="label-text text-md font-bold ">Level of Education</span>
-                            </label>
-                            <select className="select select-bordered w-[229px]">
+
+                    <div className="row my-lg-4 ">
+                        <div className=' col-lg-4'>
+                            <select className=" form-select ">
                                 {/* <option disabled selected>Select</option> */}
-                                <option value="DEFAULT" disabled>Select</option>
-                                <option value={0}>Male</option>
-                                <option value={1}>Female</option>
-                                <option value={2}>Others</option>
+                                <option disabled selected>Select Education Level</option>
+                                <option value={0}>PSD</option>
+                                <option value={1}>Masters</option>
+                                <option value={2}>Degree</option>
+                                <option value={3}>HSC</option>
+                                <option value={4}>SSC</option>
                             </select>
                         </div>
-                        <div>
-                            <label className="label">
-                                <span className="label-text text-md font-bold ">Exam/Degree Title</span>
-                            </label>
-                            <select className="select select-bordered w-[229px]">
-                                <option value="DEFAULT" disabled>Select</option>
-                                <option value={0}>Male</option>
-                                <option value={1}>Female</option>
-                                <option value={2}>Others</option>
+                        <div className=' col-lg-4'>
+                            <select className=" form-select ">
+                                {/* <option disabled selected>Select</option> */}
+                                <option disabled selected>Select Exam/Degree Title</option>
+                                <option value={0}>BSC</option>
+                                <option value={1}>BA</option>
+                                <option value={2}>BCom</option>
+                                <option value={3}>MSC</option>
+                                <option value={4}>MA</option>
+                                <option value={5}>MCom</option>
+                                <option value={6}>Science</option>
+                                <option value={7}>Arts</option>
+                                <option value={8}>Commerce</option>
                             </select>
+                        </div>
+
+                        <div className=' col-lg-4'>
+                            <input className='input form-control' id="group" type="text" placeholder='Concentration/ Major/Group' />
                         </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 md:gap-6 mt-2">
-                        {/* <div className="form-control w-full max-w-xs"> */}
-                        <div>
-                            <label className="label">
-                                <span className="label-text text-md font-bold ">Concentration/ Major/Group</span>
-                            </label>
-                            <input type="text" id='birth-dath' className="input input-bordered w-full max-w-xs" />
+
+
+                    <div className='row my-lg-4'>
+                        <div className=' col-lg-4'>
+                            <input className='input form-control' id="institute-name" type="text" placeholder='Institute Name' />
                         </div>
-                        <div>
-                            <label className="label">
-                                <span className="label-text text-md font-bold ">Board</span>
-                            </label>
-                            <select className="select select-bordered w-[229px]">
-                                <option value="DEFAULT" disabled>Select</option>
-                                <option value={0}>Male</option>
-                                <option value={1}>Female</option>
-                                <option value={2}>Others</option>
-                            </select>
+
+                        <div className=" col-lg-4">
+                            <input className='input form-control' id="pass-result" type="text" placeholder='Enter Result' />
+                        </div>
+
+
+                        <div className=' col-lg-4'>
+                            <input className="input form-control" type="text" id='duration-years' placeholder='Duration (Years)' />
                         </div>
                     </div>
 
-                    <div className='my-2'>
-                        <label className="label">
-                            <span className="label-text text-md font-bold ">Institute Name</span>
-                        </label>
-                        <input type="text" id='institute-name' placeholder="Type here" className="input input-bordered w-full " />
-                    </div>
 
-                    <div className='my-2'>
-                        <span>This is a foreign institute</span> <input type="checkbox" className="checkbox" />
-                        <label className="label">
-                            <span className="label-text text-md font-bold ">Country of Foreign University</span>
-                        </label>
-                        <input type="text" id='institute-name' placeholder="Type here" className="input input-bordered w-full" />
-                    </div>
-
-
-                    <div className="grid md:grid-cols-2 md:gap-6">
-                        {/* <div className="form-control w-full max-w-xs"> */}
-                        <div>
-                            <label className="label">
-                                <span className="label-text text-md font-bold ">Result</span>
-                            </label>
-                            <select className="select select-bordered w-[229px]">
-                                <option value="DEFAULT" disabled>Select</option>
-                                <option value={0}>Male</option>
-                                <option value={1}>Female</option>
-                                <option value={2}>Others</option>
-                            </select>
+                    <div className="row my-lg-4">
+                        <div className=' col-lg-4'>
+                            <input className="input form-control" id='mejor-subject' type="text" placeholder="Major Subject" />
                         </div>
-                        <div>
-                            <label className="label">
-                                <span className="label-text text-md font-bold ">Year of Passing</span>
-                            </label>
-                            <select id="year-of-passing" name="year-of-passing" className="select select-bordered w-[229px]">
-                                <option>Year</option>
-                                <option value="1940">1940</option>
-                                <option value="1941">1941</option>
-                                <option value="1942">1942</option>
-                                <option value="1943">1943</option>
-                                <option value="1944">1944</option>
-                                <option value="1945">1945</option>
-                                <option value="1946">1946</option>
-                                <option value="1947">1947</option>
-                                <option value="1948">1948</option>
-                                <option value="1949">1949</option>
-                                <option value="1950">1950</option>
-                                <option value="1951">1951</option>
-                                <option value="1952">1952</option>
-                                <option value="1953">1953</option>
-                                <option value="1954">1954</option>
-                                <option value="1955">1955</option>
-                                <option value="1956">1956</option>
-                                <option value="1957">1957</option>
-                                <option value="1958">1958</option>
-                                <option value="1959">1959</option>
-                                <option value="1960">1960</option>
-                                <option value="1961">1961</option>
-                                <option value="1962">1962</option>
-                                <option value="1963">1963</option>
-                                <option value="1964">1964</option>
-                                <option value="1965">1965</option>
-                                <option value="1966">1966</option>
-                                <option value="1967">1967</option>
-                                <option value="1968">1968</option>
-                                <option value="1969">1969</option>
-                                <option value="1970">1970</option>
+
+                        <div className=' col-lg-4'>
+                            <select className=' form-select'>
+                                <option id='year-of-passing' disabled selected className=''>Select Passing Year</option>
                                 <option value="1971">1971</option>
                                 <option value="1972">1972</option>
                                 <option value="1973">1973</option>
@@ -182,30 +128,20 @@ const AcademicSummary = () => {
                                 <option value="2023">2023</option>
                             </select>
                         </div>
-                    </div>
-                    <div className="grid md:grid-cols-2 md:gap-6 mt-2">
-                        {/* <div className="form-control w-full max-w-xs"> */}
-                        <div>
-                            <label className="label">
-                                <span className="label-text text-md font-bold ">Duration (Years)</span>
-                            </label>
-                            <input type="text" id='duration-years' className="input input-bordered w-full max-w-xs" />
+                        <div className=' col-lg-4'>
+                            <input className="input form-control" type="text" id='achivement' placeholder='Achivement' />
                         </div>
-                        <div>
-                            <label className="label">
-                                <span className="label-text text-md font-bold ">Achievement</span>
-                            </label>
-                            <input type="text" id='birth-dath' className="input input-bordered w-full max-w-xs" />
-                        </div>
+
                     </div>
 
-                    <div className=' flex justify-between my-10'>
+
+                    <div className=' d-flex justify-content-between my-lg-5'>
                         <button className="btn btn-warning">Cancel</button>
                         <button type='submit' name='submit' className="btn btn-primary">Save</button>
                     </div>
                 </form>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 
