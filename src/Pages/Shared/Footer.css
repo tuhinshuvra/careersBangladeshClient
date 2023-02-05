@@ -1,5 +1,10 @@
+.footer_bg {
+    background-color: rgba(135, 207, 235, 0.467);
+    height: 34vh;
+}
+
 .footer_logo {
-    width: 81px;
+    width: 120px;
 }
 
 .social_icon {

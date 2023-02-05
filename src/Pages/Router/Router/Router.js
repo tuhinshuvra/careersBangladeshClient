@@ -20,6 +20,7 @@ import WrongRoute from '../../Shared/ErrorDisplay/WrongRoute';
 import MyJobDashboard from '../../../layout/MyJobDashboard';
 import Login from '../../Login/Login';
 import MyCV from '../../Profile/MyJobs/Personal/MyCV';
+import FindJob from '../../JobSearch/FindJob';
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path: '/about',
                 element: <About></About>
+            },
+            {
+                path: '/findJobs',
+                element: <FindJob></FindJob>
             },
             {
                 path: '/contact',

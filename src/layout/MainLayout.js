@@ -5,7 +5,7 @@ import Footer from '../Pages/Shared/Footer';
 
 const MainLayout = () => {
     return (
-        <div className=' container'>
+        <div className='container'>
             <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>

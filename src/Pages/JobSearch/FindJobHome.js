@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBuildingUser, faChair, faPerson } from '@fortawesome/free-solid-svg-icons'
 import useTitle from '../Hooks/useTitle';
-import './JobSearch.css';
+import './FindJobHome.css';
 
-const JobSearch = () => {
+const FindJobHome = () => {
     const company = <FontAwesomeIcon icon={faBuildingUser} />
     const person = <FontAwesomeIcon icon={faPerson} />
     const chair = <FontAwesomeIcon icon={faChair} />
@@ -54,4 +54,4 @@ const JobSearch = () => {
     );
 };
 
-export default JobSearch;
+export default FindJobHome;

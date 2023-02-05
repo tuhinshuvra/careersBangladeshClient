@@ -1,11 +1,12 @@
 import React from 'react';
 import AnimatedBanner from '../Banner/AnimatedBanner';
-import JobSearch from '../JobSearch/JobSearch';
+import FindJobHome from '../JobSearch/FindJobHome';
 import JobCategory from '../JobCategory/JobCategory';
 import HotJobs from '../HotJobs/HotJobs';
 import JobAlert from '../JobAlert/JobAlert';
 import ELearning from '../ELearning/ELearning';
 import useTitle from '../Hooks/useTitle';
+import NewJobs from '../NewJobs/NewJobs';
 
 const Home = () => {
 
@@ -14,11 +15,12 @@ const Home = () => {
     return (
         <div>
             {/* <AnimatedBanner></AnimatedBanner> */}
-            <JobSearch></JobSearch>
+            <FindJobHome></FindJobHome>
             <JobCategory></JobCategory>
             <HotJobs></HotJobs>
-            <JobAlert></JobAlert>
+            <NewJobs></NewJobs>
             <ELearning></ELearning>
+            <JobAlert></JobAlert>
         </div>
     );
 };

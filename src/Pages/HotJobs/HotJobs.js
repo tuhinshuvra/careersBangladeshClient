@@ -17,7 +17,7 @@ const HotJobs = () => {
 
     return (
         <div className=' common-margin '>
-            <h2 className=' text-center fw-bold my-5 careers_title_one'>HOT JOB CATEGORIES</h2>
+            <h2 className=' text-center fw-bold my-5 careers_title_one'>HOT JOBS</h2>
             <div className=' job-category'>
                 {newCategories.map(category => <HotJobCategoryDisplay
                     key={category.id}
