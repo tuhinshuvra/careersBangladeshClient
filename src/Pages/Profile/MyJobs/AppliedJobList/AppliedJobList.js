@@ -7,7 +7,7 @@ const AppliedJobList = () => {
             <h2 className=' text-center text-2xl font-bold my-10 '>Applied Job List</h2>
             <div className="overflow-x-auto">
                 {/* <table className="table w-full"> */}
-                <table class="table table-striped table-hover">
+                <table className="table table-striped table-hover">
                     <thead>
                         <tr className=''>
                             <th>SL</th>
