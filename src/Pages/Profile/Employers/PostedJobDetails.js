@@ -1,16 +1,24 @@
 import React from 'react';
+import { FaBriefcase, FaBuilding, FaCalculator } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const PostedJobDetails = () => {
     return (
         <div>
-            <div class="card">
-                <div class="card-body">
+            <div className="card">
+                <div className="card-body">
                     <div className=' d-flex justify-content-between'>
-
-                        <h4 class="card-title fw-bold">Full Stack Web Developer</h4>
-                        <h5 class="card-title fw-bold">Gorgeous Banaladesh Limited</h5>
+                        <h4 className="card-title fw-bold">Full Stack Web Developer</h4>
+                        <p className="card-title fw-bold">Gorgeous Banaladesh Limited, Dhaka, Bangladesh, (On Site)</p>
                     </div>
+
+                    <div className=' d-flex justify-content-between'>
+                        <p className=' fw-bold'><FaBriefcase className='fs-4'></FaBriefcase> Full-time</p>
+                        <p className=' fw-bold'><FaBuilding className=' fs-4'></FaBuilding>51-200 employees</p>
+                        <p className=' fw-bold'><FaCalculator className=' fs-4'></FaCalculator>Posted: 01/02/2023</p>
+
+                    </div>
+
                     <p>
                         <b> Job Context</b> <br />
                         <ul>
@@ -50,13 +58,6 @@ const PostedJobDetails = () => {
                                 Basic Konowledge of Other CMS.
                             </li>
                         </ul>
-                    </p>
-
-
-
-                    <p>
-                        <b> Employment Status</b> <br />
-                        Full-time
                     </p>
 
 
@@ -110,20 +111,41 @@ const PostedJobDetails = () => {
                         Tk. 25000 - 35000 (Monthly)
                     </p>
 
-                    <b> Compensation & Other Benefits</b>
-                    <ul>
-                        <li>
-                            Festival Bonus: 2
-                        </li>
-                        <li>
-                            Weekly 1 holiday
-                        </li>
-                        <li>
-                            Salary Review: Yearly
-                        </li>
+                    <p>
+                        <b>Employment Status</b>
+                        <ul>
+                            <li>
+                                Sunday to Thursday
+                            </li>
+                            <li>
+                                Full- Time (10.00 AM – 6.00 PM)
+                            </li>
+                        </ul>
+                    </p>
+
+                    <p>
+                        <b>Benefits</b>
+                        <ul>
+                            <li>
+                                Mobile bill, launch
+                            </li>
+                            <li>
+                                Snacks, Unlimited Tea & Coffee
+                            </li>
+                            <li>
+                                Salary Review: Yearly
+                            </li>
+                            <li>
+                                Festival Bonus: 2 per year
+                            </li>
+                            <li>
+                                Working Environment
+                            </li>
+                        </ul>
+                    </p>
 
 
-                    </ul>
+
 
                     <p>
                         <b>Job Source</b><br />
@@ -132,7 +154,8 @@ const PostedJobDetails = () => {
 
 
                     <div className='d-flex justify-content-center'>
-                        <Link to="/"> <button type="button" class=" custom_btn"> Apply Now</button></Link>
+                        <Link to="/"> <button type="button" className=" custom_btn mx-1"> Apply Now</button></Link>
+                        <Link to="/"> <button type="button" className=" custom_btn mx-1"> Save</button></Link>
                     </div>
                 </div>
             </div>

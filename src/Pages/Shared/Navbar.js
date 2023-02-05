@@ -47,7 +47,7 @@ const Navbar = () => {
                             </li>
 
                             <li className="nav-item mb-2">
-                                <Link to='/dashboardEmployers' className=" border-0  mx-lg-1  fw-bold nav_btn">Emplyeer</Link>
+                                <Link to='/dashboardEmployers' className=" border-0  mx-lg-1  fw-bold nav_btn">Employer</Link>
                             </li>
 
                             <li className="nav-item mb-2">
