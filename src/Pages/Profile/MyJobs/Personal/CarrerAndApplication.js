@@ -67,8 +67,8 @@ const CarrerAndApplication = () => {
                     </div >
 
                     <div className=' flex justify-between my-10]'>
-                        <button className="btn btn-warning">Cancel</button>
-                        <button type='submit' name='submit' className="btn btn-primary">Save</button>
+                        <button className="btn btn-warning fw-bold">Cancel</button>
+                        <button type='submit' name='submit' className="custom_btn">Save</button>
                     </div>
                 </form >
 

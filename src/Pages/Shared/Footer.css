@@ -1,0 +1,16 @@
+.footer_logo {
+    width: 81px;
+}
+
+.social_icon {
+    color: #A51E67;
+    font-size: 30px;
+    margin: 0 7px;
+}
+
+.social_icon:hover {
+    color: black;
+    font-size: 30.3px;
+    /* font-size: 10px; */
+    /* margin: 0 10px; */
+}

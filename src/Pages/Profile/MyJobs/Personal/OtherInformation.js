@@ -13,8 +13,8 @@ const OtherInformation = () => {
                 <textarea id='keywords' className="form-control  w-full my-lg-4" placeholder='Keywords'></textarea>
 
                 <div className=' d-flex justify-content-between my-4'>
-                    <button className="btn btn-warning">Cancel</button>
-                    <button type='submit' name='submit' className="btn btn-primary">Save</button>
+                    <button className="btn btn-warning fw-bold">Cancel</button>
+                    <button type='submit' name='submit' className="custom_btn">Save</button>
                 </div>
             </form>
         </div>

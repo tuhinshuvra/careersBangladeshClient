@@ -25,7 +25,7 @@ code {
 
 .custom_btn {
   background-color: #A51E67;
-  font-size: 19px;
+  font-size: 17px;
   color: white;
   font-weight: bold;
   padding: 6px 15px;
@@ -35,5 +35,10 @@ code {
 
 .custom_btn:hover {
   color: #A51E67;
-  background-color: rgba(0, 128, 0, 0.642);
+  background-color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 4px 13px;
+  border: 1px solid rgba(0, 0, 0, 0.174);
+  border-radius: 10px;
 }

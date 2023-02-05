@@ -73,8 +73,8 @@ const JobDetailsPost = () => {
 
 
                 <div className=' d-flex justify-content-between my-lg-3 '>
-                    <button className="btn btn-warning">Cancel</button>
-                    <button type='submit' name='submit' className="btn btn-primary">Submit</button>
+                    <button className="btn btn-warning fw-bold">Cancel</button>
+                    <button type='submit' name='submit' className="custom_btn">Submit</button>
                 </div>
             </form>
         </div >

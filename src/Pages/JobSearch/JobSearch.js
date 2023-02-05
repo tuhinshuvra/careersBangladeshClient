@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBuildingUser, faChair, faPerson } from '@fortawesome/free-solid-svg-icons'
-import './JobSearch.css';
 import useTitle from '../Hooks/useTitle';
+import './JobSearch.css';
 
 const JobSearch = () => {
     const company = <FontAwesomeIcon icon={faBuildingUser} />

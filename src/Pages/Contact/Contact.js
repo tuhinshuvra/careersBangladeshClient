@@ -43,7 +43,7 @@ const Contact = () => {
                                     <input type="checkbox" value="remember-me" /> Remember me
                                 </label>
                             </div> */}
-                            <button className="w-100 btn btn-lg btn-outline-primary" type="submit">Submit</button>
+                            <button className="w-100 custom_btn" type="submit">Submit</button>
                             {/* <hr className="my-4" /> */}
                             {/* <small className="text-muted">By clicking Sign up, you agree to the terms of use.</small> */}
                         </form >

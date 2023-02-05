@@ -12,7 +12,7 @@ const About = () => {
                         most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system,
                         extensive prebuilt components, and powerful JavaScript plugins.</p>
                     <div className="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                        <button type="button" className="btn btn-outline-primary btn-lg px-4 me-sm-3">More Details</button>
+                        <button type="button" className="px-4 me-sm-3 custom_btn">More Details</button>
                         {/* <button type="button" className="btn btn-outline-secondary btn-lg px-4">Secondary</button> */}
                     </div>
                 </div>

@@ -102,8 +102,8 @@ const AddressDetails = () => {
                     <input className='input form-control' id="permanent-address" type="text" placeholder='Type your house no/road/village' />
 
                     <div className='d-flex justify-content-between my-5'>
-                        <button className="btn btn-warning">Cancel</button>
-                        <button type='submit' name='submit' className="btn btn-primary">Save</button>
+                        <button className="btn btn-warning fw-bold">Cancel</button>
+                        <button type='submit' name='submit' className="custom_btn">Save</button>
                     </div>
                 </form>
             </div>
