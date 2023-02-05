@@ -22,49 +22,49 @@ const PostedJobList = () => {
                             <td>Full Stack Web Developer</td>
                             <td>Full Time</td>
                             <td>10/01/2023</td>
-                            <td><button className=' btn btn-primary btn-sm'><Link>Edit</Link></button></td>
+                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
                         </tr>
                         <tr className='hover'>
                             <th>2</th>
                             <td>MERN Stack Web Developer</td>
                             <td>Full Time</td>
                             <td>10/01/2023</td>
-                            <td><button className=' btn btn-primary btn-sm'><Link>Edit</Link></button></td>
+                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
                         </tr>
                         <tr className='hover'>
                             <th>3</th>
                             <td>Front End Web Developer</td>
                             <td>Part Time</td>
                             <td>10/01/2023</td>
-                            <td><button className=' btn btn-primary btn-sm'><Link>Edit</Link></button></td>
+                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
                         </tr>
                         <tr className='hover'>
                             <th>4</th>
                             <td>ReactJS Web Developer</td>
                             <td>Full Time</td>
                             <td>10/01/2023</td>
-                            <td><button className=' btn btn-primary btn-sm'><Link>Edit</Link></button></td>
+                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
                         </tr>
                         <tr className='hover'>
                             <th>5</th>
                             <td>Back End Wdb Developer</td>
                             <td>Contactual</td>
                             <td>10/01/2023</td>
-                            <td><button className=' btn btn-primary btn-sm'><Link>Edit</Link></button></td>
+                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
                         </tr>
                         <tr className='hover'>
                             <th>6</th>
                             <td>IT Manager</td>
                             <td>Part Time</td>
                             <td>10/01/2023</td>
-                            <td><button className=' btn btn-primary btn-sm'><Link>Edit</Link></button></td>
+                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
                         </tr>
                         <tr className='hover'>
                             <th>7</th>
                             <td>Graphics Designer</td>
                             <td>Full Time</td>
                             <td>10/01/2023</td>
-                            <td><button className=' btn btn-primary btn-sm'><Link>Edit</Link></button></td>
+                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
                         </tr>
                     </tbody>
                 </table>

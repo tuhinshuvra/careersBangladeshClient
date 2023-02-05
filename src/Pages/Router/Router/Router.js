@@ -21,6 +21,7 @@ import MyJobDashboard from '../../../layout/MyJobDashboard';
 import Login from '../../Login/Login';
 import MyCV from '../../Profile/MyJobs/Personal/MyCV';
 import FindJob from '../../JobSearch/FindJob';
+import PostedJobDetails from '../../Profile/Employers/PostedJobDetails';
 
 const router = createBrowserRouter([
     {
@@ -110,6 +111,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboardEmployers/jobdetailspost',
                 element: <JobDetailsPost></JobDetailsPost>
+            },
+            {
+                path: '/dashboardEmployers/postedJobDetails',
+                element: <PostedJobDetails></PostedJobDetails>
             },
             {
                 path: '/dashboardEmployers/jobList',

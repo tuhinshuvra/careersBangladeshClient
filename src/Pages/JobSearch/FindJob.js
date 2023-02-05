@@ -26,7 +26,6 @@ const FindJob = () => {
                                     <option value={4}>Khulna</option>
                                     <option value={5}>Barishal</option>
                                     <option value={6}>Rangpur</option>
-                                    <option value={7}></option>
                                 </select>
                                 {/* <!-- END FILTER BY Location --> */}
 
