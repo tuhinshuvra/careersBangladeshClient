@@ -14,8 +14,6 @@ import PostedJobList from '../../Profile/Employers/PostedJobList';
 import EmployersDashboard from '../../../layout/EmployersDashboard';
 import EmployerDetails from '../../Profile/Employers/EmployerDetails';
 import AppliedJobList from '../../Profile/MyJobs/AppliedJobList/AppliedJobList';
-import JobPrimaryPost from '../../Profile/Employers/JobPrimaryPost';
-import JobDetailsPost from '../../Profile/Employers/JobDetailsPost';
 import WrongRoute from '../../Shared/ErrorDisplay/WrongRoute';
 import MyJobDashboard from '../../../layout/MyJobDashboard';
 import Login from '../../Login/Login';
@@ -23,6 +21,7 @@ import MyCV from '../../Profile/MyJobs/Personal/MyCV';
 import FindJob from '../../JobSearch/FindJob';
 import PostedJobDetails from '../../Profile/Employers/PostedJobDetails';
 import EmployeersProfile from '../../Profile/Employers/EmployeersProfile';
+import JobPost from '../../Profile/Employers/JobPost';
 
 const router = createBrowserRouter([
     {
@@ -109,14 +108,12 @@ const router = createBrowserRouter([
                 path: '/dashboardEmployers/employerDetails',
                 element: <EmployerDetails></EmployerDetails>
             },
+
             {
-                path: '/dashboardEmployers/jobprimarypost',
-                element: <JobPrimaryPost></JobPrimaryPost>
+                path: '/dashboardEmployers/jobpost',
+                element: <JobPost></JobPost>
             },
-            {
-                path: '/dashboardEmployers/jobdetailspost',
-                element: <JobDetailsPost></JobDetailsPost>
-            },
+
             {
                 path: '/dashboardEmployers/postedJobDetails',
                 element: <PostedJobDetails></PostedJobDetails>

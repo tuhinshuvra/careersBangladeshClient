@@ -1,21 +1,15 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBuildingUser, faChair, faPerson, } from '@fortawesome/free-solid-svg-icons'
 import { FaSearchDollar, FaChartLine, FaRegBuilding } from 'react-icons/fa';
 import { BsPeopleFill } from 'react-icons/bs';
 import './FindJobHome.css';
 
 
 const FindJobHome = () => {
-    const company = <FontAwesomeIcon icon={faBuildingUser} />
-    const person = <FontAwesomeIcon icon={faPerson} />
-    const chair = <FontAwesomeIcon icon={faChair} />
-
     return (
         <div className='my-5 col-lg-10 mx-auto'>
-            <h2 className='careers_title_one my-5'><FaSearchDollar className=' mx-1'></FaSearchDollar>LETS FIND YOUR JOB</h2>
+            <h2 className='careers_title_one my-5'><FaSearchDollar className='mx-1'></FaSearchDollar>LETS FIND YOUR JOB</h2>
             <div className="d-flex  justify-content-center mt-4">
-                <input type="text" placeholder="Keyword" className="form-control  w-25 " id="keword" aria-describedby="kewordHelp" />
+                <input type="text" placeholder="Keyword" className="form-control  w-25" id="keword" aria-describedby="kewordHelp" />
                 <input type="text" placeholder="Organization Type" className="form-control seach  mx-2 w-25" id="organization-type" aria-describedby="locationHelp" />
                 <input type="text" placeholder="Location" className="form-control  w-25" id="location" aria-describedby="locationHelp" />
                 <button className='custom_btn mx-2'>Search</button>

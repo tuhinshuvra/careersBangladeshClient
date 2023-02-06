@@ -47,7 +47,7 @@ const Login = () => {
                                         <div className="px-3 py-lg-4 p-md-5  mx-auto">
                                             <img className='login_logo' src={LoginLogo} alt="" />
                                         </div>
-                                        <h2 className=" mb-lg-4 text-white text-center">Careers Bangladesh</h2>
+                                        <h2 className=" mb-lg-4 text-white">Careers Bangladesh</h2>
                                     </div>
                                     <div className="col-lg-7">
                                         <div className="card-body login_form p-5" style={{ backgroundColor: "#EEF1F6" }}>
