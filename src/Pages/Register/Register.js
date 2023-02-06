@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
-import Logo from '../../assets/logo/cb-logo.png';
+import LoginLogo from '../../assets/logo/carriers-bangladesh-logo.png';
 import { FaFacebook, FaGithub, FaGoogle, FaTwitter } from 'react-icons/fa';
 import { AuthContext } from '../Authentication/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import useTitle from '../Hooks/useTitle';
 import { toast } from 'react-hot-toast';
-import '../Login/Login.css';
 import { Form } from 'react-bootstrap';
+import '../Login/Login.css';
 
 const Register = () => {
     const { setLoading } = useContext(AuthContext)
@@ -64,7 +64,7 @@ const Register = () => {
                                 <div className="row g-0  rounded-5">
                                     <div className="col-lg-5 d-flex flex-column justify-content-center align-items-center logo-area" style={{ backgroundColor: "#505b79" }}>
                                         <div className="px-3 py-lg-4 p-md-5  mx-auto">
-                                            <img className='logo' src={Logo} alt="" />
+                                            <img className='login_logo' src={LoginLogo} alt="" />
                                         </div>
                                         <h2 className=" mb-lg-4 text-white text-center">Careers Bangladesh</h2>
                                     </div>

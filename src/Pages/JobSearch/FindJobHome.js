@@ -1,7 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBuildingUser, faChair, faPerson } from '@fortawesome/free-solid-svg-icons'
-import { FaSearchDollar } from 'react-icons/fa';
+import { faBuildingUser, faChair, faPerson, } from '@fortawesome/free-solid-svg-icons'
+import { FaSearchDollar, FaChartLine, FaRegBuilding } from 'react-icons/fa';
+import { BsPeopleFill } from 'react-icons/bs';
 import './FindJobHome.css';
 
 
@@ -24,23 +25,23 @@ const FindJobHome = () => {
 
                 <div className="row justify-content-center">
 
-                    <div className=" col-md-3  ">
+                    <div className=" col-md-3 ">
                         <div className="counter-box ">
-                            <i>{chair} </i>
+                            <FaChartLine className='  text-secondary fs-1 mt-1'></FaChartLine>
                             <span className="counter">21471</span>
                             <p>Live Jobs</p>
                         </div>
                     </div>
                     <div className=" col-md-3 ">
                         <div className="counter-box ">
-                            <i>{company} </i>
+                            <FaRegBuilding className='  text-secondary fs-1 mt-1'></FaRegBuilding>
                             <span className="counter">2343</span>
                             <p>Companies</p>
                         </div>
                     </div>
                     <div className=" col-md-3 ">
                         <div className="counter-box ">
-                            <i>{person} </i>
+                            <BsPeopleFill className='  text-secondary fs-1 mt-1'></BsPeopleFill>
                             <span className="counter">2147</span>
                             <p>Employers</p>
                         </div>

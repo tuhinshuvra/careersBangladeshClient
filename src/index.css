@@ -40,9 +40,9 @@ code {
 .custom_btn:hover {
   color: #A51E67;
   background-color: white;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bold;
-  padding: 4px 13px;
+  padding: 5px 14px;
   border: 1px solid rgba(0, 0, 0, 0.174);
   border-radius: 10px;
 }
