@@ -2,193 +2,217 @@
   {
     "id": "124e13b9-2d54-4b2f-a74d-a77b362d6ead",
     "name": "Accounting/Finance",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 4,
     "ratingsCount": 3725,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-01.png",
     "quantity": 0
   },
   {
     "id": "13cbc7ed-a61b-4883-9d42-82d7d8642b86",
     "name": "Bank/Non-Bank Fin. Institution",
+    "organization": "Nag Air Ltd",
     "ratings": 5,
     "ratingsCount": 4355,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-02.png",
     "quantity": 0
   },
   {
     "id": "307f166f-1d04-4573-bc37-2f461ea9d4f7",
     "name": "Education/Training",
+    "organization": "Careers Bangladesh Ltd",
     "ratings": 4,
     "ratingsCount": 3972,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-03.png",
     "quantity": 0
   },
   {
     "id": "4bf9798f-63bc-4a83-b0c6-6a3b816fe922",
     "name": "Engineer/Architects",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 5,
     "ratingsCount": 1764,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-04.png",
     "quantity": 0
   },
   {
     "id": "9496d72b-04ec-41f8-9bc3-0a7c9697be8e",
     "name": "Garments/Textile",
+    "organization": "Public Bangladesh Ltd",
     "ratings": 4,
     "ratingsCount": 799,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-05.png",
     "quantity": 0
   },
   {
     "id": "6e5593d3-557b-43cf-8dab-a5140faedfb0",
     "name": "HR/Org. Development",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 3,
     "ratingsCount": 4372,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-06.png",
     "quantity": 0
   },
   {
     "id": "9c0c13c2-54e4-4001-809b-afbd9d84037d",
     "name": "Design/Creative",
+    "organization": "Grameen Phone Ltd",
     "ratings": 4,
     "ratingsCount": 2870,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-07.png",
     "quantity": 0
   },
   {
     "id": "c9d1f410-d28f-49d9-9b01-d759b5acbeea",
     "name": "IT & Telecommunication",
+    "organization": "Dutch Bangla Bank",
     "ratings": 4,
     "ratingsCount": 1360,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-08.png",
     "quantity": 0
   },
   {
     "id": "1564a06b-692f-4f2e-8413-9c8a1cc2da77",
     "name": "Marketing/Sales",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 5,
     "ratingsCount": 1976,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-09.png",
     "quantity": 0
   },
   {
     "id": "ac44095f-230e-4502-8816-dea3eaae8320",
     "name": "Media/Ad./Event Mgt.",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 4,
     "ratingsCount": 565,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-01.png",
     "quantity": 0
   },
   {
     "id": "d0803f97-966f-4296-ad31-a7f70fc86fab",
     "name": "Law/Legal",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 5,
     "ratingsCount": 3702,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-03.png",
     "quantity": 0
   },
   {
     "id": "8a5b4a9c-76ea-4fbb-9c70-9548de4eab01",
     "name": "Electrician/Construction/Repair",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 5,
     "ratingsCount": 1688,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-04.png",
     "quantity": 0
   },
   {
     "id": "b357e19b-4dd9-4fc7-b5c0-9ed5255464ba",
     "name": "Research/Consultancy",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 4,
     "ratingsCount": 50,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-06.png",
     "quantity": 0
   },
   {
     "id": "e4220958-06d2-4d50-96fa-0163a563f43d",
     "name": "Beauty Care/ Health & Fitness",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 3,
     "ratingsCount": 4483,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-01.png",
     "quantity": 0
   },
   {
     "id": "ae69f0e4-559c-4b24-8032-80b63f9b5073",
     "name": "TProduction/Operation",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 4,
     "ratingsCount": 1239,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-03.png",
     "quantity": 0
   },
   {
     "id": "dbf7ab3f-b383-4d95-8ab7-f55fcf6fa5f2",
     "name": "Hospitality/ Travel/ Tourism",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 5,
     "ratingsCount": 4557,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-07.png",
     "quantity": 0
   },
   {
     "id": "ed6a7ac3-7e67-4e3f-8461-bceb5178be42",
     "name": "Data Entry/Operator/BPO",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 3,
     "ratingsCount": 3383,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-06.png",
     "quantity": 0
   },
   {
     "id": "fd52819a-cb78-4510-ad2f-c5bdd888ae78",
     "name": "FHR/Org. Development",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 3,
     "ratingsCount": 1974,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-08.png",
     "quantity": 0
   },
   {
     "id": "c667d3ff-41eb-4cf7-a433-819d959ea768",
     "name": "Customer Service/Call Centre",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 5,
     "ratingsCount": 2140,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-01.png",
     "quantity": 0
   },
   {
     "id": "e1dbc7fe-be17-4e0f-9e2d-6ad5dbc102fc",
     "name": "Gen Mgt/Admin",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 5,
     "ratingsCount": 2676,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-01.png",
     "quantity": 0
   },
   {
     "id": "e1dbc78e-be17-4e0f-9e89-56d5dbc102fc",
     "name": " Secretary/Receptionist",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 5,
     "ratingsCount": 2676,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-01.png",
     "quantity": 0
   },
   {
     "id": "e1dbc7fe-be17-4e0f-292d-56d5dbcty2fc",
     "name": "Driving/Motor Technician",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 5,
     "ratingsCount": 2676,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-01.png",
     "quantity": 0
   },
   {
     "id": "e1dbc7fe-be17-4e0f-yu2d-56d5dbc102fc",
     "name": "Commercial",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 5,
     "ratingsCount": 2676,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-01.png",
     "quantity": 0
   },
   {
     "id": "e1dbc7fe-be17-4e0f-yu2d-56d9trc102fc",
     "name": "Agro (Plant/Animal/Fisheries)",
+    "organization": "Gorgeous Bangladesh Ltd",
     "ratings": 5,
     "ratingsCount": 2676,
-    "img": "",
+    "img": "./assets/job_company_logo/logo-01.png",
     "quantity": 0
   }
 ]

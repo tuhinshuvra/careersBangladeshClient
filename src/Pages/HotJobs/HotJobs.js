@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import HotJobCategoryDisplay from './HotJobCategoryDisplay';
-import '../JobCategory/JobCategory.css';
+import { FaHotjar } from 'react-icons/fa';
+import './HotJobs.css';
 
 const HotJobs = () => {
     const [categories, setCategories] = useState([]);
     let newCategories = categories.slice(0, 12)
 
     useEffect(() => {
-        fetch('job-categories.json')
+        fetch('allJobs.json')
             .then(response => response.json())
             .then(data => {
                 setCategories(data)
@@ -17,8 +18,8 @@ const HotJobs = () => {
 
     return (
         <div className=' common-margin '>
-            <h2 className=' text-center fw-bold my-5 careers_title_one'>HOT JOBS</h2>
-            <div className=' job-category'>
+            <h2 className='my-5 careers_title_one'><FaHotjar className='mx-1'></FaHotjar> HOT JOBS</h2>
+            <div className='hot_job_category'>
                 {newCategories.map(category => <HotJobCategoryDisplay
                     key={category.id}
                     category={category}

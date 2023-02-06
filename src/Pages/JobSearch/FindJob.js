@@ -10,6 +10,7 @@ const FindJob = () => {
                 <div className="grid search">
                     <div className="grid-body">
                         <div className="row">
+
                             {/* <!-- BEGIN FILTERS --> */}
                             <div className="col-md-3">
                                 <h2 className="grid-title"><FaFilter />Filters</h2>
@@ -29,6 +30,7 @@ const FindJob = () => {
                                 </select>
                                 {/* <!-- END FILTER BY Location --> */}
 
+
                                 {/* <!-- BEGIN FILTER BY CATEGORY --> */}
                                 <div className=' my-md-3'>
                                     <h5 className=' fw-bold'>By Category:</h5>
@@ -46,6 +48,8 @@ const FindJob = () => {
                                 </div>
                                 {/* <!-- END FILTER BY CATEGORY --> */}
 
+
+                                {/* <!-- Begin Filter by Employent Status --> */}
                                 <div className=' my-md-3'>
                                     <h5 className=' fw-bold'>By Employment Status:</h5>
                                     <select className=" form-select ">
@@ -57,6 +61,8 @@ const FindJob = () => {
                                         <option value={4}>Freelance</option>
                                     </select>
                                 </div>
+                                {/* <!-- End Filter by Employent Status --> */}
+
 
                                 {/* <!-- BEGIN FILTER BY POSTED DATE --> */}
                                 <div className=" my-md-3">
@@ -68,6 +74,7 @@ const FindJob = () => {
                                     </div>
                                 </div>
                                 {/* <!-- END FILTER BY POSTED DATE --> */}
+
 
                                 {/* <!-- BEGIN FILTER BY DEADLINE DATE --> */}
                                 <div className=" my-md-3">
@@ -95,8 +102,10 @@ const FindJob = () => {
 
                             </div>
                             {/* <!-- END FILTERS --> */}
+
+
                             {/* <!-- BEGIN RESULT --> */}
-                            <div className="col-md-9">
+                            <div className="col-md-9 mt-md-0 mt-5">
                                 <h2><FaFile></FaFile> Result</h2>
                                 <hr />
                                 {/* <!-- BEGIN SEARCH INPUT --> */}
@@ -107,24 +116,25 @@ const FindJob = () => {
                                     </span>
                                 </div>
                                 {/* <!-- END SEARCH INPUT --> */}
+
                                 <p className=' fw-bold'>Showing all results matching "web development"</p>
 
                                 <div className="padding"></div>
 
                                 <div className="row">
                                     {/* <!-- BEGIN ORDER RESULT --> */}
-                                    <div className="col-6">
+                                    <div className="col-9">
                                         <select className="form-select">
                                             <option disabled selected>Order By</option>
                                             <option value={0}>Name</option>
-                                            <option value={1}>Date</option>
-                                            <option value={2}>View</option>
-                                            <option value={3}>Rating</option>
+                                            <option value={1}>Posted</option>
+                                            <option value={2}>Deadline</option>
+                                            <option value={3}>Salary</option>
                                         </select>
                                     </div>
                                     {/* <!-- END ORDER RESULT --> */}
 
-                                    <div className="col-md-6">
+                                    <div className="col-3">
                                         <div className=' float-end'>
                                             <div className="btn-group">
                                                 <button type="button" className="btn btn-default active"><FaList></FaList> </button>

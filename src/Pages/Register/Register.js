@@ -2,17 +2,18 @@ import React, { useContext, useState } from 'react';
 import Logo from '../../assets/logo/cb-logo.png';
 import { FaFacebook, FaGithub, FaGoogle, FaTwitter } from 'react-icons/fa';
 import { AuthContext } from '../Authentication/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useTitle from '../Hooks/useTitle';
 import { toast } from 'react-hot-toast';
 import '../Login/Login.css';
 import { Form } from 'react-bootstrap';
 
 const Register = () => {
-
     const { setLoading } = useContext(AuthContext)
     const [error, setError] = useState('');
     const [accepted, setAccepted] = useState(false);
+
+    const navigate = useNavigate();
     useTitle('Register');
 
     const { createUser } = useContext(AuthContext);
@@ -35,7 +36,8 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 console.log("User Data:", result.user);
-                toast.success('User created successfully.')
+                toast.success('User created and login successfully.')
+                navigate("/");
 
                 setError('');
                 form.reset();

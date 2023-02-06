@@ -2,9 +2,8 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/logo/carriers-bangladesh-logo.png';
 import { FaSearch } from 'react-icons/fa';
-import useTitle from '../Hooks/useTitle';
 import { AuthContext } from '../Authentication/AuthProvider';
-import { Button } from 'react-bootstrap';
+import { toast } from 'react-hot-toast';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -12,7 +11,9 @@ const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
     const handleLogOut = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                toast("User logout successfully!")
+            })
             .catch((error) => { console.log("Error : ", error); })
     }
 

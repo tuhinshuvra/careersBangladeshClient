@@ -7,16 +7,15 @@ const PostedJobDetails = () => {
         <div>
             <div className="card">
                 <div className="card-body">
-                    <div className=' d-flex justify-content-between'>
+                    <div className=' d-md-flex justify-content-between'>
                         <h4 className="card-title fw-bold">Full Stack Web Developer</h4>
-                        <p className="card-title fw-bold">Gorgeous Banaladesh Limited, Dhaka, Bangladesh, (On Site)</p>
+                        <p className="fw-bold">Gorgeous Banaladesh Ltd, Dhaka, Bangladesh, (On Site)</p>
                     </div>
 
-                    <div className=' d-flex justify-content-between'>
-                        <p className=' fw-bold'><FaBriefcase className='fs-4'></FaBriefcase> Full-time</p>
-                        <p className=' fw-bold'><FaBuilding className=' fs-4'></FaBuilding>51-200 employees</p>
-                        <p className=' fw-bold'><FaCalculator className=' fs-4'></FaCalculator>Posted: 01/02/2023</p>
-
+                    <div className='d-flex justify-content-between'>
+                        <p className='fw-bold d-flex justify-content-center align-items-center'><FaBriefcase className='fs-5 mx-1'></FaBriefcase>Full-time</p>
+                        <p className='fw-bold d-flex justify-content-center align-items-center d-none d-md-block'><FaBuilding className='fs-5 mx-1'></FaBuilding>51-200 employees</p>
+                        <p className='fw-bold d-flex justify-content-center align-items-center'><FaCalculator className='fs-5 mx-1'></FaCalculator>Posted: 01/02/2023</p>
                     </div>
 
                     <p>

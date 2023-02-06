@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import Logo from '../../assets/logo/cb-logo.png';
 import { FaFacebook, FaGithub, FaGoogle, FaTwitter } from 'react-icons/fa';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../Authentication/AuthProvider';
@@ -15,15 +15,17 @@ const Login = () => {
     const [loginError, setLoginError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('');
 
+    const navigate = useNavigate();
+
     const handleLogin = (data) => {
         setLoginError('');
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 toast.success('User Login Successfully.')
+                navigate("/");
                 console.log(user);
                 setLoginUserEmail(data.email);
-
             })
             .catch(error => {
                 setLoginError(error.message);

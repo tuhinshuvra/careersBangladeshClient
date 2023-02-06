@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import JobCategoryDisplay from './JobCategoryDisplay';
+import { FaCompass, FaCompressArrowsAlt, FaHotjar } from 'react-icons/fa';
 import './JobCategory.css';
 
 const JobCategory = () => {
@@ -17,7 +18,7 @@ const JobCategory = () => {
 
     return (
         <div className=' common-margin '>
-            <h2 className=' text-center fw-bold my-5 careers_title_one'>JOB CATEGORIES</h2>
+            <h2 className='my-5 careers_title_one'><FaCompressArrowsAlt className=' mx-1'></FaCompressArrowsAlt>  JOB CATEGORIES</h2>
             <div className=' job-category'>
                 {newCategories.map(category => <JobCategoryDisplay
                     key={category.id}

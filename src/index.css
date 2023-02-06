@@ -13,8 +13,12 @@ code {
 }
 
 .careers_title_one {
-  color: #A51E67;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-weight: bold;
   font-size: 45px;
+  color: #A51E67;
 }
 
 .careers_title_two {
