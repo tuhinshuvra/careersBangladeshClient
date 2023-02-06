@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './JobCategory.css';
 
 const JobCategoryDisplay = ({ category }) => {
-    const { id, name, seller, price, stock, ratings, ratingsCount, img, shipping, quantity } = category;
+    const { name } = category;
     return (
         <div>
             <div className="card ">

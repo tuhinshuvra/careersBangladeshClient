@@ -1,3 +1,57 @@
 .newjob_bg {
-    background-color: rgba(255, 166, 0, 0.21);
+    /* background-color: rgba(255, 166, 0, 0.21); */
+}
+
+.hot_job_category {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    text-decoration: none;
+}
+
+
+.category_link {
+    position: relative;
+    display: block;
+    font-size: 16px;
+    color: #A51E67;
+    transition: .3s;
+}
+
+.hot_job_image {
+    width: 100px;
+}
+
+.category_link:hover {
+    font-size: 17px;
+    color: white;
+    background-color: #A51E67;
+    border-radius: 6px;
+}
+
+@media (min-width: 992px) and (max-width: 1024px) {
+    .hot_job_category {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        text-decoration: none;
+    }
+}
+
+@media (min-width: 767.98px) and (max-width: 991.98px) {
+    .hot_job_category {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        text-decoration: none;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767.98px) {
+    .hot_job_category {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 4px;
+        text-decoration: none;
+    }
 }

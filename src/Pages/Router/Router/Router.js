@@ -22,6 +22,7 @@ import Login from '../../Login/Login';
 import MyCV from '../../Profile/MyJobs/Personal/MyCV';
 import FindJob from '../../JobSearch/FindJob';
 import PostedJobDetails from '../../Profile/Employers/PostedJobDetails';
+import EmployeersProfile from '../../Profile/Employers/EmployeersProfile';
 
 const router = createBrowserRouter([
     {
@@ -99,6 +100,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboardEmployers',
                 element: <EmployerDetails></EmployerDetails>
+            },
+            {
+                path: '/dashboardEmployers/employerProfile',
+                element: <EmployeersProfile></EmployeersProfile>
             },
             {
                 path: '/dashboardEmployers/employerDetails',

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import HotJobCategoryDisplay from './HotJobCategoryDisplay';
+import HotJobsDisplay from './HotJobsDisplay';
 import { FaHotjar } from 'react-icons/fa';
 import './HotJobs.css';
 
@@ -18,12 +18,12 @@ const HotJobs = () => {
 
     return (
         <div className=' common-margin '>
-            <h2 className='my-5 careers_title_one'><FaHotjar className='mx-1'></FaHotjar> HOT JOBS</h2>
+            <h2 className='my-5 careers_title_one'><FaHotjar className='mx-1'></FaHotjar>HOT JOBS</h2>
             <div className='hot_job_category'>
-                {newCategories.map(category => <HotJobCategoryDisplay
+                {newCategories.map(category => <HotJobsDisplay
                     key={category.id}
                     category={category}
-                ></HotJobCategoryDisplay>)}
+                ></HotJobsDisplay>)}
             </div>
         </div>
     );

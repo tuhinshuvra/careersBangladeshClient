@@ -12,7 +12,9 @@ const EmployersDashboard = () => {
             <div className='row'>
                 <div className="col-lg-3 mt-lg-3">
                     <ul className=" list-group">
-                        <li className='list-group-item' ><Link className=' nav_btn' to='/dashboardEmployers/employerDetails'>Employer Details</Link></li>
+                        <li className='list-group-item'><Link className=' nav_btn' to='/dashboardEmployers/employerDetails'>Employer Details</Link></li>
+                        <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboardEmployers/employerProfile'>Employer Profile</Link></li>
+                        <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboardEmployers/jobprimarypost'>Job Post</Link></li>
                         <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboardEmployers/jobprimarypost'>Job Primary Post</Link></li>
                         <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboardEmployers/jobdetailspost'>Job Details</Link></li>
                         <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboardEmployers/postedJobDetails'>Posted Job Details</Link></li>
