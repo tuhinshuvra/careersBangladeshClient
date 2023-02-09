@@ -26,9 +26,9 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    const updateUserProfile = (profile) => {
+    const updateUser = (userInfo) => {
         setLoading(true);
-        return updateProfile(auth.currentUser, profile);
+        return updateProfile(auth.currentUser, userInfo)
     }
 
     useEffect(() => {
@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
         loading,
         setLoading,
         createUser,
-        updateUserProfile,
+        updateUser,
         signIn,
         logOut,
     };

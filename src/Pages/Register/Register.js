@@ -7,52 +7,63 @@ import useTitle from '../Hooks/useTitle';
 import { toast } from 'react-hot-toast';
 import { Form } from 'react-bootstrap';
 import '../Login/Login.css';
+import { useForm } from 'react-hook-form';
 
 const Register = () => {
-    const { setLoading } = useContext(AuthContext)
-    const [error, setError] = useState('');
-    const [accepted, setAccepted] = useState(false);
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { createUser, updateUser, setLoading } = useContext(AuthContext);
+    const [signUpError, setSignUpError] = useState('');
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
 
     const navigate = useNavigate();
     useTitle('Register');
 
-    const { createUser } = useContext(AuthContext);
 
-    const handleOnSubmit = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-
-
-        // console.log("Email and Password : ", email, password)
-
-        if (password.length < 6) {
-            setError('Password must be more than 6 character.');
-            return;
-        }
-
-
-        createUser(email, password)
+    const handleOnSubmit = (data) => {
+        createUser(data.email, data.password)
             .then(result => {
-                console.log("User Data:", result.user);
+                const user = result.user;
+                console.log("User Info:", user)
                 toast.success('User created and login successfully.')
-                navigate("/");
 
-                setError('');
-                form.reset();
+                const userInfo = {
+                    displayName: data?.name,
+                }
+                updateUser(userInfo)
+                    .then(() => {
+                        saveUser(data.name, data.email, data.userType);
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        setSignUpError(errors.message)
+                    })
+                // form.reset();
+                navigate("/");
             })
             .catch(error => {
                 console.log("Error : ", error)
-                setError(error.message);
+                setSignUpError(error.message);
             })
             .finally(() => {
                 setLoading(false);
             })
     }
 
-
-
+    const saveUser = (name, email, userType) => {
+        const user = { name, email, userType };
+        
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            setCreatedUserEmail(email)
+        })
+    }
 
     return (
         <div>
@@ -72,30 +83,69 @@ const Register = () => {
                                         <div className="card-body login_form p-5" style={{ backgroundColor: "#EEF1F6" }}>
 
 
-
-
-                                            <Form onSubmit={handleOnSubmit} className=' rounded rounded-2 bg-sm p-5 '>
+                                            <Form onSubmit={handleSubmit(handleOnSubmit)} className=' rounded rounded-2 bg-sm p-5 '>
                                                 <Form.Text className="text-danger text-center">
-                                                    {error}
+                                                    {signUpError}
                                                 </Form.Text>
                                                 <div className=''>
                                                     <h5 className=' mb-4'>Please login to your account</h5>
 
                                                     <div className="form-outline mb-4">
                                                         <label className="form-label" htmlFor="username">Username</label>
-                                                        <input type="name" id="name" className="form-control"
-                                                            placeholder="Enter Name" />
+                                                        <input type="name"
+                                                            name='name'
+                                                            {...register("name", { required: true })}
+                                                            className="form-control"
+                                                            placeholder="Enter Name"
+                                                        />
+                                                        {errors.name && <p className='text-red-600'>Name is required</p>}
+
+
+                                                    </div>
+
+                                                    <div className="form-outline mb-4">
+                                                        <label className="form-label" htmlFor="userType">User Type</label>
+                                                        <select type="text"
+                                                            {...register("userType")}
+                                                            className="form-control">
+                                                            <option value="employer">Employer</option>
+                                                            <option value="jobseeker" selected>Job Seeker</option>
+                                                        </select>
                                                     </div>
 
                                                     <div className="form-outline mb-4">
                                                         <label className="form-label" htmlFor="email">Email</label>
-                                                        <input type="email" id="email" className="form-control"
-                                                            placeholder="Enter email address" />
+                                                        <input type="email"
+                                                            name='email'
+                                                            {...register("email", { required: true })}
+                                                            className="form-control"
+                                                            placeholder="Enter email address"
+                                                        />
+                                                        {errors.email && <p className='text-red-600'>Email is required</p>}
+
+
+
                                                     </div>
 
                                                     <div className="form-outline mb-4">
                                                         <label className="form-label" htmlFor="password">Password</label>
-                                                        <input type="password" id="password" className="form-control" placeholder='Enter password' />
+                                                        {/* <input type="password" id="password" className="form-control" placeholder='Enter password' /> */}
+
+                                                        <input
+                                                            type="password"
+                                                            name='password'
+                                                            {...register("password",
+                                                                {
+                                                                    required: true,
+                                                                    minLength: { value: 6, message: "Password length must be minimum 6" },
+                                                                    pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password must have uppercase, number and special characters' }
+                                                                },
+                                                            )}
+
+                                                            placeholder="Enter a password"
+                                                            className=" form-control"
+                                                        />
+                                                        {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                                                     </div>
 
                                                     <div className="text-center pt-1 mb-5 pb-1">

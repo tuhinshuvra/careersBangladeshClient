@@ -15,7 +15,7 @@ const CarrerAndApplication = () => {
                 <form action="">
                     <textarea id='objective' className="textarea w-full input input-bordered"  ></textarea>
 
-                    <div className="grid md:grid-cols-2 md:gap-6">
+                    <div className=" ">
                         <div>
                             <label className="label"> <span className="label-text text-md font-bold ">Present Salary</span> </label>
                             <input type="text" id='present-salary' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
