@@ -22,6 +22,7 @@ import FindJob from '../../JobSearch/FindJob';
 import PostedJobDetails from '../../Profile/Employers/PostedJobDetails';
 import EmployeersProfile from '../../Profile/Employers/EmployeersProfile';
 import JobPost from '../../Profile/Employers/JobPost';
+import UpdateUser from '../../Practice/UpdateUser';
 
 const router = createBrowserRouter([
     {
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/update/:id',
+                element: <UpdateUser></UpdateUser>,
+                loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
             },
         ]
     },

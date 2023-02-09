@@ -7,6 +7,8 @@ import JobAlert from '../JobAlert/JobAlert';
 import ELearning from '../ELearning/ELearning';
 import useTitle from '../Hooks/useTitle';
 import NewJobs from '../NewJobs/NewJobs';
+import PracticePurpose from '../Practice/PracticePurpose';
+import AllUser from '../Practice/AllUser';
 
 const Home = () => {
 
@@ -14,13 +16,14 @@ const Home = () => {
 
     return (
         <div>
-            {/* <AnimatedBanner></AnimatedBanner> */}
-            <FindJobHome></FindJobHome>
-            <JobCategory></JobCategory>
-            <HotJobs></HotJobs>
-            <NewJobs></NewJobs>
-            <ELearning></ELearning>
-            <JobAlert></JobAlert>
+            <PracticePurpose></PracticePurpose>
+            <AllUser></AllUser>
+            {/* <FindJobHome></FindJobHome> */}
+            {/* <JobCategory></JobCategory> */}
+            {/* <HotJobs></HotJobs> */}
+            {/* <NewJobs></NewJobs> */}
+            {/* <ELearning></ELearning> */}
+            {/* <JobAlert></JobAlert> */}
         </div>
     );
 };
