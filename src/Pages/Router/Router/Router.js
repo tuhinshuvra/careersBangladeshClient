@@ -22,7 +22,11 @@ import FindJob from '../../JobSearch/FindJob';
 import PostedJobDetails from '../../Profile/Employers/PostedJobDetails';
 import EmployeersProfile from '../../Profile/Employers/EmployeersProfile';
 import JobPost from '../../Profile/Employers/JobPost';
-import UpdateUser from '../../Practice/UpdateUser';
+import AdminDashboard from '../../../layout/AdminDashboard';
+import UserList from '../../Profile/Admin/AllUser';
+import UpdateUser from '../../Profile/Admin/UpdateUser';
+import EmployerList from '../../Profile/Admin/EmployerList';
+import JobSeekerList from '../../Profile/Admin/JobSeekerList';
 
 const router = createBrowserRouter([
     {
@@ -53,8 +57,27 @@ const router = createBrowserRouter([
                 path: '/register',
                 element: <Register></Register>
             },
+        ]
+    },
+    {
+        path: '/dashboardAdmin',
+        element: <AdminDashboard></AdminDashboard>,
+        children: [
             {
-                path: '/update/:id',
+                path: '/dashboardAdmin',
+                element: <UserList></UserList>
+            },
+            {
+                path: '/dashboardAdmin/employeeList',
+                element: <EmployerList></EmployerList>
+            },
+            {
+                path: '/dashboardAdmin/jobseekerList',
+                element: <JobSeekerList></JobSeekerList>
+            },            
+           
+            {
+                path: '/dashboardAdmin/userUpdate/:id',
                 element: <UpdateUser></UpdateUser>,
                 loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
             },

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
-const AllUser = () => {
+const PractiveAllUser = () => {
     const [users, setUsers] = useState([]);
 
 
@@ -53,4 +53,4 @@ const AllUser = () => {
     );
 };
 
-export default AllUser;
+export default PractiveAllUser;

@@ -56,6 +56,10 @@ const Navbar = () => {
                             </li>
 
                             <li className="nav-item mb-2">
+                                <Link to='/dashboardAdmin' className=" border-0  mx-lg-1  fw-bold nav_btn">Admin</Link>
+                            </li>
+
+                            <li className="nav-item mb-2">
                                 {user?.uid ?
                                     <>
                                         <Link onClick={handleLogOut} className=' border-0  mx-lg-1  fw-bold nav_btn'>Logout</Link>
