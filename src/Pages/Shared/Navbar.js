@@ -1,25 +1,13 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/logo/carriers-bangladesh-logo.png';
-import { FaSearch } from 'react-icons/fa';
 import { AuthContext } from '../Authentication/AuthProvider';
 import { toast } from 'react-hot-toast';
 import './Navbar.css';
-import { useQuery } from '@tanstack/react-query';
-
 const Navbar = () => {
 
-
-    const { data: users = [], refetch } = useQuery({
-        queryKey: ['users'],
-        queryFn: async () => {
-            const respone = await fetch('http://localhost:5000/users');
-            const data = respone.json();
-            return data;
-        }
-    })
-
     const { user, logOut } = useContext(AuthContext)
+
     const handleLogOut = () => {
         logOut()
             .then(() => {
@@ -63,44 +51,23 @@ const Navbar = () => {
                             </li>
 
 
-                            <li className="nav-item mb-2">
-                                {user?.uid ?
+                            {
+                                user?.uid ?
                                     <>
-                                        <Link to='/dashboardEmployers' className=" border-0  mx-lg-1  fw-bold nav_btn">Employer</Link>
-                                    </> : <></>
-                                }
-                            </li>
-
-                            <li className="nav-item mb-2">
-                                {user?.uid ?
+                                        <li> <Link to="/dashboard" className='nav-item nav_btn mb-2' >Dashboard</Link> </li>
+                                        <li className='nav-item  nav_btn'>  {user?.displayName}</li>
+                                        <li>  <Link onClick={handleLogOut} className='nav-item  border-0  mx-lg-1  fw-bold mb-2 nav_btn'>Logout</Link></li>
+                                    </>
+                                    :
                                     <>
-                                        <Link to='/dashboardMyJobs' className=" border-0  mx-lg-1  fw-bold nav_btn">MyJobs</Link>
-                                    </> : <></>
-                                }
-                            </li>
-
-                            <li className="nav-item mb-2">
-                                {user?.uid ?
-                                    <>
-                                        <Link to='/dashboardAdmin' className=" border-0  mx-lg-1  fw-bold nav_btn">Admin</Link>
-                                    </> : <></>
-                                }
-
-                            </li>
-
-                            <li className="nav-item mb-2">
-                                {user?.uid ?
-                                    <>
-                                        <Link onClick={handleLogOut} className=' border-0  mx-lg-1  fw-bold nav_btn'>Logout</Link>
-                                    </> : <>
-                                        <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/login">Login</Link>
-                                    </>}
-                            </li>
+                                        <Link className=" border-0  mx-lg-1  fw-bold mb-2 nav_btn" aria-current="page" to="/login">Login</Link>
+                                    </>
+                            }
                         </ul>
                     </div>
                 </div>
-            </nav>
-        </div>
+            </nav >
+        </div >
     );
 };
 

@@ -7,7 +7,7 @@ const useEmployer = (email) => {
 
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/employer${email}`)
+            fetch(`http://localhost:5000/users/employer/${email}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
@@ -16,6 +16,7 @@ const useEmployer = (email) => {
                 })
         }
     }, [email])
+
     return [isEmployer, isEmployerLoading]
 };
 

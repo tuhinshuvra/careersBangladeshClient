@@ -20,14 +20,14 @@ import Login from '../../Login/Login';
 import MyCV from '../../Profile/MyJobs/Personal/MyCV';
 import FindJob from '../../JobSearch/FindJob';
 import PostedJobDetails from '../../Profile/Employers/PostedJobDetails';
-import EmployeersProfile from '../../Profile/Employers/EmployeersProfile';
 import JobPost from '../../Profile/Employers/JobPost';
-import AdminDashboard from '../../../layout/AdminDashboard';
 import UserList from '../../Profile/Admin/AllUser';
 import UpdateUser from '../../Profile/Admin/UpdateUser';
 import EmployerList from '../../Profile/Admin/EmployerList';
 import JobSeekerList from '../../Profile/Admin/JobSeekerList';
-import ELearning from '../../ELearning/ELearning';
+import PrivateRoute from '../PrivateRoute';
+import DashboardLayout from '../../../layout/DashboardLayout';
+import EmployersProfile from '../../Profile/Employers/EmployeersProfile';
 
 const router = createBrowserRouter([
     {
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/elearning',
-                element: <ELearning></ELearning>
+                element: <Contact></Contact>
             },
             {
                 path: '/contact',
@@ -64,100 +64,94 @@ const router = createBrowserRouter([
             },
         ]
     },
+
     {
-        path: '/dashboardAdmin',
-        element: <AdminDashboard></AdminDashboard>,
-        children: [
-            {
-                path: '/dashboardAdmin',
-                element: <UserList></UserList>
-            },
-            {
-                path: '/dashboardAdmin/employeeList',
-                element: <EmployerList></EmployerList>
-            },
-            {
-                path: '/dashboardAdmin/jobseekerList',
-                element: <JobSeekerList></JobSeekerList>
-            },
+        path: '/dashboard',
+        element: <PrivateRoute> <DashboardLayout></DashboardLayout></PrivateRoute>,
+        children: ([
 
             {
-                path: '/dashboardAdmin/userUpdate/:id',
-                element: <UpdateUser></UpdateUser>,
-                loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
-            },
-        ]
-    },
-    {
-        path: '/dashboardMyJobs',
-        element: <MyJobDashboard></MyJobDashboard>,
-        children: [
-            {
-                path: '/dashboardMyJobs',
+                path: '/dashboard/jobSeekerPersonal',
                 element: <Personal></Personal>
             },
             {
-                path: '/dashboardMyJobs/personal',
-                element: <Personal></Personal>
-            },
-            {
-                path: '/dashboardMyJobs/education',
+                path: '/dashboard/education',
                 element: <EducationTraining></EducationTraining>
             },
             {
-                path: '/dashboardMyJobs/employment',
+                path: '/dashboard/jobSeekerEmployment',
                 element: <Employment></Employment>
             },
             {
-                path: '/dashboardMyJobs/other-information',
+                path: '/dashboard/jobSeekerOtherInfo',
                 element: <OtherInformation></OtherInformation>
             },
             {
-                path: '/dashboardMyJobs/photograph',
+                path: '/dashboard/photograph',
                 element: <Photograph></Photograph>
             },
             {
-                path: '/dashboardMyJobs/myProfile',
+                path: '/dashboard/jobSeekerProfile',
                 element: <MyCV></MyCV>
             },
             {
-                path: '/dashboardMyJobs/applied',
+                path: '/dashboard/appliedJob',
                 element: <AppliedJobList></AppliedJobList>
             },
-        ]
-    },
-    {
-        path: '/dashboardEmployers',
-        element: <EmployersDashboard></EmployersDashboard>,
-        children: [
+
+
+
+            // employer dashboard section
+
             {
-                path: '/dashboardEmployers',
-                element: <EmployerDetails></EmployerDetails>
+                path: '/dashboard/employerProfile',
+                element: <EmployersProfile></EmployersProfile>
             },
+
             {
-                path: '/dashboardEmployers/employerProfile',
-                element: <EmployeersProfile></EmployeersProfile>
-            },
-            {
-                path: '/dashboardEmployers/employerDetails',
+                path: '/dashboard/employerDetails',
                 element: <EmployerDetails></EmployerDetails>
             },
 
             {
-                path: '/dashboardEmployers/jobpost',
+                path: '/dashboard/jobpost',
                 element: <JobPost></JobPost>
             },
 
             {
-                path: '/dashboardEmployers/postedJobDetails',
+                path: '/dashboard/postedJobDetails',
                 element: <PostedJobDetails></PostedJobDetails>
             },
             {
-                path: '/dashboardEmployers/jobList',
+                path: '/dashboard/postedJobList',
                 element: <PostedJobList></PostedJobList>
             },
-        ]
+
+
+
+            // dashboard admin section 
+
+            {
+                path: '/dashboard/admin',
+                element: <UserList></UserList>
+            },
+            {
+                path: '/dashboard/employeeList',
+                element: <EmployerList></EmployerList>
+            },
+            {
+                path: '/dashboard/jobseekerList',
+                element: <JobSeekerList></JobSeekerList>
+            },
+
+            {
+                path: '/dashboard/userUpdate/:id',
+                element: <UpdateUser></UpdateUser>,
+                loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
+            },
+        ])
     },
+
     {
         path: "*", element: <WrongRoute> </WrongRoute>
     },
