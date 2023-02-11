@@ -54,13 +54,13 @@ const Navbar = () => {
                             {
                                 user?.uid ?
                                     <>
-                                        <li> <Link to="/dashboard" className='nav-item nav_btn mb-2' >Dashboard</Link> </li>
-                                        <li className='nav-item  nav_btn'>  {user?.displayName}</li>
-                                        <li>  <Link onClick={handleLogOut} className='nav-item  border-0  mx-lg-1  fw-bold mb-2 nav_btn'>Logout</Link></li>
+                                        <li className='nav-item nav_btn mb-2'> <Link className='nav_btn' to="/dashboard"  >Dashboard</Link> </li>
+                                        <li className='nav-item  nav_btn mb-2'>  {user?.displayName}</li>
+                                        <li className='nav-item  border-0  mx-lg-1  fw-bold mb-2 '>  <Link className='nav_btn' onClick={handleLogOut} >Logout</Link></li>
                                     </>
                                     :
                                     <>
-                                        <Link className=" border-0  mx-lg-1  fw-bold mb-2 nav_btn" aria-current="page" to="/login">Login</Link>
+                                        <li className=" border-0  mx-lg-1  fw-bold mb-2 ">  <Link className=' nav_btn' aria-current="page" to="/login">Login</Link></li>
                                     </>
                             }
                         </ul>

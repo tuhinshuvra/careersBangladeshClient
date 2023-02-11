@@ -10,7 +10,7 @@ import useJobSeeker from '../hooks/useJobSeeker';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
-    
+
     const [isAdmin] = useAdmin(user?.email);
     const [isEmployer] = useEmployer(user?.email);
     const [isJobSeeker] = useJobSeeker(user?.email);
@@ -33,7 +33,7 @@ const DashboardLayout = () => {
 
                         {
                             isEmployer && <>
-                                <li className='list-group-item'><Link className=' nav_btn' to='/dashboard/employers'>Employer Details</Link></li>
+                                <li className='list-group-item'><Link className=' nav_btn' to='/dashboard/employerDetails'>Employer Details</Link></li>
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/employerProfile'>Employer Profile</Link></li>
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/jobpost'>Job Post</Link></li>
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/postedJobDetails'>Posted Job Details</Link></li>
@@ -44,7 +44,7 @@ const DashboardLayout = () => {
                         {
                             isJobSeeker && <>
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerPersonal'>Personal</Link></li>
-                                <li className='list-group-item   my-1'><Link className=' nav_btn' to='/dashboar/education'>Education/Training</Link></li>
+                                <li className='list-group-item   my-1'><Link className=' nav_btn' to='/dashboard/education'>Education/Training</Link></li>
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerEmployment'>Employment</Link></li>
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/jobSeekerOtherInfo'>Other Information</Link></li>
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/photograph'>Photograph</Link></li>
