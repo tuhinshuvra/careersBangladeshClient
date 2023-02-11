@@ -3,7 +3,7 @@ import LoginLogo from '../../assets/logo/carriers-bangladesh-logo.png';
 import { FaFacebook, FaGithub, FaGoogle, FaTwitter } from 'react-icons/fa';
 import { AuthContext } from '../Authentication/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
-import useTitle from '../Hooks/useTitle';
+import useTitle from '../../hooks/useTitle';
 import { toast } from 'react-hot-toast';
 import { Form } from 'react-bootstrap';
 import '../Login/Login.css';
@@ -51,7 +51,7 @@ const Register = () => {
 
     const saveUser = (name, email, userType) => {
         const user = { name, email, userType };
-        
+
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -59,10 +59,10 @@ const Register = () => {
             },
             body: JSON.stringify(user)
         })
-        .then(res=>res.json())
-        .then(data=>{
-            setCreatedUserEmail(email)
-        })
+            .then(res => res.json())
+            .then(data => {
+                setCreatedUserEmail(email)
+            })
     }
 
     return (

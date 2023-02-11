@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import Footer from '../Pages/Shared/Footer';
 import Navbar from '../Pages/Shared/Navbar';
-import useTitle from '../Pages/Hooks/useTitle';
+import useTitle from '../hooks/useTitle';
 
 const EmployersDashboard = () => {
     useTitle('Employers')

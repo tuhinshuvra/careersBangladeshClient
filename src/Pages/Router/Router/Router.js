@@ -27,6 +27,7 @@ import UserList from '../../Profile/Admin/AllUser';
 import UpdateUser from '../../Profile/Admin/UpdateUser';
 import EmployerList from '../../Profile/Admin/EmployerList';
 import JobSeekerList from '../../Profile/Admin/JobSeekerList';
+import ELearning from '../../ELearning/ELearning';
 
 const router = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
             {
                 path: '/findJobs',
                 element: <FindJob></FindJob>
+            },
+            {
+                path: '/elearning',
+                element: <ELearning></ELearning>
             },
             {
                 path: '/contact',
@@ -74,8 +79,8 @@ const router = createBrowserRouter([
             {
                 path: '/dashboardAdmin/jobseekerList',
                 element: <JobSeekerList></JobSeekerList>
-            },            
-           
+            },
+
             {
                 path: '/dashboardAdmin/userUpdate/:id',
                 element: <UpdateUser></UpdateUser>,

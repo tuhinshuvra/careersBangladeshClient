@@ -1,8 +1,10 @@
 import React from 'react';
+import useTitle from '../../hooks/useTitle';
 // import ElearningImage from '../../assets/images/elearning.jpg';
 import './Elearning.css';
 
 const ELearning = () => {
+    useTitle('E-Learning')
     return (
         <div className="  px-4 py-5 text-center mt-5 elearning_bg ">
             <div className="py-2   bg-transparent ">

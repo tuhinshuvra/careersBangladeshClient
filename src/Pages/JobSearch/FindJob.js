@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaFile, FaFilter, FaList, FaSearch, FaStar, FaTh } from 'react-icons/fa';
 import './FindJob.css';
+import useTitle from '../../hooks/useTitle';
 
 const FindJob = () => {
+    useTitle('FindJob');
+    
     return (
         <div className="row">
             <div className="col-md-12">

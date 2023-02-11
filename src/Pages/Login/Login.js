@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../Authentication/AuthProvider';
-import useTitle from '../Hooks/useTitle';
+import useTitle from '../../hooks/useTitle';
 import './Login.css';
 
 const Login = () => {

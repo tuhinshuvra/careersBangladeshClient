@@ -5,8 +5,19 @@ import { FaSearch } from 'react-icons/fa';
 import { AuthContext } from '../Authentication/AuthProvider';
 import { toast } from 'react-hot-toast';
 import './Navbar.css';
+import { useQuery } from '@tanstack/react-query';
 
 const Navbar = () => {
+
+
+    const { data: users = [], refetch } = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const respone = await fetch('http://localhost:5000/users');
+            const data = respone.json();
+            return data;
+        }
+    })
 
     const { user, logOut } = useContext(AuthContext)
     const handleLogOut = () => {
@@ -32,11 +43,15 @@ const Navbar = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="cbNavbarToggler">
                         <ul className=" navbar-nav d-flex justify-content-center align-items-center mx-auto ">
-                            <li className="nav-item mb-2">
+                            {/* <li className="nav-item mb-2">
                                 <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/">Home</Link>
-                            </li>
+                            </li> */}
                             <li className="nav-item mb-2">
                                 <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/findJobs">FindJobs</Link>
+                            </li>
+
+                            <li className="nav-item mb-2">
+                                <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/elearning">Elearning</Link>
                             </li>
 
                             <li className="nav-item mb-2">
@@ -47,16 +62,30 @@ const Navbar = () => {
                                 <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/contact">Contact</Link>
                             </li>
 
+
                             <li className="nav-item mb-2">
-                                <Link to='/dashboardEmployers' className=" border-0  mx-lg-1  fw-bold nav_btn">Employer</Link>
+                                {user?.uid ?
+                                    <>
+                                        <Link to='/dashboardEmployers' className=" border-0  mx-lg-1  fw-bold nav_btn">Employer</Link>
+                                    </> : <></>
+                                }
                             </li>
 
                             <li className="nav-item mb-2">
-                                <Link to='/dashboardMyJobs' className=" border-0  mx-lg-1  fw-bold nav_btn">MyJobs</Link>
+                                {user?.uid ?
+                                    <>
+                                        <Link to='/dashboardMyJobs' className=" border-0  mx-lg-1  fw-bold nav_btn">MyJobs</Link>
+                                    </> : <></>
+                                }
                             </li>
 
                             <li className="nav-item mb-2">
-                                <Link to='/dashboardAdmin' className=" border-0  mx-lg-1  fw-bold nav_btn">Admin</Link>
+                                {user?.uid ?
+                                    <>
+                                        <Link to='/dashboardAdmin' className=" border-0  mx-lg-1  fw-bold nav_btn">Admin</Link>
+                                    </> : <></>
+                                }
+
                             </li>
 
                             <li className="nav-item mb-2">
