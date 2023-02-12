@@ -27,6 +27,8 @@ import PrivateRoute from '../PrivateRoute';
 import DashboardLayout from '../../../layout/DashboardLayout';
 import EmployersProfile from '../../Profile/Employers/EmployeersProfile';
 import ELearning from '../../ELearning/ELearning';
+import JobSeekerProfileEntry from '../../Profile/MyJobs/Personal/JobSeekerProfileEntry';
+import JobSeekerProfile from '../../Profile/MyJobs/Personal/JobSeekerProfile';
 
 const router = createBrowserRouter([
     {
@@ -70,8 +72,12 @@ const router = createBrowserRouter([
         children: ([
 
             {
-                path: '/dashboard/jobSeekerPersonal',
-                element: <Personal></Personal>
+                path: '/dashboard/jobSeekerProfileEntry',
+                element: <JobSeekerProfileEntry></JobSeekerProfileEntry>
+            },
+            {
+                path: '/dashboard/jobSeekerProfile',
+                element: <JobSeekerProfile></JobSeekerProfile>
             },
             {
                 path: '/dashboard/education',
@@ -104,7 +110,8 @@ const router = createBrowserRouter([
 
             {
                 path: '/dashboard/employerProfile',
-                element: <EmployersProfile></EmployersProfile>
+                element: <EmployersProfile></EmployersProfile>,
+                // loader: ({ params }) => fetch(`http://localhost:5000/users/${params.email}`)
             },
 
             {

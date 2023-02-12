@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../Authentication/AuthProvider';
+import { AuthContext } from '../../../Authentication/AuthProvider';
 
-const EmployerProfileEntry = () => {
+const JobSeekerProfileEntry = () => {
 
     const { user } = useContext(AuthContext)
 
@@ -12,8 +12,8 @@ const EmployerProfileEntry = () => {
     const navigate = useNavigate();
 
 
-    const handleEmployeProfile = (data) => {
-        const emplyerProfile = {
+    const handleJobSeekerProfile = (data) => {
+        const jobseekerProfile = {
             email: user.email,
             name: user.displayName,
             companyNameEn: data.company_name_en,
@@ -32,12 +32,12 @@ const EmployerProfileEntry = () => {
         }
         console.log("Employee Data :", data);
 
-        fetch('http://localhost:5000/emplyerProfile', {
+        fetch('http://localhost:5000/jobseekerProfile', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(emplyerProfile)
+            body: JSON.stringify(jobseekerProfile)
         })
             .then(response => response.json())
             .then(data => console.log(data))
@@ -46,10 +46,10 @@ const EmployerProfileEntry = () => {
     return (
         <div>
             <h2 className=" text-center fw-bold my-4">
-                Employer Profile Entry
+                Job Seeker Profile Entry
             </h2>
 
-            <form onSubmit={handleSubmit(handleEmployeProfile)} >
+            <form onSubmit={handleSubmit(handleJobSeekerProfile)} >
 
                 <input
                     {...register("company_name_en", { required: true })}
@@ -207,4 +207,4 @@ const EmployerProfileEntry = () => {
     );
 };
 
-export default EmployerProfileEntry;
+export default JobSeekerProfileEntry;

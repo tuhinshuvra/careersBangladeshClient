@@ -34,7 +34,7 @@ const DashboardLayout = () => {
                         {
                             isEmployer && <>
                                 <li className='list-group-item'><Link className=' nav_btn' to='/dashboard/employerDetails'>Profile Entry</Link></li>
-                                <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/employerProfile'>My Profile</Link></li>
+                                <li className='list-group-item my-1'><Link className=' nav_btn' to={`/dashboard/employerProfile/`}>My Profile</Link></li>
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/jobpost'>Job Post</Link></li>
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/postedJobDetails'>Posted Job Details</Link></li>
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/postedJobList'>Posted Job List</Link></li>
@@ -43,11 +43,11 @@ const DashboardLayout = () => {
 
                         {
                             isJobSeeker && <>
-                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerPersonal'>Personal</Link></li>
-                                <li className='list-group-item   my-1'><Link className=' nav_btn' to='/dashboard/education'>Education/Training</Link></li>
-                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerEmployment'>Employment</Link></li>
-                                <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/jobSeekerOtherInfo'>Other Information</Link></li>
-                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/photograph'>Photograph</Link></li>
+                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfileEntry'>Profile Entry</Link></li>
+                                <li className='list-group-item   my-1'><Link className=' nav_btn' to='/dashboard/jobSeekerProfile'>My Profile</Link></li>
+                                {/* <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerEmployment'>Employment</Link></li> */}
+                                {/* <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/jobSeekerOtherInfo'>Other Information</Link></li> */}
+                                {/* <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/photograph'>Photograph</Link></li> */}
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfile'>MyCV</Link></li>
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/appliedJob'>Applied Job List</Link></li>
                             </>

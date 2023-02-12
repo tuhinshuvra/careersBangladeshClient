@@ -4,11 +4,14 @@ import AddressDetails from './AddressDetails';
 import CarrerAndApplication from './CarrerAndApplication';
 import PreferredAreas from './PreferredAreas';
 import OtherInformation from './OtherInformation';
+import JobSeekerProfileEntry from './JobSeekerProfileEntry';
+
 
 const Personal = () => {
     return (
         <div>
-            <PersonalDetails></PersonalDetails>
+            <JobSeekerProfileEntry></JobSeekerProfileEntry>
+            {/* <PersonalDetails></PersonalDetails> */}
             <AddressDetails></AddressDetails>
             <CarrerAndApplication></CarrerAndApplication>
             <PreferredAreas></PreferredAreas>

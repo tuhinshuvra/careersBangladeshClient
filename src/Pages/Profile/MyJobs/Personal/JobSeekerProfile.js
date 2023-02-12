@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import ProfilePic from '../../../assets/images/employers.jpg';
-import { AuthContext } from '../../Authentication/AuthProvider';
-import './EmployeersProfile.css';
+import ProfilePic from '../../../../assets/images/profile/profile.jpg';
+import { AuthContext } from '../../../Authentication/AuthProvider';
+import '../../Employers/EmployeersProfile.css';
 
-const EmployersProfile = () => {
+const JobSeekerProfile = () => {
     const [employerData, setEmployerData] = useState([]);
     const { user } = useContext(AuthContext);
     const email = user.email;
@@ -15,10 +15,10 @@ const EmployersProfile = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/employer/${email}`)
+        fetch(`http://localhost:5000/jobSeeker/${email}`)
             .then(response => response.json())
             .then(data => {
-                console.log("Employee Data:", data);
+                console.log("JobSeeker Data:", data);
                 setEmployerData(data)
             })
     }, [email])
@@ -83,8 +83,6 @@ const EmployersProfile = () => {
                                         </div>
 
                                     </article>
-
-
                                 </section>
                             </div>
 
@@ -103,4 +101,4 @@ const EmployersProfile = () => {
     );
 };
 
-export default EmployersProfile;
+export default JobSeekerProfile;
