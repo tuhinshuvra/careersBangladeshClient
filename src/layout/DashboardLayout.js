@@ -25,16 +25,16 @@ const DashboardLayout = () => {
                     <ul className=" list-group">
                         {
                             isAdmin && <>
-                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobseekerList'>Job Seeker List</Link></li>
-                                <li className='list-group-item  my-1'><Link className=' nav_btn' to='/dashboard/employeeList'>Employers List</Link></li>
+                                {/* <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobseekerList'>Job Seeker List</Link></li> */}
+                                {/* <li className='list-group-item  my-1'><Link className=' nav_btn' to='/dashboard/employeeList'>Employers List</Link></li> */}
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/admin'>All User</Link></li>
                             </>
                         }
 
                         {
                             isEmployer && <>
-                                <li className='list-group-item'><Link className=' nav_btn' to='/dashboard/employerDetails'>Employer Details</Link></li>
-                                <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/employerProfile'>Employer Profile</Link></li>
+                                <li className='list-group-item'><Link className=' nav_btn' to='/dashboard/employerDetails'>Profile Entry</Link></li>
+                                <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/employerProfile'>My Profile</Link></li>
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/jobpost'>Job Post</Link></li>
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/postedJobDetails'>Posted Job Details</Link></li>
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/postedJobList'>Posted Job List</Link></li>

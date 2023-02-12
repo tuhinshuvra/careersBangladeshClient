@@ -54,7 +54,7 @@ const Navbar = () => {
                             {
                                 user?.uid ?
                                     <>
-                                        <li className='nav-item nav_btn mb-2'> <Link className='nav_btn' to="/dashboard"  >Dashboard</Link> </li>
+                                        <li className='nav-item nav_btn mb-2'> <Link className='nav_btn' to="/dashboard">Dashboard</Link> </li>
                                         <li className='nav-item  nav_btn mb-2'>  {user?.displayName}</li>
                                         <li className='nav-item  border-0  mx-lg-1  fw-bold mb-2 '>  <Link className='nav_btn' onClick={handleLogOut} >Logout</Link></li>
                                     </>

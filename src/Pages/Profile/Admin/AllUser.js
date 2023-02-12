@@ -56,7 +56,6 @@ const UserList = () => {
     }
 
 
-
     return (
         <div>
             <h2 className='text-center  fw-bold  my-4'>All User</h2>

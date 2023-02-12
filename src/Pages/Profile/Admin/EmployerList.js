@@ -1,74 +1,31 @@
-import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
-const EmployerList = () => {
+const EmployerList = (userType) => {
+    const [users, setUsers] = useState([]);
+
+    const [isEmployer, setIsEmployer] = useState(false);
+
+    useEffect(() => {
+        if (userType) {
+            fetch(`http://localhost:5000/users/${userType}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("AllEmployer:", data);
+                    // setIsEmployer(data.isEmployer)
+                    // setIsEmployerLoading(false)
+                })
+        }
+    }, [userType])
+
+    // return [isEmployer, isEmployerLoading]
+
+
     return (
         <div>
-            <h2 className=' text-center text-2xl font-bold my-10 '>Employer List</h2>
-            <div className="overflow-x-auto">
-                <table className="table w-full">
-                    <thead>
-                        <tr className=''>
-                            <th>SL</th>
-                            <th>Position</th>
-                            <th>Job Type</th>
-                            <th>Posted Date</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className='hover'>
-                            <th>1</th>
-                            <td>Full Stack Web Developer</td>
-                            <td>Full Time</td>
-                            <td>10/01/2023</td>
-                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
-                        </tr>
-                        <tr className='hover'>
-                            <th>2</th>
-                            <td>MERN Stack Web Developer</td>
-                            <td>Full Time</td>
-                            <td>10/01/2023</td>
-                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
-                        </tr>
-                        <tr className='hover'>
-                            <th>3</th>
-                            <td>Front End Web Developer</td>
-                            <td>Part Time</td>
-                            <td>10/01/2023</td>
-                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
-                        </tr>
-                        <tr className='hover'>
-                            <th>4</th>
-                            <td>ReactJS Web Developer</td>
-                            <td>Full Time</td>
-                            <td>10/01/2023</td>
-                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
-                        </tr>
-                        <tr className='hover'>
-                            <th>5</th>
-                            <td>Back End Wdb Developer</td>
-                            <td>Contactual</td>
-                            <td>10/01/2023</td>
-                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
-                        </tr>
-                        <tr className='hover'>
-                            <th>6</th>
-                            <td>IT Manager</td>
-                            <td>Part Time</td>
-                            <td>10/01/2023</td>
-                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
-                        </tr>
-                        <tr className='hover'>
-                            <th>7</th>
-                            <td>Graphics Designer</td>
-                            <td>Full Time</td>
-                            <td>10/01/2023</td>
-                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div >
+            <h2 className='text-center  fw-bold  my-4'>All User</h2>
         </div>
     );
 };

@@ -11,7 +11,7 @@ import OtherInformation from '../../Profile/MyJobs/Personal/OtherInformation';
 import Photograph from '../../Profile/MyJobs/Photograph/Photograph';
 import MainLayout from '../../../layout/MainLayout';
 import PostedJobList from '../../Profile/Employers/PostedJobList';
-import EmployerDetails from '../../Profile/Employers/EmployerDetails';
+import EmployerProfileEntry from '../../Profile/Employers/EmployerProfileEntry';
 import AppliedJobList from '../../Profile/MyJobs/AppliedJobList/AppliedJobList';
 import WrongRoute from '../../Shared/ErrorDisplay/WrongRoute';
 import Login from '../../Login/Login';
@@ -26,6 +26,7 @@ import JobSeekerList from '../../Profile/Admin/JobSeekerList';
 import PrivateRoute from '../PrivateRoute';
 import DashboardLayout from '../../../layout/DashboardLayout';
 import EmployersProfile from '../../Profile/Employers/EmployeersProfile';
+import ELearning from '../../ELearning/ELearning';
 
 const router = createBrowserRouter([
     {
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/elearning',
-                element: <Contact></Contact>
+                element: <ELearning></ELearning>
             },
             {
                 path: '/contact',
@@ -108,7 +109,7 @@ const router = createBrowserRouter([
 
             {
                 path: '/dashboard/employerDetails',
-                element: <EmployerDetails></EmployerDetails>
+                element: <EmployerProfileEntry></EmployerProfileEntry>
             },
 
             {
