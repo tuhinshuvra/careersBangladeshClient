@@ -4,7 +4,6 @@ import Home from '../../Home/Home';
 import Register from '../../Register/Register';
 import About from '../../About/About';
 import Contact from '../../Contact/Contact';
-import Personal from '../../Profile/MyJobs/Personal/Personal';
 import EducationTraining from '../../Profile/MyJobs/Education-Training/EducationTraining';
 import Employment from '../../Profile/MyJobs/Employment/Employment';
 import OtherInformation from '../../Profile/MyJobs/Personal/OtherInformation';
@@ -96,7 +95,7 @@ const router = createBrowserRouter([
                 element: <Photograph></Photograph>
             },
             {
-                path: '/dashboard/jobSeekerProfile',
+                path: '/dashboard/jobSeekerCV',
                 element: <MyCV></MyCV>
             },
             {

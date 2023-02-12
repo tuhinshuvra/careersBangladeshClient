@@ -48,7 +48,7 @@ const DashboardLayout = () => {
                                 {/* <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerEmployment'>Employment</Link></li> */}
                                 {/* <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/jobSeekerOtherInfo'>Other Information</Link></li> */}
                                 {/* <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/photograph'>Photograph</Link></li> */}
-                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfile'>MyCV</Link></li>
+                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerCV'>MyCV</Link></li>
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/appliedJob'>Applied Job List</Link></li>
                             </>
                         }

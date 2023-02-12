@@ -11,7 +11,7 @@ const Personal = () => {
     return (
         <div>
             <JobSeekerProfileEntry></JobSeekerProfileEntry>
-            {/* <PersonalDetails></PersonalDetails> */}
+            <PersonalDetails></PersonalDetails>
             <AddressDetails></AddressDetails>
             <CarrerAndApplication></CarrerAndApplication>
             <PreferredAreas></PreferredAreas>
