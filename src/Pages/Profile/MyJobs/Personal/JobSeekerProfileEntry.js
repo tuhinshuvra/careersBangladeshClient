@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
 
@@ -19,6 +20,7 @@ const JobSeekerProfileEntry = () => {
             careerObjective: data.career_objective,
             skill: data.skill,
             experience: data.experience,
+            achivement: data.achivement,
             birthDete: data.birth_dete,
             qualification: data.qualification,
             institute: data.institute,
@@ -31,14 +33,20 @@ const JobSeekerProfileEntry = () => {
             fathersName: data.fathers_name,
             mothersName: data.mothers_name,
             phone: data.phone,
+            image: data.image,
             gender: data.gender,
             religion: data.religion,
             maritialStatus: data.maritial_status,
+            presentAddress: data.present_addres,
             permanentAddress: data.permanent_address,
+            refOneName: data.ref_one_name,
+            refOneDetails: data.ref_one_details,
+            refTwoName: data.ref_two_name,
+            refTwoDetails: data.ref_two_details,
             other: data.other,
 
         }
-        console.log("Employee Data :", data);
+        console.log("Job Seeker Data :", data);
 
         fetch('http://localhost:5000/jobseekerProfile', {
             method: 'POST',
@@ -48,7 +56,11 @@ const JobSeekerProfileEntry = () => {
             body: JSON.stringify(jobseekerProfile)
         })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data)
+                toast('My Profile Data Saved Successfully')
+                navigate("/dashboard/jobSeekerProfile");
+            })
     }
 
     return (
@@ -60,7 +72,7 @@ const JobSeekerProfileEntry = () => {
             <form onSubmit={handleSubmit(handleJobSeekerProfile)} >
 
                 <div className="row my-4">
-                    <div className='col-md-4 my-lg-0 margin-sm'>
+                    <div className='col-md-3 my-lg-0 margin-sm'>
                         <span className="label-text text-md font-bold ">Father's Name</span>
                         <input
                             {...register("fathers_name", { required: true })}
@@ -72,7 +84,7 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-4 my-lg-0 margin-sm'>
+                    <div className='col-md-3 my-lg-0 margin-sm'>
                         <span className="label-text text-md font-bold ">Mother's Name</span>
                         <input
                             {...register("mothers_name", { required: true })}
@@ -84,7 +96,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-4 my-lg-0 margin-sm'>
+
+                    <div className='col-md-3 my-lg-0 margin-sm'>
                         <span className="label-text text-md font-bold ">Phone</span>
                         <input
                             {...register("phone", { required: true })}
@@ -96,6 +109,16 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
+                    <div className='col-md-3 my-lg-0 margin-sm'>
+                        <span className="label-text text-md font-bold ">Photo</span>
+                        <input
+                            {...register("image",)}
+                            name='image'
+                            className='input form-control my-lg-3'
+                            id="image"
+                            type="file"
+                        />
+                    </div>
                 </div>
 
                 <span className="label-text text-md font-bold ">Career Objective</span>
@@ -369,10 +392,6 @@ const JobSeekerProfileEntry = () => {
                             />
                         </div>
                     </div>
-
-
-
-
                 </div>
 
 
@@ -385,7 +404,6 @@ const JobSeekerProfileEntry = () => {
                         placeholder='Enter Other Relevant Information'
                     />
                 </div>
-
 
 
                 <div className=' d-flex justify-content-between my-lg-5'>
