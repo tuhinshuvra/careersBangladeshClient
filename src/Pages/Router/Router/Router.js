@@ -57,6 +57,11 @@ const router = createBrowserRouter([
                 element: <Contact></Contact>
             },
             {
+                path: '/jobs/:id',
+                element: <PostedJobDetails></PostedJobDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params.id}`)
+            },
+            {
                 path: '/login',
                 element: <Login></Login>
             },
@@ -107,6 +112,7 @@ const router = createBrowserRouter([
 
 
 
+
             // employer dashboard section
 
             {
@@ -125,10 +131,8 @@ const router = createBrowserRouter([
                 element: <JobPost></JobPost>
             },
 
-            {
-                path: '/dashboard/postedJobDetails',
-                element: <PostedJobDetails></PostedJobDetails>
-            },
+
+
             {
                 path: '/dashboard/postedJobList',
                 element: <PostedJobList></PostedJobList>

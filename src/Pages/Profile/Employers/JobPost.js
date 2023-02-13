@@ -1,30 +1,173 @@
-import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Authentication/AuthProvider';
 
 const JobPost = () => {
+
+    const { user } = useContext(AuthContext)
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
+
+
+    const { data: categories, isLoading } = useQuery({
+        queryKey: ['category'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/jobCategories');
+            const data = await res.json();
+            return data;
+        }
+    })
+
+    const jobPostDate = new Date().toJSON().slice(0, 10);
+
+    const handleJobPost = (data) => {
+        const jobPost = {
+            postersEmail: user.email,
+            postersName: user.displayName,
+            jobTitle: data.job_title,
+            organization: data.organization,
+            vacancies: data.vacancies,
+            category: data.category,
+            education: data.education,
+            experience: data.experience,
+            companySize: data.company_size,
+            deadLine: data.deadline,
+            postDate: jobPostDate,
+            applyStatus: data.apply_status,
+            employmentStatus: data.employment_status,
+            businessDescription: data.business_description,
+            jobLevel: data.job_level,
+            workPlace: data.work_place,
+            jobContext: data.job_context,
+            jobResponst: data.job_responst,
+            jobLocation: data.job_location,
+            salaryFrom: data.salary_from,
+            salaryTo: data.salary_to,
+            yearlyBonus: data.yearly_bonus,
+            salaryReview: data.salary_review,
+            others: data.others,
+        }
+        console.log("Job Post Data :", jobPost);
+
+        fetch('http://localhost:5000/jobs', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(jobPost)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                toast('Job Posted Successfully');
+                navigate("/dashboard/postedJobList")
+            })
+    }
+
     return (
         <div>
             <h2 className=" text-center fw-bold my-3">
                 Let's Post Job Information
             </h2>
 
-            <form action="">
+            <form onSubmit={handleSubmit(handleJobPost)}>
+
+                <div className=" my-2">
+                    <label className="label"><span className="label-text fw-bold">Job Category</span> </label>
+                    <select
+                        {...register("category")}
+                        name='category'
+                        type="text"
+                        className="form-select">
+                        {
+                            categories &&
+                            categories.map((category, index) =>
+                                <option key={index}
+                                    value={category._id}>
+                                    {category.name}
+                                </option>)
+                        }
+                    </select>
+                    {/* {errors.category && <p className='text-red-500'>{errors.category.message}</p>} */}
+
+                </div>
+
+
+                <div className='my-2 '>
+                    <label className="label"><span className="label-text fw-bold">Job Title</span> </label>
+                    <input
+                        {...register("job_title", { required: true })}
+                        name="job_title"
+                        className='input form-control'
+                        id="job_title"
+                        type="text"
+                        placeholder='Enter Job Title'
+                    />
+                </div>
+
+                <div className='my-2 '>
+                    <label className="label"><span className="label-text fw-bold">Organization</span> </label>
+                    <input
+                        {...register("organization", { required: true })}
+                        name="organization"
+                        className='input form-control'
+                        id="organization"
+                        type="text"
+                        placeholder='Enter Orzation Name'
+                    />
+                </div>
+
                 <div className="row">
                     <div className=' col-lg-4'>
-                        <input className='input form-control' id="job-title" type="text" placeholder='Enter Job Title' />
+                        <input
+                            {...register("vacancies", { required: true })}
+                            name='vacancies'
+                            className='input form-control'
+                            id="vacancies"
+                            type="text"
+                            placeholder='No of Vacancies'
+                        />
                     </div>
 
                     <div className=' col-lg-4'>
-                        <input className='input form-control' id="no-of-vacancies" type="text" placeholder='No of Vacancies' />
+                        <select
+                            {...register("job_level")}
+                            name='job_level'
+                            className="form-select"
+                        >
+                            <option disabled selected>Job Level</option>
+                            <option value={0}>Entry</option>
+                            <option value={1}>Mid</option>
+                            <option value={2}>Top</option>
+                        </select>
                     </div>
 
                     <div className=' col-lg-4'>
-                        <input className='input form-control' id="job-category" type="text" placeholder='Job Category' />
+                        <select
+                            {...register("work_place")}
+                            name="work_place"
+                            className="form-select"
+                        >
+                            <option disabled selected>Work Place</option>
+                            <option value={0}>Work at Office</option>
+                            <option value={1}>Work from Home</option>
+                            <option value={2}>Hybrid</option>
+                        </select>
                     </div>
                 </div>
 
+
+
                 <div className="row my-lg-4">
                     <div className=' col-lg-4'>
-                        <select className=" form-select ">
+                        <select
+                            {...register("employment_status")}
+                            name="employment_status"
+                            className=" form-select "
+                        >
                             <option disabled selected>Employment Status</option>
                             <option value={0}>Full Time</option>
                             <option value={1}>Part Time</option>
@@ -37,57 +180,98 @@ const JobPost = () => {
                     <div className='col-lg-4'>
                         <div className='d-flex justify-content-center align-items-end'>
                             <p className='fw-bold'>DeadLine</p>
-                            <input className='input form-control ms-1' name='application-deadline' id="application-deadline" type="date" placeholder='Application Deadline' />
+                            <input
+                                {...register("deadline", { required: true })}
+                                name='deadline'
+                                className='input form-control ms-1'
+                                id="deadline"
+                                type="date"
+                                placeholder='Application Deadline' />
                         </div>
                     </div>
 
+
                     <div className=' col-lg-4'>
-                        <select className=" form-select">
-                            <option disabled selected>Employment Status</option>
-                            <option value={0}>Apply Online</option>
-                            <option value={1}>Email</option>
-                            <option value={2}>Heard Copy</option>
-                            <option value={3}>Wolk in Interview</option>
+                        <select
+                            name='apply_status'
+                            {...register("apply_status")}
+                            className=" form-select"
+                        >
+                            <option disabled selected>Apply Status</option>
+                            <option value="Apply Online">Apply Online</option>
+                            <option value="email">Email</option>
+                            <option value="Hard Copy">Heard Copy</option>
+                            <option value="Interview">Walk in Interview</option>
                         </select>
                     </div>
                 </div>
+                <div className=' my-2 '>
+                    <label className="label"><span className="label-text fw-bold">Education Qualification</span> </label>
+                    <input
+                        {...register("education", { required: true })}
+                        name='education'
+                        className='input form-control ms-1'
+                        id="education"
+                        type="text"
+                        placeholder='Enter Education Qualification' />
+                </div>
+
+                <div className='my-2 '>
+                    <label className="label"><span className="label-text fw-bold">Experience</span> </label>
+                    <input
+                        {...register("experience", { required: true })}
+                        name='experience'
+                        className='input form-control ms-1'
+                        id="experience"
+                        type="text"
+                        placeholder='Enter Experience ' />
+                </div>
+
+
 
                 <div className=" my-lg-4">
                     <label className="label">
                         <span className=" fw-bold">Special Instruction for Job Seekers</span>
                     </label>
                     <div>
-                        <textarea className='input form-control' id='business-description' type="text" placeholder='Write Special Instruction for Job Seekers' />
+                        <textarea
+                            {...register("business_description", { required: true })}
+                            name='business_description'
+                            className='input form-control'
+                            id='business_description'
+                            type="text"
+                            placeholder='Write Special Instruction for Job Seekers' />
                     </div>
                 </div>
 
-                <div className=" row my-lg-4 ">
-                    <div className=' col-lg-4'>
-                        <select className="form-select">
-                            <option disabled selected>Job Level</option>
-                            <option value={0}>Entry</option>
-                            <option value={1}>Mid</option>
-                            <option value={2}>Top</option>
-                        </select>
-                    </div>
 
-                    <div className=' col-lg-4'>
-                        <select className="form-select">
-                            <option disabled selected>Work Place</option>
-                            <option value={0}>Work at Office</option>
-                            <option value={1}>Work from Home</option>
-                            <option value={2}>Hybrid</option>
-                        </select>
-                    </div>
-                </div>
 
-                <textarea className='input form-control my-lg-3' id='job-context' type="text" placeholder='Enter job Context' />
-                <textarea className='input form-control my-lg-3' id='job-responsibilities' type="text" placeholder='Job Responsibilities' />
+                <textarea
+                    {...register("job_context", { required: true })}
+                    name='job_context'
+                    className='input form-control my-lg-3'
+                    id='job_context'
+                    type="text"
+                    placeholder='Enter job Context' />
+
+                <textarea
+                    name='job_respons'
+                    {...register("job_responst", { required: true })}
+                    className='input form-control my-lg-3'
+                    id='job_respons'
+                    type="text"
+                    placeholder='Job Responsibilities' />
 
 
 
                 <div>
-                    <input className='input form-control' id='job-location' type="text" placeholder='Enter job location' />
+                    <input
+                        {...register("job_location", { required: true })}
+                        name='job_location'
+                        className='input form-control'
+                        id='job_location'
+                        type="text"
+                        placeholder='Enter job location' />
                 </div>
 
                 <div className=' row my-lg-3'>
@@ -97,16 +281,34 @@ const JobPost = () => {
                             <label className="label">
                                 <span className=" fw-bold me-lg-2 ">Salary</span>
                             </label>
-                            <input type="text" id='salary-from' placeholder="Salary From" className="input form-control" />
+                            <input
+                                {...register("salary_from", { required: true })}
+                                name='salary_from'
+                                type="text"
+                                id='salary_from'
+                                placeholder="Salary From"
+                                className="input form-control"
+                            />
                             <label className=' fw-bold mx-1'>to</label>
-                            <input type="text" id='salary-to' placeholder="Salary To" className="input form-control" />
+                            <input
+                                {...register("salary_to", { required: true })}
+                                name='salary_to'
+                                type="text"
+                                id='salary_to'
+                                placeholder="Salary To"
+                                className="input form-control"
+                            />
                         </div>
                     </div>
 
                     <div className=" col-lg-4 ">
                         {/* <div className="form-control w-full max-w-xs"> */}
                         <div>
-                            <select className=" form-select">
+                            <select
+                                {...register("yearly_bonus")}
+                                name="yearly_bonus"
+                                className=" form-select"
+                            >
                                 <option disabled selected>Yearly Bonus</option>
                                 <option value={0}>2</option>
                                 <option value={1}>3</option>
@@ -116,7 +318,11 @@ const JobPost = () => {
                     </div>
 
                     <div className=' col-lg-4'>
-                        <select className="form-select">
+                        <select
+                            {...register("salary_review")}
+                            name="salary_review"
+                            className="form-select"
+                        >
                             <option disabled selected>Salary Review</option>
                             <option value={0}>Yearly</option>
                             <option value={1}>Halt Yearly</option>
@@ -124,8 +330,14 @@ const JobPost = () => {
                     </div>
                 </div>
 
-                <textarea className='input form-control my-lg-3' id='others' type="text" placeholder='Enter Others' />
-
+                <textarea
+                    {...register("others")}
+                    name='others'
+                    className='input form-control my-lg-3'
+                    id='others'
+                    type="text"
+                    placeholder='Enter Others'
+                />
 
                 <div className=' d-flex justify-content-between my-lg-3'>
                     <button className="btn btn-warning fw-bold">Cancel</button>

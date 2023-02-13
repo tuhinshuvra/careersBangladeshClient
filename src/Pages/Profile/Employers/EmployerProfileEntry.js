@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Authentication/AuthProvider';
 
@@ -14,8 +15,8 @@ const EmployerProfileEntry = () => {
 
     const handleEmployeProfile = (data) => {
         const emplyerProfile = {
-            email: user.email,
-            name: user.displayName,
+            email: user?.email,
+            name: user?.displayName,
             companyNameEn: data.company_name_en,
             companyNameBn: data.company_name_bn,
             estdYear: data.estd_year,
@@ -40,14 +41,16 @@ const EmployerProfileEntry = () => {
             body: JSON.stringify(emplyerProfile)
         })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data)
+                toast('My Profile Saved Successfully');
+                navigate("/dashboard/employerProfile")
+            })
     }
 
     return (
         <div>
-            <h2 className=" text-center fw-bold my-4">
-                Employer Profile Entry
-            </h2>
+            <h2 className=" text-center fw-bold my-4">Employer Profile Entry</h2>
 
             <form onSubmit={handleSubmit(handleEmployeProfile)} >
 

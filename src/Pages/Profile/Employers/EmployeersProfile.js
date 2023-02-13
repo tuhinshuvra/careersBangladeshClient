@@ -66,28 +66,15 @@ const EmployersProfile = () => {
                             </div>
                         </section>
 
-                        {/* <!--//summary-section--> */}
                         <div className="row">
-                            <div className="">
-                                <section className="resume-section experience-section mb-5">
-                                    <h4 className=" fw-bold">Contact Person</h4>
-                                    {/* <div className="resume-timeline position-relative"> */}
-                                    <article className="resume-timeline-item position-relative pb-5">
-
-                                        <div className="resume-timeline-item-header mb-2">
-                                            <div className=" ">
-                                                <p className="resume-position-title fw-bold mb-1">{contactPersonName}, {contactPersonDesignation}</p>
-                                                <p>Phone : {contactPersonPhone}</p>
-                                                <p>Email :  {contactPersonEmail}</p>
-                                            </div>
-                                        </div>
-
-                                    </article>
-
-
-                                </section>
+                            <h4 className=" fw-bold">Contact Person</h4>
+                            <div className="resume-timeline-item-header">
+                                <div className=" ">
+                                    <p className="resume-position-title fw-bold ">{contactPersonName}, {contactPersonDesignation}</p>
+                                    <p>Phone : {contactPersonPhone}</p>
+                                    <p>Email :  {contactPersonEmail}</p>
+                                </div>
                             </div>
-
                         </div>
                     </div>
 

@@ -1,35 +1,57 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaBriefcase, FaBuilding, FaCalculator } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../Authentication/AuthProvider';
 
 const PostedJobDetails = () => {
+    const jobdetails = useLoaderData();
+
+    console.log("jobdetails : ", jobdetails)
+    const [jobPosts, setJobPosts] = useState([]);
+    const { user } = useContext(AuthContext);
+    const email = user?.email;
+
+    const employer = useLoaderData();
+
+    // console.log("Employer : ", employer)
+
+
+    const { _id, postersEmail, postersName, jobTitle, organization, vacancies, category, deadLine, education, experience, postDate, applyStatus, employmentStatus, businessDescription, jobLevel, workPlace, jobContext,
+        jobResponst, jobLocation, salaryFrom, salaryTo, yearlyBonus, salaryReview, others } = jobdetails;
+
+
+
+    console.log("jobsData : ", jobPosts)
+
     return (
         <div>
             <div className="card">
                 <div className="card-body">
                     <div className=' d-md-flex justify-content-between'>
-                        <h4 className="card-title fw-bold">Full Stack Web Developer</h4>
-                        <p className="fw-bold">Gorgeous Banaladesh Ltd, Dhaka, Bangladesh, (On Site)</p>
+                        <h4 className="card-title fw-bold">{jobTitle}</h4>
+                        <p className="fw-bold">{organization} , {jobLocation}, (On Site)</p>
                     </div>
 
                     <div className='d-flex justify-content-between'>
                         <p className='fw-bold d-flex justify-content-center align-items-center'><FaBriefcase className='fs-5 mx-1'></FaBriefcase>Full-time</p>
                         <p className='fw-bold d-flex justify-content-center align-items-center d-none d-md-block'><FaBuilding className='fs-5 mx-1'></FaBuilding>51-200 employees</p>
-                        <p className='fw-bold d-flex justify-content-center align-items-center'><FaCalculator className='fs-5 mx-1'></FaCalculator>Posted: 01/02/2023</p>
+                        <p className='fw-bold d-flex justify-content-center align-items-center'><FaCalculator className='fs-5 mx-1'></FaCalculator>Posted: {postDate}</p>
                     </div>
 
                     <p>
                         <b> Job Context</b> <br />
-                        <ul>
+                        {jobContext}
+                        {/* <ul>
                             <li>We are looking for a proactive and passionate Full Stack Web Developer,</li>
                             <li>We look for candidates who are passionate about technology and how they can leverage,</li>
                             <li>their skills in solving the problems. You will assume a strong sense of ownership of the product: design, develop & deploy.</li>
-                        </ul>
+                        </ul> */}
                     </p>
 
                     <p>
-                        <b> Job Responsibilities</b>
-                        <ul>
+                        <b> Job Responsibilities</b> <br />
+                        {jobResponst}
+                        {/* <ul>
                             <li> Developing Websites for client's Business & Other organizations. </li>
                             <li>
                                 Knowledge of front-end technologies, such as HTML5, Bootstrap 4.5/5, CSS3, JavaScript.
@@ -56,14 +78,14 @@ const PostedJobDetails = () => {
                             <li>
                                 Basic Konowledge of Other CMS.
                             </li>
-                        </ul>
+                        </ul> */}
                     </p>
 
 
                     <b> Workplace</b>
                     <ul>
                         <li>
-                            Work at office
+                            {workPlace}
                         </li>
                     </ul>
 
@@ -72,7 +94,7 @@ const PostedJobDetails = () => {
                         <b> Educational Requirements</b>
                         <ul>
                             <li>
-                                Bachelor of Science (BSc) in Computer Science and Engineering
+                                {education}
                             </li>
                         </ul>
                     </p>
@@ -81,7 +103,7 @@ const PostedJobDetails = () => {
                         <b> Experience Requirements</b>
                         <ul>
                             <li>
-                                At least 2 year(s)
+                                {experience}
                             </li>
                         </ul>
                     </p>
@@ -102,12 +124,12 @@ const PostedJobDetails = () => {
 
                     <p>
                         <b> Job Location</b> <br />
-                        Dhaka, Dhaka (Rampura)
+                        {jobLocation}
                     </p>
 
                     <p>
                         <b>Salary</b> <br />
-                        Tk. 25000 - 35000 (Monthly)
+                        Tk. {salaryFrom} - {salaryTo} (Monthly)
                     </p>
 
                     <p>

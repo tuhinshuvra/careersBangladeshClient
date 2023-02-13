@@ -83,7 +83,7 @@ const JobSeekerProfile = () => {
                         </section>
                         {/* <!--//summary-section--> */}
                         <div className="row">
-                            <div className="col-lg-9">
+                            <div className="col-md-12">
                                 <section className="resume-section experience-section mb-5">
                                     <h2 className="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Work Experience</h2>
                                     <div className="resume-section-content">
@@ -124,14 +124,14 @@ const JobSeekerProfile = () => {
                                                 <h2 className=" fw-bold my-3">Skill and Tools</h2>
                                                 {skill}
 
-                                                <section className="resume-section education-section mb-5">
+                                                <section className="resume-section education-section my-3">
                                                     <h2 className="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Education</h2>
                                                     <div className="resume-section-content">
+                                                        <div className='row d-flex'>
+                                                            <p className="  "> <b> Degree:</b> {qualification}, <b>From :</b> {institute}, <b>Pass Year</b> {passingYear}</p>
+                                                        </div>
                                                         <ul className="list-unstyled">
-                                                            <li className=" my-3">
-                                                                <p className=" fw-bold ">{qualification}</p>
-                                                                <p className=" fw-bold"> {institute}</p>
-                                                                <p className=" fw-bold">{passingYear}</p>
+                                                            <li className=" my-3 row">
                                                             </li>
                                                             {/* <li>
                                                                 <div className="resume-degree font-weight-bold">BSc Maths and Physics</div>
@@ -184,13 +184,13 @@ const JobSeekerProfile = () => {
                                                 </section>
 
                                                 <div>
-                                                    <h3 className=' fw-bold text-center'>Refference</h3>
+                                                    <h3 className=' fw-bold  my-2'>Refference</h3>
                                                     <div className='row'>
-                                                        <div className='col-lg-5'>
+                                                        <div className='col-md-6 p-5'>
                                                             <h4> {refOneName}</h4>
                                                             <p>{refOneDetails}</p>
                                                         </div>
-                                                        <div className='col-lg-5'>
+                                                        <div className='col-md-6 p-5'>
                                                             <h4> {refOneName}</h4>
                                                             <p>{refOneDetails}</p>
                                                         </div>

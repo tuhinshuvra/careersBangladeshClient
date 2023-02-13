@@ -1,71 +1,87 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
 const PostedJobList = () => {
+    // const [users, setUsers] = useState([]);
+
+    const { data: jobs = [], refetch } = useQuery({
+        queryKey: ['jobs'],
+        queryFn: async () => {
+            const respone = await fetch('http://localhost:5000/jobs');
+            const data = respone.json();
+            return data;
+        }
+    })
+
+
+    const handleDelete = (job) => {
+        fetch(`http://localhost:5000/jobs/${job._id}`, {
+            method: 'DELETE'
+        })
+            .then(respnse => respnse.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount > 0) {
+                    toast('Job Deleted Successfully.')
+                }
+            });
+        // console.log(user._id);
+    }
+
+    const handleJobsUpdate = (job) => {
+        console.log("Selected to Update Job : ", job._id)
+    }
+
+
     return (
         <div>
-            <h2 className=' text-center text-2xl font-bold my-10 '>Posted Job List</h2>
+            <h2 className=' text-center font-bold my-3  '>Posted Job List</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
                         <tr className=''>
                             <th>SL</th>
-                            <th>Position</th>
+                            <th>Title</th>
+                            <th>Organization</th>
                             <th>Job Type</th>
-                            <th>Posted Date</th>
+                            <th>Posted</th>
+                            <th>Deadline</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className='hover'>
-                            <th>1</th>
-                            <td>Full Stack Web Developer</td>
-                            <td>Full Time</td>
-                            <td>10/01/2023</td>
-                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
-                        </tr>
-                        <tr className='hover'>
-                            <th>2</th>
-                            <td>MERN Stack Web Developer</td>
-                            <td>Full Time</td>
-                            <td>10/01/2023</td>
-                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
-                        </tr>
-                        <tr className='hover'>
-                            <th>3</th>
-                            <td>Front End Web Developer</td>
-                            <td>Part Time</td>
-                            <td>10/01/2023</td>
-                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
-                        </tr>
-                        <tr className='hover'>
-                            <th>4</th>
-                            <td>ReactJS Web Developer</td>
-                            <td>Full Time</td>
-                            <td>10/01/2023</td>
-                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
-                        </tr>
-                        <tr className='hover'>
-                            <th>5</th>
-                            <td>Back End Wdb Developer</td>
-                            <td>Contactual</td>
-                            <td>10/01/2023</td>
-                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
-                        </tr>
-                        <tr className='hover'>
-                            <th>6</th>
-                            <td>IT Manager</td>
-                            <td>Part Time</td>
-                            <td>10/01/2023</td>
-                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
-                        </tr>
-                        <tr className='hover'>
-                            <th>7</th>
-                            <td>Graphics Designer</td>
-                            <td>Full Time</td>
-                            <td>10/01/2023</td>
-                            <td><button className='btn btn-success btn-sm  '><Link className=' text-white text-decoration-none fw-bold'>Edit</Link></button></td>
-                        </tr>
+                        {
+                            jobs.map((job, index) =>
+                                <tr key={job._id} className="">
+                                    <td>{index + 1}</td>
+                                    <td>
+                                        <Link className=' text-decoration-none text-primary ' to={`/jobs/${job._id}`}>
+                                            {/* <Link className='text-decoration-none fw-bolder' to={`/services/${service._id}`}>            Show Details</Link> */}
+                                            {job.jobTitle}
+                                        </Link>
+                                    </td>
+                                    <td>{job.organization}</td>
+                                    <td>{job.jobLevel}</td>
+                                    <td>{job.postDate}</td>
+                                    <td>{job.deadLine}</td>
+                                    <td>
+                                        <Link to={`/dashboardAdmin/jobUpdate/${job._id}`}>
+                                            <button className=' fw-bold btn-sm btn btn-primary mx-1'
+                                                onClick={() => handleJobsUpdate(job._id)}
+                                            >Update</button>
+                                        </Link>
+
+                                        <button className=' btn btn-sm  btn-outline-danger'
+                                            onClick={() => handleDelete(job)}
+                                        >Delete</button>
+                                    </td>
+                                </tr>
+                            )
+                        }
+
+
                     </tbody>
                 </table>
             </div>
