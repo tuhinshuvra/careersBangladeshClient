@@ -16,19 +16,27 @@ const JobSeekerProfileEntry = () => {
         const jobseekerProfile = {
             email: user.email,
             name: user.displayName,
-            companyNameEn: data.company_name_en,
-            companyNameBn: data.company_name_bn,
-            estdYear: data.estd_year,
-            companySize: data.company_size,
-            addressEng: data.address_en,
-            addressBng: data.address_bn,
-            busiDescription: data.busi_description,
-            tradeLicense: data.trade_license,
-            websiteURL: data.website_url,
-            contactPersonName: data.contact_person_name,
-            contactPersonDesignation: data.contact_person_designation,
-            contactPersonEmail: data.contact_person_email,
-            contactPersonPhone: data.contact_person_phone,
+            careerObjective: data.career_objective,
+            skill: data.skill,
+            experience: data.experience,
+            birthDete: data.birth_dete,
+            qualification: data.qualification,
+            institute: data.institute,
+            passingYear: data.passing_year,
+            linkOne: data.link_one,
+            linkTwo: data.link_two,
+            linkThree: data.link_three,
+            portfolio: data.portfolio,
+            language: data.language,
+            fathersName: data.fathers_name,
+            mothersName: data.mothers_name,
+            phone: data.phone,
+            gender: data.gender,
+            religion: data.religion,
+            maritialStatus: data.maritial_status,
+            permanentAddress: data.permanent_address,
+            other: data.other,
+
         }
         console.log("Employee Data :", data);
 
@@ -50,97 +58,6 @@ const JobSeekerProfileEntry = () => {
             </h2>
 
             <form onSubmit={handleSubmit(handleJobSeekerProfile)} >
-
-                <span className="label-text text-md font-bold ">Career Objective</span>
-                <div>
-                    <textarea {...register("career_objective", { required: true })}
-                        name='career_objective'
-                        className='input form-control my-lg-3'
-                        id='career_objective' type="text"
-                        placeholder='Enter Career Objective'
-                    />
-                </div>
-
-                <span className="label-text text-md font-bold ">Obtained Skill</span>
-                <div>
-                    <textarea {...register("skill", { required: true })}
-                        name='skill'
-                        className='input form-control my-lg-3'
-                        id='skill' type="text"
-                        placeholder='Enter Obtained Skill'
-                    />
-                </div>
-
-
-
-
-                <span className="label-text text-md font-bold ">Experience</span>
-                <div>
-                    <textarea {...register("experience", { required: true })}
-                        name='experience'
-                        className='input form-control my-lg-3'
-                        id='experience' type="text"
-                        placeholder='Enter Experience'
-                    />
-                </div>
-
-                <span className="label-text text-md font-bold ">Achivement</span>
-                <div>
-                    <textarea {...register("achivement", { required: true })}
-                        name='achivement'
-                        className='input form-control my-lg-3'
-                        id='achivement' type="text"
-                        placeholder='Enter achivement'
-                    />
-                </div>
-
-                <div className="row my-4">
-                    <div className='col-md-4 my-lg-0 margin-sm'>
-                        <span className="label-text text-md font-bold ">Date of Birth</span>
-                        <input
-                            {...register("birth_dath", { required: true })}
-                            name='birth_dath'
-                            className='input form-control my-lg-3'
-                            id="birth_dath"
-                            type="date"
-                        />
-                    </div>
-
-                    <div className='col-md-4 my-lg-0 margin-sm'>
-                        <span className="label-text text-md font-bold ">Qualification</span>
-                        <input
-                            {...register("qualification", { required: true })}
-                            name='qualification'
-                            className='input form-control my-lg-3'
-                            id="qualification"
-                            type="text"
-                            placeholder='Enter last obtain degree'
-                        />
-                    </div>
-
-
-
-                    <div className='col-md-4 my-lg-0 margin-sm'>
-                        <span className="label-text text-md font-bold ">Passing Year</span>
-                        <input
-                            {...register("passing_year", { required: true })}
-                            name='passing_year'
-                            className='input form-control my-lg-3'
-                            id="passing_year"
-                            type="date"
-                        />
-                    </div>
-                </div>
-
-                <span className="label-text text-md font-bold ">Language</span>
-                <input
-                    {...register("language", { required: true })}
-                    name='language'
-                    className='input form-control my-lg-3'
-                    id="language"
-                    type="text"
-                    placeholder='Enter skilld language'
-                />
 
                 <div className="row my-4">
                     <div className='col-md-4 my-lg-0 margin-sm'>
@@ -178,7 +95,161 @@ const JobSeekerProfileEntry = () => {
                             placeholder='Enter Phone No'
                         />
                     </div>
+
                 </div>
+
+                <span className="label-text text-md font-bold ">Career Objective</span>
+                <div>
+                    <textarea {...register("career_objective", { required: true })}
+                        name='career_objective'
+                        className='input form-control my-lg-3'
+                        id='career_objective' type="text"
+                        placeholder='Enter Career Objective'
+                    />
+                </div>
+
+                <span className="label-text text-md font-bold ">Obtained Skill</span>
+                <div>
+                    <textarea {...register("skill", { required: true })}
+                        name='skill'
+                        className='input form-control my-lg-3'
+                        id='skill' type="text"
+                        placeholder='Enter Obtained Skill'
+                    />
+                </div>
+
+
+
+
+                <span className="label-text text-md font-bold ">Experience</span>
+                <div>
+                    <textarea {...register("experience", {})}
+                        name='experience'
+                        className='input form-control my-lg-3'
+                        id='experience' type="text"
+                        placeholder='Enter Experience'
+                    />
+                </div>
+
+                <span className="label-text text-md font-bold ">Achivement</span>
+                <div>
+                    <textarea {...register("achivement", {})}
+                        name='achivement'
+                        className='input form-control my-lg-3'
+                        id='achivement' type="text"
+                        placeholder='Enter achivement'
+                    />
+                </div>
+
+                <div className="row my-2">
+                    <div className='col-md-3 my-lg-0 margin-sm'>
+                        <span className="label-text text-md font-bold ">Date of Birth</span>
+                        <input
+                            {...register("birth_dete", { required: true })}
+                            name='birth_dete'
+                            className='input form-control my-lg-3'
+                            id="birth_date"
+                            type="date"
+                        />
+                    </div>
+
+
+                    <div className='col-md-3 my-lg-0 margin-sm'>
+                        <span className="label-text text-md font-bold ">Qualification</span>
+                        <input
+                            {...register("qualification", { required: true })}
+                            name='qualification'
+                            className='input form-control my-lg-3'
+                            id="qualification"
+                            type="text"
+                            placeholder='Enter last obtain degree'
+                        />
+                    </div>
+
+                    <div className='col-md-3 my-lg-0 margin-sm'>
+                        <span className="label-text text-md font-bold ">Institute</span>
+                        <input
+                            {...register("institute", { required: true })}
+                            name='institute'
+                            className='input form-control my-lg-3'
+                            id="institute"
+                            type="text"
+                            placeholder='Enter Institute'
+                        />
+                    </div>
+
+
+
+
+                    <div className='col-md-3 my-lg-0 margin-sm'>
+                        <span className="label-text text-md font-bold ">Passing Year</span>
+                        <input
+                            {...register("passing_year", { required: true })}
+                            name='passing_year'
+                            className='input form-control my-lg-3'
+                            id="passing_year"
+                            type="date"
+                        />
+                    </div>
+
+                    <div className='col-md-3 my-lg-0 margin-sm'>
+                        <span className="label-text text-md font-bold ">Enter Work Link</span>
+                        <input
+                            {...register("link_one", {})}
+                            name='link_one'
+                            className='input form-control my-lg-3'
+                            id="link_one"
+                            type="text"
+                            placeholder='Enter Link Address'
+                        />
+                    </div>
+                    <div className='col-md-3 my-lg-0 margin-sm'>
+                        <span className="label-text text-md font-bold ">Enter Link</span>
+                        <input
+                            {...register("link_two",)}
+                            name='link_two'
+                            className='input form-control my-lg-3'
+                            id="link_two"
+                            type="text"
+                            placeholder='Enter Link Address'
+                        />
+                    </div>
+
+                    <div className='col-md-3 my-lg-0 margin-sm'>
+                        <span className="label-text text-md font-bold ">Enter Link</span>
+                        <input
+                            {...register("link_three",)}
+                            name='link_three'
+                            className='input form-control my-lg-3'
+                            id="link_three"
+                            type="text"
+                            placeholder='Enter Link Address'
+                        />
+                    </div>
+                    <div className='col-md-3 my-lg-0 margin-sm'>
+                        <span className="label-text text-md font-bold ">Enter Portfolio Link</span>
+                        <input
+                            {...register("portfolio")}
+                            name='portfolio'
+                            className='input form-control my-lg-3'
+                            id="portfolio"
+                            type="text"
+                            placeholder='Enter Portfolio Link'
+                        />
+                    </div>
+                </div>
+
+                <span className="label-text text-md font-bold ">Language</span>
+                <input
+                    {...register("language", { required: true })}
+                    name='language'
+                    className='input form-control my-lg-3'
+                    id="language"
+                    type="text"
+                    placeholder='Enter skilld language'
+                />
+
+
 
                 <div className="row my-4">
                     <div className='col-md-4 my-lg-0 margin-sm'>
@@ -188,9 +259,9 @@ const JobSeekerProfileEntry = () => {
                             name="gender"
                             className="form-select">
                             <option disabled selected>Select</option>
-                            <option value={0}>Male</option>
-                            <option value={1}>Female</option>
-                            <option value={2}>Others</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="others">Others</option>
                         </select>
                     </div>
 
@@ -201,9 +272,9 @@ const JobSeekerProfileEntry = () => {
                             name="religion"
                             className="form-select select-bordered  ">
                             <option disabled selected>Select</option>
-                            <option value={0}>Buddhism</option>
-                            <option value={1}>Hinduism</option>
-                            <option value={2}>Islam</option>
+                            <option value={0}>Islam</option>
+                            <option value={1}>Buddhism</option>
+                            <option value={2}>Hinduism</option>
                             <option value={3}>Christianity</option>
                             <option value={4}>Judaism</option>
                             <option value={5}>Irreligion</option>
@@ -244,6 +315,64 @@ const JobSeekerProfileEntry = () => {
                         id='permanent_address' type="text"
                         placeholder='Write Your Permanent Address'
                     />
+                </div>
+
+
+                <div className="row my-4">
+                    <div className='col-md-6 my-lg-0 margin-sm'>
+                        <span className="label-text text-md font-bold ">Refferece One Name</span>
+                        <input
+                            {...register("ref_one_name", { required: true })}
+                            name='ref_one_name'
+                            className='input form-control my-lg-3'
+                            id="ref_one_name"
+                            type="text"
+                            placeholder='Enter Refferece One Name'
+                        />
+                    </div>
+
+                    <div className='col-md-6 my-lg-0 margin-sm'>
+
+                        <span className="label-text text-md font-bold ">Refferece One Details</span>
+                        <div>
+                            <textarea {...register("ref_one_details", { required: true })}
+                                name='ref_one_details'
+                                className='input form-control my-lg-3'
+                                id='ref_one_details' type="text"
+                                placeholder='Enter Refference One Details'
+                            />
+                        </div>
+                    </div>
+
+                    <div className='col-md-6 my-lg-0 margin-sm'>
+                        <span className="label-text text-md font-bold ">Refferece Two Name</span>
+                        <input
+                            {...register("ref_two_name", { required: true })}
+                            name='ref_two_name'
+                            className='input form-control my-lg-3'
+                            id="ref_two_name"
+                            type="text"
+                            placeholder='Enter Refferece Two Name'
+                        />
+                    </div>
+
+
+                    <div className='col-md-6 my-lg-0 margin-sm'>
+
+                        <span className="label-text text-md font-bold ">Refferece Two Details</span>
+                        <div>
+                            <textarea {...register("ref_two_details", { required: true })}
+                                name='ref_two_details'
+                                className='input form-control my-lg-3'
+                                id='ref_two_details' type="text"
+                                placeholder='Enter Refference Two Details'
+                            />
+                        </div>
+                    </div>
+
+
+
+
                 </div>
 
 

@@ -8,7 +8,8 @@ const JobCategory = () => {
     let newCategories = categories.slice(0, 28)
 
     useEffect(() => {
-        fetch('job-categories.json')
+        // fetch('job-categories.json')
+        fetch('http://localhost:5000/jobCategories')
             .then(response => response.json())
             .then(data => {
                 setCategories(data)
