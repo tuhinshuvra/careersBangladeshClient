@@ -28,6 +28,8 @@ import EmployersProfile from '../../Profile/Employers/EmployeersProfile';
 import ELearning from '../../ELearning/ELearning';
 import JobSeekerProfileEntry from '../../Profile/MyJobs/Personal/JobSeekerProfileEntry';
 import JobSeekerProfile from '../../Profile/MyJobs/Personal/JobSeekerProfile';
+import JobCategoryEntry from '../../JobCategory/JobCategoryEntry';
+import JobCategoryList from '../../JobCategory/JobCategoryList';
 
 const router = createBrowserRouter([
     {
@@ -139,6 +141,14 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/admin',
                 element: <UserList></UserList>
+            },
+            {
+                path: '/dashboard/JobCategoryEntry',
+                element: <JobCategoryEntry></JobCategoryEntry>
+            },
+            {
+                path: '/dashboard/JobCategoryList',
+                element: <JobCategoryList></JobCategoryList>
             },
             {
                 path: '/dashboard/employeeList',

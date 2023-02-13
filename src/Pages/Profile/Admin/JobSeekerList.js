@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const JobSeekerList = () => {
+
+
     return (
         <div>
             <h2 className=' text-center text-2xl font-bold my-10 '>Job Seeker List</h2>
