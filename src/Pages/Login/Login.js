@@ -56,7 +56,20 @@ const Login = () => {
                                             <form onSubmit={handleSubmit(handleLogin)} className=' rounded rounded-2 bg-sm p-5 '>
                                                 {loginError && <p className=' font-bold text-red-600'>{loginError}</p>}
                                                 <div className=''>
-                                                    <h5 className=' mb-4'>Please login to your account</h5>
+                                                    <h5 className=' mb-4 text-center fw-bold'>Please login to your account</h5>
+
+
+                                                    <div className="form-outline mb-4">
+                                                        <label className="form-label" htmlFor="userType">Select Role</label>
+                                                        <select type="text"
+                                                            {...register("userType")}
+                                                            className="form-control">
+                                                            <option value="employer">Employer</option>
+                                                            <option value="jobseeker" selected>Job Seeker</option>
+                                                        </select>
+                                                    </div>
+
+
 
                                                     <div className="form-outline mb-4">
                                                         <label className="form-label" htmlFor="username">Username</label>

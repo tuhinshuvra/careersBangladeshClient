@@ -88,7 +88,7 @@ const Register = () => {
                                                     {signUpError}
                                                 </Form.Text>
                                                 <div className=''>
-                                                    <h5 className=' mb-4'>Please login to your account</h5>
+                                                    <h5 className=' mb-4 text-center fw-bold'>Please Register</h5>
 
                                                     <div className="form-outline mb-4">
                                                         <label className="form-label" htmlFor="username">Username</label>
@@ -104,7 +104,7 @@ const Register = () => {
                                                     </div>
 
                                                     <div className="form-outline mb-4">
-                                                        <label className="form-label" htmlFor="userType">User Type</label>
+                                                        <label className="form-label" htmlFor="userType">Select Role</label>
                                                         <select type="text"
                                                             {...register("userType")}
                                                             className="form-control">
@@ -138,7 +138,7 @@ const Register = () => {
                                                                 {
                                                                     required: true,
                                                                     minLength: { value: 6, message: "Password length must be minimum 6" },
-                                                                    pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password must have uppercase, number and special characters' }
+                                                                    // pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password must have uppercase, number and special characters' }
                                                                 },
                                                             )}
 

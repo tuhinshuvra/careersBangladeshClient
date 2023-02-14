@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { FaBriefcase, FaBuilding, FaCalculator } from 'react-icons/fa';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Authentication/AuthProvider';
 
 const PostedJobDetails = () => {
     const jobdetails = useLoaderData();
+    const navigate = useNavigate();
 
     console.log("jobdetails : ", jobdetails)
     const [jobPosts, setJobPosts] = useState([]);
@@ -17,11 +19,39 @@ const PostedJobDetails = () => {
 
 
     const { _id, postersEmail, postersName, jobTitle, organization, vacancies, category, deadLine, education, experience, postDate, applyStatus, employmentStatus, businessDescription, jobLevel, workPlace, jobContext,
-        jobResponst, jobLocation, salaryFrom, salaryTo, yearlyBonus, salaryReview, others } = jobdetails;
-
-
+        jobResponst, location, salaryFrom, salaryTo, yearlyBonus, salaryReview, others } = jobdetails;
 
     console.log("jobsData : ", jobPosts)
+
+    const applicationDate = new Date().toJSON().slice(0, 10);
+
+    const handleApply = (data) => {
+        console.log("Applied jobdetails :", jobdetails);
+        const jobApply = {
+            jobSeekerEmail: user.email,
+            jobSeekerName: user.displayName,
+            postersEmail: postersEmail,
+            jobTitle: jobTitle,
+            organization: organization,
+            category: category,
+            applicationDate: applicationDate
+        }
+        console.log("Job Post Data :", jobApply);
+
+        fetch('http://localhost:5000/applications', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(jobApply)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                toast('Post the appliction successfully');
+                navigate("/findJobs")
+            })
+    }
 
     return (
         <div>
@@ -29,7 +59,7 @@ const PostedJobDetails = () => {
                 <div className="card-body">
                     <div className=' d-md-flex justify-content-between'>
                         <h4 className="card-title fw-bold">{jobTitle}</h4>
-                        <p className="fw-bold">{organization} , {jobLocation}, (On Site)</p>
+                        <p className="fw-bold">{organization} , {location}, (On Site)</p>
                     </div>
 
                     <div className='d-flex justify-content-between'>
@@ -124,7 +154,7 @@ const PostedJobDetails = () => {
 
                     <p>
                         <b> Job Location</b> <br />
-                        {jobLocation}
+                        {location}
                     </p>
 
                     <p>
@@ -175,7 +205,7 @@ const PostedJobDetails = () => {
 
 
                     <div className='d-flex justify-content-center'>
-                        <Link to="/"> <button type="button" className=" custom_btn mx-1"> Apply Now</button></Link>
+                        <Link onClick={() => handleApply(jobdetails)} to="/"> <button type="button" className=" custom_btn mx-1"> Apply Now</button></Link>
                         <Link to="/"> <button type="button" className=" custom_btn mx-1"> Save</button></Link>
                     </div>
                 </div>

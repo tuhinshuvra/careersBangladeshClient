@@ -27,15 +27,16 @@ const JobPost = () => {
         const jobPost = {
             postersEmail: user.email,
             postersName: user.displayName,
+            category: data.category,
             jobTitle: data.job_title,
             organization: data.organization,
+            location: data.location,
             vacancies: data.vacancies,
-            category: data.category,
             education: data.education,
             experience: data.experience,
             companySize: data.company_size,
-            deadLine: data.deadline,
             postDate: jobPostDate,
+            deadLine: data.deadline,
             applyStatus: data.apply_status,
             employmentStatus: data.employment_status,
             businessDescription: data.business_description,
@@ -43,7 +44,6 @@ const JobPost = () => {
             workPlace: data.work_place,
             jobContext: data.job_context,
             jobResponst: data.job_responst,
-            jobLocation: data.job_location,
             salaryFrom: data.salary_from,
             salaryTo: data.salary_to,
             yearlyBonus: data.yearly_bonus,
@@ -107,17 +107,30 @@ const JobPost = () => {
                         placeholder='Enter Job Title'
                     />
                 </div>
+                <div className="row">
 
-                <div className='my-2 '>
-                    <label className="label"><span className="label-text fw-bold">Organization</span> </label>
-                    <input
-                        {...register("organization", { required: true })}
-                        name="organization"
-                        className='input form-control'
-                        id="organization"
-                        type="text"
-                        placeholder='Enter Orzation Name'
-                    />
+                    <div className=' col-md-6 my-2 '>
+                        <label className="label"><span className="label-text fw-bold">Organization</span> </label>
+                        <input
+                            {...register("organization", { required: true })}
+                            name="organization"
+                            className='input form-control'
+                            id="organization"
+                            type="text"
+                            placeholder='Enter Orzation Name'
+                        />
+                    </div>
+                    <div className=' col-md-6 my-2 '>
+                        <label className="label"><span className="label-text fw-bold">Location</span> </label>
+                        <input
+                            {...register("location", { required: true })}
+                            name="location"
+                            className='input form-control'
+                            id="location"
+                            type="text"
+                            placeholder='Enter Work Location'
+                        />
+                    </div>
                 </div>
 
                 <div className="row">
@@ -138,7 +151,7 @@ const JobPost = () => {
                             name='job_level'
                             className="form-select"
                         >
-                            <option disabled selected>Job Level</option>
+                            <option disabled selected>Select Job Level</option>
                             <option value={0}>Entry</option>
                             <option value={1}>Mid</option>
                             <option value={2}>Top</option>
@@ -151,10 +164,10 @@ const JobPost = () => {
                             name="work_place"
                             className="form-select"
                         >
-                            <option disabled selected>Work Place</option>
-                            <option value={0}>Work at Office</option>
-                            <option value={1}>Work from Home</option>
-                            <option value={2}>Hybrid</option>
+                            <option disabled selected>Select Work Place</option>
+                            <option value="Work at Office">Work at Office</option>
+                            <option value="Work from Home">Work from Home</option>
+                            <option value="Hybrid">Hybrid</option>
                         </select>
                     </div>
                 </div>
@@ -252,7 +265,8 @@ const JobPost = () => {
                     className='input form-control my-lg-3'
                     id='job_context'
                     type="text"
-                    placeholder='Enter job Context' />
+                    placeholder='Enter job Context'
+                />
 
                 <textarea
                     name='job_respons'
@@ -260,19 +274,9 @@ const JobPost = () => {
                     className='input form-control my-lg-3'
                     id='job_respons'
                     type="text"
-                    placeholder='Job Responsibilities' />
+                    placeholder='Job Responsibilities'
+                />
 
-
-
-                <div>
-                    <input
-                        {...register("job_location", { required: true })}
-                        name='job_location'
-                        className='input form-control'
-                        id='job_location'
-                        type="text"
-                        placeholder='Enter job location' />
-                </div>
 
                 <div className=' row my-lg-3'>
 

@@ -12,7 +12,7 @@ const HotJobs = () => {
             .then(response => response.json())
             .then(data => {
                 setCategories(data)
-                console.log("Product Data:", data)
+                // console.log("Product Data:", data)
             })
     }, [])
 

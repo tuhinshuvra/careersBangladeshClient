@@ -13,7 +13,7 @@ const JobCategory = () => {
             .then(response => response.json())
             .then(data => {
                 setCategories(data)
-                console.log("Product Data:", data)
+                // console.log("Product Data:", data)
             })
     }, [])
 
@@ -22,7 +22,7 @@ const JobCategory = () => {
             <h2 className='my-5 careers_title_one'><FaCompressArrowsAlt className=' mx-1'></FaCompressArrowsAlt>  JOB CATEGORIES</h2>
             <div className=' job-category'>
                 {newCategories.map(category => <JobCategoryDisplay
-                    key={category.id}
+                    key={category._id}
                     category={category}
                 ></JobCategoryDisplay>)}
             </div>

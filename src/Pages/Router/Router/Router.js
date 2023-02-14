@@ -49,6 +49,11 @@ const router = createBrowserRouter([
                 element: <FindJob></FindJob>
             },
             {
+                path: '/jobs/:categoryId',
+                element: <FindJob></FindJob>,
+                loader: ({ params }) => fetch(`http://localhost:5000/jobs?category=${params.categoryId}`)
+            },
+            {
                 path: '/elearning',
                 element: <ELearning></ELearning>
             },
@@ -56,11 +61,7 @@ const router = createBrowserRouter([
                 path: '/contact',
                 element: <Contact></Contact>
             },
-            {
-                path: '/jobs/:id',
-                element: <PostedJobDetails></PostedJobDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params.id}`)
-            },
+
             {
                 path: '/login',
                 element: <Login></Login>
@@ -76,6 +77,8 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivateRoute> <DashboardLayout></DashboardLayout></PrivateRoute>,
         children: ([
+
+            // job seeker dashboard section
 
             {
                 path: '/dashboard/jobSeekerProfileEntry',
@@ -112,13 +115,11 @@ const router = createBrowserRouter([
 
 
 
-
             // employer dashboard section
 
             {
                 path: '/dashboard/employerProfile',
                 element: <EmployersProfile></EmployersProfile>,
-                // loader: ({ params }) => fetch(`http://localhost:5000/users/${params.email}`)
             },
 
             {
@@ -131,7 +132,11 @@ const router = createBrowserRouter([
                 element: <JobPost></JobPost>
             },
 
-
+            {
+                path: '/dashboard/jobs/:id',
+                element: <PostedJobDetails></PostedJobDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params.id}`)
+            },
 
             {
                 path: '/dashboard/postedJobList',

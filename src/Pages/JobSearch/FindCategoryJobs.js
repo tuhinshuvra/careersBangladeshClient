@@ -1,57 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaFile, FaFilter, FaList, FaSearch, FaStar, FaTh } from 'react-icons/fa';
 import './FindJob.css';
 import useTitle from '../../hooks/useTitle';
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
-import { useForm } from 'react-hook-form';
 
-const FindJob = () => {
-    // const { catJobs } = useLoaderData();
-    // console.log("catJobs : ", catJobs)
-    const { register, handleSubmit, formState: { errors } } = useForm();
-
+const FindCategoryJobs = (category_id) => {
     useTitle('FindJob');
 
-    const { data: jobs = [], refetch } = useQuery({
-        queryKey: ['jobs'],
-        queryFn: async () => {
-            const respone = await fetch('http://localhost:5000/jobs');
-            const data = respone.json();
-            return data;
-        }
-    })
-
-
-    const { data: categories, isLoading } = useQuery({
-        queryKey: ['category'],
-        queryFn: async () => {
-            const res = await fetch('http://localhost:5000/jobCategories');
-            const data = await res.json();
-            return data;
-        }
-    })
+    console.log("FindCategoryJobs category_id : ", category_id)
 
 
 
-    const handleDelete = (job) => {
-        fetch(`http://localhost:5000/jobs/${job._id}`, {
-            method: 'DELETE'
-        })
-            .then(respnse => respnse.json())
-            .then(data => {
-                console.log(data)
-                if (data.deletedCount > 0) {
-                    toast('Job Deleted Successfully.')
-                }
-            });
-        // console.log(user._id);
-    }
+    const [jobs, setJobs] = useState([]);
 
-    const handleJobsUpdate = (job) => {
-        console.log("Selected to Update Job : ", job._id)
-    }
+    useEffect(() => {
+        fetch(`http://localhost:5000/categoryJobs?category=${category_id}`)
+            .then(response => response.json())
+            .then(data => setJobs(data))
+    }, [category_id])
+
+    // console.log(" Category Jobs : ", jobs)
+
+
+    // const { data: jobs = [], refetch } = useQuery({
+    //     queryKey: ['jobs'],
+    //     queryFn: async () => {
+    //         const respone = await fetch('http://localhost:5000/jobs');
+    //         const data = respone.json();
+    //         return data;
+    //     }
+    // })
+
+
+    // const handleDelete = (job) => {
+    //     fetch(`http://localhost:5000/jobs/${job._id}`, {
+    //         method: 'DELETE'
+    //     })
+    //         .then(respnse => respnse.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             if (data.deletedCount > 0) {
+    //                 toast('Job Deleted Successfully.')
+    //             }
+    //         });
+    //     // console.log(user._id);
+    // }
+
+    // const handleJobsUpdate = (job) => {
+    //     console.log("Selected to Update Job : ", job._id)
+    // }
 
     return (
         <div className="row">
@@ -83,21 +82,17 @@ const FindJob = () => {
                                 {/* <!-- BEGIN FILTER BY CATEGORY --> */}
                                 <div className=' my-md-3'>
                                     <h5 className=' fw-bold'>By Category:</h5>
-                                    <select
-                                        {...register("category")}
-                                        name='category'
-                                        type="text"
-                                        className="form-select">
-                                        {
-                                            categories &&
-                                            categories.map((category, index) =>
-                                                <option key={index}
-                                                    value={category._id}>
-                                                    {category.name}
-                                                </option>)
-                                        }
+                                    <select className="form-select">
+                                        <option disabled selected>Select</option>
+                                        <option value={0}>Application</option>
+                                        <option value={1}>Design</option>
+                                        <option value={2}>Development</option>
+                                        <option value={3}>Management</option>
+                                        <option value={4}>Marketing</option>
+                                        <option value={5}>Support</option>
+                                        <option value={6}>Networking</option>
+                                        <option value={7}>Mobile</option>
                                     </select>
-
                                 </div>
                                 {/* <!-- END FILTER BY CATEGORY --> */}
 
@@ -213,7 +208,7 @@ const FindJob = () => {
                                         </thead>
 
                                         <tbody>
-                                            {
+                                            {/* {
                                                 jobs.map((job, index) =>
                                                     <tr key={job._id} className="">
                                                         <td>{index + 1}</td>
@@ -229,7 +224,7 @@ const FindJob = () => {
                                                         <td>৳{job.salaryTo}</td>
                                                     </tr>
                                                 )
-                                            }
+                                            } */}
 
                                         </tbody></table>
                                 </div>
@@ -267,4 +262,4 @@ const FindJob = () => {
     );
 };
 
-export default FindJob;
+export default FindCategoryJobs;

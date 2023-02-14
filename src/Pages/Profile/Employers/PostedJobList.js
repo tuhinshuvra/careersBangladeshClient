@@ -45,7 +45,7 @@ const PostedJobList = () => {
                             <th>SL</th>
                             <th>Title</th>
                             <th>Organization</th>
-                            <th>Job Type</th>
+                            <th>Location</th>
                             <th>Posted</th>
                             <th>Deadline</th>
                             <th>Action</th>
@@ -57,13 +57,13 @@ const PostedJobList = () => {
                                 <tr key={job._id} className="">
                                     <td>{index + 1}</td>
                                     <td>
-                                        <Link className=' text-decoration-none text-primary ' to={`/jobs/${job._id}`}>
+                                        <Link className=' text-decoration-none text-primary ' to={`/dashboard/jobs/${job._id}`}>
                                             {/* <Link className='text-decoration-none fw-bolder' to={`/services/${service._id}`}>            Show Details</Link> */}
                                             {job.jobTitle}
                                         </Link>
                                     </td>
                                     <td>{job.organization}</td>
-                                    <td>{job.jobLevel}</td>
+                                    <td>{job.location}</td>
                                     <td>{job.postDate}</td>
                                     <td>{job.deadLine}</td>
                                     <td>

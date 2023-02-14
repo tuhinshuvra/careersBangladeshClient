@@ -30,6 +30,7 @@ const DashboardLayout = () => {
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/JobCategoryEntry'>Job Category Entry</Link></li>
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/JobCategoryList'>Job Category List</Link></li>
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/admin'>All User</Link></li>
+                                <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/appliedJob'>Applied Job List</Link></li>
                             </>
                         }
 

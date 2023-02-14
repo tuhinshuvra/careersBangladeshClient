@@ -146,7 +146,7 @@ const JobSeekerProfileEntry = () => {
 
                 <span className="label-text text-md font-bold ">Experience</span>
                 <div>
-                    <textarea {...register("experience", {})}
+                    <textarea {...register("experience", )}
                         name='experience'
                         className='input form-control my-lg-3'
                         id='experience' type="text"
@@ -156,7 +156,7 @@ const JobSeekerProfileEntry = () => {
 
                 <span className="label-text text-md font-bold ">Achivement</span>
                 <div>
-                    <textarea {...register("achivement", {})}
+                    <textarea {...register("achivement",)}
                         name='achivement'
                         className='input form-control my-lg-3'
                         id='achivement' type="text"
@@ -206,19 +206,87 @@ const JobSeekerProfileEntry = () => {
 
                     <div className='col-md-3 my-lg-0 margin-sm'>
                         <span className="label-text text-md font-bold ">Passing Year</span>
-                        <input
+                        <select
                             {...register("passing_year", { required: true })}
-                            name='passing_year'
-                            className='input form-control my-lg-3'
                             id="passing_year"
-                            type="date"
-                        />
+                            name="passing_year"
+                            className='input form-control my-lg-3'
+                        >
+                            <option selected disabled>Select Year</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                            <option value="2014">2014</option>
+                            <option value="2013">2013</option>
+                            <option value="2012">2012</option>
+                            <option value="2011">2011</option>
+                            <option value="2010">2010</option>
+                            <option value="2009">2009</option>
+                            <option value="2008">2008</option>
+                            <option value="2007">2007</option>
+                            <option value="2006">2006</option>
+                            <option value="2005">2005</option>
+                            <option value="2004">2004</option>
+                            <option value="2003">2003</option>
+                            <option value="2002">2002</option>
+                            <option value="2001">2001</option>
+                            <option value="2000">2000</option>
+                            <option value="1999">1999</option>
+                            <option value="1998">1998</option>
+                            <option value="1997">1997</option>
+                            <option value="1996">1996</option>
+                            <option value="1995">1995</option>
+                            <option value="1994">1994</option>
+                            <option value="1993">1993</option>
+                            <option value="1992">1992</option>
+                            <option value="1991">1991</option>
+                            <option value="1990">1990</option>
+                            <option value="1989">1989</option>
+                            <option value="1988">1988</option>
+                            <option value="1987">1987</option>
+                            <option value="1986">1986</option>
+                            <option value="1985">1985</option>
+                            <option value="1984">1984</option>
+                            <option value="1983">1983</option>
+                            <option value="1982">1982</option>
+                            <option value="1981">1981</option>
+                            <option value="1980">1980</option>
+                            <option value="1979">1979</option>
+                            <option value="1978">1978</option>
+                            <option value="1977">1977</option>
+                            <option value="1976">1976</option>
+                            <option value="1975">1975</option>
+                            <option value="1974">1974</option>
+                            <option value="1973">1973</option>
+                            <option value="1972">1972</option>
+                            <option value="1971">1971</option>
+                            <option value="1970">1970</option>
+                            <option value="1969">1969</option>
+                            <option value="1968">1968</option>
+                            <option value="1967">1967</option>
+                            <option value="1966">1966</option>
+                            <option value="1964">1964</option>
+                            <option value="1965">1965</option>
+                            <option value="1963">1963</option>
+                            <option value="1962">1962</option>
+                            <option value="1961">1961</option>
+                            <option value="1960">1960</option>
+
+                        </select>
+
+
                     </div>
 
                     <div className='col-md-3 my-lg-0 margin-sm'>
                         <span className="label-text text-md font-bold ">Enter Work Link</span>
                         <input
-                            {...register("link_one", {})}
+                            {...register("link_one",)}
                             name='link_one'
                             className='input form-control my-lg-3'
                             id="link_one"
@@ -332,7 +400,7 @@ const JobSeekerProfileEntry = () => {
 
                 <span className="label-text text-md font-bold ">Permanent Address</span>
                 <div>
-                    <textarea {...register("permanent_address", { required: true })}
+                    <textarea {...register("permanent_address", )}
                         name='permanent_address'
                         className='input form-control my-lg-3'
                         id='permanent_address' type="text"
@@ -345,7 +413,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-6 my-lg-0 margin-sm'>
                         <span className="label-text text-md font-bold ">Refferece One Name</span>
                         <input
-                            {...register("ref_one_name", { required: true })}
+                            {...register("ref_one_name", )}
                             name='ref_one_name'
                             className='input form-control my-lg-3'
                             id="ref_one_name"
@@ -358,7 +426,7 @@ const JobSeekerProfileEntry = () => {
 
                         <span className="label-text text-md font-bold ">Refferece One Details</span>
                         <div>
-                            <textarea {...register("ref_one_details", { required: true })}
+                            <textarea {...register("ref_one_details", )}
                                 name='ref_one_details'
                                 className='input form-control my-lg-3'
                                 id='ref_one_details' type="text"
@@ -370,7 +438,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-6 my-lg-0 margin-sm'>
                         <span className="label-text text-md font-bold ">Refferece Two Name</span>
                         <input
-                            {...register("ref_two_name", { required: true })}
+                            {...register("ref_two_name", )}
                             name='ref_two_name'
                             className='input form-control my-lg-3'
                             id="ref_two_name"
@@ -384,7 +452,7 @@ const JobSeekerProfileEntry = () => {
 
                         <span className="label-text text-md font-bold ">Refferece Two Details</span>
                         <div>
-                            <textarea {...register("ref_two_details", { required: true })}
+                            <textarea {...register("ref_two_details", )}
                                 name='ref_two_details'
                                 className='input form-control my-lg-3'
                                 id='ref_two_details' type="text"
@@ -397,7 +465,7 @@ const JobSeekerProfileEntry = () => {
 
                 <span className="label-text text-md font-bold ">Other</span>
                 <div>
-                    <textarea {...register("other", { required: true })}
+                    <textarea {...register("other")}
                         name='other'
                         className='input form-control my-lg-3'
                         id='other' type="text"

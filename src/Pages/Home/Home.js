@@ -18,7 +18,7 @@ const Home = () => {
             <JobCategory></JobCategory>
             <HotJobs></HotJobs>
             <NewJobs></NewJobs>
-            <ELearning></ELearning>
+            {/* <ELearning></ELearning> */}
             <JobAlert></JobAlert>
 
             {/* <PracticePurpose></PracticePurpose> */}
