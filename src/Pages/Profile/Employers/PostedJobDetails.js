@@ -28,8 +28,9 @@ const PostedJobDetails = () => {
     const handleApply = (data) => {
         console.log("Applied jobdetails :", jobdetails);
         const jobApply = {
-            jobSeekerEmail: user.email,
-            jobSeekerName: user.displayName,
+            jobId: _id,
+            email: user.email,
+            name: user.displayName,
             postersEmail: postersEmail,
             jobTitle: jobTitle,
             organization: organization,

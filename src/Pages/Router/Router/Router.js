@@ -110,7 +110,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/appliedJob',
-                element: <AppliedJobList></AppliedJobList>
+                element: <AppliedJobList></AppliedJobList>,
+                loader: () => fetch('http://localhost:5000/jobseekerapply')
             },
 
 
