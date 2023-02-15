@@ -54,6 +54,38 @@ const PostedJobDetails = () => {
             })
     }
 
+    const handleJobSave = (data) => {
+        console.log("Saved Job Details :", jobdetails);
+        const savedJob = {
+            jobId: _id,
+            email: user.email,
+            name: user.displayName,
+            postersEmail: postersEmail,
+            jobTitle: jobTitle,
+            organization: organization,
+            category: category,
+            savedDate: applicationDate
+        }
+
+        console.log("Job Post Data :", savedJob);
+
+        fetch('http://localhost:5000/savedjobs', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(savedJob)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                toast('The Job Saved Successfully');
+                navigate("/dashboard/savedJobs")
+            })
+    }
+
+
+
     return (
         <div>
             <div className="card">
@@ -207,7 +239,8 @@ const PostedJobDetails = () => {
 
                     <div className='d-flex justify-content-center'>
                         <Link onClick={() => handleApply(jobdetails)} to="/"> <button type="button" className=" custom_btn mx-1"> Apply Now</button></Link>
-                        <Link to="/"> <button type="button" className=" custom_btn mx-1"> Save</button></Link>
+                        <Link onClick={() => handleJobSave(jobdetails)} to="/"> <button type="button" className=" custom_btn mx-1"> Save</button></Link>
+                        {/* <Link to="/"> <button type="button" className=" custom_btn mx-1"> Save</button></Link> */}
                     </div>
                 </div>
             </div>

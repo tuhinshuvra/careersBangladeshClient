@@ -30,6 +30,7 @@ import JobSeekerProfileEntry from '../../Profile/MyJobs/Personal/JobSeekerProfil
 import JobSeekerProfile from '../../Profile/MyJobs/Personal/JobSeekerProfile';
 import JobCategoryEntry from '../../JobCategory/JobCategoryEntry';
 import JobCategoryList from '../../JobCategory/JobCategoryList';
+import SavedJobList from '../../Profile/MyJobs/SavedJobList/SavedJobList';
 
 const router = createBrowserRouter([
     {
@@ -109,9 +110,15 @@ const router = createBrowserRouter([
                 element: <MyCV></MyCV>
             },
             {
-                path: '/dashboard/appliedJob',
+                path: '/dashboard/appliedJobs',
                 element: <AppliedJobList></AppliedJobList>,
-                loader: () => fetch('http://localhost:5000/jobseekerapply')
+                // loader: () => fetch('http://localhost:5000/jobseekerapply')
+            },
+
+            {
+                path: '/dashboard/savedJobs',
+                element: <SavedJobList></SavedJobList>,
+                // loader: () => fetch('http://localhost:5000/jobseekersavedjobs')
             },
 
 
