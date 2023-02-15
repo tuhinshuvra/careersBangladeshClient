@@ -19,6 +19,7 @@ const EmployerProfileEntry = () => {
             name: user?.displayName,
             companyNameEn: data.company_name_en,
             companyNameBn: data.company_name_bn,
+            companyLogo: data.company_logo,
             estdYear: data.estd_year,
             companySize: data.company_size,
             addressEng: data.address_en,
@@ -50,18 +51,36 @@ const EmployerProfileEntry = () => {
 
     return (
         <div>
-            <h2 className=" text-center fw-bold my-4">Employer Profile Entry</h2>
+            <h2 className=" text-center fw-bold my-4">Company Profile Entry</h2>
 
-            <form onSubmit={handleSubmit(handleEmployeProfile)} >
+            <form onSubmit={handleSubmit(handleEmployeProfile)}>
 
-                <input
-                    {...register("company_name_en", { required: true })}
-                    name='company_name_en'
-                    className='input form-control my-lg-3'
-                    id="company-name-eng"
-                    type="text"
-                    placeholder='Company Name*'
-                />
+                <div className=' row'>
+                    <div className=' col-md-6'>
+                        <label htmlFor="ompany_name_en"><b>Company Name</b></label>
+                        <input
+                            {...register("company_name_en", { required: true })}
+                            name='company_name_en'
+                            className='input form-control my-lg-3'
+                            id="company-name-eng"
+                            type="text"
+                            placeholder='Company Name*'
+                        />
+                    </div>
+
+                    <div className=' col-md-6'>
+                        <label htmlFor="company_logo"> <b> Company Logo</b></label>
+                        <input
+                            {...register("company_logo", { required: true })}
+                            name='company_logo'
+                            className='input form-control my-lg-3'
+                            id="company_logo"
+                            type="file"
+                            placeholder='Company Logo*'
+                        />
+
+                    </div>
+                </div>
 
                 <input
                     {...register("company_name_bn", { required: true })}

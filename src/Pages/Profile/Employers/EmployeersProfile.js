@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import ProfilePic from '../../../assets/images/employers.jpg';
+import ProfilePic from '../../../assets/job_company_logo/gbl-logo.png';
 import { AuthContext } from '../../Authentication/AuthProvider';
 import './EmployeersProfile.css';
 
@@ -25,7 +25,7 @@ const EmployersProfile = () => {
 
     console.log("employerData : ", employerData)
 
-    const { _id, name, companyNameEn, companyNameBn, estdYear, companySize, addressEng, addressBng, busiDescription, tradeLicense, websiteURL, contactPersonName, contactPersonDesignation,
+    const { _id, name, companyNameEn, companyLogo, companyNameBn, estdYear, companySize, addressEng, addressBng, busiDescription, tradeLicense, websiteURL, contactPersonName, contactPersonDesignation,
         contactPersonEmail, contactPersonPhone } = employerData;
 
     return (
@@ -36,7 +36,7 @@ const EmployersProfile = () => {
                     <header className="resume-header pt-4">
                         <div className=' d-flex justify-content-evenly'>
                             <div className="col-lg-4 ">
-                                <img className="employers_pic" src={ProfilePic} alt="" />
+                                <img className="employers_pic" src={companyLogo} alt="" />
                             </div>
 
                             <div className="col-lg-8">
@@ -44,8 +44,8 @@ const EmployersProfile = () => {
                                     <div className=' d-flex justify-content-evenly gap-1  '>
                                         <div className=' col-lg-8'>
                                             <div className="primary-info col-auto">
-                                                <h1 className="name mt-0 mb-1 text-uppercase">{name}</h1>
-                                                <p className="title fw-bold">Assistant Manager, {companyNameEn}</p>
+                                                {/* <h1 className="name mt-0 mb-1 text-uppercase">{name}</h1> */}
+                                                <h2 className="title fw-bold">{companyNameEn}</h2>
                                                 <p className="title fw-bold">{addressEng}</p>
                                                 <p className=' fw-bold'>Estd: {estdYear},    <span> No of Empoyee: {companySize} + </span></p>
                                                 <div className="title mb-3 fw-bold">Trade License: {tradeLicense}</div>
@@ -60,7 +60,7 @@ const EmployersProfile = () => {
                     </header>
                     <div className="resume-body p-3">
                         <section className="resume-section summary-section mb-5">
-                            <h2 className="">Business Description of {companyNameEn}</h2>
+                            <h2 className=""> Description</h2>
                             <div className="resume-section-content">
                                 <p>{busiDescription}</p>
                             </div>

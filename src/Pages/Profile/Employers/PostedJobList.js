@@ -1,37 +1,30 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Authentication/AuthProvider';
+import ApplicantList from './ApplicantList';
 
 const PostedJobList = () => {
+    const { user } = useContext(AuthContext);
     // const [users, setUsers] = useState([]);
+    const { setJobId } = useContext(AuthContext);
+
+    const email = user.email;
 
     const { data: jobs = [], refetch } = useQuery({
         queryKey: ['jobs'],
         queryFn: async () => {
-            const respone = await fetch('http://localhost:5000/jobs');
+            // const respone = await fetch('http://localhost:5000/jobs');
+            const respone = await fetch(`http://localhost:5000/postedjob?email=${email}`);
             const data = respone.json();
             return data;
         }
     })
 
 
-    const handleDelete = (job) => {
-        fetch(`http://localhost:5000/jobs/${job._id}`, {
-            method: 'DELETE'
-        })
-            .then(respnse => respnse.json())
-            .then(data => {
-                console.log(data)
-                if (data.deletedCount > 0) {
-                    toast('Job Deleted Successfully.')
-                }
-            });
-        // console.log(user._id);
-    }
-
     const handleJobsUpdate = (job) => {
-        console.log("Selected to Update Job : ", job._id)
+        //     console.log("Selected to Update Job : ", job._id)
     }
 
 
@@ -45,9 +38,9 @@ const PostedJobList = () => {
                             <th>SL</th>
                             <th>Title</th>
                             <th>Organization</th>
-                            <th>Location</th>
                             <th>Posted</th>
                             <th>Deadline</th>
+                            <th>All Applicant</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -59,23 +52,29 @@ const PostedJobList = () => {
                                     <td>
                                         <Link className=' text-decoration-none text-primary ' to={`/dashboard/jobs/${job._id}`}>
                                             {/* <Link className='text-decoration-none fw-bolder' to={`/services/${service._id}`}>            Show Details</Link> */}
-                                            {job.jobTitle}
+                                            <b>{job.jobTitle}</b>
                                         </Link>
                                     </td>
                                     <td>{job.organization}</td>
-                                    <td>{job.location}</td>
                                     <td>{job.postDate}</td>
                                     <td>{job.deadLine}</td>
                                     <td>
-                                        <Link to={`/dashboardAdmin/jobUpdate/${job._id}`}>
+                                        <Link to={`/dashboard/applicantList`}>
+                                            <button className=' fw-bold btn-sm btn btn-primary mx-1'
+                                                onClick={() => setJobId(job._id)}
+                                            >ApplicatList</button>
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link to={`/dashboard/jobUpdate/${job._id}`}>
                                             <button className=' fw-bold btn-sm btn btn-primary mx-1'
                                                 onClick={() => handleJobsUpdate(job._id)}
                                             >Update</button>
                                         </Link>
 
-                                        <button className=' btn btn-sm  btn-outline-danger'
+                                        {/* <button className=' btn btn-sm  btn-outline-danger'
                                             onClick={() => handleDelete(job)}
-                                        >Delete</button>
+                                        >Delete</button> */}
                                     </td>
                                 </tr>
                             )

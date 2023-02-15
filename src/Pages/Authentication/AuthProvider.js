@@ -9,6 +9,8 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [applicantShow, setApplicatShow] = useState(true);
+    const [jobId, setJobId] = useState([]);
 
     const signIn = (email, password) => {
         setLoading(true);
@@ -45,6 +47,10 @@ const AuthProvider = ({ children }) => {
     const authInfo = {
         user,
         loading,
+        jobId,
+        setJobId,
+        applicantShow,
+        setApplicatShow,
         setLoading,
         createUser,
         updateUser,

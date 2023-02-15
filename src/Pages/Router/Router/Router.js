@@ -31,6 +31,8 @@ import JobSeekerProfile from '../../Profile/MyJobs/Personal/JobSeekerProfile';
 import JobCategoryEntry from '../../JobCategory/JobCategoryEntry';
 import JobCategoryList from '../../JobCategory/JobCategoryList';
 import SavedJobList from '../../Profile/MyJobs/SavedJobList/SavedJobList';
+import ApplicantList from '../../Profile/Employers/ApplicantList';
+import ApplicantProfile from '../../Profile/MyJobs/Personal/ApplicantProfile';
 
 const router = createBrowserRouter([
     {
@@ -88,6 +90,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/jobSeekerProfile',
                 element: <JobSeekerProfile></JobSeekerProfile>
+            },
+
+            {
+                path: '/dashboard/applicantProfile',
+                element: <ApplicantProfile></ApplicantProfile>
             },
             {
                 path: '/dashboard/education',
@@ -149,6 +156,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/postedJobList',
                 element: <PostedJobList></PostedJobList>
+            },
+
+            {
+                path: '/dashboard/applicantList',
+                element: <ApplicantList></ApplicantList>,
             },
 
 

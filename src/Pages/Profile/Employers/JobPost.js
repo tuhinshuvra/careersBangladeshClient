@@ -25,7 +25,7 @@ const JobPost = () => {
 
     const handleJobPost = (data) => {
         const jobPost = {
-            postersEmail: user.email,
+            email: user.email,
             postersName: user.displayName,
             category: data.category,
             jobTitle: data.job_title,

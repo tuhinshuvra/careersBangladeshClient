@@ -3,9 +3,9 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
 import '../../Employers/EmployeersProfile.css';
 
-const JobSeekerProfile = () => {
+const ApplicantProfile = () => {
     const [employerData, setEmployerData] = useState([]);
-    const { user } = useContext(AuthContext);
+    const { user, applicantShow } = useContext(AuthContext);
     const email = user.email;
 
     const employer = useLoaderData();
@@ -14,18 +14,17 @@ const JobSeekerProfile = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/jobSeeker/${email}`)
+        fetch(`http://localhost:5000/jobSeeker/${applicantShow}`)
             .then(response => response.json())
             .then(data => {
-                console.log("JobSeeker Data:", data);
+                console.log("Applicant Applicant  Data:", data);
                 setEmployerData(data)
             })
-    }, [email])
+    }, [applicantShow])
 
     console.log("employerData : ", employerData)
 
-    const { _id, name, careerObjective, skill, experience, achivement, birthDete, qualification, institute, passingYear, linkOne,
-        linkTwo, linkThree, portfolio, language, fathersName, mothersName, phone, image, gender, religion, maritialStatus, permanentAddress, refOneName, refOneDetails, refTwoName, refTwoDetails, other } = employerData;
+    const { _id, name, careerObjective,  skill, experience, achivement, birthDete, qualification, institute, passingYear, linkOne, linkTwo, linkThree, portfolio, language, fathersName, mothersName, phone, image, gender, religion, maritialStatus, permanentAddress, refOneName, refOneDetails, refTwoName, refTwoDetails, other } = employerData;
 
 
     return (
@@ -220,4 +219,4 @@ const JobSeekerProfile = () => {
     );
 };
 
-export default JobSeekerProfile;
+export default ApplicantProfile;

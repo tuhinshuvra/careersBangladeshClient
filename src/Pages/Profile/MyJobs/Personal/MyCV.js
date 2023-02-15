@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ProfilePic from '../../../../assets/images/profile/profile.jpg';
 import './MyCV.css';
 
 const MyCV = () => {
@@ -12,7 +11,7 @@ const MyCV = () => {
                     <header className="resume-header pt-4">
                         <div className=' d-flex justify-content-evenly'>
                             <div className="col-lg-3 ">
-                                <img className="profile_pic" src={ProfilePic} alt="" />
+                                <img className="profile_pic" src={""} alt="" />
                             </div>
                             {/* <!--//col--> */}
                             <div className="col-lg-9">

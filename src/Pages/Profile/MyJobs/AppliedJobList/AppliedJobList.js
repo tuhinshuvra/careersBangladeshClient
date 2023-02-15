@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import app from '../../../../firebase/firebase.config';
 import { AuthContext } from '../../../Authentication/AuthProvider';
 
 const AppliedJobList = () => {
@@ -16,7 +15,6 @@ const AppliedJobList = () => {
             .then(res => res.json())
             .then(data => setApplications(data))
     }, [user?.email])
-
 
     console.log("applications : ", applications)
 
