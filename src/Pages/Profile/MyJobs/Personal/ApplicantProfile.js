@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
 import '../../Employers/EmployeersProfile.css';
+import './Profile.css';
 
 const ApplicantProfile = () => {
     const [employerData, setEmployerData] = useState([]);
@@ -24,7 +25,7 @@ const ApplicantProfile = () => {
 
     console.log("employerData : ", employerData)
 
-    const { _id, name, careerObjective,  skill, experience, achivement, birthDete, qualification, institute, passingYear, linkOne, linkTwo, linkThree, portfolio, language, fathersName, mothersName, phone, image, gender, religion, maritialStatus, permanentAddress, refOneName, refOneDetails, refTwoName, refTwoDetails, other } = employerData;
+    const { _id, name, careerObjective, skill, experience, achivement, birthDete, qualification, institute, passingYear, linkOne, linkTwo, linkThree, portfolio, language, fathersName, mothersName, phone, image, gender, religion, maritialStatus, permanentAddress, refOneName, refOneDetails, refTwoName, refTwoDetails, other } = employerData;
 
 
     return (
