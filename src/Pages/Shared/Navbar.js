@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../../assets/logo/carriers-bangladesh-logo.png';
 import { AuthContext } from '../Authentication/AuthProvider';
 import { toast } from 'react-hot-toast';
@@ -7,12 +7,15 @@ import './Navbar.css';
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
+    const navigate = useNavigate();
 
     const handleLogOut = () => {
         logOut()
             .then(() => {
                 toast("User logout successfully!")
-            })
+                navigate('/');
+            }
+            )
             .catch((error) => { console.log("Error : ", error); })
     }
 

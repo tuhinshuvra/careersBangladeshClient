@@ -14,10 +14,10 @@ const NewJobs = () => {
         }
     })
 
-    let newJobs = jobs.slice(0, 9)
+    let newJobs = jobs.slice(0, 6)
 
     return (
-        <div className=' common-margin '>
+        <div className=' common-margin pb-3 '>
             <div className=' common-margin '>
                 <h2 className='my-5 careers_title_one'><FaSun className='mx-1'></FaSun>NEW JOBS</h2>
                 <div className='hot_job_category'>

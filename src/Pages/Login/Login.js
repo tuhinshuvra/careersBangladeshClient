@@ -37,13 +37,13 @@ const Login = () => {
 
     return (
         <div>
-            <section className="  gradient-form" style={{ backgroundColor: "#eee" }}>
+            <section className="gradient-form" style={{}}>
                 <div className="container py-5">
                     <div className="row d-flex justify-content-center align-items-center">
                         <div className="col-xl-10">
                             <div className="card text-black">
                                 <div className="row g-0  rounded-5">
-                                    <div className="col-lg-5 d-flex flex-column justify-content-center align-items-center logo-area" style={{ backgroundColor: "#505b79" }}>
+                                    <div className="col-lg-5 d-flex flex-column justify-content-center align-items-center logo-area" style={{}}>
                                         <div className="px-3 py-lg-4 p-md-5  mx-auto">
                                             <img className='login_logo' src={LoginLogo} alt="" />
                                         </div>

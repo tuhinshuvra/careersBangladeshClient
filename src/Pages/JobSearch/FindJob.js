@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaFile, FaFilter, FaList, FaSearch, FaStar, FaTh } from 'react-icons/fa';
 import './FindJob.css';
@@ -6,10 +6,17 @@ import useTitle from '../../hooks/useTitle';
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
+import { AuthContext } from '../Authentication/AuthProvider';
 
 const FindJob = () => {
+
+    // const { jobsss } = useLoaderData();
+
+
+
+    // const { categoryId } = useContext(AuthContext)
     // const { catJobs } = useLoaderData();
-    // console.log("catJobs : ", catJobs)
+    // console.log("Jobs by category : ", jobsss)
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     useTitle('FindJob');
@@ -35,23 +42,23 @@ const FindJob = () => {
 
 
 
-    const handleDelete = (job) => {
-        fetch(`https://careers-bangladesh-server.vercel.app/jobs/${job._id}`, {
-            method: 'DELETE'
-        })
-            .then(respnse => respnse.json())
-            .then(data => {
-                console.log(data)
-                if (data.deletedCount > 0) {
-                    toast('Job Deleted Successfully.')
-                }
-            });
-        // console.log(user._id);
-    }
+    // const handleDelete = (job) => {
+    //     fetch(`https://careers-bangladesh-server.vercel.app/jobs/${job._id}`, {
+    //         method: 'DELETE'
+    //     })
+    //         .then(respnse => respnse.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             if (data.deletedCount > 0) {
+    //                 toast('Job Deleted Successfully.')
+    //             }
+    //         });
+    //     // console.log(user._id);
+    // }
 
-    const handleJobsUpdate = (job) => {
-        console.log("Selected to Update Job : ", job._id)
-    }
+    // const handleJobsUpdate = (job) => {
+    //     console.log("Selected to Update Job : ", job._id)
+    // }
 
     return (
         <div className="row">
@@ -163,14 +170,14 @@ const FindJob = () => {
                                 <hr />
                                 {/* <!-- BEGIN SEARCH INPUT --> */}
                                 <div className="input-group">
-                                    <input type="text" className="form-control" value="web development" />
+                                    <input type="text" className="form-control" placeholder='input search data' />
                                     <span className="input-group-btn">
                                         <button className="custom_btn" type="button"><FaSearch className='' />Search</button>
                                     </span>
                                 </div>
                                 {/* <!-- END SEARCH INPUT --> */}
 
-                                <p className=' fw-bold'>Showing all results matching "web development"</p>
+                                <p className=' fw-bold'>Showing search result</p>
 
                                 <div className="padding"></div>
 

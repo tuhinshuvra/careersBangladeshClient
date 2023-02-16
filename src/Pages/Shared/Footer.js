@@ -16,58 +16,56 @@ const Footer = () => {
                     <h5 className=' text-center mt-2'>Providing reliable job solution</h5>
                 </div>
                 <div className="col-6 col-md-2 mt-3 ">
-                    <h5>Services</h5>
+                    <h5>About Us</h5>
                     <ul className="nav flex-column">
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">Home</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">Features</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">Pricing</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">FAQs</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">About</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">About</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">About</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Terms & Conditions</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Accessibility Statement</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">International Partners </Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Other Partners </Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Privacy Policy</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Feedback</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Contact Us</Link></li>
                     </ul>
                 </div>
 
                 <div className="col-6 col-md-2 mt-3 ">
-                    <h5>Hot Link</h5>
+                    <h5>Job Seekers</h5>
                     <ul className="nav flex-column">
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">Home</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">Features</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">Pricing</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">FAQs</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">About</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">About</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">About</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">About Careersbangladesh</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Edit Resume</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Video Resume new</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">My Jobs Panel</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">List of Features</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Employability Test</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Video Guides</Link></li>
                     </ul>
                 </div>
 
                 <div className="col-6 col-md-2 mt-3 ">
-                    <h5>Legal</h5>
+                    <h5>Employers</h5>
                     <ul className="nav flex-column">
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">Home</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">Features</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">Pricing</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">FAQs</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">About</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">About</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">About</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Create Account</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Service</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Pricing</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Disability Inclusion Practice</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Post a Job</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">FAQ</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">About</Link></li>
                     </ul>
                 </div>
 
                 <div className="col-6 col-md-2 mt-3">
-                    <h5>Legal</h5>
+                    <h5>Tools & Media</h5>
                     <ul className="nav flex-column">
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">Home</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">Features</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">Pricing</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">FAQs</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">About</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">About</Link></li>
-                        <li className="nav-item "><Link href="#" className="nav-link p-0 text-muted">About</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Careesbangladesh App</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Facebook</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Google</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Youtube</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">LinkedIn</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">Instagram</Link></li>
+                        <li className="nav-item "><Link to="/" className="nav-link p-0 text-muted">GooglePlus</Link></li>
                     </ul>
                 </div>
-
-
             </div>
 
             <hr />
@@ -78,8 +76,8 @@ const Footer = () => {
                 <Link to="#" className=' social_icon'> <FaLinkedinIn /> </Link>
             </div>
 
-            <div className="">
-                <p className='text-center'>Copyright @ 2023, All right reserved by Careers Bangladesh Ltd</p>
+            <div className=" mb-0">
+                <p className='text-center mb-0'>Copyright @ 2023, All right reserved by Careers Bangladesh Ltd</p>
             </div>
 
         </footer>

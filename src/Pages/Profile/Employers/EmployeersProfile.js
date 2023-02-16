@@ -36,7 +36,7 @@ const EmployersProfile = () => {
                     <header className="resume-header pt-4">
                         <div className=' d-flex justify-content-evenly'>
                             <div className="col-lg-4 ">
-                                <img className="employers_pic" src={companyLogo} alt="" />
+                                <img className="companyLogo" src={companyLogo} alt="" />
                             </div>
 
                             <div className="col-lg-8">

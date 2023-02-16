@@ -51,7 +51,6 @@ const PostedJobList = () => {
                                     <td>{index + 1}</td>
                                     <td>
                                         <Link className=' text-decoration-none text-primary ' to={`/dashboard/jobs/${job._id}`}>
-                                            {/* <Link className='text-decoration-none fw-bolder' to={`/services/${service._id}`}>            Show Details</Link> */}
                                             <b>{job.jobTitle}</b>
                                         </Link>
                                     </td>

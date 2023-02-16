@@ -291,18 +291,41 @@ const PostedJobDetails = () => {
                     {
                         isJobSeeker &&
                         <div className='d-flex justify-content-center'>
-                            <Link onClick={() => handleApply(jobdetails)} to="/"> <button type="button" className=" custom_btn mx-1"> Apply Now</button></Link>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className=" custom_btn mx-1"> Apply Now</button>
 
-                            {/* <Link to="/"> <button type="button" className=" custom_btn mx-1"> Save</button></Link> */}
                         </div>
                     }
 
 
 
 
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Input Your Extected Salary</h1>
+                                </div>
+                                <div class="modal-body">
+                                    <input className='input form-control ' type="text" id="exSalary" name='exSalary' placeholder='Input expected salary' />
+                                </div>
+
+                                <div class="form-check  ms-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+                                    <label class="form-check-label " for="flexCheckChecked">
+                                        I am agree with the terms and conditions
+                                    </label>
+                                </div>
 
 
-
+                                <div class="modal-footer">
+                                    <Link onClick={() => handleApply(jobdetails)}>
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className=" custom_btn mx-1">Confirm to Apply</button>
+                                    </Link>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>

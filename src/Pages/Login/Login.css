@@ -2,6 +2,11 @@
     width: 230px;
 }
 
+.logo-area {
+    background: linear-gradient(180deg, #daf22c 0%, #de561b 100%)
+}
+
+
 .login_form {
     /* padding: 200px; */
 }

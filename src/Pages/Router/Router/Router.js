@@ -56,7 +56,7 @@ const router = createBrowserRouter([
             {
                 path: '/jobs/:categoryId',
                 element: <FindJob></FindJob>,
-                loader: ({ params }) => fetch(`https://careers-bangladesh-server.vercel.app/jobs?category=${params.categoryId}`)
+                loader: ({ params }) => fetch(`https://careers-bangladesh-server.vercel.app/jobbycategory?category=${params.categoryId}`)
             },
             {
                 path: '/elearning',
