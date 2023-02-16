@@ -9,21 +9,21 @@ const UserList = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const respone = await fetch('http://localhost:5000/users');
+            const respone = await fetch('https://careers-bangladesh-server.vercel.app/users');
             const data = respone.json();
             return data;
         }
     })
 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/users')
+    //     fetch('https://careers-bangladesh-server.vercel.app/users')
     //         .then(respnse => respnse.json())
     //         .then(data => setUsers(data))
     // }, [])
 
 
     const handleMakeAdmin = (email) => {
-        fetch(`http://localhost:5000/users/admin/${email}`, {
+        fetch(`https://careers-bangladesh-server.vercel.app/users/admin/${email}`, {
             method: 'PUT',
             headers: {}
         })
@@ -38,7 +38,7 @@ const UserList = () => {
     }
 
     const handleDelete = (user) => {
-        fetch(`http://localhost:5000/users/${user._id}`, {
+        fetch(`https://careers-bangladesh-server.vercel.app/users/${user._id}`, {
             method: 'DELETE'
         })
             .then(respnse => respnse.json())

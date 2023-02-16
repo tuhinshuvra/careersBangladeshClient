@@ -1,8 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { FaBriefcase, FaBuilding, FaCalculator } from 'react-icons/fa';
+import { FaBookmark, FaBriefcase, FaBuilding, FaCalculator } from 'react-icons/fa';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
+import useEmployer from '../../../hooks/useEmployer';
+import useJobSeeker from '../../../hooks/useJobSeeker';
 import { AuthContext } from '../../Authentication/AuthProvider';
+import './PostedJobDetails.css';
 
 const PostedJobDetails = () => {
     const jobdetails = useLoaderData();
@@ -11,6 +14,10 @@ const PostedJobDetails = () => {
     console.log("jobdetails : ", jobdetails)
     const [jobPosts, setJobPosts] = useState([]);
     const { user } = useContext(AuthContext);
+
+    const [isEmployer] = useEmployer(user?.email);
+    const [isJobSeeker] = useJobSeeker(user?.email);
+
     const email = user?.email;
 
     const employer = useLoaderData();
@@ -18,7 +25,7 @@ const PostedJobDetails = () => {
     // console.log("Employer : ", employer)
 
 
-    const { _id, postersEmail, postersName, jobTitle, organization, vacancies, category, deadLine, education, experience, postDate, applyStatus, employmentStatus, businessDescription, jobLevel, workPlace, jobContext,
+    const { _id, postersEmail, postersName, jobTitle, companyLogo, organization, vacancies, category, deadLine, education, experience, postDate, applyStatus, employmentStatus, businessDescription, jobLevel, workPlace, jobContext,
         jobResponst, location, salaryFrom, salaryTo, yearlyBonus, salaryReview, others } = jobdetails;
 
     console.log("jobsData : ", jobPosts)
@@ -39,7 +46,7 @@ const PostedJobDetails = () => {
         }
         console.log("Job Post Data :", jobApply);
 
-        fetch('http://localhost:5000/applications', {
+        fetch('https://careers-bangladesh-server.vercel.app/applications', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
@@ -69,7 +76,7 @@ const PostedJobDetails = () => {
 
         console.log("Job Post Data :", savedJob);
 
-        fetch('http://localhost:5000/savedjobs', {
+        fetch('https://careers-bangladesh-server.vercel.app/savedjobs', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
@@ -89,17 +96,62 @@ const PostedJobDetails = () => {
     return (
         <div>
             <div className="card">
-                <div className="card-body">
-                    <div className=' d-md-flex justify-content-between'>
-                        <h4 className="card-title fw-bold">{jobTitle}</h4>
-                        <p className="fw-bold">{organization} , {location}, (On Site)</p>
+                <div>
+                    <div className=' float-end'>
+                        {
+                            isEmployer &&
+
+                            <div className=' d-flex'>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        <b>Active</b>
+                                    </label>
+                                </div>
+                                <div class="form-check mx-2">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        <b> Inactive</b>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" />
+                                    <label class="form-check-label" for="exampleRadios3">
+                                        <b> Close</b>
+                                    </label>
+                                </div>
+                            </div>
+                        }
                     </div>
+                </div>
+                <div className="card-body">
+
+
+                    <div className=' d-md-flex justify-content-between my-4'>
+                        <div className=' d-flex'>
+                            <img className='companyLogo ' src={companyLogo} alt="" />
+                            <h3 className=' fw-bold mx-1'>{organization}</h3>
+                        </div>
+                        <div className='d-flex'>
+                            <h5 className="fw-bold">{jobTitle},   {location}, (On Site)</h5>
+
+                            {
+                                isJobSeeker &&
+                                <Link onClick={() => handleJobSave(jobdetails)} to="/"> <FaBookmark className='fs-5 mx-1 float-end fs-2 text-info '></FaBookmark> </Link>
+                            }
+
+                        </div>
+                    </div>
+
+
 
                     <div className='d-flex justify-content-between'>
                         <p className='fw-bold d-flex justify-content-center align-items-center'><FaBriefcase className='fs-5 mx-1'></FaBriefcase>Full-time</p>
                         <p className='fw-bold d-flex justify-content-center align-items-center d-none d-md-block'><FaBuilding className='fs-5 mx-1'></FaBuilding>51-200 employees</p>
                         <p className='fw-bold d-flex justify-content-center align-items-center'><FaCalculator className='fs-5 mx-1'></FaCalculator>Posted: {postDate}</p>
                     </div>
+
+
 
                     <p>
                         <b> Job Context</b> <br />
@@ -236,12 +288,22 @@ const PostedJobDetails = () => {
                         careersbangladesh.com Online Job Posting.
                     </p>
 
+                    {
+                        isJobSeeker &&
+                        <div className='d-flex justify-content-center'>
+                            <Link onClick={() => handleApply(jobdetails)} to="/"> <button type="button" className=" custom_btn mx-1"> Apply Now</button></Link>
 
-                    <div className='d-flex justify-content-center'>
-                        <Link onClick={() => handleApply(jobdetails)} to="/"> <button type="button" className=" custom_btn mx-1"> Apply Now</button></Link>
-                        <Link onClick={() => handleJobSave(jobdetails)} to="/"> <button type="button" className=" custom_btn mx-1"> Save</button></Link>
-                        {/* <Link to="/"> <button type="button" className=" custom_btn mx-1"> Save</button></Link> */}
-                    </div>
+                            {/* <Link to="/"> <button type="button" className=" custom_btn mx-1"> Save</button></Link> */}
+                        </div>
+                    }
+
+
+
+
+
+
+
+
                 </div>
             </div>
         </div>

@@ -13,14 +13,14 @@ const ApplicantList = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/jobapplicant?jobId=${jobId}`)
+        fetch(`https://careers-bangladesh-server.vercel.app/jobapplicant?jobId=${jobId}`)
             .then(response => response.json())
             .then(data => {
                 setApplicants(data)
                 console.log(" ApplicantList ApplicantList :", data)
             })
     }, [jobId])
- 
+
 
 
     const handleShowApplicant = (job) => {

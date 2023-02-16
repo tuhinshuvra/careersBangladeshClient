@@ -1,8 +1,14 @@
 import React from 'react';
 import './JobAlert.css';
 import { HiBell } from 'react-icons/hi';
+import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const JobAlert = () => {
+    const jobAlertHandler = () => {
+        toast.success('Congratulation You Signup Successfully!')
+    }
+
     return (
         <div className="jobAlert_bg">
             <div className=' col-lg-10 mx-auto pt-5'>
@@ -14,9 +20,11 @@ const JobAlert = () => {
                     <div className="col-md-10 mx-auto col-lg-5">
                         <form className="p-4 px-md-3 py-md-5 border rounded-3  d-flex justify-content-between">
 
-                            <input className='input form-control' id="email" name="email" type="email" placeholder='Email Address' />
+                            <input className='input form-control' id="email" name="email" type="email" placeholder='Email Address' required />
                             {/* <button className="custom_btn ms-2" type="submit">SignUp</button> */}
-                            <button type="submit" className="fw-bold custom_btn ms-2">SignUp</button>
+                            <Link to="/">
+                                <button onClick={() => jobAlertHandler()} type="submit" className="fw-bold custom_btn ms-2">SignUp</button>
+                            </Link>
 
                         </form>
                     </div>

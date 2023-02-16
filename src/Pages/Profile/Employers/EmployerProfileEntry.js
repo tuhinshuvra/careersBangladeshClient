@@ -34,7 +34,7 @@ const EmployerProfileEntry = () => {
         }
         console.log("Employee Data :", data);
 
-        fetch('http://localhost:5000/emplyerProfile', {
+        fetch('https://careers-bangladesh-server.vercel.app/emplyerProfile', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"

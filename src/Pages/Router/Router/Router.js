@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Home from '../../Home/Home';
 import Register from '../../Register/Register';
@@ -33,8 +33,10 @@ import JobCategoryList from '../../JobCategory/JobCategoryList';
 import SavedJobList from '../../Profile/MyJobs/SavedJobList/SavedJobList';
 import ApplicantList from '../../Profile/Employers/ApplicantList';
 import ApplicantProfile from '../../Profile/MyJobs/Personal/ApplicantProfile';
+import CommonDashboard from '../../../layout/CommonDashboard';
 
 const router = createBrowserRouter([
+
     {
         path: '/',
         element: <MainLayout></MainLayout>,
@@ -54,7 +56,7 @@ const router = createBrowserRouter([
             {
                 path: '/jobs/:categoryId',
                 element: <FindJob></FindJob>,
-                loader: ({ params }) => fetch(`http://localhost:5000/jobs?category=${params.categoryId}`)
+                loader: ({ params }) => fetch(`https://careers-bangladesh-server.vercel.app/jobs?category=${params.categoryId}`)
             },
             {
                 path: '/elearning',
@@ -82,6 +84,12 @@ const router = createBrowserRouter([
         children: ([
 
             // job seeker dashboard section
+
+
+            {
+                path: '/dashboard',
+                element: <CommonDashboard></CommonDashboard>,
+            },
 
             {
                 path: '/dashboard/jobSeekerProfileEntry',
@@ -119,13 +127,12 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/appliedJobs',
                 element: <AppliedJobList></AppliedJobList>,
-                // loader: () => fetch('http://localhost:5000/jobseekerapply')
             },
 
             {
                 path: '/dashboard/savedJobs',
                 element: <SavedJobList></SavedJobList>,
-                // loader: () => fetch('http://localhost:5000/jobseekersavedjobs')
+                // loader: () => fetch('https://careers-bangladesh-server.vercel.app/jobseekersavedjobs')
             },
 
 
@@ -150,7 +157,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/jobs/:id',
                 element: <PostedJobDetails></PostedJobDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params.id}`)
+                loader: ({ params }) => fetch(`https://careers-bangladesh-server.vercel.app/jobs/${params.id}`)
             },
 
             {
@@ -191,7 +198,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/userUpdate/:id',
                 element: <UpdateUser></UpdateUser>,
-                loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
+                loader: ({ params }) => fetch(`https://careers-bangladesh-server.vercel.app/users/${params.id}`)
             },
         ])
     },
@@ -199,5 +206,7 @@ const router = createBrowserRouter([
     {
         path: "*", element: <WrongRoute> </WrongRoute>
     },
+
 ])
+
 export default router;

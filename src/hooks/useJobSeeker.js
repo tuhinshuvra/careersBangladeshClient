@@ -7,7 +7,7 @@ const useJobSeeker = (email) => {
 
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/jobseeker/${email}`)
+            fetch(`https://careers-bangladesh-server.vercel.app/users/jobseeker/${email}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);

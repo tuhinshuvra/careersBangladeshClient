@@ -7,7 +7,7 @@ const PracticePurpose = () => {
     const handleAddUser = (event) => {
         event.preventDefault();
         // console.log("User List :", users)
-        fetch('http://localhost:5000/users', {
+        fetch('https://careers-bangladesh-server.vercel.app/users', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

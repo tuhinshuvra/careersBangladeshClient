@@ -15,7 +15,7 @@ const JobPost = () => {
     const { data: categories, isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/jobCategories');
+            const res = await fetch('https://careers-bangladesh-server.vercel.app/jobCategories');
             const data = await res.json();
             return data;
         }
@@ -29,6 +29,7 @@ const JobPost = () => {
             postersName: user.displayName,
             category: data.category,
             jobTitle: data.job_title,
+            companyLogo: data.com_logo,
             organization: data.organization,
             location: data.location,
             vacancies: data.vacancies,
@@ -52,7 +53,7 @@ const JobPost = () => {
         }
         console.log("Job Post Data :", jobPost);
 
-        fetch('http://localhost:5000/jobs', {
+        fetch('https://careers-bangladesh-server.vercel.app/jobs', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
@@ -75,8 +76,33 @@ const JobPost = () => {
 
             <form onSubmit={handleSubmit(handleJobPost)}>
 
-                <div className=" my-2">
-                    <label className="label"><span className="label-text fw-bold">Job Category</span> </label>
+                <div className=' row'>
+
+                    <div className=' col-md-6 my-2'>
+                        <label className="label"><span className="label-text fw-bold">Company Name</span> </label>
+                        <input
+                            {...register("organization", { required: true })}
+                            name="organization"
+                            className='input form-control'
+                            id="organization"
+                            type="text"
+                            placeholder='Enter Orzation Name'
+                        />
+                    </div>
+
+                    <div className=' col-md-6 my-2'>
+                        <label className="label" htmlFor='com_logo' ><span className="label-text fw-bold">Company Logo</span> </label>
+                        <input
+                            {...register("com_logo")}
+                            name='com_logo'
+                            className='input form-control'
+                            id='com_logo'
+                            type="file"
+                        />
+                    </div>
+                </div>
+                <div>
+                    <label className="label" htmlFor='category'><span className="label-text fw-bold">Job Category</span> </label>
                     <select
                         {...register("category")}
                         name='category'
@@ -91,33 +117,19 @@ const JobPost = () => {
                                 </option>)
                         }
                     </select>
-                    {/* {errors.category && <p className='text-red-500'>{errors.category.message}</p>} */}
-
                 </div>
 
 
-                <div className='my-2 '>
-                    <label className="label"><span className="label-text fw-bold">Job Title</span> </label>
-                    <input
-                        {...register("job_title", { required: true })}
-                        name="job_title"
-                        className='input form-control'
-                        id="job_title"
-                        type="text"
-                        placeholder='Enter Job Title'
-                    />
-                </div>
                 <div className="row">
-
                     <div className=' col-md-6 my-2 '>
-                        <label className="label"><span className="label-text fw-bold">Organization</span> </label>
+                        <label className="label"><span className="label-text fw-bold">Job Title</span> </label>
                         <input
-                            {...register("organization", { required: true })}
-                            name="organization"
+                            {...register("job_title", { required: true })}
+                            name="job_title"
                             className='input form-control'
-                            id="organization"
+                            id="job_title"
                             type="text"
-                            placeholder='Enter Orzation Name'
+                            placeholder='Enter Job Title'
                         />
                     </div>
                     <div className=' col-md-6 my-2 '>
@@ -128,7 +140,7 @@ const JobPost = () => {
                             className='input form-control'
                             id="location"
                             type="text"
-                            placeholder='Enter Work Location'
+                            placeholder='Enter Job Location'
                         />
                     </div>
                 </div>
@@ -342,6 +354,7 @@ const JobPost = () => {
                     type="text"
                     placeholder='Enter Others'
                 />
+
 
                 <div className=' d-flex justify-content-between my-lg-3'>
                     <button className="btn btn-warning fw-bold">Cancel</button>

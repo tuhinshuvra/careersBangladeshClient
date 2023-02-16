@@ -17,7 +17,7 @@ const FindJob = () => {
     const { data: jobs = [], refetch } = useQuery({
         queryKey: ['jobs'],
         queryFn: async () => {
-            const respone = await fetch('http://localhost:5000/jobs');
+            const respone = await fetch('https://careers-bangladesh-server.vercel.app/jobs');
             const data = respone.json();
             return data;
         }
@@ -27,7 +27,7 @@ const FindJob = () => {
     const { data: categories, isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/jobCategories');
+            const res = await fetch('https://careers-bangladesh-server.vercel.app/jobCategories');
             const data = await res.json();
             return data;
         }
@@ -36,7 +36,7 @@ const FindJob = () => {
 
 
     const handleDelete = (job) => {
-        fetch(`http://localhost:5000/jobs/${job._id}`, {
+        fetch(`https://careers-bangladesh-server.vercel.app/jobs/${job._id}`, {
             method: 'DELETE'
         })
             .then(respnse => respnse.json())

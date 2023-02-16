@@ -10,7 +10,7 @@ const SavedJobList = () => {
     const [applications, setApplications] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/jobseekersavedjobs?email=${user?.email}`, {
+        fetch(`https://careers-bangladesh-server.vercel.app/jobseekersavedjobs?email=${user?.email}`, {
             headers: {}
         })
             .then(res => res.json())

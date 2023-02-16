@@ -10,7 +10,7 @@ const EmployerList = (userType) => {
 
     useEffect(() => {
         if (userType) {
-            fetch(`http://localhost:5000/users/${userType}`)
+            fetch(`https://careers-bangladesh-server.vercel.app/users/${userType}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log("AllEmployer:", data);

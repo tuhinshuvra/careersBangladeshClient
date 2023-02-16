@@ -14,8 +14,9 @@
      transition: .3s;
  }
 
- .hot_job_image {
-     width: 100px;
+ .hotjobImg {
+     width: 86px;
+     /* height: 70px; */
  }
 
  .category_link:hover {

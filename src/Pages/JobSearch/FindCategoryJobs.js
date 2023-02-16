@@ -16,7 +16,7 @@ const FindCategoryJobs = (category_id) => {
     const [jobs, setJobs] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/categoryJobs?category=${category_id}`)
+        fetch(`https://careers-bangladesh-server.vercel.app/categoryJobs?category=${category_id}`)
             .then(response => response.json())
             .then(data => setJobs(data))
     }, [category_id])
@@ -27,7 +27,7 @@ const FindCategoryJobs = (category_id) => {
     // const { data: jobs = [], refetch } = useQuery({
     //     queryKey: ['jobs'],
     //     queryFn: async () => {
-    //         const respone = await fetch('http://localhost:5000/jobs');
+    //         const respone = await fetch('https://careers-bangladesh-server.vercel.app/jobs');
     //         const data = respone.json();
     //         return data;
     //     }
@@ -35,7 +35,7 @@ const FindCategoryJobs = (category_id) => {
 
 
     // const handleDelete = (job) => {
-    //     fetch(`http://localhost:5000/jobs/${job._id}`, {
+    //     fetch(`https://careers-bangladesh-server.vercel.app/jobs/${job._id}`, {
     //         method: 'DELETE'
     //     })
     //         .then(respnse => respnse.json())

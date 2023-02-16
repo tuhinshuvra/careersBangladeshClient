@@ -8,7 +8,7 @@ const JobCategoryList = () => {
     const { data: categories = [], refetch } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
-            const respone = await fetch('http://localhost:5000/jobCategories');
+            const respone = await fetch('https://careers-bangladesh-server.vercel.app/jobCategories');
             const data = respone.json();
             return data;
         }
@@ -16,7 +16,7 @@ const JobCategoryList = () => {
 
 
     const handleDelete = (category) => {
-        fetch(`http://localhost:5000/categories/${category._id}`, {
+        fetch(`https://careers-bangladesh-server.vercel.app/categories/${category._id}`, {
             method: 'DELETE'
         })
             .then(respnse => respnse.json())

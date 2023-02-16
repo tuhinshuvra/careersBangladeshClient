@@ -48,7 +48,7 @@ const JobSeekerProfileEntry = () => {
         }
         console.log("Job Seeker Data :", data);
 
-        fetch('http://localhost:5000/jobseekerProfile', {
+        fetch('https://careers-bangladesh-server.vercel.app/jobseekerProfile', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
@@ -146,7 +146,7 @@ const JobSeekerProfileEntry = () => {
 
                 <span className="label-text text-md font-bold ">Experience</span>
                 <div>
-                    <textarea {...register("experience", )}
+                    <textarea {...register("experience",)}
                         name='experience'
                         className='input form-control my-lg-3'
                         id='experience' type="text"
@@ -400,7 +400,7 @@ const JobSeekerProfileEntry = () => {
 
                 <span className="label-text text-md font-bold ">Permanent Address</span>
                 <div>
-                    <textarea {...register("permanent_address", )}
+                    <textarea {...register("permanent_address",)}
                         name='permanent_address'
                         className='input form-control my-lg-3'
                         id='permanent_address' type="text"
@@ -413,7 +413,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-6 my-lg-0 margin-sm'>
                         <span className="label-text text-md font-bold ">Refferece One Name</span>
                         <input
-                            {...register("ref_one_name", )}
+                            {...register("ref_one_name",)}
                             name='ref_one_name'
                             className='input form-control my-lg-3'
                             id="ref_one_name"
@@ -426,7 +426,7 @@ const JobSeekerProfileEntry = () => {
 
                         <span className="label-text text-md font-bold ">Refferece One Details</span>
                         <div>
-                            <textarea {...register("ref_one_details", )}
+                            <textarea {...register("ref_one_details",)}
                                 name='ref_one_details'
                                 className='input form-control my-lg-3'
                                 id='ref_one_details' type="text"
@@ -438,7 +438,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-6 my-lg-0 margin-sm'>
                         <span className="label-text text-md font-bold ">Refferece Two Name</span>
                         <input
-                            {...register("ref_two_name", )}
+                            {...register("ref_two_name",)}
                             name='ref_two_name'
                             className='input form-control my-lg-3'
                             id="ref_two_name"
@@ -452,7 +452,7 @@ const JobSeekerProfileEntry = () => {
 
                         <span className="label-text text-md font-bold ">Refferece Two Details</span>
                         <div>
-                            <textarea {...register("ref_two_details", )}
+                            <textarea {...register("ref_two_details",)}
                                 name='ref_two_details'
                                 className='input form-control my-lg-3'
                                 id='ref_two_details' type="text"

@@ -2,27 +2,28 @@ import React, { useEffect, useState } from 'react';
 import HotJobsDisplay from './HotJobsDisplay';
 import { FaHotjar } from 'react-icons/fa';
 import './HotJobs.css';
+import { useQuery } from '@tanstack/react-query';
 
 const HotJobs = () => {
-    const [categories, setCategories] = useState([]);
-    let newCategories = categories.slice(0, 12)
 
-    useEffect(() => {
-        fetch('allJobs.json')
-            .then(response => response.json())
-            .then(data => {
-                setCategories(data)
-                // console.log("Product Data:", data)
-            })
-    }, [])
+    const { data: jobs = [], refetch } = useQuery({
+        queryKey: ['jobs'],
+        queryFn: async () => {
+            const respone = await fetch('https://careers-bangladesh-server.vercel.app/jobs');
+            const data = respone.json();
+            return data;
+        }
+    })
+
+    let newJobs = jobs.slice(0, 9)
 
     return (
         <div className=' common-margin '>
             <h2 className='my-5 careers_title_one'><FaHotjar className='mx-1'></FaHotjar>HOT JOBS</h2>
             <div className='hot_job_category'>
-                {newCategories.map(category => <HotJobsDisplay
-                    key={category.id}
-                    category={category}
+                {newJobs.map(job => <HotJobsDisplay
+                    key={job.id}
+                    job={job}
                 ></HotJobsDisplay>)}
             </div>
         </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import AnimatedBanner from '../Banner/AnimatedBanner';
 import FindJobHome from '../JobSearch/FindJobHome';
 import JobCategory from '../JobCategory/JobCategory';
 import HotJobs from '../HotJobs/HotJobs';
