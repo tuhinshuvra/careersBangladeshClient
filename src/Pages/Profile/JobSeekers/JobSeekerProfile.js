@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../../../Authentication/AuthProvider';
-import '../../Employers/EmployeersProfile.css';
+import { AuthContext } from '../../Authentication/AuthProvider';
+import './JobSeekerProfile.css';
 
 const JobSeekerProfile = () => {
     const [employerData, setEmployerData] = useState([]);

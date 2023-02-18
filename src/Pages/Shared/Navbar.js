@@ -49,9 +49,9 @@ const Navbar = () => {
                                 <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/about">AboutUs</Link>
                             </li>
 
-                            <li className="nav-item mb-2">
+                            {/* <li className="nav-item mb-2">
                                 <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/contact">Contact</Link>
-                            </li>
+                            </li> */}
 
 
                             {

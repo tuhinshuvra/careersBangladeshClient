@@ -63,7 +63,8 @@ const ApplicantList = () => {
                                     </td> */}
                                     <td>{applicant.applicationDate}</td>
                                     <td>
-                                        <Link to="/dashboard/applicantProfile">
+                                        {/* <Link to="/dashboard/applicantProfile"> */}
+                                        <Link to="/dashboard/jobSeekerProfile">
                                             <button className='fw-bold btn-sm btn btn-primary '
                                                 onClick={() => setApplicatShow(applicant.email)}
                                             >Show Profile</button>

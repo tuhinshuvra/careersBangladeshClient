@@ -4,17 +4,11 @@ import Home from '../../Home/Home';
 import Register from '../../Register/Register';
 import About from '../../About/About';
 import Contact from '../../Contact/Contact';
-import EducationTraining from '../../Profile/MyJobs/Education-Training/EducationTraining';
-import Employment from '../../Profile/MyJobs/Employment/Employment';
-import OtherInformation from '../../Profile/MyJobs/Personal/OtherInformation';
-import Photograph from '../../Profile/MyJobs/Photograph/Photograph';
 import MainLayout from '../../../layout/MainLayout';
 import PostedJobList from '../../Profile/Employers/PostedJobList';
 import EmployerProfileEntry from '../../Profile/Employers/EmployerProfileEntry';
-import AppliedJobList from '../../Profile/MyJobs/AppliedJobList/AppliedJobList';
 import WrongRoute from '../../Shared/ErrorDisplay/WrongRoute';
 import Login from '../../Login/Login';
-import MyCV from '../../Profile/MyJobs/Personal/MyCV';
 import FindJob from '../../JobSearch/FindJob';
 import PostedJobDetails from '../../Profile/Employers/PostedJobDetails';
 import JobPost from '../../Profile/Employers/JobPost';
@@ -26,14 +20,18 @@ import PrivateRoute from '../PrivateRoute';
 import DashboardLayout from '../../../layout/DashboardLayout';
 import EmployersProfile from '../../Profile/Employers/EmployeersProfile';
 import ELearning from '../../ELearning/ELearning';
-import JobSeekerProfileEntry from '../../Profile/MyJobs/Personal/JobSeekerProfileEntry';
-import JobSeekerProfile from '../../Profile/MyJobs/Personal/JobSeekerProfile';
 import JobCategoryEntry from '../../JobCategory/JobCategoryEntry';
 import JobCategoryList from '../../JobCategory/JobCategoryList';
-import SavedJobList from '../../Profile/MyJobs/SavedJobList/SavedJobList';
 import ApplicantList from '../../Profile/Employers/ApplicantList';
-import ApplicantProfile from '../../Profile/MyJobs/Personal/ApplicantProfile';
 import CommonDashboard from '../../../layout/CommonDashboard';
+import EducationTraining from '../../Profile/JobSeekers/Education-Training/EducationTraining';
+import Employment from '../../Profile/JobSeekers/Employment/Employment';
+import OtherInformation from '../../Profile/JobSeekers/OtherInformation';
+import Photograph from '../../Profile/JobSeekers/Photograph/Photograph';
+import AppliedJobList from '../../Profile/JobSeekers/AppliedJobList/AppliedJobList';
+import JobSeekerProfileEntry from '../../Profile/JobSeekers/JobSeekerProfileEntry';
+import JobSeekerProfile from '../../Profile/JobSeekers/JobSeekerProfile';
+import SavedJobList from '../../Profile/JobSeekers/SavedJobList/SavedJobList';
 
 const router = createBrowserRouter([
 
@@ -101,10 +99,6 @@ const router = createBrowserRouter([
             },
 
             {
-                path: '/dashboard/applicantProfile',
-                element: <ApplicantProfile></ApplicantProfile>
-            },
-            {
                 path: '/dashboard/education',
                 element: <EducationTraining></EducationTraining>
             },
@@ -120,10 +114,7 @@ const router = createBrowserRouter([
                 path: '/dashboard/photograph',
                 element: <Photograph></Photograph>
             },
-            {
-                path: '/dashboard/jobSeekerCV',
-                element: <MyCV></MyCV>
-            },
+
             {
                 path: '/dashboard/appliedJobs',
                 element: <AppliedJobList></AppliedJobList>,
