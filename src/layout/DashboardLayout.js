@@ -36,7 +36,7 @@ const DashboardLayout = () => {
 
                         {
                             isEmployer && <>
-                                <li className='list-group-item'><Link className=' nav_btn' to='/dashboard/employerDetails'>Profile Entry</Link></li>
+                                <li className='list-group-item'><Link className=' nav_btn' to='/dashboard/employerDetails'>Manag Company Profile</Link></li>
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to={`/dashboard/employerProfile/`}>Company Profile</Link></li>
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/jobpost'>New Job Post</Link></li>
                                 {/* <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/postedJobDetails'>Posted Job Details</Link></li> */}
@@ -46,7 +46,7 @@ const DashboardLayout = () => {
 
                         {
                             isJobSeeker && <>
-                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfileEntry'>Profile Entry</Link></li>
+                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfileEntry'>Manage Profile</Link></li>
                                 <li className='list-group-item   my-1'><Link className=' nav_btn' to='/dashboard/jobSeekerProfile'>My Profile</Link></li>
                                 {/* <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerEmployment'>Employment</Link></li> */}
                                 {/* <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/jobSeekerOtherInfo'>Other Information</Link></li> */}

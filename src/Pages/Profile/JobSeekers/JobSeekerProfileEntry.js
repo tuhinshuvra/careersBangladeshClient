@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
@@ -11,6 +12,17 @@ const JobSeekerProfileEntry = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
+
+
+
+    const { data: categories, isLoading } = useQuery({
+        queryKey: ['category'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/jobCategories');
+            const data = await res.json();
+            return data;
+        }
+    })
 
 
     const handleJobSeekerProfile = (data) => {
@@ -65,17 +77,15 @@ const JobSeekerProfileEntry = () => {
 
     return (
         <div>
-            <h2 className=" text-center fw-bold my-4">
-                Job Seeker Profile Entry
-            </h2>
+            <h2 className=" text-center fw-bold my-4">Manage Profile</h2>
 
             <form onSubmit={handleSubmit(handleJobSeekerProfile)} >
 
                 <h4 className="label-text text-md fw-bold  text-center">Personal Details</h4>
 
-                <div className="row my-3">
-                    <div className='col-md-6'>
-                        <span className="label-text text-md fw-bold my-3 ">Father's Name</span>
+                <div className="row ">
+                    <div className='col-md-6 mb-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Father's Name</span>
                         <input
                             {...register("fathers_name", { required: true })}
                             name='fathers_name'
@@ -86,8 +96,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-6'>
-                        <span className="label-text text-md fw-bold my-3 ">Mother's Name</span>
+                    <div className='col-md-6 mb-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Mother's Name</span>
                         <input
                             {...register("mothers_name", { required: true })}
                             name='mothers_name'
@@ -99,8 +109,8 @@ const JobSeekerProfileEntry = () => {
                     </div>
 
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Nationality</span>
+                    <div className='col-md-3 mb-3 '>
+                        <span className="label-text text-md fw-bold  ">Nationality</span>
                         <input
                             {...register("nationality",)}
                             name='nationality'
@@ -111,8 +121,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">National Id No.</span>
+                    <div className='col-md-3 mb-3 '>
+                        <span className="label-text text-md fw-bold  ">National Id No.</span>
                         <input
                             {...register("nationalId",)}
                             name='nationalId'
@@ -123,8 +133,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Phone</span>
+                    <div className='col-md-3 mb-3 '>
+                        <span className="label-text text-md fw-bold  ">Phone</span>
                         <input
                             {...register("phone", { required: true })}
                             name='phone'
@@ -135,8 +145,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Date of Birth</span>
+                    <div className='col-md-3 mb-3 '>
+                        <span className="label-text text-md fw-bold  ">Date of Birth</span>
                         <input
                             {...register("birth_dete", { required: true })}
                             name='birth_dete'
@@ -148,10 +158,9 @@ const JobSeekerProfileEntry = () => {
 
 
 
-                    <div className="row my-4">
-
-                        <div className='col-md-3 my-3 '>
-                            <span className="label-text text-md fw-bold my-3 ">Gender</span>
+                    <div className="row">
+                        <div className='col-md-3 mb-3  '>
+                            <span className="label-text text-md fw-bold  ">Gender</span>
                             <select
                                 {...register("gender")}
                                 name="gender"
@@ -163,8 +172,8 @@ const JobSeekerProfileEntry = () => {
                             </select>
                         </div>
 
-                        <div className='col-md-3 my-3'>
-                            <span className="label-text text-md fw-bold my-3 ">Religion</span>
+                        <div className='col-md-3 mb-3 '>
+                            <span className="label-text text-md fw-bold  ">Religion</span>
                             <select
                                 {...register("religion")}
                                 name="religion"
@@ -181,8 +190,8 @@ const JobSeekerProfileEntry = () => {
                             </select>
                         </div>
 
-                        <div className='col-md-3 my-3'>
-                            <span className="label-text text-md fw-bold my-3 ">Marital Status</span>
+                        <div className='col-md-3 mb-3 '>
+                            <span className="label-text text-md fw-bold  ">Marital Status</span>
                             <select
                                 {...register("maritial_status")}
                                 name="marital_status"
@@ -199,8 +208,8 @@ const JobSeekerProfileEntry = () => {
                         </div>
 
 
-                        <div className='col-md-3 my-3'>
-                            <span className="label-text text-md fw-bold my-3 ">Photo</span>
+                        <div className='col-md-3 mb-3 '>
+                            <span className="label-text text-md fw-bold  ">Photo</span>
                             <input
                                 {...register("image",)}
                                 name='image'
@@ -212,8 +221,34 @@ const JobSeekerProfileEntry = () => {
                     </div>
                 </div>
 
-                <div className=' my-3'>
-                    <span className="label-text text-md fw-bold ">Career Objective</span>
+                <div className='row'>
+                    <div className=' col-md-6 mb-3'>
+                        <span className="label-text text-md fw-bold ">Present Address</span>
+                        <div>
+                            <textarea {...register("present_address", { required: true })}
+                                name='present_address'
+                                className='input form-control '
+                                id='present_address' type="text"
+                                placeholder='Write Your Pressent Address'
+                            />
+                        </div>
+                    </div>
+                    <div className=' col-md-6 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Permanent Address</span>
+                        <div>
+                            <textarea {...register("permanent_address",)}
+                                name='permanent_address'
+                                className='input form-control '
+                                id='permanent_address' type="text"
+                                placeholder='Write Your Permanent Address'
+                            />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className='mb-3 '>
+                    <span className="label-text text-md fw-bold text-center ">Career Objective</span>
                     <div className=' '>
                         <textarea {...register("career_objective", { required: true })}
                             name='career_objective'
@@ -224,35 +259,66 @@ const JobSeekerProfileEntry = () => {
                     </div>
                 </div>
 
-                <div className=' my-3'>
-                    <span className="label-text text-md fw-bold my-3 ">Obtained Skill</span>
-                    <div>
-                        <textarea {...register("skill", { required: true })}
-                            name='skill'
-                            className='input form-control '
-                            id='skill' type="text"
-                            placeholder='Enter Obtained Skill'
-                        />
+
+                <h4 className="label-text text-md fw-bold text-center mt-5 mb-2">Experience</h4>
+                <div className=' row'>
+                    <div className=' col-md-6'>
+
+                        <div className='mb-3 '>
+                            <span className="label-text text-md fw-bold">Experience  One Title</span>
+                            <div>
+                                <input {...register("exprTitleOne",)}
+                                    name='exprTitleOne'
+                                    className='input form-control '
+                                    id='exprTitleOne' type="text"
+                                    placeholder='Enter data'
+                                />
+                            </div>
+                        </div>
+
+                        <div className='mb-3 '>
+                            <span className="label-text text-md fw-bold mt-2">Experience One Details</span>
+                            <div>
+                                <textarea {...register("exprDetailsOne",)}
+                                    name='exprDetailsOne'
+                                    className='input form-control '
+                                    id='exprDetailsOne' type="text"
+                                    placeholder='Enter data'
+                                />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div className=' col-md-6'>
+                        <div className='mb-3 '>
+                            <span className="label-text text-md fw-bold">Experience Two Title</span>
+                            <div>
+                                <input {...register("exprTitleOne",)}
+                                    name='exprTitleTwo'
+                                    className='input form-control '
+                                    id='exprTitleOne' type="text"
+                                    placeholder='Enter data'
+                                />
+                            </div>
+                        </div>
+
+                        <div className='mb-3 '>
+                            <span className="label-text text-md fw-bold mt-2">Experience Two Details</span>
+                            <div>
+                                <textarea {...register("exprDetailsOne",)}
+                                    name='exprDetailsTwo'
+                                    className='input form-control '
+                                    id='exprDetailsOne' type="text"
+                                    placeholder='Enter data'
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
 
 
-
-                <div className=' my-3'>
-                    <span className="label-text text-md fw-bold my-3 ">Experience</span>
-                    <div>
-                        <textarea {...register("experience",)}
-                            name='experience'
-                            className='input form-control '
-                            id='experience' type="text"
-                            placeholder='Enter Experience'
-                        />
-                    </div>
-                </div>
-
-
-                <div className=' my-3'>
-                    <span className="label-text text-md fw-bold my-3 ">Achivement</span>
+                <div className=' mb-3'>
+                    <span className="label-text text-md fw-bold  ">Achivement</span>
                     <div>
                         <textarea {...register("achivement",)}
                             name='achivement'
@@ -266,14 +332,15 @@ const JobSeekerProfileEntry = () => {
 
                 {/* Academic Qualification Section Start */}
 
-                <h4 className="label-text text-md fw-bold mt-md-5 mb-md-4 text-center">Enter Academic Qualification</h4>
+                <h4 className="label-text text-md fw-bold text-center mt-5 mb-2">Academic Qualification</h4>
                 {/* Exam Title	Concentration/Major	Institute	Result	Pas.Year	Duration */}
 
 
                 {/* Enter Educational Qualification One */}
-                <div className="row my-3">
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Exam Title</span>
+                <h5 className="label-text text-md fw-bold ">Academic One</h5>
+                <div className="row  ">
+                    <div className='col-md-2  '>
+                        <span className="label-text text-md fw-bold  ">Exam Title</span>
                         <input
                             {...register("examTitleOne", { required: true })}
                             name='examTitleOne'
@@ -284,8 +351,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Concentration/Major</span>
+                    <div className='col-md-3 mb-3  '>
+                        <span className="label-text text-md fw-bold  ">Concentration/Major</span>
                         <input
                             {...register("majorOne", { required: true })}
                             name='majorOne'
@@ -296,8 +363,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Institute</span>
+                    <div className='col-md-3 mb-3  '>
+                        <span className="label-text text-md fw-bold  ">Institute</span>
                         <input
                             {...register("instituteOne", { required: true })}
                             name='instituteOne'
@@ -307,8 +374,8 @@ const JobSeekerProfileEntry = () => {
                             placeholder='Enter Institute'
                         />
                     </div>
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Result</span>
+                    <div className='col-md-2 '>
+                        <span className="label-text text-md fw-bold  ">Result</span>
                         <input
                             {...register("resultOne", { required: true })}
                             name='resultOne'
@@ -319,8 +386,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Pass.Year</span>
+                    <div className='col-md-2 '>
+                        <span className="label-text text-md fw-bold  ">Pass.Year</span>
                         <select
                             {...register("passYearOne", { required: true })}
                             id="passYearOne"
@@ -397,10 +464,12 @@ const JobSeekerProfileEntry = () => {
                     </div>
                 </div>
 
+
                 {/* Enter Educational Qualification Two */}
-                <div className="row my-3">
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Exam Title</span>
+                <h5 className="label-text text-md fw-bold ">Academic Two</h5>
+                <div className="row  ">
+                    <div className='col-md-2   '>
+                        <span className="label-text text-md fw-bold  ">Exam Title</span>
                         <input
                             {...register("examTitleTwo", { required: true })}
                             name='examTitleTwo'
@@ -411,8 +480,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Concentration/Major</span>
+                    <div className='col-md-3 mb-3 '>
+                        <span className="label-text text-md fw-bold  ">Concentration/Major</span>
                         <input
                             {...register("majorTwo", { required: true })}
                             name='majorTwo'
@@ -423,8 +492,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Institute</span>
+                    <div className='col-md-3 mb-3 '>
+                        <span className="label-text text-md fw-bold  ">Institute</span>
                         <input
                             {...register("instituteTwo", { required: true })}
                             name='instituteTwo'
@@ -434,8 +503,8 @@ const JobSeekerProfileEntry = () => {
                             placeholder='Enter Institute'
                         />
                     </div>
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Result</span>
+                    <div className='col-md-2 '>
+                        <span className="label-text text-md fw-bold  ">Result</span>
                         <input
                             {...register("resultTwo", { required: true })}
                             name='instituteTwo'
@@ -446,8 +515,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Pass.Year</span>
+                    <div className='col-md-2 '>
+                        <span className="label-text text-md fw-bold  ">Pass.Year</span>
                         <select
                             {...register("passYearTwo", { required: true })}
                             id="passYearTwo"
@@ -525,9 +594,10 @@ const JobSeekerProfileEntry = () => {
                 </div>
 
                 {/* Enter Educational Qualification Three */}
-                <div className="row my-3">
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Exam Title</span>
+                <h5 className="label-text text-md fw-bold ">Academic Three</h5>
+                <div className="row  ">
+                    <div className='col-md-2 '>
+                        <span className="label-text text-md fw-bold  ">Exam Title</span>
                         <input
                             {...register("examTitleThree", { required: true })}
                             name='examTitleThree'
@@ -538,8 +608,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Concentration/Major</span>
+                    <div className='col-md-3 mb-3 '>
+                        <span className="label-text text-md fw-bold  ">Concentration/Major</span>
                         <input
                             {...register("majorThree", { required: true })}
                             name='majorThree'
@@ -550,8 +620,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Institute</span>
+                    <div className='col-md-3 mb-3 '>
+                        <span className="label-text text-md fw-bold  ">Institute</span>
                         <input
                             {...register("instituteThree", { required: true })}
                             name='instituteThree'
@@ -562,8 +632,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Result</span>
+                    <div className='col-md-2 '>
+                        <span className="label-text text-md fw-bold  ">Result</span>
                         <input
                             {...register("resultThree", { required: true })}
                             name='resultThree'
@@ -574,8 +644,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Pass.Year</span>
+                    <div className='col-md-2 '>
+                        <span className="label-text text-md fw-bold  ">Pass.Year</span>
                         <select
                             {...register("passYearTwo", { required: true })}
                             id="passYearTwo"
@@ -653,9 +723,10 @@ const JobSeekerProfileEntry = () => {
                 </div>
 
                 {/* Enter Educational Qualification Four */}
-                <div className="row my-3">
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Exam Title</span>
+                <h5 className="label-text text-md fw-bold ">Academic Four</h5>
+                <div className="row  ">
+                    <div className='col-md-2 '>
+                        <span className="label-text text-md fw-bold  ">Exam Title</span>
                         <input
                             {...register("examTitleFour", { required: true })}
                             name='examTitleFour'
@@ -666,8 +737,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Concentration/Major</span>
+                    <div className='col-md-3 mb-3 '>
+                        <span className="label-text text-md fw-bold  ">Concentration/Major</span>
                         <input
                             {...register("majorFour", { required: true })}
                             name='majorFour'
@@ -678,8 +749,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Institute</span>
+                    <div className='col-md-3 mb-3 '>
+                        <span className="label-text text-md fw-bold  ">Institute</span>
                         <input
                             {...register("instituteFour", { required: true })}
                             name='instituteFour'
@@ -690,8 +761,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Result</span>
+                    <div className='col-md-2 '>
+                        <span className="label-text text-md fw-bold  ">Result</span>
                         <input
                             {...register("resultFour", { required: true })}
                             name='resultFour'
@@ -702,8 +773,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Pass.Year</span>
+                    <div className='col-md-2 '>
+                        <span className="label-text text-md fw-bold  ">Pass.Year</span>
                         <select
                             {...register("passYearTwo", { required: true })}
                             id="passYearTwo"
@@ -786,13 +857,16 @@ const JobSeekerProfileEntry = () => {
 
                 {/* Academic Qualification Section Start */}
 
-                <h4 className="label-text text-md fw-bold mt-md-5 mb-md-4 text-center">Enter Training Summary</h4>
-                {/* Training Title	Topic	Institute	Country	Location	Year	Duration */}
+
+
+                {/* Enter Tranning Section*/}
+                <h4 className="label-text text-md fw-bold text-center mt-5 mb-2">Training Summary</h4>
 
                 {/* Enter Educational Qualification One */}
-                <div className="row my-3">
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Training Title</span>
+                <h5 className="label-text text-md fw-bold  ">Tranning One</h5>
+                <div className="row  ">
+                    <div className='col-md-2  '>
+                        <span className="label-text text-md fw-bold  ">Training Title</span>
                         <input
                             {...register("trainingTitleOne", { required: true })}
                             name='trainingTitleOne'
@@ -803,8 +877,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Topic</span>
+                    <div className='col-md-3 mb-3 '>
+                        <span className="label-text text-md fw-bold  ">Topic</span>
                         <input
                             {...register("topicOne", { required: true })}
                             name='topicOne'
@@ -815,8 +889,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Institute and Location</span>
+                    <div className='col-md-3 mb-3  '>
+                        <span className="label-text text-md fw-bold  ">Institute and Location</span>
                         <input
                             {...register("insAndLocationOne", { required: true })}
                             name='insAndLocationOne'
@@ -826,8 +900,8 @@ const JobSeekerProfileEntry = () => {
                             placeholder='Enter data here'
                         />
                     </div>
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Duration</span>
+                    <div className='col-md-2  '>
+                        <span className="label-text text-md fw-bold  ">Duration</span>
                         <input
                             {...register("durationTwo", { required: true })}
                             name='durationOne'
@@ -838,8 +912,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Year</span>
+                    <div className='col-md-2 '>
+                        <span className="label-text text-md fw-bold  ">Year</span>
                         <select
                             {...register("traningYearOne", { required: true })}
                             id="traningYearOne"
@@ -917,9 +991,10 @@ const JobSeekerProfileEntry = () => {
                 </div>
 
                 {/* Enter Educational Qualification Two */}
-                <div className="row my-3">
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Training Title</span>
+                <h5 className="label-text text-md fw-bold mt-3  ">Tranning Two</h5>
+                <div className="row  ">
+                    <div className='col-md-2  '>
+                        <span className="label-text text-md fw-bold  ">Training Title</span>
                         <input
                             {...register("trainingTitleTwo", { required: true })}
                             name='trainingTitleTwo'
@@ -930,8 +1005,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Topic</span>
+                    <div className='col-md-3 mb-3 '>
+                        <span className="label-text text-md fw-bold  ">Topic</span>
                         <input
                             {...register("topicTwo", { required: true })}
                             name='topicTwo'
@@ -942,8 +1017,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Institute and Location</span>
+                    <div className='col-md-3 mb-3  '>
+                        <span className="label-text text-md fw-bold  ">Institute and Location</span>
                         <input
                             {...register("insAndLocationTwo", { required: true })}
                             name='insAndLocationTwo'
@@ -953,8 +1028,8 @@ const JobSeekerProfileEntry = () => {
                             placeholder='Enter data here'
                         />
                     </div>
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Duration</span>
+                    <div className='col-md-2 '>
+                        <span className="label-text text-md fw-bold  ">Duration</span>
                         <input
                             {...register("durationTwo", { required: true })}
                             name='durationTwo'
@@ -965,8 +1040,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Year</span>
+                    <div className='col-md-2  '>
+                        <span className="label-text text-md fw-bold  ">Year</span>
                         <select
                             {...register("traningYearTwo", { required: true })}
                             id="traningYearTwo"
@@ -1044,9 +1119,10 @@ const JobSeekerProfileEntry = () => {
                 </div>
 
                 {/* Enter Educational Qualification Three */}
-                <div className="row my-3">
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Training Title</span>
+                <h5 className="label-text text-md fw-bold mt-3  ">Tranning Three</h5>
+                <div className="row">
+                    <div className='col-md-2'>
+                        <span className="label-text text-md fw-bold  ">Training Title</span>
                         <input
                             {...register("trainingTitleThree", { required: true })}
                             name='trainingTitleThree'
@@ -1057,8 +1133,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Topic</span>
+                    <div className='col-md-3 mb-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Topic</span>
                         <input
                             {...register("topicThree", { required: true })}
                             name='topicThree'
@@ -1069,8 +1145,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Institute and Location</span>
+                    <div className='col-md-3 mb-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Institute and Location</span>
                         <input
                             {...register("insAndLocationThree", { required: true })}
                             name='insAndLocationThree'
@@ -1080,8 +1156,8 @@ const JobSeekerProfileEntry = () => {
                             placeholder='Enter data here'
                         />
                     </div>
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Duration</span>
+                    <div className='col-md-2'>
+                        <span className="label-text text-md fw-bold  ">Duration</span>
                         <input
                             {...register("durationThree", { required: true })}
                             name='durationThree'
@@ -1092,8 +1168,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-2 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Year</span>
+                    <div className='col-md-2 '>
+                        <span className="label-text text-md fw-bold  ">Year</span>
                         <select
                             {...register("traningYearThree", { required: true })}
                             id="traningYearThree"
@@ -1172,10 +1248,11 @@ const JobSeekerProfileEntry = () => {
 
 
 
-                <h4 className="label-text text-md fw-bold mt-md-5 mb-md-4 text-center">Enter Work Link</h4>
-                <div className="row my-3">
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Github Link</span>
+                <h4 className="label-text text-md fw-bold  text-center mt-5 mb-2">Work Link</h4>
+
+                <div className="row ">
+                    <div className='col-md-3 mb-3  '>
+                        <span className="label-text text-md fw-bold   ">Github Link</span>
                         <input
                             {...register("link_one",)}
                             name='link_one'
@@ -1185,8 +1262,8 @@ const JobSeekerProfileEntry = () => {
                             placeholder='Enter Link Address'
                         />
                     </div>
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Link Other</span>
+                    <div className='col-md-3 mb-3  '>
+                        <span className="label-text text-md fw-bold   ">Link Other</span>
                         <input
                             {...register("link_two",)}
                             name='link_two'
@@ -1197,8 +1274,8 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Link Other</span>
+                    <div className='col-md-3 mb-3 '>
+                        <span className="label-text text-md fw-bold   ">Link Other</span>
                         <input
                             {...register("link_three",)}
                             name='link_three'
@@ -1208,8 +1285,8 @@ const JobSeekerProfileEntry = () => {
                             placeholder='Enter Link Address'
                         />
                     </div>
-                    <div className='col-md-3 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Portfolio</span>
+                    <div className='col-md-3 mb-3  '>
+                        <span className="label-text text-md fw-bold   ">Portfolio</span>
                         <input
                             {...register("portfolio")}
                             name='portfolio'
@@ -1221,58 +1298,461 @@ const JobSeekerProfileEntry = () => {
                     </div>
                 </div>
 
-                <span className="label-text text-md fw-bold my-3 ">Language</span>
-                <input
-                    {...register("language", { required: true })}
-                    name='language'
-                    className='input form-control '
-                    id="language"
-                    type="text"
-                    placeholder='Enter skilld language'
-                />
+                <h4 className="label-text text-md fw-bold text-center mt-5 mb-2">Career and Application Information</h4>
 
-
-
-
-
-                <span className="label-text text-md fw-bold my-3 ">Present Address</span>
-                <div>
-                    <textarea {...register("present_address", { required: true })}
-                        name='present_address'
-                        className='input form-control '
-                        id='present_address' type="text"
-                        placeholder='Write Your Pressent Address'
-                    />
-                </div>
-
-                <span className="label-text text-md fw-bold my-3 ">Permanent Address</span>
-                <div>
-                    <textarea {...register("permanent_address",)}
-                        name='permanent_address'
-                        className='input form-control '
-                        id='permanent_address' type="text"
-                        placeholder='Write Your Permanent Address'
-                    />
-                </div>
-
-
-                <div className="row my-4">
-                    <div className='col-md-6 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Refferece One Name</span>
+                <div className="row  mb-3 ">
+                    <div className='col-md-3 mb-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Looking for (Job Level)</span>
+                        <select
+                            {...register("lookingFor")}
+                            name="lookingFor"
+                            id="lookingFor"
+                            className="form-select"
+                        >
+                            <option disabled selected>-Select Job Level-</option>
+                            <option value="entry">Entry Level</option>
+                            <option value="mid">Mid Level</option>
+                            <option value="top">Top Level</option>
+                        </select>
+                    </div>
+                    <div className='col-md-3 mb-3  '>
+                        <span className="label-text text-md fw-bold  ">Available for (Job Nature)</span>
                         <input
-                            {...register("ref_one_name",)}
-                            name='ref_one_name'
+                            {...register("availbaleFor",)}
+                            name='availbaleFor'
                             className='input form-control '
-                            id="ref_one_name"
+                            id="availbaleFor"
                             type="text"
-                            placeholder='Enter Refferece One Name'
+                            placeholder='Enter data here'
                         />
                     </div>
 
-                    <div className='col-md-6 my-3'>
+                    <div className='col-md-3 mb-3  '>
+                        <span className="label-text text-md fw-bold  ">Present Salary</span>
+                        <input
+                            {...register("presentSalary",)}
+                            name='presentSalary'
+                            className='input form-control '
+                            id="presentSalary"
+                            type="text"
+                            placeholder='Enter present salary'
+                        />
+                    </div>
 
-                        <span className="label-text text-md fw-bold my-3 ">Refferece One Details</span>
-                        <div>
+                    <div className='col-md-3 mb-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Expected Salary</span>
+                        <input
+                            {...register("expectedSalary")}
+                            name='expectedSalary'
+                            className='input form-control '
+                            id="expectedSalary"
+                            type="text"
+                            placeholder='Enter expected salary'
+                        />
+                    </div>
+
+                    <div className='col-md-6 mb-3 '>
+                        <span className="label-text text-md fw-bold  ">Preferred Job Category</span>
+                        <select
+                            {...register("category")}
+                            name='category'
+                            type="text"
+                            className="form-select">
+                            {
+                                categories &&
+                                categories.map((category, index) =>
+                                    <option key={index}
+                                        value={category._id}>
+                                        {category.name}
+                                    </option>)
+                            }
+                        </select>
+
+                    </div>
+
+                    <div className='col-md-6 mb-3 '>
+                        <span className="label-text text-md fw-bold  ">Preferred Locations</span>
+                        <input
+                            {...register("p")}
+                            name='preferredLocations'
+                            className='input form-control '
+                            id="preferredLocations"
+                            type="text"
+                            placeholder='Enter data here'
+                        />
+                    </div>
+                    <div className=' '>
+                        <span className="label-text text-md fw-bold  ">Preferred Organization Type</span>
+                        <input
+                            {...register("preferredOrg")}
+                            name='preferredOrg'
+                            className='input form-control '
+                            id="preferredOrg"
+                            type="text"
+                            placeholder='Enter Preferred Organization'
+                        />
+                    </div>
+
+                </div>
+
+
+                <div className=' mb-3'>
+                    <span className="label-text text-md fw-bold  ">Language</span>
+                    <input
+                        {...register("language", { required: true })}
+                        name='language'
+                        className='input form-control '
+                        id="language"
+                        type="text"
+                        placeholder='Enter skilld language'
+                    />
+                </div>
+
+
+                {/* Specialization Section start */}
+                <h4 className="label-text text-md fw-bold text-center mt-5  ">Specialization</h4>
+                <h5 className="label-text text-md fw-bold text-center   mb-2">Skill Section</h5>
+
+                <div className='row'>
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Skill One</span>
+                        <input
+                            {...register("skillOne",)}
+                            name='skillOne'
+                            className='input form-control '
+                            id="skillOne"
+                            type="text"
+                            placeholder='Enter Skil'
+                        />
+                    </div>
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Skill Two</span>
+                        <input
+                            {...register("skillTwo",)}
+                            name='skillTwo'
+                            className='input form-control '
+                            id="skillTwo"
+                            type="text"
+                            placeholder='Enter Skill'
+                        />
+                    </div>
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Skill Three</span>
+                        <input
+                            {...register("skillThree",)}
+                            name='skillThree'
+                            className='input form-control '
+                            id="skillThree"
+                            type="text"
+                            placeholder='Enter Skill'
+                        />
+                    </div>
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Skill Four</span>
+                        <input
+                            {...register("skillFour",)}
+                            name='skillFour'
+                            className='input form-control '
+                            id="skillFour"
+                            type="text"
+                            placeholder='Enter Skill'
+                        />
+                    </div>
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Skill Five</span>
+                        <input
+                            {...register("skillFive",)}
+                            name='skillFive'
+                            className='input form-control '
+                            id="skillFive"
+                            type="text"
+                            placeholder='Enter Skill'
+                        />
+                    </div>
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Skill Six</span>
+                        <input
+                            {...register("skillSix",)}
+                            name='skillSix'
+                            className='input form-control '
+                            id="skillSix"
+                            type="text"
+                            placeholder='Enter Skill'
+                        />
+                    </div>
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Skill Seven</span>
+                        <input
+                            {...register("skillSeven",)}
+                            name='skillSeven'
+                            className='input form-control '
+                            id="skillSeven"
+                            type="text"
+                            placeholder='Enter Skill'
+                        />
+                    </div>
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Skill Eight</span>
+                        <input
+                            {...register("skillEight",)}
+                            name='skillEight'
+                            className='input form-control '
+                            id="skillEight"
+                            type="text"
+                            placeholder='Enter Skill'
+                        />
+                    </div>
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Skill Nine</span>
+                        <input
+                            {...register("skillNine",)}
+                            name='skillNine'
+                            className='input form-control '
+                            id="skillNine"
+                            type="text"
+                            placeholder='Enter Skill'
+                        />
+                    </div>
+
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Skill Ten</span>
+                        <input
+                            {...register("skillTen",)}
+                            name='skillTen'
+                            className='input form-control '
+                            id="skillTen"
+                            type="text"
+                            placeholder='Enter Skill'
+                        />
+                    </div>
+
+                    <div className=' col-md-6 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Skill learned by</span>
+                        <input
+                            {...register("skillLearnedBy",)}
+                            name='skillLearnedBy'
+                            className='input form-control '
+                            id="skillLearnedBy"
+                            type="text"
+                            placeholder='Enter Skill Learned By'
+                        />
+                    </div>
+
+                    <div className=''>
+                        <span className="label-text text-md fw-bold">Skill Description</span>
+                        <textarea {...register("skillDesciption",)}
+                            name='skillDesciption'
+                            className='input form-control '
+                            id='skillDesciption' type="text"
+                            placeholder='Enter skill desciption'
+                        />
+                    </div>
+
+                </div>
+
+                {/* Specialization Section end */}
+
+
+                {/* Language Section start */}
+                <h4 className="label-text text-md fw-bold text-center mt-5  ">Language Proficiency</h4>
+
+                {/* language one  */}
+                <div className='row'>
+                    <h5 className="label-text text-md fw-bold mb-2">Language One</h5>
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Language</span>
+                        <input
+                            {...register("languOne", { required: true })}
+                            name='languOne'
+                            id='languOne'
+                            className='input form-control'
+                            type="text"
+                            placeholder='Enter Language'
+                        />
+                    </div>
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Reading</span>
+                        <select
+                            {...register("readingOne")}
+                            name="readingOne"
+                            id="readingOne"
+                            className="form-select select-bordered  ">
+                            <option disabled selected>-Select-</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Writing</span>
+                        <select
+                            {...register("writingOne")}
+                            name="wriingOne"
+                            id="wriingOne"
+                            className="form-select select-bordered  ">
+                            <option disabled selected>-Select-</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Speaking</span>
+                        <select
+                            {...register("readingOne")}
+                            name="readingOne"
+                            className="form-select select-bordered  ">
+                            <option disabled selected>-Select-</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                {/* language two */}
+                <div className='row'>
+                    <h5 className="label-text text-md fw-bold mb-2">Language Two</h5>
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Language</span>
+                        <input
+                            {...register("languTwo",)}
+                            name='languTwo'
+                            id='languTwo'
+                            className='input form-control'
+                            type="text"
+                            placeholder='Enter Language'
+                        />
+                    </div>
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Reading</span>
+                        <select
+                            {...register("readingTwo")}
+                            name="readingTwo"
+                            id="readingTwo"
+                            className="form-select select-bordered  ">
+                            <option disabled selected>-Select-</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Writing</span>
+                        <select
+                            {...register("writingTwo")}
+                            name="writingTwo"
+                            id="writingTwo"
+                            className="form-select select-bordered  ">
+                            <option disabled selected>-Select-</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Speaking</span>
+                        <select
+                            {...register("readingTwo")}
+                            name="readingTwo"
+                            id="readingTwo"
+                            className="form-select select-bordered  ">
+                            <option disabled selected>-Select-</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                {/* language three */}
+                <div className='row'>
+                    <h5 className="label-text text-md fw-bold mb-2">Language Three</h5>
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Language</span>
+                        <input
+                            {...register("languThree",)}
+                            name='languThree'
+                            id='languThree'
+                            className='input form-control'
+                            type="text"
+                            placeholder='Enter Language'
+                        />
+                    </div>
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Reading</span>
+                        <select
+                            {...register("readingThree")}
+                            name="readingThree"
+                            id="readingThree"
+                            className="form-select select-bordered  ">
+                            <option disabled selected>-Select-</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Writing</span>
+                        <select
+                            {...register("writingThree")}
+                            name="writingThree"
+                            id="writingThree"
+                            className="form-select select-bordered  ">
+                            <option disabled selected>-Select-</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+
+                    <div className=' col-md-3 mb-3'>
+                        <span className="label-text text-md fw-bold  ">Speaking</span>
+                        <select
+                            {...register("readingThree")}
+                            name="readingThree"
+                            id="readingThree"
+                            className="form-select select-bordered  ">
+                            <option disabled selected>-Select-</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                {/* Language Section end */}
+
+
+                {/* Refference area start */}
+
+                <h4 className="label-text text-md fw-bold text-center mt-5 mb-2">Refference</h4>
+                <div className="row my-4">
+                    <div className=' col-md-6'>
+                        <div className=' mb-3'>
+                            <span className="label-text text-md fw-bold  mb-3">Refference One Name</span>
+                            <input
+                                {...register("ref_one_name",)}
+                                name='ref_one_name'
+                                className='input form-control '
+                                id="ref_one_name"
+                                type="text"
+                                placeholder='Enter Refference One Name'
+                            />
+                        </div>
+
+                        <div className=''>
+                            <span className="label-text text-md fw-bold">Refference One Details</span>
                             <textarea {...register("ref_one_details",)}
                                 name='ref_one_details'
                                 className='input form-control '
@@ -1282,35 +1762,38 @@ const JobSeekerProfileEntry = () => {
                         </div>
                     </div>
 
-                    <div className='col-md-6 my-3'>
-                        <span className="label-text text-md fw-bold my-3 ">Refferece Two Name</span>
-                        <input
-                            {...register("ref_two_name",)}
-                            name='ref_two_name'
-                            className='input form-control '
-                            id="ref_two_name"
-                            type="text"
-                            placeholder='Enter Refferece Two Name'
-                        />
-                    </div>
 
-
-                    <div className='col-md-6 my-3'>
-
-                        <span className="label-text text-md fw-bold my-3 ">Refferece Two Details</span>
-                        <div>
-                            <textarea {...register("ref_two_details",)}
-                                name='ref_two_details'
+                    <div className=' col-md-6 mb-3'>
+                        <div className='  mb-3 '>
+                            <span className="label-text text-md fw-bold  ">Refference Two Name</span>
+                            <input
+                                {...register("ref_two_name",)}
+                                name='ref_two_name'
                                 className='input form-control '
-                                id='ref_two_details' type="text"
-                                placeholder='Enter Refference Two Details'
+                                id="ref_two_name"
+                                type="text"
+                                placeholder='Enter Refference Two Name'
                             />
+                        </div>
+
+
+                        <div className='  '>
+                            <span className="label-text text-md fw-bold  ">Refference Two Details</span>
+                            <div>
+                                <textarea {...register("ref_two_details",)}
+                                    name='ref_two_details'
+                                    className='input form-control '
+                                    id='ref_two_details' type="text"
+                                    placeholder='Enter Refference Two Details'
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
+                {/* Refference area end */}
 
 
-                <span className="label-text text-md fw-bold my-3 ">Other</span>
+                <h4 className="label-text text-md fw-bold  text-center ">Other</h4>
                 <div>
                     <textarea {...register("other")}
                         name='other'
@@ -1325,8 +1808,8 @@ const JobSeekerProfileEntry = () => {
                     <button className="btn btn-warning fw-bold">Cancel</button>
                     <button type='submit' name='submit' className="custom_btn">Save</button>
                 </div>
-            </form>
-        </div>
+            </form >
+        </div >
     );
 };
 
