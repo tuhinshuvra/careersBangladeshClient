@@ -29,32 +29,140 @@ const JobSeekerProfileEntry = () => {
         const jobseekerProfile = {
             email: user.email,
             name: user.displayName,
-            careerObjective: data.career_objective,
+
             skill: data.skill,
-            experience: data.experience,
-            achivement: data.achivement,
-            birthDete: data.birth_dete,
-            qualification: data.qualification,
-            institute: data.institute,
-            passingYear: data.passing_year,
-            linkOne: data.link_one,
-            linkTwo: data.link_two,
-            linkThree: data.link_three,
-            portfolio: data.portfolio,
-            language: data.language,
             fathersName: data.fathers_name,
             mothersName: data.mothers_name,
+            nationality: data.nationality,
+            nationalId: data.nationalId,
             phone: data.phone,
-            image: data.image,
+            birthDete: data.birth_dete,
             gender: data.gender,
             religion: data.religion,
             maritialStatus: data.maritial_status,
+            image: data.image,
             presentAddress: data.present_addres,
             permanentAddress: data.permanent_address,
+            careerObjective: data.career_objective,
+           
+            expOneCompanayName: data.expOneCompanayName,
+            expOneCompanayBusiness: data.expOneCompanayBusiness,
+            expOneDesignation: data.expOneDesignation,
+            expOneDepartment: data.expOneDepartment,
+            expOneFrom: data.expOneFrom,
+            expOneTo: data.expOneTo,
+            exprOneWorkPeriod: data.exprOneWorkPeriod,
+            exprOneResp: data.exprOneResp,
+            exprOneExpertise: data.exprOneExpertise,
+            exprCompOneAddress: data.exprCompOneAddress,
+            
+            expTwoCompanayName: data.expTwoCompanayName,
+            expTwoCompanayBusiness: data.expTwoCompanayBusiness,
+            expTwoDesignation: data.expTwoDesignation,
+            expTwoDepartment: data.expTwoDepartment,
+            expTwoFrom: data.expTwoFrom,
+            expTwoeTo: data.expTwoeTo,
+            exprTwoWorkPeriod: data.exprTwoWorkPeriod,
+            exprTwoResp: data.exprTwoResp,
+            exprTwoExpertise: data.exprTwoExpertise,
+            exprCompTwoAddress: data.exprCompTwoAddress,
+            
+            
+            examTitleOne: data.examTitleOne,
+            majorOne: data.majorOne,
+            instituteOne: data.instituteOne,
+            resultOne: data.resultOne,
+            passYearOne: data.passYearOne,
+            
+            
+            examTitleTwo: data.examTitleTwo,
+            majorTwo: data.majorTwo,
+            instituteTwo: data.instituteTwo,
+            resultTwo: data.resultTwo,
+            passYearTwo: data.passYearTwo,
+            
+            
+            examTitleThree: data.examTitleThree,
+            majorThree: data.majorThree,
+            instituteThree: data.instituteThree,
+            resultThree: data.resultThree,
+            passYearThree: data.passYearThree,
+            
+            
+            examTitleFour: data.examTitleFour,
+            majorFour: data.majorFour,
+            instituteFour: data.instituteFour,
+            resultFour: data.resultFour,
+            passYearFour: data.passYearFour,
+            
+            
+            trainingTitleOne: data.trainingTitleOne,
+            topicOne: data.topicOne,
+            insAndLocationOne: data.insAndLocationOne,
+            durationOne: data.durationOne,
+            traningYearOne: data.traningYearOne,
+            
+            
+            trainingTitleTwo: data.trainingTitleTwo,
+            topicTwo: data.topicTwo,
+            insAndLocationTwo: data.insAndLocationTwo,
+            durationTwo: data.durationTwo,
+            traningYearTwo: data.traningYearTwo,
+            
+            
+            trainingTitleThree: data.trainingTitleThree,
+            topicThree: data.topicThree,
+            insAndLocationThree: data.insAndLocationThree,
+            durationThree: data.durationThree,
+            traningYearThree: data.traningYearThree,
+            
+            
+            gitHubLink: data.gitHubLink,
+            link_two: data.link_two,
+            link_three: data.link_three,
+            portfolio: data.portfolio,
+            
+            
+            lookingFor: data.lookingFor,
+            availbaleFor: data.availbaleFor,
+            presentSalary: data.presentSalary,
+            expectedSalary: data.expectedSalary,
+            category: data.category,          
+            preferredLocations: data.preferredLocations,
+            preferredOrg: data.preferredOrg,
+            
+            skillOne: data.skillOne,
+            skillTwo: data.skillTwo,
+            skillThree: data.skillThree,
+            skillFour: data.skillFour,
+            skillFive: data.skillFive,
+            skillSix: data.skillSix,
+            skillSeven: data.skillSeven,
+            skillEight: data.skillEight,
+            skillNine: data.skillNine,
+            skillTen: data.skillTen,
+            skillLearnedBy: data.skillLearnedBy,
+            skillDesciption: data.skillDesciption,
+            
+            
+            languOne: data.languOne,
+            writingOne: data.writingOne,
+            readingOne: data.readingOne,
+
+            languTwo: data.languTwo,
+            writingTwo: data.writingTwo,
+            readingTwo: data.readingTwo,
+            
+            
+            languThree: data.languThree,
+            readingThree: data.readingThree,
+            writingThree: data.writingThree,
+            
             refOneName: data.ref_one_name,
             refOneDetails: data.ref_one_details,
             refTwoName: data.ref_two_name,
             refTwoDetails: data.ref_two_details,
+            
             other: data.other,
 
         }
@@ -260,79 +368,266 @@ const JobSeekerProfileEntry = () => {
                 </div>
 
 
-                <h4 className="label-text text-md fw-bold text-center mt-5 mb-2">Experience</h4>
+                {/* experience section start */}
+
+                <h4 className="label-text text-md fw-bold text-center mt-5">Experience</h4>
+
+                <h5 className="label-text text-md fw-bold  mb-2">Experience One</h5>
                 <div className=' row'>
-                    <div className=' col-md-6'>
-
-                        <div className='mb-3 '>
-                            <span className="label-text text-md fw-bold">Experience  One Title</span>
-                            <div>
-                                <input {...register("exprTitleOne",)}
-                                    name='exprTitleOne'
-                                    className='input form-control '
-                                    id='exprTitleOne' type="text"
-                                    placeholder='Enter data'
-                                />
-                            </div>
-                        </div>
-
-                        <div className='mb-3 '>
-                            <span className="label-text text-md fw-bold mt-2">Experience One Details</span>
-                            <div>
-                                <textarea {...register("exprDetailsOne",)}
-                                    name='exprDetailsOne'
-                                    className='input form-control '
-                                    id='exprDetailsOne' type="text"
-                                    placeholder='Enter data'
-                                />
-                            </div>
-                        </div>
-
-                    </div>
-                    <div className=' col-md-6'>
-                        <div className='mb-3 '>
-                            <span className="label-text text-md fw-bold">Experience Two Title</span>
-                            <div>
-                                <input {...register("exprTitleOne",)}
-                                    name='exprTitleTwo'
-                                    className='input form-control '
-                                    id='exprTitleOne' type="text"
-                                    placeholder='Enter data'
-                                />
-                            </div>
-                        </div>
-
-                        <div className='mb-3 '>
-                            <span className="label-text text-md fw-bold mt-2">Experience Two Details</span>
-                            <div>
-                                <textarea {...register("exprDetailsOne",)}
-                                    name='exprDetailsTwo'
-                                    className='input form-control '
-                                    id='exprDetailsOne' type="text"
-                                    placeholder='Enter data'
-                                />
-                            </div>
+                    <div className=' col-md-6 mb-3'>
+                        <span className="label-text text-md fw-bold">Company Name</span>
+                        <div>
+                            <input {...register("expOneCompanayName",)}
+                                name='expOneCompanayName'
+                                className='input form-control '
+                                id='expOneCompanayName' type="text"
+                                placeholder='Enter data'
+                            />
                         </div>
                     </div>
-                </div>
 
 
-                <div className=' mb-3'>
-                    <span className="label-text text-md fw-bold  ">Achivement</span>
-                    <div>
-                        <textarea {...register("achivement",)}
-                            name='achivement'
-                            className='input form-control '
-                            id='achivement' type="text"
-                            placeholder='Enter achivement'
-                        />
+                    <div className=' col-md-6 mb-3 '>
+                        <span className="label-text text-md fw-bold">Company Business</span>
+                        <div>
+                            <input {...register("expOneCompanayBusiness",)}
+                                name='expOneCompanayBusiness'
+                                className='input form-control '
+                                id='expOneCompanayBusiness' type="text"
+                                placeholder='Enter data'
+                            />
+                        </div>
                     </div>
-                </div>
+
+                    <div className=' col-md-4 mb-3 '>
+                        <span className="label-text text-md fw-bold">Designation</span>
+                        <div>
+                            <input {...register("expOneDesignation",)}
+                                name='expOneDesignation'
+                                className='input form-control '
+                                id='expOneDesignation' type="text"
+                                placeholder='Enter data'
+                            />
+                        </div>
+                    </div>
+
+                    <div className=' col-md-4 mb-3 '>
+                        <span className="label-text text-md fw-bold">Departemnt</span>
+                        <div>
+                            <input {...register("expOneDepartment",)}
+                                name='expOneDepartment'
+                                className='input form-control '
+                                id='expOneDepartment' type="text"
+                                placeholder='Enter data'
+                            />
+                        </div>
+                    </div>
+
+                    <div className=' col-md-4 mb-3 '>
+                        <span className="label-text text-md fw-bold">Employment Period</span>
+                        <div className=' d-flex '>
+                            <div className='col-md-5'>
+                                <input {...register("expOneFrom",)}
+                                    name='expOneFrom'
+                                    className='input form-control '
+                                    id='expOneFrom'
+                                    type="date"
+                                />
+                            </div>
+
+                            <b className=' mx-2'>To</b>
+
+                            <div className='col-md-5'>
+                                <input {...register("expOneTo",)}
+                                    name='expOneTo'
+                                    className='input form-control '
+                                    id='expOneTo'
+                                    type="date"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="form-check">
+                            <input
+                                {...register("exOnecurrtlyWorkHere",)}
+                                class="form-check-input"
+                                type="checkbox" value="currentlyWorkHere"
+                                id="exprOneWorkPeriod"
+                            />
+                            <label class="form-check-label" for="exprOneWorkPeriod">
+                                Currently working here
+                            </label>
+                        </div>
+                    </div>
+
+                    <div className='  mb-3 '>
+                        <span className="label-text text-md fw-bold mt-2">Responsibilities</span>
+                        <div>
+                            <textarea {...register("exprOneResp",)}
+                                name='exprOneResp'
+                                className='input form-control '
+                                id='exprOneResp' type="text"
+                                placeholder='Enter Responsibilities'
+                            />
+                        </div>
+                    </div>
+
+                    <div className='  mb-3 '>
+                        <span className="label-text text-md fw-bold mt-2">Expertise Area</span>
+                        <div>
+                            <textarea {...register("exprOneExpertise",)}
+                                name='exprOneExpertise'
+                                className='input form-control '
+                                id='exprOneExpertise' type="text"
+                                placeholder='Enter Expertise'
+                            />
+                        </div>
+                    </div>
+
+                    <div className='   mb-3 '>
+                        <span className="label-text text-md fw-bold mt-2">Company Address</span>
+                        <div>
+                            <textarea {...register("exprCompOneAddress",)}
+                                name='exprCompOneAddress'
+                                className='input form-control '
+                                id='exprCompOneAddress' type="text"
+                                placeholder='Enter Company Address'
+                            />
+                        </div>
+                    </div>
+                </div >
+
+
+                <h5 className="label-text text-md fw-bold  mt-3 mb-2">Experience Two</h5>
+                <div className=' row'>
+                    <div className=' col-md-6 mb-3'>
+                        <span className="label-text text-md fw-bold">Company Name</span>
+                        <div>
+                            <input {...register("expTwoCompanayName",)}
+                                name='expTwoCompanayName'
+                                className='input form-control '
+                                id='expTwoCompanayName' type="text"
+                                placeholder='Enter Company Name'
+                            />
+                        </div>
+                    </div>
+
+
+                    <div className=' col-md-6 mb-3 '>
+                        <span className="label-text text-md fw-bold">Company Business</span>
+                        <div>
+                            <input {...register("expTwoCompanayBusiness",)}
+                                name='expTwoCompanayBusiness'
+                                className='input form-control '
+                                id='expTwoCompanayBusiness' type="text"
+                                placeholder='Enter Company Business'
+                            />
+                        </div>
+                    </div>
+
+                    <div className=' col-md-4 mb-3 '>
+                        <span className="label-text text-md fw-bold">Designation</span>
+                        <div>
+                            <input {...register("expTwoDesignation",)}
+                                name='expTwoDesignation'
+                                className='input form-control '
+                                id='expTwoDesignation' type="text"
+                                placeholder='Enter Designation'
+                            />
+                        </div>
+                    </div>
+
+                    <div className=' col-md-4 mb-3 '>
+                        <span className="label-text text-md fw-bold">Departemnt</span>
+                        <div>
+                            <input {...register("expTwoDepartment",)}
+                                name='expTwoDepartment'
+                                className='input form-control '
+                                id='expTwoDepartment' type="text"
+                                placeholder='Enter data'
+                            />
+                        </div>
+                    </div>
+
+                    <div className=' col-md-4 mb-3 '>
+                        <span className="label-text text-md fw-bold">Employment Period</span>
+                        <div className=' d-flex '>
+                            <div className='col-md-5'>
+                                <input {...register("expTwoFrom",)}
+                                    name='expTwoFrom'
+                                    className='input form-control '
+                                    id='expTwoFrom'
+                                    type="date"
+                                />
+                            </div>
+
+                            <b className=' mx-2'>To</b>
+
+                            <div className='col-md-5'>
+                                <input {...register("expTwoeTo",)}
+                                    name='expTwoeTo'
+                                    className='input form-control '
+                                    id='expTwoeTo'
+                                    type="date"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="form-check">
+                            <input
+                                {...register("exprTwoWorkPeriod",)}
+                                class="form-check-input"
+                                type="checkbox" value="exprTwoWorkPeriod"
+                                id="exprTwoWorkPeriod"
+                            />
+                            <label class="form-check-label" for="exprTwoWorkPeriod">
+                                Currently working here
+                            </label>
+                        </div>
+                    </div>
+
+                    <div className='  mb-3 '>
+                        <span className="label-text text-md fw-bold mt-2">Responsibilities</span>
+                        <div>
+                            <textarea {...register("exprTwoResp",)}
+                                name='exprTwoResp'
+                                className='input form-control '
+                                id='exprTwoResp' type="text"
+                                placeholder='Enter Responsibilities'
+                            />
+                        </div>
+                    </div>
+
+                    <div className='  mb-3 '>
+                        <span className="label-text text-md fw-bold mt-2">Expertise Area</span>
+                        <div>
+                            <textarea {...register("exprTwoExpertise",)}
+                                name='exprTwoExpertise'
+                                className='input form-control '
+                                id='exprTwoExpertise' type="text"
+                                placeholder='Enter Expertise'
+                            />
+                        </div>
+                    </div>
+
+                    <div className='   mb-3 '>
+                        <span className="label-text text-md fw-bold mt-2">Company Address</span>
+                        <div>
+                            <textarea {...register("exprCompTwoAddress",)}
+                                name='exprCompTwoAddress'
+                                className='input form-control '
+                                id='exprCompTwoAddress' type="text"
+                                placeholder='Enter Company Address'
+                            />
+                        </div>
+                    </div>
+                </div >
+
 
 
                 {/* Academic Qualification Section Start */}
 
-                <h4 className="label-text text-md fw-bold text-center mt-5 mb-2">Academic Qualification</h4>
+                < h4 className="label-text text-md fw-bold text-center mt-5 mb-2" > Academic Qualification</ h4>
                 {/* Exam Title	Concentration/Major	Institute	Result	Pas.Year	Duration */}
 
 
@@ -448,18 +743,6 @@ const JobSeekerProfileEntry = () => {
                             <option value="1973">1973</option>
                             <option value="1972">1972</option>
                             <option value="1971">1971</option>
-                            <option value="1970">1970</option>
-                            <option value="1969">1969</option>
-                            <option value="1968">1968</option>
-                            <option value="1967">1967</option>
-                            <option value="1966">1966</option>
-                            <option value="1964">1964</option>
-                            <option value="1965">1965</option>
-                            <option value="1963">1963</option>
-                            <option value="1962">1962</option>
-                            <option value="1961">1961</option>
-                            <option value="1960">1960</option>
-
                         </select>
                     </div>
                 </div>
@@ -577,18 +860,6 @@ const JobSeekerProfileEntry = () => {
                             <option value="1973">1973</option>
                             <option value="1972">1972</option>
                             <option value="1971">1971</option>
-                            <option value="1970">1970</option>
-                            <option value="1969">1969</option>
-                            <option value="1968">1968</option>
-                            <option value="1967">1967</option>
-                            <option value="1966">1966</option>
-                            <option value="1964">1964</option>
-                            <option value="1965">1965</option>
-                            <option value="1963">1963</option>
-                            <option value="1962">1962</option>
-                            <option value="1961">1961</option>
-                            <option value="1960">1960</option>
-
                         </select>
                     </div>
                 </div>
@@ -647,9 +918,9 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Pass.Year</span>
                         <select
-                            {...register("passYearTwo", { required: true })}
-                            id="passYearTwo"
-                            name="passYearTwo"
+                            {...register("passYearThree", { required: true })}
+                            id="passYearThree"
+                            name="passYearThree"
                             className='input form-control '
                         >
                             <option selected disabled>Select Year</option>
@@ -706,18 +977,6 @@ const JobSeekerProfileEntry = () => {
                             <option value="1973">1973</option>
                             <option value="1972">1972</option>
                             <option value="1971">1971</option>
-                            <option value="1970">1970</option>
-                            <option value="1969">1969</option>
-                            <option value="1968">1968</option>
-                            <option value="1967">1967</option>
-                            <option value="1966">1966</option>
-                            <option value="1964">1964</option>
-                            <option value="1965">1965</option>
-                            <option value="1963">1963</option>
-                            <option value="1962">1962</option>
-                            <option value="1961">1961</option>
-                            <option value="1960">1960</option>
-
                         </select>
                     </div>
                 </div>
@@ -776,9 +1035,9 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Pass.Year</span>
                         <select
-                            {...register("passYearTwo", { required: true })}
-                            id="passYearTwo"
-                            name="passYearTwo"
+                            {...register("passYearFour", { required: true })}
+                            id="passYearFour"
+                            name="passYearFour"
                             className='input form-control '
                         >
                             <option selected disabled>Select Year</option>
@@ -835,18 +1094,6 @@ const JobSeekerProfileEntry = () => {
                             <option value="1973">1973</option>
                             <option value="1972">1972</option>
                             <option value="1971">1971</option>
-                            <option value="1970">1970</option>
-                            <option value="1969">1969</option>
-                            <option value="1968">1968</option>
-                            <option value="1967">1967</option>
-                            <option value="1966">1966</option>
-                            <option value="1964">1964</option>
-                            <option value="1965">1965</option>
-                            <option value="1963">1963</option>
-                            <option value="1962">1962</option>
-                            <option value="1961">1961</option>
-                            <option value="1960">1960</option>
-
                         </select>
                     </div>
                 </div>
@@ -903,7 +1150,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2  '>
                         <span className="label-text text-md fw-bold  ">Duration</span>
                         <input
-                            {...register("durationTwo", { required: true })}
+                            {...register("durationOne", { required: true })}
                             name='durationOne'
                             className='input form-control '
                             id="durationOne"
@@ -974,18 +1221,6 @@ const JobSeekerProfileEntry = () => {
                             <option value="1973">1973</option>
                             <option value="1972">1972</option>
                             <option value="1971">1971</option>
-                            <option value="1970">1970</option>
-                            <option value="1969">1969</option>
-                            <option value="1968">1968</option>
-                            <option value="1967">1967</option>
-                            <option value="1966">1966</option>
-                            <option value="1964">1964</option>
-                            <option value="1965">1965</option>
-                            <option value="1963">1963</option>
-                            <option value="1962">1962</option>
-                            <option value="1961">1961</option>
-                            <option value="1960">1960</option>
-
                         </select>
                     </div>
                 </div>
@@ -1102,18 +1337,6 @@ const JobSeekerProfileEntry = () => {
                             <option value="1973">1973</option>
                             <option value="1972">1972</option>
                             <option value="1971">1971</option>
-                            <option value="1970">1970</option>
-                            <option value="1969">1969</option>
-                            <option value="1968">1968</option>
-                            <option value="1967">1967</option>
-                            <option value="1966">1966</option>
-                            <option value="1964">1964</option>
-                            <option value="1965">1965</option>
-                            <option value="1963">1963</option>
-                            <option value="1962">1962</option>
-                            <option value="1961">1961</option>
-                            <option value="1960">1960</option>
-
                         </select>
                     </div>
                 </div>
@@ -1230,18 +1453,6 @@ const JobSeekerProfileEntry = () => {
                             <option value="1973">1973</option>
                             <option value="1972">1972</option>
                             <option value="1971">1971</option>
-                            <option value="1970">1970</option>
-                            <option value="1969">1969</option>
-                            <option value="1968">1968</option>
-                            <option value="1967">1967</option>
-                            <option value="1966">1966</option>
-                            <option value="1964">1964</option>
-                            <option value="1965">1965</option>
-                            <option value="1963">1963</option>
-                            <option value="1962">1962</option>
-                            <option value="1961">1961</option>
-                            <option value="1960">1960</option>
-
                         </select>
                     </div>
                 </div>
@@ -1254,12 +1465,12 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold   ">Github Link</span>
                         <input
-                            {...register("link_one",)}
-                            name='link_one'
+                            {...register("gitHubLink",)}
+                            name='gitHubLink'
                             className='input form-control '
-                            id="link_one"
+                            id="gitHubLink"
                             type="text"
-                            placeholder='Enter Link Address'
+                            placeholder='Enter your gitHub Link'
                         />
                     </div>
                     <div className='col-md-3 mb-3  '>
@@ -1275,7 +1486,7 @@ const JobSeekerProfileEntry = () => {
                     </div>
 
                     <div className='col-md-3 mb-3 '>
-                        <span className="label-text text-md fw-bold   ">Link Other</span>
+                        <span className="label-text text-md fw-bold">Link Other</span>
                         <input
                             {...register("link_three",)}
                             name='link_three'
@@ -1286,7 +1497,7 @@ const JobSeekerProfileEntry = () => {
                         />
                     </div>
                     <div className='col-md-3 mb-3  '>
-                        <span className="label-text text-md fw-bold   ">Portfolio</span>
+                        <span className="label-text text-md fw-bold">Portfolio</span>
                         <input
                             {...register("portfolio")}
                             name='portfolio'
@@ -1392,21 +1603,7 @@ const JobSeekerProfileEntry = () => {
                             placeholder='Enter Preferred Organization'
                         />
                     </div>
-
-                </div>
-
-
-                <div className=' mb-3'>
-                    <span className="label-text text-md fw-bold  ">Language</span>
-                    <input
-                        {...register("language", { required: true })}
-                        name='language'
-                        className='input form-control '
-                        id="language"
-                        type="text"
-                        placeholder='Enter skilld language'
-                    />
-                </div>
+                </div>               
 
 
                 {/* Specialization Section start */}
