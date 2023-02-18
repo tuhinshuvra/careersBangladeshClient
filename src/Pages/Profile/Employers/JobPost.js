@@ -15,7 +15,7 @@ const JobPost = () => {
     const { data: categories, isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
-            const res = await fetch('https://careers-bangladesh-server.vercel.app/jobCategories');
+            const res = await fetch('http://localhost:5000/jobCategories');
             const data = await res.json();
             return data;
         }
@@ -53,7 +53,7 @@ const JobPost = () => {
         }
         console.log("Job Post Data :", jobPost);
 
-        fetch('https://careers-bangladesh-server.vercel.app/jobs', {
+        fetch('http://localhost:5000/jobs', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"

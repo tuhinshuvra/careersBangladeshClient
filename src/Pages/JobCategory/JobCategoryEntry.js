@@ -18,7 +18,7 @@ const JobCategoryEntry = () => {
         }
         console.log("Category Data :", data);
 
-        fetch('https://careers-bangladesh-server.vercel.app/jobCategories', {
+        fetch('http://localhost:5000/jobCategories', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"

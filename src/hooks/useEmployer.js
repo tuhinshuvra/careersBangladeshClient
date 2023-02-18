@@ -7,7 +7,7 @@ const useEmployer = (email) => {
 
     useEffect(() => {
         if (email) {
-            fetch(`https://careers-bangladesh-server.vercel.app/users/employer/${email}`)
+            fetch(`http://localhost:5000/users/employer/${email}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);

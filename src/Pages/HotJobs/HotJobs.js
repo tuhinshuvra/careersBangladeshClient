@@ -9,7 +9,7 @@ const HotJobs = () => {
     const { data: jobs = [], refetch } = useQuery({
         queryKey: ['jobs'],
         queryFn: async () => {
-            const respone = await fetch('https://careers-bangladesh-server.vercel.app/jobs');
+            const respone = await fetch('http://localhost:5000/jobs');
             const data = respone.json();
             return data;
         }

@@ -15,7 +15,7 @@ const ApplicantProfile = () => {
 
 
     useEffect(() => {
-        fetch(`https://careers-bangladesh-server.vercel.app/jobSeeker/${applicantShow}`)
+        fetch(`http://localhost:5000/jobSeeker/${applicantShow}`)
             .then(response => response.json())
             .then(data => {
                 console.log("Applicant Applicant  Data:", data);

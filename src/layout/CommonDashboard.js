@@ -25,7 +25,7 @@ const CommonDashboard = () => {
 
 
     useEffect(() => {
-        fetch(`https://careers-bangladesh-server.vercel.app/employer/${email}`)
+        fetch(`http://localhost:5000/employer/${email}`)
             .then(response => response.json())
             .then(data => {
                 console.log("Employee Data:", data);
@@ -35,7 +35,7 @@ const CommonDashboard = () => {
 
 
     useEffect(() => {
-        fetch(`https://careers-bangladesh-server.vercel.app/jobSeeker/${email}`)
+        fetch(`http://localhost:5000/jobSeeker/${email}`)
             .then(response => response.json())
             .then(data => {
                 console.log("JobSeeker Data:", data);

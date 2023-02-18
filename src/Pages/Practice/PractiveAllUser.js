@@ -7,13 +7,13 @@ const PractiveAllUser = () => {
 
 
     useEffect(() => {
-        fetch('https://careers-bangladesh-server.vercel.app/users')
+        fetch('http://localhost:5000/users')
             .then(respnse => respnse.json())
             .then(data => setUsers(data))
     }, [])
 
     const handleDelete = (user) => {
-        fetch(`https://careers-bangladesh-server.vercel.app/users/${user._id}`, {
+        fetch(`http://localhost:5000/users/${user._id}`, {
             method: 'DELETE'
         })
             .then(respnse => respnse.json())

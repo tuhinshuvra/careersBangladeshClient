@@ -9,7 +9,7 @@ const JobCategory = () => {
 
     useEffect(() => {
         // fetch('job-categories.json')
-        fetch('https://careers-bangladesh-server.vercel.app/jobCategories')
+        fetch('http://localhost:5000/jobCategories')
             .then(response => response.json())
             .then(data => {
                 setCategories(data)

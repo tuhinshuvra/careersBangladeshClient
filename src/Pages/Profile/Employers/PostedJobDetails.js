@@ -46,7 +46,7 @@ const PostedJobDetails = () => {
         }
         console.log("Job Post Data :", jobApply);
 
-        fetch('https://careers-bangladesh-server.vercel.app/applications', {
+        fetch('http://localhost:5000/applications', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
@@ -76,7 +76,7 @@ const PostedJobDetails = () => {
 
         console.log("Job Post Data :", savedJob);
 
-        fetch('https://careers-bangladesh-server.vercel.app/savedjobs', {
+        fetch('http://localhost:5000/savedjobs', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
@@ -303,10 +303,13 @@ const PostedJobDetails = () => {
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Input Your Extected Salary</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Apply Online</h1>
                                 </div>
-                                <div class="modal-body">
-                                    <input className='input form-control ' type="text" id="exSalary" name='exSalary' placeholder='Input expected salary' />
+                                <div class="modal-body d-flex justify-content-center align-items-center">
+                                    <div className=' col-lg-6'>
+                                        <input className='input form-control ' type="text" id="exSalary" name='exSalary' placeholder='Input expected salary' />
+                                    </div>
+                                    <span className=' col-lg-4 fw-bold'> /monthly</span>
                                 </div>
 
                                 <div class="form-check  ms-3">
