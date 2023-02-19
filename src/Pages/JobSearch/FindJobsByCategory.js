@@ -1,56 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaFile, FaFilter, FaList, FaSearch, FaStar, FaTh } from 'react-icons/fa';
 import './FindJob.css';
 import useTitle from '../../hooks/useTitle';
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
+import { useForm } from 'react-hook-form';
+import { AuthContext } from '../Authentication/AuthProvider';
 
-const FindCategoryJobs = (category_id) => {
+const FindJobsByCategory = () => {
+    
+    const  jobs = useLoaderData();
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
     useTitle('FindJob');
 
-    console.log("FindCategoryJobs category_id : ", category_id)
+  
 
-
-
-    const [jobs, setJobs] = useState([]);
-
-    useEffect(() => {
-        fetch(`http://localhost:5000/categoryJobs?category=${category_id}`)
-            .then(response => response.json())
-            .then(data => setJobs(data))
-    }, [category_id])
-
-    // console.log(" Category Jobs : ", jobs)
-
-
-    // const { data: jobs = [], refetch } = useQuery({
-    //     queryKey: ['jobs'],
-    //     queryFn: async () => {
-    //         const respone = await fetch('http://localhost:5000/jobs');
-    //         const data = respone.json();
-    //         return data;
-    //     }
-    // })
-
-
-    // const handleDelete = (job) => {
-    //     fetch(`http://localhost:5000/jobs/${job._id}`, {
-    //         method: 'DELETE'
-    //     })
-    //         .then(respnse => respnse.json())
-    //         .then(data => {
-    //             console.log(data)
-    //             if (data.deletedCount > 0) {
-    //                 toast('Job Deleted Successfully.')
-    //             }
-    //         });
-    //     // console.log(user._id);
-    // }
-
-    // const handleJobsUpdate = (job) => {
-    //     console.log("Selected to Update Job : ", job._id)
-    // }
+    const { data: categories, isLoading } = useQuery({
+        queryKey: ['category'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/jobCategories');
+            const data = await res.json();
+            return data;
+        }
+    }) 
 
     return (
         <div className="row">
@@ -82,17 +56,21 @@ const FindCategoryJobs = (category_id) => {
                                 {/* <!-- BEGIN FILTER BY CATEGORY --> */}
                                 <div className=' my-md-3'>
                                     <h5 className=' fw-bold'>By Category:</h5>
-                                    <select className="form-select">
-                                        <option disabled selected>Select</option>
-                                        <option value={0}>Application</option>
-                                        <option value={1}>Design</option>
-                                        <option value={2}>Development</option>
-                                        <option value={3}>Management</option>
-                                        <option value={4}>Marketing</option>
-                                        <option value={5}>Support</option>
-                                        <option value={6}>Networking</option>
-                                        <option value={7}>Mobile</option>
+                                    <select
+                                        {...register("category")}
+                                        name='category'
+                                        type="text"
+                                        className="form-select">
+                                        {
+                                            categories &&
+                                            categories.map((category, index) =>
+                                                <option key={index}
+                                                    value={category._id}>
+                                                    {category.name}
+                                                </option>)
+                                        }
                                     </select>
+
                                 </div>
                                 {/* <!-- END FILTER BY CATEGORY --> */}
 
@@ -158,14 +136,14 @@ const FindCategoryJobs = (category_id) => {
                                 <hr />
                                 {/* <!-- BEGIN SEARCH INPUT --> */}
                                 <div className="input-group">
-                                    <input type="text" className="form-control" value="web development" />
+                                    <input type="text" className="form-control" placeholder='input search data' />
                                     <span className="input-group-btn">
                                         <button className="custom_btn" type="button"><FaSearch className='' />Search</button>
                                     </span>
                                 </div>
                                 {/* <!-- END SEARCH INPUT --> */}
 
-                                <p className=' fw-bold'>Showing all results matching "web development"</p>
+                                <p className=' fw-bold'>Showing search result</p>
 
                                 <div className="padding"></div>
 
@@ -208,7 +186,7 @@ const FindCategoryJobs = (category_id) => {
                                         </thead>
 
                                         <tbody>
-                                            {/* {
+                                            {
                                                 jobs.map((job, index) =>
                                                     <tr key={job._id} className="">
                                                         <td>{index + 1}</td>
@@ -224,7 +202,7 @@ const FindCategoryJobs = (category_id) => {
                                                         <td>৳{job.salaryTo}</td>
                                                     </tr>
                                                 )
-                                            } */}
+                                            }
 
                                         </tbody></table>
                                 </div>
@@ -262,4 +240,4 @@ const FindCategoryJobs = (category_id) => {
     );
 };
 
-export default FindCategoryJobs;
+export default FindJobsByCategory;

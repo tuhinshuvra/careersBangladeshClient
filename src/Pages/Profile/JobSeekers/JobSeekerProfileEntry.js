@@ -9,10 +9,12 @@ const JobSeekerProfileEntry = () => {
 
     const { user } = useContext(AuthContext)
 
-
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
 
+    const imageHostKey = process.env.REACT_APP_CABD_imagebb_hostKey;
+
+    // console.log("imageBBHostKey  : ", imageHostKey)
 
 
     const { data: categories, isLoading } = useQuery({
@@ -24,163 +26,177 @@ const JobSeekerProfileEntry = () => {
         }
     })
 
-
     const handleJobSeekerProfile = (data) => {
-        const jobseekerProfile = {
-            email: user.email,
-            name: user.displayName,
-
-            skill: data.skill,
-            fathersName: data.fathers_name,
-            mothersName: data.mothers_name,
-            nationality: data.nationality,
-            nationalId: data.nationalId,
-            phone: data.phone,
-            birthDete: data.birth_dete,
-            gender: data.gender,
-            religion: data.religion,
-            maritialStatus: data.maritial_status,
-            image: data.image,
-            presentAddress: data.present_addres,
-            permanentAddress: data.permanent_address,
-            careerObjective: data.career_objective,
-           
-            expOneCompanayName: data.expOneCompanayName,
-            expOneCompanayBusiness: data.expOneCompanayBusiness,
-            expOneDesignation: data.expOneDesignation,
-            expOneDepartment: data.expOneDepartment,
-            expOneFrom: data.expOneFrom,
-            expOneTo: data.expOneTo,
-            exprOneWorkPeriod: data.exprOneWorkPeriod,
-            exprOneResp: data.exprOneResp,
-            exprOneExpertise: data.exprOneExpertise,
-            exprCompOneAddress: data.exprCompOneAddress,
-            
-            expTwoCompanayName: data.expTwoCompanayName,
-            expTwoCompanayBusiness: data.expTwoCompanayBusiness,
-            expTwoDesignation: data.expTwoDesignation,
-            expTwoDepartment: data.expTwoDepartment,
-            expTwoFrom: data.expTwoFrom,
-            expTwoeTo: data.expTwoeTo,
-            exprTwoWorkPeriod: data.exprTwoWorkPeriod,
-            exprTwoResp: data.exprTwoResp,
-            exprTwoExpertise: data.exprTwoExpertise,
-            exprCompTwoAddress: data.exprCompTwoAddress,
-            
-            
-            examTitleOne: data.examTitleOne,
-            majorOne: data.majorOne,
-            instituteOne: data.instituteOne,
-            resultOne: data.resultOne,
-            passYearOne: data.passYearOne,
-            
-            
-            examTitleTwo: data.examTitleTwo,
-            majorTwo: data.majorTwo,
-            instituteTwo: data.instituteTwo,
-            resultTwo: data.resultTwo,
-            passYearTwo: data.passYearTwo,
-            
-            
-            examTitleThree: data.examTitleThree,
-            majorThree: data.majorThree,
-            instituteThree: data.instituteThree,
-            resultThree: data.resultThree,
-            passYearThree: data.passYearThree,
-            
-            
-            examTitleFour: data.examTitleFour,
-            majorFour: data.majorFour,
-            instituteFour: data.instituteFour,
-            resultFour: data.resultFour,
-            passYearFour: data.passYearFour,
-            
-            
-            trainingTitleOne: data.trainingTitleOne,
-            topicOne: data.topicOne,
-            insAndLocationOne: data.insAndLocationOne,
-            durationOne: data.durationOne,
-            traningYearOne: data.traningYearOne,
-            
-            
-            trainingTitleTwo: data.trainingTitleTwo,
-            topicTwo: data.topicTwo,
-            insAndLocationTwo: data.insAndLocationTwo,
-            durationTwo: data.durationTwo,
-            traningYearTwo: data.traningYearTwo,
-            
-            
-            trainingTitleThree: data.trainingTitleThree,
-            topicThree: data.topicThree,
-            insAndLocationThree: data.insAndLocationThree,
-            durationThree: data.durationThree,
-            traningYearThree: data.traningYearThree,
-            
-            
-            gitHubLink: data.gitHubLink,
-            link_two: data.link_two,
-            link_three: data.link_three,
-            portfolio: data.portfolio,
-            
-            
-            lookingFor: data.lookingFor,
-            availbaleFor: data.availbaleFor,
-            presentSalary: data.presentSalary,
-            expectedSalary: data.expectedSalary,
-            category: data.category,          
-            preferredLocations: data.preferredLocations,
-            preferredOrg: data.preferredOrg,
-            
-            skillOne: data.skillOne,
-            skillTwo: data.skillTwo,
-            skillThree: data.skillThree,
-            skillFour: data.skillFour,
-            skillFive: data.skillFive,
-            skillSix: data.skillSix,
-            skillSeven: data.skillSeven,
-            skillEight: data.skillEight,
-            skillNine: data.skillNine,
-            skillTen: data.skillTen,
-            skillLearnedBy: data.skillLearnedBy,
-            skillDesciption: data.skillDesciption,
-            
-            
-            languOne: data.languOne,
-            writingOne: data.writingOne,
-            readingOne: data.readingOne,
-
-            languTwo: data.languTwo,
-            writingTwo: data.writingTwo,
-            readingTwo: data.readingTwo,
-            
-            
-            languThree: data.languThree,
-            readingThree: data.readingThree,
-            writingThree: data.writingThree,
-            
-            refOneName: data.ref_one_name,
-            refOneDetails: data.ref_one_details,
-            refTwoName: data.ref_two_name,
-            refTwoDetails: data.ref_two_details,
-            
-            other: data.other,
-
-        }
-        console.log("Job Seeker Data :", data);
-
-        fetch('http://localhost:5000/jobseekerProfile', {
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
+        fetch(url, {
             method: 'POST',
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(jobseekerProfile)
+            body: formData
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                toast('My Profile Data Saved Successfully')
-                navigate("/dashboard/jobSeekerProfile");
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+
+                    const jobseekerProfile = {
+                        email: user.email,
+                        name: user.displayName,
+
+                        skill: data.skill,
+                        fathersName: data.fathers_name,
+                        mothersName: data.mothers_name,
+                        nationality: data.nationality,
+                        nationalId: data.nationalId,
+                        phone: data.phone,
+                        birthDete: data.birth_dete,
+                        gender: data.gender,
+                        religion: data.religion,
+                        maritialStatus: data.maritial_status,
+                        image: imgData.data.url,
+                        presentAddress: data.present_addres,
+                        permanentAddress: data.permanent_address,
+                        careerObjective: data.career_objective,
+
+                        expOneCompanayName: data.expOneCompanayName,
+                        expOneCompanayBusiness: data.expOneCompanayBusiness,
+                        expOneDesignation: data.expOneDesignation,
+                        expOneDepartment: data.expOneDepartment,
+                        expOneFrom: data.expOneFrom,
+                        expOneTo: data.expOneTo,
+                        exprOneWorkPeriod: data.exprOneWorkPeriod,
+                        exprOneResp: data.exprOneResp,
+                        exprOneExpertise: data.exprOneExpertise,
+                        exprCompOneAddress: data.exprCompOneAddress,
+
+                        expTwoCompanayName: data.expTwoCompanayName,
+                        expTwoCompanayBusiness: data.expTwoCompanayBusiness,
+                        expTwoDesignation: data.expTwoDesignation,
+                        expTwoDepartment: data.expTwoDepartment,
+                        expTwoFrom: data.expTwoFrom,
+                        expTwoeTo: data.expTwoeTo,
+                        exprTwoWorkPeriod: data.exprTwoWorkPeriod,
+                        exprTwoResp: data.exprTwoResp,
+                        exprTwoExpertise: data.exprTwoExpertise,
+                        exprCompTwoAddress: data.exprCompTwoAddress,
+
+
+                        examTitleOne: data.examTitleOne,
+                        majorOne: data.majorOne,
+                        instituteOne: data.instituteOne,
+                        resultOne: data.resultOne,
+                        passYearOne: data.passYearOne,
+
+
+                        examTitleTwo: data.examTitleTwo,
+                        majorTwo: data.majorTwo,
+                        instituteTwo: data.instituteTwo,
+                        resultTwo: data.resultTwo,
+                        passYearTwo: data.passYearTwo,
+
+
+                        examTitleThree: data.examTitleThree,
+                        majorThree: data.majorThree,
+                        instituteThree: data.instituteThree,
+                        resultThree: data.resultThree,
+                        passYearThree: data.passYearThree,
+
+
+                        examTitleFour: data.examTitleFour,
+                        majorFour: data.majorFour,
+                        instituteFour: data.instituteFour,
+                        resultFour: data.resultFour,
+                        passYearFour: data.passYearFour,
+
+
+                        trainingTitleOne: data.trainingTitleOne,
+                        topicOne: data.topicOne,
+                        insAndLocationOne: data.insAndLocationOne,
+                        durationOne: data.durationOne,
+                        traningYearOne: data.traningYearOne,
+
+
+                        trainingTitleTwo: data.trainingTitleTwo,
+                        topicTwo: data.topicTwo,
+                        insAndLocationTwo: data.insAndLocationTwo,
+                        durationTwo: data.durationTwo,
+                        traningYearTwo: data.traningYearTwo,
+
+
+                        trainingTitleThree: data.trainingTitleThree,
+                        topicThree: data.topicThree,
+                        insAndLocationThree: data.insAndLocationThree,
+                        durationThree: data.durationThree,
+                        traningYearThree: data.traningYearThree,
+
+
+                        gitHubLink: data.gitHubLink,
+                        link_two: data.link_two,
+                        link_three: data.link_three,
+                        portfolio: data.portfolio,
+
+
+                        lookingFor: data.lookingFor,
+                        availbaleFor: data.availbaleFor,
+                        presentSalary: data.presentSalary,
+                        expectedSalary: data.expectedSalary,
+                        category: data.category,
+                        preferredLocations: data.preferredLocations,
+                        preferredOrg: data.preferredOrg,
+
+                        skillOne: data.skillOne,
+                        skillTwo: data.skillTwo,
+                        skillThree: data.skillThree,
+                        skillFour: data.skillFour,
+                        skillFive: data.skillFive,
+                        skillSix: data.skillSix,
+                        skillSeven: data.skillSeven,
+                        skillEight: data.skillEight,
+                        skillNine: data.skillNine,
+                        skillTen: data.skillTen,
+                        skillLearnedBy: data.skillLearnedBy,
+                        skillDesciption: data.skillDesciption,
+
+
+                        languOne: data.languOne,
+                        writingOne: data.writingOne,
+                        readingOne: data.readingOne,
+
+                        languTwo: data.languTwo,
+                        writingTwo: data.writingTwo,
+                        readingTwo: data.readingTwo,
+
+
+                        languThree: data.languThree,
+                        readingThree: data.readingThree,
+                        writingThree: data.writingThree,
+
+                        refOneName: data.ref_one_name,
+                        refOneDetails: data.ref_one_details,
+                        refTwoName: data.ref_two_name,
+                        refTwoDetails: data.ref_two_details,
+
+                        other: data.other,
+
+                    }
+                    // console.log("Job Seeker Data :", data);
+
+                    fetch('http://localhost:5000/jobseekerProfile', {
+                        method: 'POST',
+                        headers: {
+                            "content-type": "application/json"
+                        },
+                        body: JSON.stringify(jobseekerProfile)
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data)
+                            toast.promise(`${user.displayName}Profile Data Saved Successfully`)
+                            navigate("/dashboard/jobSeekerProfile");
+                        })
+                }
             })
+
     }
 
     return (
@@ -287,14 +303,14 @@ const JobSeekerProfileEntry = () => {
                                 name="religion"
                                 className="form-select select-bordered  ">
                                 <option disabled selected>-Select Religion-</option>
-                                <option value={0}>Islam</option>
-                                <option value={1}>Buddhism</option>
-                                <option value={2}>Hinduism</option>
-                                <option value={3}>Christianity</option>
-                                <option value={4}>Judaism</option>
-                                <option value={5}>Irreligion</option>
-                                <option value={6}>Folk religions</option>
-                                <option value={99}>Others</option>
+                                <option value="Islam">Islam</option>
+                                <option value="Buddhism">Buddhism</option>
+                                <option value="Hinduism">Hinduism</option>
+                                <option value="Christianity">Christianity</option>
+                                <option value="Judaism">Judaism</option>
+                                <option value="Irreligion">Irreligion</option>
+                                <option value="Folk religions">Folk religions</option>
+                                <option value="Others">Others</option>
                             </select>
                         </div>
 
@@ -319,7 +335,7 @@ const JobSeekerProfileEntry = () => {
                         <div className='col-md-3 mb-3 '>
                             <span className="label-text text-md fw-bold  ">Photo</span>
                             <input
-                                {...register("image",)}
+                                {...register("image", { required: true })}
                                 name='image'
                                 className='input form-control '
                                 id="image"
@@ -454,7 +470,7 @@ const JobSeekerProfileEntry = () => {
                                 type="checkbox" value="currentlyWorkHere"
                                 id="exprOneWorkPeriod"
                             />
-                            <label class="form-check-label" for="exprOneWorkPeriod">
+                            <label class="form-check-label" htmlFor="exprOneWorkPeriod">
                                 Currently working here
                             </label>
                         </div>
@@ -580,7 +596,7 @@ const JobSeekerProfileEntry = () => {
                                 type="checkbox" value="exprTwoWorkPeriod"
                                 id="exprTwoWorkPeriod"
                             />
-                            <label class="form-check-label" for="exprTwoWorkPeriod">
+                            <label class="form-check-label" htmlFor="exprTwoWorkPeriod">
                                 Currently working here
                             </label>
                         </div>
@@ -689,7 +705,7 @@ const JobSeekerProfileEntry = () => {
                             name="passYearOne"
                             className='input form-control '
                         >
-                            <option selected disabled>Select Year</option>
+                            <option selected disabled>-Select Pass.Year-</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
@@ -754,7 +770,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2   '>
                         <span className="label-text text-md fw-bold  ">Exam Title</span>
                         <input
-                            {...register("examTitleTwo", { required: true })}
+                            {...register("examTitleTwo", {})}
                             name='examTitleTwo'
                             className='input form-control '
                             id="examTitleTwo"
@@ -766,7 +782,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Concentration/Major</span>
                         <input
-                            {...register("majorTwo", { required: true })}
+                            {...register("majorTwo", {})}
                             name='majorTwo'
                             className='input form-control '
                             id="majorTwo"
@@ -778,7 +794,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Institute</span>
                         <input
-                            {...register("instituteTwo", { required: true })}
+                            {...register("instituteTwo", {})}
                             name='instituteTwo'
                             className='input form-control '
                             id="instituteTwo"
@@ -789,7 +805,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Result</span>
                         <input
-                            {...register("resultTwo", { required: true })}
+                            {...register("resultTwo", {})}
                             name='instituteTwo'
                             className='input form-control '
                             id="instituteTwo"
@@ -801,12 +817,12 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Pass.Year</span>
                         <select
-                            {...register("passYearTwo", { required: true })}
+                            {...register("passYearTwo", {})}
                             id="passYearTwo"
                             name="passYearTwo"
                             className='input form-control '
                         >
-                            <option selected disabled>Select Year</option>
+                            <option selected disabled>-Select Pass.Year-</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
@@ -870,7 +886,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Exam Title</span>
                         <input
-                            {...register("examTitleThree", { required: true })}
+                            {...register("examTitleThree", {})}
                             name='examTitleThree'
                             className='input form-control '
                             id="examTitleThree"
@@ -882,7 +898,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Concentration/Major</span>
                         <input
-                            {...register("majorThree", { required: true })}
+                            {...register("majorThree", {})}
                             name='majorThree'
                             className='input form-control '
                             id="majorThree"
@@ -894,7 +910,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Institute</span>
                         <input
-                            {...register("instituteThree", { required: true })}
+                            {...register("instituteThree", {})}
                             name='instituteThree'
                             className='input form-control '
                             id="instituteThree"
@@ -906,7 +922,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Result</span>
                         <input
-                            {...register("resultThree", { required: true })}
+                            {...register("resultThree", {})}
                             name='resultThree'
                             className='input form-control '
                             id="resultThree"
@@ -923,7 +939,7 @@ const JobSeekerProfileEntry = () => {
                             name="passYearThree"
                             className='input form-control '
                         >
-                            <option selected disabled>Select Year</option>
+                            <option selected disabled>-Select Pass.Year-</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
@@ -987,7 +1003,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Exam Title</span>
                         <input
-                            {...register("examTitleFour", { required: true })}
+                            {...register("examTitleFour", {})}
                             name='examTitleFour'
                             className='input form-control '
                             id="examTitleFour"
@@ -999,7 +1015,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Concentration/Major</span>
                         <input
-                            {...register("majorFour", { required: true })}
+                            {...register("majorFour", {})}
                             name='majorFour'
                             className='input form-control '
                             id="majorFour"
@@ -1011,7 +1027,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Institute</span>
                         <input
-                            {...register("instituteFour", { required: true })}
+                            {...register("instituteFour", {})}
                             name='instituteFour'
                             className='input form-control '
                             id="instituteFour"
@@ -1023,7 +1039,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Result</span>
                         <input
-                            {...register("resultFour", { required: true })}
+                            {...register("resultFour", {})}
                             name='resultFour'
                             className='input form-control '
                             id="resultFour"
@@ -1035,12 +1051,12 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Pass.Year</span>
                         <select
-                            {...register("passYearFour", { required: true })}
+                            {...register("passYearFour", {})}
                             id="passYearFour"
                             name="passYearFour"
                             className='input form-control '
                         >
-                            <option selected disabled>Select Year</option>
+                            <option selected disabled>-Select Pass.Year-</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
@@ -1115,7 +1131,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2  '>
                         <span className="label-text text-md fw-bold  ">Training Title</span>
                         <input
-                            {...register("trainingTitleOne", { required: true })}
+                            {...register("trainingTitleOne", {})}
                             name='trainingTitleOne'
                             className='input form-control '
                             id="trainingTitleOne"
@@ -1127,7 +1143,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Topic</span>
                         <input
-                            {...register("topicOne", { required: true })}
+                            {...register("topicOne", {})}
                             name='topicOne'
                             className='input form-control '
                             id="topicOne"
@@ -1139,7 +1155,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold  ">Institute and Location</span>
                         <input
-                            {...register("insAndLocationOne", { required: true })}
+                            {...register("insAndLocationOne", {})}
                             name='insAndLocationOne'
                             className='input form-control '
                             id="insAndLocationOne"
@@ -1150,7 +1166,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2  '>
                         <span className="label-text text-md fw-bold  ">Duration</span>
                         <input
-                            {...register("durationOne", { required: true })}
+                            {...register("durationOne", {})}
                             name='durationOne'
                             className='input form-control '
                             id="durationOne"
@@ -1162,12 +1178,12 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Year</span>
                         <select
-                            {...register("traningYearOne", { required: true })}
+                            {...register("traningYearOne", {})}
                             id="traningYearOne"
                             name="traningYearOne"
                             className='input form-control '
                         >
-                            <option selected disabled>Select Year</option>
+                            <option selected disabled>-Select Pass.Year-</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
@@ -1231,7 +1247,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2  '>
                         <span className="label-text text-md fw-bold  ">Training Title</span>
                         <input
-                            {...register("trainingTitleTwo", { required: true })}
+                            {...register("trainingTitleTwo",)}
                             name='trainingTitleTwo'
                             className='input form-control '
                             id="trainingTitleTwo"
@@ -1243,7 +1259,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Topic</span>
                         <input
-                            {...register("topicTwo", { required: true })}
+                            {...register("topicTwo",)}
                             name='topicTwo'
                             className='input form-control '
                             id="topicTwo"
@@ -1255,7 +1271,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold  ">Institute and Location</span>
                         <input
-                            {...register("insAndLocationTwo", { required: true })}
+                            {...register("insAndLocationTwo",)}
                             name='insAndLocationTwo'
                             className='input form-control '
                             id="insAndLocationTwo"
@@ -1266,7 +1282,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Duration</span>
                         <input
-                            {...register("durationTwo", { required: true })}
+                            {...register("durationTwo",)}
                             name='durationTwo'
                             className='input form-control '
                             id="durationTwo"
@@ -1283,7 +1299,7 @@ const JobSeekerProfileEntry = () => {
                             name="traningYearTwo"
                             className='input form-control '
                         >
-                            <option selected disabled>Select Year</option>
+                            <option selected disabled>-Select Pass.Year-</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
@@ -1347,7 +1363,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2'>
                         <span className="label-text text-md fw-bold  ">Training Title</span>
                         <input
-                            {...register("trainingTitleThree", { required: true })}
+                            {...register("trainingTitleThree",)}
                             name='trainingTitleThree'
                             className='input form-control '
                             id="trainingTitleThree"
@@ -1359,7 +1375,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-3 mb-3 mb-3'>
                         <span className="label-text text-md fw-bold  ">Topic</span>
                         <input
-                            {...register("topicThree", { required: true })}
+                            {...register("topicThree",)}
                             name='topicThree'
                             className='input form-control '
                             id="topicThree"
@@ -1371,7 +1387,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-3 mb-3 mb-3'>
                         <span className="label-text text-md fw-bold  ">Institute and Location</span>
                         <input
-                            {...register("insAndLocationThree", { required: true })}
+                            {...register("insAndLocationThree",)}
                             name='insAndLocationThree'
                             className='input form-control '
                             id="insAndLocationThree"
@@ -1382,7 +1398,7 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2'>
                         <span className="label-text text-md fw-bold  ">Duration</span>
                         <input
-                            {...register("durationThree", { required: true })}
+                            {...register("durationThree",)}
                             name='durationThree'
                             className='input form-control '
                             id="durationThree"
@@ -1394,12 +1410,12 @@ const JobSeekerProfileEntry = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Year</span>
                         <select
-                            {...register("traningYearThree", { required: true })}
+                            {...register("traningYearThree",)}
                             id="traningYearThree"
                             name="traningYearThree"
                             className='input form-control '
                         >
-                            <option selected disabled>Select Year</option>
+                            <option selected disabled>-Select Pass.Year-</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
@@ -1528,38 +1544,51 @@ const JobSeekerProfileEntry = () => {
                     </div>
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold  ">Available for (Job Nature)</span>
-                        <input
+                        <select
                             {...register("availbaleFor",)}
                             name='availbaleFor'
                             className='input form-control '
                             id="availbaleFor"
-                            type="text"
-                            placeholder='Enter data here'
-                        />
+                        >
+                            <option disabled selected>-Select Job Nature-</option>
+                            <option value="Full time">Full time</option>
+                            <option value="Part time">Part time</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Internship">Internship</option>
+                            <option value="Freelance">Freelance</option>
+
+                        </select>
                     </div>
 
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold  ">Present Salary</span>
-                        <input
-                            {...register("presentSalary",)}
-                            name='presentSalary'
-                            className='input form-control '
-                            id="presentSalary"
-                            type="text"
-                            placeholder='Enter present salary'
-                        />
+                        <div className=' d-flex'>
+                            <input
+                                {...register("presentSalary",)}
+                                name='presentSalary'
+                                className='input form-control '
+                                id="presentSalary"
+                                type="text"
+                                placeholder='Ex. 50000'
+                            />
+                            <p>TK/Month</p>
+                        </div>
                     </div>
 
                     <div className='col-md-3 mb-3 mb-3'>
                         <span className="label-text text-md fw-bold  ">Expected Salary</span>
-                        <input
-                            {...register("expectedSalary")}
-                            name='expectedSalary'
-                            className='input form-control '
-                            id="expectedSalary"
-                            type="text"
-                            placeholder='Enter expected salary'
-                        />
+                        <div className=' d-flex justify-content-center align-items-center'>
+                            <input
+                                {...register("expectedSalary")}
+                                name='expectedSalary'
+                                className='input form-control '
+                                id="expectedSalary"
+                                type="text"
+                                placeholder='Enter expected salary'
+                            />
+                            <p>TK/Month</p>
+                        </div>
                     </div>
 
                     <div className='col-md-6 mb-3 '>
@@ -1603,7 +1632,7 @@ const JobSeekerProfileEntry = () => {
                             placeholder='Enter Preferred Organization'
                         />
                     </div>
-                </div>               
+                </div>
 
 
                 {/* Specialization Section start */}
@@ -1770,7 +1799,7 @@ const JobSeekerProfileEntry = () => {
                     <div className=' col-md-3 mb-3'>
                         <span className="label-text text-md fw-bold  ">Reading</span>
                         <select
-                            {...register("readingOne")}
+                            {...register("readingOne", { required: 'true' })}
                             name="readingOne"
                             id="readingOne"
                             className="form-select select-bordered  ">
@@ -1784,7 +1813,7 @@ const JobSeekerProfileEntry = () => {
                     <div className=' col-md-3 mb-3'>
                         <span className="label-text text-md fw-bold  ">Writing</span>
                         <select
-                            {...register("writingOne")}
+                            {...register("writingOne", { required: 'true' })}
                             name="wriingOne"
                             id="wriingOne"
                             className="form-select select-bordered  ">
@@ -1798,7 +1827,7 @@ const JobSeekerProfileEntry = () => {
                     <div className=' col-md-3 mb-3'>
                         <span className="label-text text-md fw-bold  ">Speaking</span>
                         <select
-                            {...register("readingOne")}
+                            {...register("readingOne", { required: 'true' })}
                             name="readingOne"
                             className="form-select select-bordered  ">
                             <option disabled selected>-Select-</option>
@@ -1887,7 +1916,7 @@ const JobSeekerProfileEntry = () => {
                     <div className=' col-md-3 mb-3'>
                         <span className="label-text text-md fw-bold  ">Reading</span>
                         <select
-                            {...register("readingThree")}
+                            {...register("readingThree",)}
                             name="readingThree"
                             id="readingThree"
                             className="form-select select-bordered  ">
@@ -1901,7 +1930,7 @@ const JobSeekerProfileEntry = () => {
                     <div className=' col-md-3 mb-3'>
                         <span className="label-text text-md fw-bold  ">Writing</span>
                         <select
-                            {...register("writingThree")}
+                            {...register("writingThree",)}
                             name="writingThree"
                             id="writingThree"
                             className="form-select select-bordered  ">
@@ -1915,7 +1944,7 @@ const JobSeekerProfileEntry = () => {
                     <div className=' col-md-3 mb-3'>
                         <span className="label-text text-md fw-bold  ">Speaking</span>
                         <select
-                            {...register("readingThree")}
+                            {...register("readingThree",)}
                             name="readingThree"
                             id="readingThree"
                             className="form-select select-bordered  ">

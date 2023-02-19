@@ -15,7 +15,7 @@ const Shop = () => {
             .then(response => response.json())
             .then(data => {
                 setProducts(data)
-                console.log("Data : ", data)
+                // console.log("Data : ", data)
             })
     }, []);
 

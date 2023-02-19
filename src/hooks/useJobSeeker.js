@@ -10,7 +10,7 @@ const useJobSeeker = (email) => {
             fetch(`http://localhost:5000/users/jobseeker/${email}`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
+                    // console.log(data);
                     setIsJobSeeker(data.isJobSeeker)
                     setIsJobSeekerLoading(false)
                 })

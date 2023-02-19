@@ -10,7 +10,6 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [applicantShow, setApplicatShow] = useState(true);
-    const [categoryId, setCategoryId] = useState(true);
     const [jobId, setJobId] = useState([]);
 
     const signIn = (email, password) => {
@@ -52,8 +51,6 @@ const AuthProvider = ({ children }) => {
         setJobId,
         applicantShow,
         setApplicatShow,
-        categoryId,
-        setCategoryId,
         setLoading,
         createUser,
         updateUser,

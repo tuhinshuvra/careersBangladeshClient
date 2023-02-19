@@ -24,15 +24,15 @@ const Login = () => {
                 const user = result.user;
                 toast.success('User Login Successfully.')
                 navigate("/");
-                console.log(user);
+                // console.log(user);
                 setLoginUserEmail(data.email);
             })
             .catch(error => {
                 setLoginError(error.message);
                 toast.error(error.message);
-                console.log(error);
+                // console.log(error);
             })
-        console.log(data);
+        // console.log(data);
     }
 
     return (

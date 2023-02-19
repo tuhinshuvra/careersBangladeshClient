@@ -21,14 +21,14 @@ const CommonDashboard = () => {
 
     const employer = useLoaderData();
 
-    console.log("Employer : ", employer)
+    // console.log("Employer : ", employer)
 
 
     useEffect(() => {
         fetch(`http://localhost:5000/employer/${email}`)
             .then(response => response.json())
             .then(data => {
-                console.log("Employee Data:", data);
+                // console.log("Employee Data:", data);
                 setEmployerData(data)
             })
     }, [email])
@@ -38,13 +38,13 @@ const CommonDashboard = () => {
         fetch(`http://localhost:5000/jobSeeker/${email}`)
             .then(response => response.json())
             .then(data => {
-                console.log("JobSeeker Data:", data);
+                // console.log("JobSeeker Data:", data);
                 setSeekerData(data)
             })
     }, [email])
 
 
-    console.log("employerData : ", employerData)
+    // console.log("employerData : ", employerData)
 
     const { companyNameEn, companyLogo, companyNameBn, estdYear, companySize, addressEng, addressBng, busiDescription, tradeLicense, websiteURL, contactPersonName, contactPersonDesignation,
         contactPersonEmail, contactPersonPhone } = employerData;

@@ -8,45 +8,62 @@ const EmployerProfileEntry = () => {
 
     const { user } = useContext(AuthContext)
 
-
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
 
+    const imageHostKey = process.env.REACT_APP_CABD_imagebb_hostKey;
 
     const handleEmployeProfile = (data) => {
-        const emplyerProfile = {
-            email: user?.email,
-            name: user?.displayName,
-            companyNameEn: data.company_name_en,
-            companyNameBn: data.company_name_bn,
-            companyLogo: data.company_logo,
-            estdYear: data.estd_year,
-            companySize: data.company_size,
-            addressEng: data.address_en,
-            addressBng: data.address_bn,
-            busiDescription: data.busi_description,
-            tradeLicense: data.trade_license,
-            websiteURL: data.website_url,
-            contactPersonName: data.contact_person_name,
-            contactPersonDesignation: data.contact_person_designation,
-            contactPersonEmail: data.contact_person_email,
-            contactPersonPhone: data.contact_person_phone,
-        }
-        console.log("Employee Data :", data);
-
-        fetch('http://localhost:5000/emplyerProfile', {
+        const image = data.company_logo[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
+        fetch(url, {
             method: 'POST',
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(emplyerProfile)
+            body: formData
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                toast('My Profile Saved Successfully');
-                navigate("/dashboard/employerProfile")
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+
+
+                    const emplyerProfile = {
+                        email: user?.email,
+                        name: user?.displayName,
+                        companyNameEn: data.company_name_en,
+                        companyNameBn: data.company_name_bn,
+                        // image: imgData.data.url,
+                        companyLogo: imgData.data.url,
+                        estdYear: data.estd_year,
+                        companySize: data.company_size,
+                        addressEng: data.address_en,
+                        addressBng: data.address_bn,
+                        busiDescription: data.busi_description,
+                        tradeLicense: data.trade_license,
+                        websiteURL: data.website_url,
+                        contactPersonName: data.contact_person_name,
+                        contactPersonDesignation: data.contact_person_designation,
+                        contactPersonEmail: data.contact_person_email,
+                        contactPersonPhone: data.contact_person_phone,
+                    }
+                    console.log("Employee Data :", data);
+
+                    fetch('http://localhost:5000/emplyerProfile', {
+                        method: 'POST',
+                        headers: {
+                            "content-type": "application/json"
+                        },
+                        body: JSON.stringify(emplyerProfile)
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data)
+                            toast('My Profile Saved Successfully');
+                            navigate("/dashboard/employerProfile")
+                        })
+                }
             })
+
     }
 
     return (
@@ -76,7 +93,6 @@ const EmployerProfileEntry = () => {
                             className='input form-control my-lg-3'
                             id="company_logo"
                             type="file"
-                            placeholder='Company Logo*'
                         />
 
                     </div>
@@ -114,12 +130,12 @@ const EmployerProfileEntry = () => {
                             name='company_size'
                             className="form-select">
                             <option disabled selected>Select Company Size</option>
-                            <option value={1 - 15}>1-15 Employees</option>
-                            <option value={16 - 50}>16-50 Employees</option>
-                            <option value={51 - 100}>51-100 Employees</option>
-                            <option value={100 - 500}>100-500 Employees</option>
-                            <option value={501 - 1000}>501-1000 Employees</option>
-                            <option value={1000}>1000+ Employees</option>
+                            <option value={15}>1-15 Employees</option>
+                            <option value={50}>16-50 Employees</option>
+                            <option value={100}>51-100 Employees</option>
+                            <option value={500}>100-500 Employees</option>
+                            <option value={1000}>501-1000 Employees</option>
+                            <option value={2000}>1000+ Employees</option>
                         </select>
                     </div>
                 </div>

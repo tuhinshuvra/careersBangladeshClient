@@ -16,7 +16,7 @@ const JobCategoryEntry = () => {
             name: data.name,
             categoryImage: data.cat_img,
         }
-        console.log("Category Data :", data);
+        // console.log("Category Data :", data);
 
         fetch('http://localhost:5000/jobCategories', {
             method: 'POST',
@@ -27,7 +27,7 @@ const JobCategoryEntry = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 toast.success('Category Saved Successfully!')
             })
     }

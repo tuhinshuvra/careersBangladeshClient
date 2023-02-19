@@ -38,7 +38,7 @@ const Navbar = () => {
                                 <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/">Home</Link>
                             </li> */}
                             <li className="nav-item mb-2">
-                                <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/findJobs">FindJobs</Link>
+                                <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/findAllJob">FindJobs</Link>
                             </li>
 
                             {/* <li className="nav-item mb-2">

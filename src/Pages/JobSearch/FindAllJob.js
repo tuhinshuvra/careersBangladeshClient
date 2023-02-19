@@ -8,27 +8,11 @@ import { toast } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../Authentication/AuthProvider';
 
-const FindJob = () => {
+const FindAllJob = () => {
 
-    // const { jobsss } = useLoaderData();
-
-
-
-    // const { categoryId } = useContext(AuthContext)
-    // const { catJobs } = useLoaderData();
-    // console.log("Jobs by category : ", jobsss)
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     useTitle('FindJob');
-
-    const { data: jobs = [], refetch } = useQuery({
-        queryKey: ['jobs'],
-        queryFn: async () => {
-            const respone = await fetch('http://localhost:5000/jobs');
-            const data = respone.json();
-            return data;
-        }
-    })
 
 
     const { data: categories, isLoading } = useQuery({
@@ -36,6 +20,16 @@ const FindJob = () => {
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/jobCategories');
             const data = await res.json();
+            return data;
+        }
+    })
+
+
+    const { data: jobs = [], refetch } = useQuery({
+        queryKey: ['jobs'],
+        queryFn: async () => {
+            const respone = await fetch('http://localhost:5000/jobs');
+            const data = respone.json();
             return data;
         }
     })
@@ -274,4 +268,4 @@ const FindJob = () => {
     );
 };
 
-export default FindJob;
+export default FindAllJob;

@@ -13,13 +13,13 @@ const AddressDetails = () => {
 
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="inside_bangladesh" id="inside_bangladesh" checked />
-                            <label class="form-check-label" for="inside_bangladesh">
+                            <label class="form-check-label" htmlFor="inside_bangladesh">
                                 Inside Bangladesh
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="outside_bangladesh" id="outside_bangladesh" />
-                            <label class="form-check-label" for="outside_bangladesh">
+                            <label class="form-check-label" htmlFor="outside_bangladesh">
                                 Outside Bangladesh
                             </label>
                         </div>

@@ -23,7 +23,7 @@ const Register = () => {
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log("User Info:", user)
+                // console.log("User Info:", user)
                 toast.success('User created and login successfully.')
 
                 const userInfo = {
@@ -34,14 +34,14 @@ const Register = () => {
                         saveUser(data.name, data.email, data.userType);
                     })
                     .catch(error => {
-                        console.log(error)
+                        // console.log(error)
                         setSignUpError(errors.message)
                     })
                 // form.reset();
                 navigate("/");
             })
             .catch(error => {
-                console.log("Error : ", error)
+                // console.log("Error : ", error)
                 setSignUpError(error.message);
             })
             .finally(() => {

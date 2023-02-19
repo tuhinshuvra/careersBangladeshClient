@@ -5,6 +5,7 @@ import router from './Pages/Router/Router/Router';
 import { Toaster } from 'react-hot-toast';
 
 function App() {
+
   return (
     <div className="">
       <RouterProvider router={router}></RouterProvider>

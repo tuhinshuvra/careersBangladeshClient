@@ -9,7 +9,6 @@ import PostedJobList from '../../Profile/Employers/PostedJobList';
 import EmployerProfileEntry from '../../Profile/Employers/EmployerProfileEntry';
 import WrongRoute from '../../Shared/ErrorDisplay/WrongRoute';
 import Login from '../../Login/Login';
-import FindJob from '../../JobSearch/FindJob';
 import PostedJobDetails from '../../Profile/Employers/PostedJobDetails';
 import JobPost from '../../Profile/Employers/JobPost';
 import UserList from '../../Profile/Admin/AllUser';
@@ -32,6 +31,8 @@ import AppliedJobList from '../../Profile/JobSeekers/AppliedJobList/AppliedJobLi
 import JobSeekerProfileEntry from '../../Profile/JobSeekers/JobSeekerProfileEntry';
 import JobSeekerProfile from '../../Profile/JobSeekers/JobSeekerProfile';
 import SavedJobList from '../../Profile/JobSeekers/SavedJobList/SavedJobList';
+import FindJobsByCategory from '../../JobSearch/FindJobsByCategory';
+import FindAllJob from '../../JobSearch/FindAllJob';
 
 const router = createBrowserRouter([
 
@@ -48,12 +49,12 @@ const router = createBrowserRouter([
                 element: <About></About>
             },
             {
-                path: '/findJobs',
-                element: <FindJob></FindJob>
+                path: '/findAllJob',
+                element: <FindAllJob></FindAllJob>
             },
             {
                 path: '/jobs/:categoryId',
-                element: <FindJob></FindJob>,
+                element: <FindJobsByCategory></FindJobsByCategory>,
                 loader: ({ params }) => fetch(`http://localhost:5000/jobbycategory?category=${params.categoryId}`)
             },
             {

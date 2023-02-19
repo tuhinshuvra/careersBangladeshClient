@@ -104,19 +104,19 @@ const PostedJobDetails = () => {
                             <div className=' d-flex'>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
-                                    <label class="form-check-label" for="exampleRadios1">
+                                    <label class="form-check-label" htmlFor="exampleRadios1">
                                         <b>Active</b>
                                     </label>
                                 </div>
                                 <div class="form-check mx-2">
                                     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
-                                    <label class="form-check-label" for="exampleRadios2">
+                                    <label class="form-check-label" htmlFor="exampleRadios2">
                                         <b> Inactive</b>
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" />
-                                    <label class="form-check-label" for="exampleRadios3">
+                                    <label class="form-check-label" htmlFor="exampleRadios3">
                                         <b> Close</b>
                                     </label>
                                 </div>
@@ -314,7 +314,7 @@ const PostedJobDetails = () => {
 
                                 <div class="form-check  ms-3">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-                                    <label class="form-check-label " for="flexCheckChecked">
+                                    <label class="form-check-label " htmlFor="flexCheckChecked">
                                         I am agree with the terms and conditions
                                     </label>
                                 </div>

@@ -18,7 +18,7 @@ const SavedJobList = () => {
     }, [user?.email])
 
 
-    console.log("applications : ", applications)
+    // console.log("applications : ", applications)
 
 
     return (

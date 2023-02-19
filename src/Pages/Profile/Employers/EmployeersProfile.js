@@ -48,9 +48,9 @@ const EmployersProfile = () => {
                                                 <h2 className="title fw-bold">{companyNameEn}</h2>
                                                 <p className="title fw-bold">{addressEng}</p>
                                                 <p className=' fw-bold'>Estd: {estdYear},    <span> No of Empoyee: {companySize} + </span></p>
-                                                <div className="title mb-3 fw-bold">Trade License: {tradeLicense}</div>
-                                                <div className="title mb-3 fw-bold">Website : {websiteURL}</div>
-                                                <div className="title mb-3 fw-bold">Email : {email}</div>
+                                                <div className="title mb-3"><b>Trade License:</b> {tradeLicense}</div>
+                                                <div className="title mb-3"><b>Email :</b>  {email}</div>
+                                                <div className="title mb-3"><b>Website :</b> {websiteURL}</div>
                                             </div>
                                         </div>
                                     </div>
