@@ -8,12 +8,14 @@ import { toast } from 'react-hot-toast';
 import { Form } from 'react-bootstrap';
 import '../Login/Login.css';
 import { useForm } from 'react-hook-form';
+import { Button } from 'react-bootstrap';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser, setLoading } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
     const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [accepted, setAccepted] = useState(false);
 
     const navigate = useNavigate();
     useTitle('Register');
@@ -47,6 +49,10 @@ const Register = () => {
             .finally(() => {
                 setLoading(false);
             })
+    }
+
+    const handleTermsAndConditions = (event) => {
+        setAccepted(event.target.checked);
     }
 
     const saveUser = (name, email, userType) => {
@@ -148,10 +154,22 @@ const Register = () => {
                                                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                                                     </div>
 
+                                                    <div className=''>
+                                                        <Form.Check
+                                                            onClick={handleTermsAndConditions}
+                                                            class="form-check-input"
+                                                            type="checkbox"
+                                                            label={<>Accept <Link to="/termsAndConditions" className=' text-decoration-none fw-bold'> Terms and Conditons</Link> </>}
+                                                        />
+                                                    </div>
+
+                                                    {/* {termsAndConditions != checked } */}
                                                     <div className="text-center pt-1 mb-5 pb-1">
-                                                        <button className="custom_btn mb-3" type="submit">
-                                                            Register
-                                                        </button>
+                                                        <Button
+                                                            className="custom_btn mb-3"
+                                                            disabled={!accepted}
+                                                            type="submit"
+                                                        >Register</Button>
                                                         <a className="text-muted m-2 " href="#!">Forgot password?</a>
                                                     </div>
 

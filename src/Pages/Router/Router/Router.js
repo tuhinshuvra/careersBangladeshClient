@@ -33,6 +33,7 @@ import JobSeekerProfile from '../../Profile/JobSeekers/JobSeekerProfile';
 import SavedJobList from '../../Profile/JobSeekers/SavedJobList/SavedJobList';
 import FindJobsByCategory from '../../JobSearch/FindJobsByCategory';
 import FindAllJob from '../../JobSearch/FindAllJob';
+import TermsAndConditions from '../../TermsAndConditions';
 
 const router = createBrowserRouter([
 
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/termsAndConditions',
+                element:  <TermsAndConditions></TermsAndConditions>
             },
         ]
     },
