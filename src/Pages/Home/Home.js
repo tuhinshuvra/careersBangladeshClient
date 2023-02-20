@@ -14,11 +14,11 @@ const Home = () => {
 
     return (
         <div>
-            {/* <TestSearch></TestSearch> */}
+            <TestSearch></TestSearch>
             <FindJobHome></FindJobHome>
-            <JobCategory></JobCategory>
-            <HotJobs></HotJobs>
-            <NewJobs></NewJobs>
+            {/* <JobCategory></JobCategory> */}
+            {/* <HotJobs></HotJobs> */}
+            {/* <NewJobs></NewJobs> */}
 
             {/* <ELearning></ELearning> */}
 

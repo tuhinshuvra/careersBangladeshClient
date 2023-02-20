@@ -6,19 +6,25 @@ import { Link } from 'react-router-dom';
 
 
 const FindJobHome = () => {
-    // const jobTitle = 
+    let jobTitle
+
+    const handleInputBlur=(event)=>{
+        const jobTitle = event.target.name;
+        // const value = event.target.value;
+
+    }
 
     return (
         <div className='my-5 col-lg-10 mx-auto'>
             <h2 className='careers_title_one my-5'><FaSearchDollar className='mx-1'></FaSearchDollar>LETS FIND YOUR JOB</h2>
             <div className="d-flex  justify-content-center mt-4">
                 <input
-
+                    onChange={handleInputBlur}
+                    name="jobTitle"
                     type="text"
-                    id="phone-search"
-                    placeholder="Keyword"
+                    id="jobTitle"
+                    placeholder="Job Title"
                     className="form-control  w-25"
-                    aria-describedby="kewordHelp"
                 />
 
                 <select
@@ -35,7 +41,7 @@ const FindJobHome = () => {
                 </select>
                 <input type="text" id="phone-search" placeholder="Location" className="form-control  w-25" aria-describedby="locationHelp" />
 
-                {/* <Link to={`/jobs/${jobTitle}`} className=' text-decoration-none custom_btn ms-2'>Search</Link> */}
+                <Link to={`/jobs/${jobTitle}`} className=' text-decoration-none custom_btn ms-2'>Search</Link>
             </div>
 
             <div className=" my-5">
