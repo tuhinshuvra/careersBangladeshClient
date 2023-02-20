@@ -10,7 +10,7 @@ import EmployerProfileEntry from '../../Profile/Employers/EmployerProfileEntry';
 import WrongRoute from '../../Shared/ErrorDisplay/WrongRoute';
 import Login from '../../Login/Login';
 import PostedJobDetails from '../../Profile/Employers/PostedJobDetails';
-import JobPost from '../../Profile/Employers/JobPost';
+import NewJobPost from '../../Profile/Employers/NewJobPost';
 import UserList from '../../Profile/Admin/AllUser';
 import UpdateUser from '../../Profile/Admin/UpdateUser';
 import EmployerList from '../../Profile/Admin/EmployerList';
@@ -34,6 +34,7 @@ import SavedJobList from '../../Profile/JobSeekers/SavedJobList/SavedJobList';
 import FindJobsByCategory from '../../JobSearch/FindJobsByCategory';
 import FindAllJob from '../../JobSearch/FindAllJob';
 import TermsAndConditions from '../../TermsAndConditions';
+import FindJobHomeResult from '../../JobSearch/FindJobHomeResult';
 
 const router = createBrowserRouter([
 
@@ -59,6 +60,15 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/jobbycategory?category=${params.categoryId}`)
             },
             {
+                path: '/jobs/:jobTitle',
+                element:  <FindJobHomeResult></FindJobHomeResult>,
+                loader: ({ params }) => fetch(`http://localhost:5000/jobByTitle?jobTitle=${params.jobTitle}`)
+            },
+            {
+                path: '/findJobHomeResult',
+                element: <FindJobHomeResult></FindJobHomeResult>
+            },
+            {
                 path: '/elearning',
                 element: <ELearning></ELearning>
             },
@@ -77,7 +87,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/termsAndConditions',
-                element:  <TermsAndConditions></TermsAndConditions>
+                element: <TermsAndConditions></TermsAndConditions>
             },
         ]
     },
@@ -142,13 +152,13 @@ const router = createBrowserRouter([
             },
 
             {
-                path: '/dashboard/employerDetails',
+                path: '/dashboard/employerProfileEntry',
                 element: <EmployerProfileEntry></EmployerProfileEntry>
             },
 
             {
-                path: '/dashboard/jobpost',
-                element: <JobPost></JobPost>
+                path: '/dashboard/newJobPost',
+                element: <NewJobPost></NewJobPost>
             },
 
             {

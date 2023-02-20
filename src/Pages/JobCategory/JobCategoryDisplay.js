@@ -6,7 +6,6 @@ const JobCategoryDisplay = ({ category }) => {
     const { _id, name } = category;
 
     return (
-        <div>
             <div className="card ">
                 <Link
                     to={`/jobs/${_id}`}
@@ -14,7 +13,6 @@ const JobCategoryDisplay = ({ category }) => {
                     <div className="card-body"> &#10148; {name} </div>
                 </Link>
             </div>
-        </div>
     );
 };
 

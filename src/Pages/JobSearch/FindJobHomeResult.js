@@ -8,16 +8,11 @@ import { toast } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../Authentication/AuthProvider';
 
-const FindJobsByCategory = () => {
-    useTitle('FindJob');
+const FindJobHomeResult = ({jobList}) => {
 
-    const jobs = useLoaderData();
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-
-    const findJobsNo = jobs.length;
-
-    console.log("findJobsNo : ", findJobsNo);
+    useTitle('FindJob');
 
 
     const { data: categories, isLoading } = useQuery({
@@ -29,6 +24,35 @@ const FindJobsByCategory = () => {
         }
     })
 
+
+    // const { data: jobs = [], refetch } = useQuery({
+    //     queryKey: ['jobs'],
+    //     queryFn: async () => {
+    //         const respone = await fetch('http://localhost:5000/jobs');
+    //         const data = respone.json();
+    //         return data;
+    //     }
+    // })
+
+
+
+    // const handleDelete = (job) => {
+    //     fetch(`http://localhost:5000/jobs/${job._id}`, {
+    //         method: 'DELETE'
+    //     })
+    //         .then(respnse => respnse.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             if (data.deletedCount > 0) {
+    //                 toast('Job Deleted Successfully.')
+    //             }
+    //         });
+    //     // console.log(user._id);
+    // }
+
+    // const handleJobsUpdate = (job) => {
+    //     console.log("Selected to Update Job : ", job._id)
+    // }
 
     return (
         <div className="row">
@@ -177,88 +201,62 @@ const FindJobsByCategory = () => {
                                 {/* <!-- BEGIN TABLE RESULT --> */}
                                 <div className="table-responsive">
                                     <table className="table table-hover">
-                                        {
-                                            findJobsNo > 0 ?
-                                                <>
-                                                    <thead>
-                                                        <tr>
-                                                            <th>SL</th>
-                                                            <th>Title</th>
-                                                            <th>Organization</th>
-                                                            <th>Work Place</th>
-                                                            <th>Posted</th>
-                                                            <th>DeadLine</th>
-                                                            <th>Salary</th>
-                                                        </tr>
-                                                    </thead>
+                                        <thead>
+                                            <tr>
+                                                <th>SL</th>
+                                                <th>Title</th>
+                                                <th>Organization</th>
+                                                <th>Work Place</th>
+                                                <th>Posted</th>
+                                                <th>DeadLine</th>
+                                                <th>Salary</th>
+                                            </tr>
+                                        </thead>
 
-                                                    <tbody>
-                                                        {
-                                                            jobs.map((job, index) =>
-                                                                <tr key={job._id} className="">
-                                                                    <td>{index + 1}</td>
-                                                                    <td className='fw-bold'>
-                                                                        <Link className=' text-decoration-none text-primary ' to={`/dashboard/jobs/${job._id}`}>
-                                                                            {job.jobTitle}
-                                                                        </Link>
-                                                                    </td>
-                                                                    <td>{job.organization}</td>
-                                                                    <td>{job.location}</td>
-                                                                    <td>{job.postDate}</td>
-                                                                    <td>{job.deadLine}</td>
-                                                                    <td>৳{job.salaryTo}</td>
+                                        <tbody>
+                                            {
+                                                jobList.map((job, index) =>
+                                                    <tr key={job._id} className="">
+                                                        <td>{index + 1}</td>
+                                                        <td className='fw-bold'>
+                                                            <Link className=' text-decoration-none text-primary ' to={`/dashboard/jobs/${job._id}`}>
+                                                                {job.jobTitle}
+                                                            </Link>
+                                                        </td>
+                                                        <td>{job.organization}</td>
+                                                        <td>{job.location}</td>
+                                                        <td>{job.postDate}</td>
+                                                        <td>{job.deadLine}</td>
+                                                        <td>৳{job.salaryTo}</td>
+                                                    </tr>
+                                                )
+                                            }
 
-                                                                </tr>
-                                                            )}
-
-                                                    </tbody>
-                                                </>
-                                                :
-                                                <>
-                                                    <p className=' fs-3 my-5 text-center fw-bold'>No job found to display  in this category</p>
-                                                </>
-                                        }
-                                    </table>
+                                        </tbody></table>
                                 </div>
                                 {/* <!-- END TABLE RESULT --> */}
 
-
                                 {/* <!-- BEGIN PAGINATION --> */}
-                                {
-                                    findJobsNo > 0 ? <>
-                                        {
-                                            findJobsNo > 1 ?
-                                                <>
-                                                    <p className=' fs-5 text-success   text-center fw-bold'>{findJobsNo} jobs found   in this category</p>
-                                                </>
-                                                :
-                                                <>
-                                                    <p className=' fs-5 text-success   text-center fw-bold'>{findJobsNo} job found   in this category</p>
-                                                </>
-                                        }
-
-                                        <div className=' d-flex justify-content-center'>
-                                            <nav aria-label="..." className=' '>
-                                                <ul className="pagination">
-                                                    <li className="page-item disabled">
-                                                        <span className="page-link">Previous</span>
-                                                    </li>
-                                                    <li className="page-item active" aria-current="page">
-                                                        <span className="page-link">1</span>
-                                                    </li>
-                                                    <li className="page-item"><Link className="page-link" to="#">2</Link></li>
-                                                    <li className="page-item"><Link className="page-link" to="#">3</Link></li>
-                                                    <li className="page-item"><Link className="page-link" to="#">4</Link></li>
-                                                    <li className="page-item"><Link className="page-link" to="#">5</Link></li>
-                                                    <li className="page-item"><Link className="page-link" to="#">6</Link></li>
-                                                    <li className="page-item">
-                                                        <Link className="page-link" to="#">Next</Link>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                    </> : <></>
-                                }
+                                <div className=' d-flex justify-content-center'>
+                                    <nav aria-label="..." className=' '>
+                                        <ul className="pagination">
+                                            <li className="page-item disabled">
+                                                <span className="page-link">Previous</span>
+                                            </li>
+                                            <li className="page-item active" aria-current="page">
+                                                <span className="page-link">1</span>
+                                            </li>
+                                            <li className="page-item"><Link className="page-link" to="#">2</Link></li>
+                                            <li className="page-item"><Link className="page-link" to="#">3</Link></li>
+                                            <li className="page-item"><Link className="page-link" to="#">4</Link></li>
+                                            <li className="page-item"><Link className="page-link" to="#">5</Link></li>
+                                            <li className="page-item"><Link className="page-link" to="#">6</Link></li>
+                                            <li className="page-item">
+                                                <Link className="page-link" to="#">Next</Link>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
                                 {/* <!-- END PAGINATION --> */}
                             </div>
                             {/* <!-- END RESULT --> */}
@@ -270,4 +268,4 @@ const FindJobsByCategory = () => {
     );
 };
 
-export default FindJobsByCategory;
+export default FindJobHomeResult;

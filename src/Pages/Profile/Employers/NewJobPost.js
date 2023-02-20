@@ -5,12 +5,13 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Authentication/AuthProvider';
 
-const JobPost = () => {
+const NewJobPost = () => {
 
     const { user } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
 
+    const imageHostKey = process.env.REACT_APP_CABD_imagebb_hostKey;
 
     const { data: categories, isLoading } = useQuery({
         queryKey: ['category'],
@@ -24,47 +25,64 @@ const JobPost = () => {
     const jobPostDate = new Date().toJSON().slice(0, 10);
 
     const handleJobPost = (data) => {
-        const jobPost = {
-            email: user.email,
-            postersName: user.displayName,
-            category: data.category,
-            jobTitle: data.job_title,
-            companyLogo: data.com_logo,
-            organization: data.organization,
-            location: data.location,
-            vacancies: data.vacancies,
-            education: data.education,
-            experience: data.experience,
-            companySize: data.company_size,
-            postDate: jobPostDate,
-            deadLine: data.deadline,
-            applyStatus: data.apply_status,
-            employmentStatus: data.employment_status,
-            businessDescription: data.business_description,
-            jobLevel: data.job_level,
-            workPlace: data.work_place,
-            jobContext: data.job_context,
-            jobResponst: data.job_responst,
-            salaryFrom: data.salary_from,
-            salaryTo: data.salary_to,
-            yearlyBonus: data.yearly_bonus,
-            salaryReview: data.salary_review,
-            others: data.others,
-        }
-        console.log("Job Post Data :", jobPost);
-
-        fetch('http://localhost:5000/jobs', {
+        const image = data.company_logo[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
+        fetch(url, {
             method: 'POST',
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(jobPost)
+            body: formData
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                toast('Job Posted Successfully');
-                navigate("/dashboard/postedJobList")
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+
+
+                    const jobPost = {
+                        email: user.email,
+                        postersName: user.displayName,
+                        category: data.category,
+                        jobTitle: data.job_title,
+                        companyLogo: imgData.data.url,
+                        organization: data.organization,
+                        orgaType:data.orgaType,
+                        location: data.location,
+                        vacancies: data.vacancies,
+                        education: data.education,
+                        experience: data.experience,
+                        companySize: data.company_size,
+                        postDate: jobPostDate,
+                        deadLine: data.deadline,
+                        applyStatus: data.apply_status,
+                        employmentStatus: data.employment_status,
+                        businessDescription: data.business_description,
+                        jobLevel: data.job_level,
+                        workPlace: data.work_place,
+                        jobContext: data.job_context,
+                        jobResponst: data.job_responst,
+                        salaryFrom: data.salary_from,
+                        salaryTo: data.salary_to,
+                        yearlyBonus: data.yearly_bonus,
+                        salaryReview: data.salary_review,
+                        status: data.status,
+                        others: data.others,
+                    }
+                    console.log("Job Post Data :", jobPost);
+
+                    fetch('http://localhost:5000/jobs', {
+                        method: 'POST',
+                        headers: {
+                            "content-type": "application/json"
+                        },
+                        body: JSON.stringify(jobPost)
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data)
+                            toast('Job Posted Successfully');
+                            navigate("/dashboard/postedJobList")
+                        })
+                }
             })
     }
 
@@ -90,13 +108,29 @@ const JobPost = () => {
                         />
                     </div>
 
-                    <div className=' col-md-6 my-2'>
-                        <label className="label" htmlFor='com_logo' ><span className="label-text fw-bold">Company Logo</span> </label>
+                    <div className=' col-md-3 my-2'>
+                        <label htmlFor="company_logo"> <b> Company Type</b></label>
+                        <select
+                            {...register("orgaType")}
+                            name='orgaType'
+                            className="form-select">
+                            <option disabled selected>-Select Type-</option>
+                            <option value="Government">Government</option>
+                            <option value="Semi Government">Semi Government</option>
+                            <option value="NGO">NGO</option>
+                            <option value="Private Firm">Private Firm</option>
+                            <option value="International Agencies">International Agencies</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+
+                    <div className=' col-md-3 my-2'>
+                        <label className="label" htmlFor='company_logo' ><span className="label-text fw-bold">Company Logo</span> </label>
                         <input
-                            {...register("com_logo")}
-                            name='com_logo'
+                            {...register("company_logo")}
+                            name='company_logo'
                             className='input form-control'
-                            id='com_logo'
+                            id='company_logo'
                             type="file"
                         />
                     </div>
@@ -355,14 +389,45 @@ const JobPost = () => {
                     placeholder='Enter Others'
                 />
 
+                <div className=' my-lg-4'>
+                    <div class="form-check form-check-inline">
+                        <input
+                            {...register("status")}
+                            class="form-check-input"
+                            type="radio"
+                            name="status"
+                            id="Active"
+                            value="active" checked />
+                        <label class="form-check-label" for="Active">Active</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input
+                            {...register("status")}
+                            class="form-check-input"
+                            type="radio"
+                            name="status"
+                            id="Inactive"
+                            value="inactive" />
+                        <label class="form-check-label" for="Inactive">Inactive</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input
+                            {...register("status")}
+                            class="form-check-input"
+                            type="radio" name="status"
+                            id="Close"
+                            value="close" />
+                        <label class="form-check-label" for="Close">Close</label>
+                    </div>
+                </div>
 
                 <div className=' d-flex justify-content-between my-lg-3'>
                     <button className="btn btn-warning fw-bold">Cancel</button>
-                    <button type='submit' name='submit' className="custom_btn">Continue</button>
+                    <button type='submit' name='submit' className="custom_btn">Save</button>
                 </div>
             </form>
         </div >
     );
 };
 
-export default JobPost;
+export default NewJobPost;

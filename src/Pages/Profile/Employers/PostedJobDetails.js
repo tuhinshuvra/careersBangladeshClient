@@ -26,7 +26,7 @@ const PostedJobDetails = () => {
 
 
     const { _id, postersEmail, postersName, jobTitle, companyLogo, organization, vacancies, category, deadLine, education, experience, postDate, applyStatus, employmentStatus, businessDescription, jobLevel, workPlace, jobContext,
-        jobResponst, location, salaryFrom, salaryTo, yearlyBonus, salaryReview, others } = jobdetails;
+        jobResponst, location, salaryFrom, salaryTo, yearlyBonus, salaryReview, status, others } = jobdetails;
 
     console.log("jobsData : ", jobPosts)
 
@@ -99,35 +99,14 @@ const PostedJobDetails = () => {
                 <div>
                     <div className=' float-end'>
                         {
-                            isEmployer &&
-
-                            <div className=' d-flex'>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
-                                    <label class="form-check-label" htmlFor="exampleRadios1">
-                                        <b>Active</b>
-                                    </label>
-                                </div>
-                                <div class="form-check mx-2">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
-                                    <label class="form-check-label" htmlFor="exampleRadios2">
-                                        <b> Inactive</b>
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" />
-                                    <label class="form-check-label" htmlFor="exampleRadios3">
-                                        <b> Close</b>
-                                    </label>
-                                </div>
-                            </div>
+                            isEmployer && <p className=' fw-bold me-3 mt-2'>  Job Status : {status} </p>
                         }
                     </div>
                 </div>
                 <div className="card-body">
 
 
-                    <div className=' d-md-flex justify-content-between my-4'>
+                    <div className=' d-md-flex justify-content-between  '>
                         <div className=' d-flex'>
                             <img className='companyLogo ' src={companyLogo} alt="" />
                             <h3 className=' fw-bold mx-1'>{organization}</h3>

@@ -26,11 +26,11 @@ const EmployerProfileEntry = () => {
             .then(imgData => {
                 if (imgData.success) {
 
-
                     const emplyerProfile = {
                         email: user?.email,
                         name: user?.displayName,
                         companyNameEn: data.company_name_en,
+                        organizationType: data.orgaType,
                         companyNameBn: data.company_name_bn,
                         // image: imgData.data.url,
                         companyLogo: imgData.data.url,
@@ -85,7 +85,24 @@ const EmployerProfileEntry = () => {
                         />
                     </div>
 
-                    <div className=' col-md-6'>
+
+                    <div className=' col-md-3'>
+                        <label htmlFor="company_logo"> <b> Company Type</b></label>
+                        <select
+                            {...register("orgaType")}
+                            name='orgaType'
+                            className="form-select my-lg-3">
+                            <option disabled selected>-Select Type-</option>
+                            <option value="Government">Government</option>
+                            <option value="Semi Government">Semi Government</option>
+                            <option value="NGO">NGO</option>
+                            <option value="Private Firm">Private Firm</option>
+                            <option value="International Agencies">International Agencies</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+
+                    <div className=' col-md-3'>
                         <label htmlFor="company_logo"> <b> Company Logo</b></label>
                         <input
                             {...register("company_logo", { required: true })}
@@ -94,7 +111,6 @@ const EmployerProfileEntry = () => {
                             id="company_logo"
                             type="file"
                         />
-
                     </div>
                 </div>
 

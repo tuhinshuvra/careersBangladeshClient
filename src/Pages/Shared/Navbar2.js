@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../../assets/logo/carreers-bangladesh-small.png'
 import './Navbar.css'
 
-const Navbar = () => {
+const Navbar2 = () => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -43,4 +43,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default Navbar2;

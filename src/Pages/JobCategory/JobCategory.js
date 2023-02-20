@@ -5,7 +5,11 @@ import './JobCategory.css';
 
 const JobCategory = () => {
     const [categories, setCategories] = useState([]);
-    let newCategories = categories.slice(0, 28)
+
+    let newcategory = categories.slice(0, 24)
+
+
+    const [categoryToShow, setCategoryToShow] = useState(newcategory);
 
     useEffect(() => {
         // fetch('job-categories.json')
@@ -21,10 +25,15 @@ const JobCategory = () => {
         <div className=' common-margin '>
             <h2 className='my-5 careers_title_one'><FaCompressArrowsAlt className=' mx-1'></FaCompressArrowsAlt>  JOB CATEGORIES</h2>
             <div className=' job-category'>
-                {newCategories.map(category => <JobCategoryDisplay
-                    key={category._id}
-                    category={category}
-                ></JobCategoryDisplay>)}
+                {
+                    newcategory.map(category => <JobCategoryDisplay
+                        key={category._id}
+                        category={category}
+                    ></JobCategoryDisplay>)
+                }
+            </div>
+            <div className=' text-center my-3'>
+                {/* <button className=' custom_btn '>Show All</button> */}
             </div>
         </div>
     );

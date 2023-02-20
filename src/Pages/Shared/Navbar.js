@@ -4,10 +4,19 @@ import Logo from '../../assets/logo/carriers-bangladesh-logo.png';
 import { AuthContext } from '../Authentication/AuthProvider';
 import { toast } from 'react-hot-toast';
 import './Navbar.css';
+import useAdmin from '../../hooks/useAdmin';
+import useEmployer from '../../hooks/useEmployer';
+import useJobSeeker from '../../hooks/useJobSeeker';
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
+
+    const [isAdmin] = useAdmin(user?.email);
+    const [isEmployer] = useEmployer(user?.email);
+    const [isJobSeeker] = useJobSeeker(user?.email);
     const navigate = useNavigate();
+
+
 
     const handleLogOut = () => {
         logOut()
@@ -34,9 +43,7 @@ const Navbar = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="cbNavbarToggler">
                         <ul className=" navbar-nav d-flex justify-content-center align-items-center mx-auto ">
-                            {/* <li className="nav-item mb-2">
-                                <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/">Home</Link>
-                            </li> */}
+
                             <li className="nav-item mb-2">
                                 <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/findAllJob">FindJobs</Link>
                             </li>
@@ -49,18 +56,54 @@ const Navbar = () => {
                                 <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/about">AboutUs</Link>
                             </li>
 
-                            {/* <li className="nav-item mb-2">
-                                <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/contact">Contact</Link>
-                            </li> */}
-
-
                             {
                                 user?.uid ?
                                     <>
-                                        <li className='nav-item nav_btn mb-2'> <Link className='nav_btn' to="/dashboard">Dashboard</Link> </li>
-                                        <li className='nav-item  nav_btn mb-2'>  {user?.displayName}</li>
-                                        <li className='nav-item  border-0  mx-lg-1  fw-bold mb-2 '>  <Link className='nav_btn' onClick={handleLogOut} >Logout</Link></li>
+                                        <li class="nav-item dropdown mb-2">
+                                            <Link class=" dropdown-toggle nav_btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                                {user?.displayName}
+                                            </Link>
+                                            <ul class="dropdown-menu">
+                                                {
+                                                    isJobSeeker && <>
+                                                        <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfileEntry'>Manage Profile</Link></li>
+                                                        <li className='list-group-item   my-1'><Link className=' nav_btn' to='/dashboard/jobSeekerProfile'>My Profile</Link></li>
+                                                        <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/savedJobs'>Saved Job List</Link></li>
+                                                        <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/appliedJobs'>Applied Job List</Link></li>
+                                                    </>
+
+
+                                                }
+                                                {
+                                                    isEmployer && <>
+                                                        <li className='list-group-item'><Link className=' nav_btn' to='/dashboard/employerProfileEntry'>Manage Company Profile</Link></li>
+                                                        <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/employerProfile'>Company Profile</Link></li>
+                                                        <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/newJobPost'>New Job Post</Link></li>
+                                                        <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/postedJobList'>Posted Job List</Link></li>
+
+                                                    </>
+                                                }
+
+                                                {
+                                                    isAdmin && <>
+                                                        <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/JobCategoryEntry'>Job Category Entry</Link></li>
+                                                        <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/JobCategoryList'>Job Category List</Link></li>
+                                                        <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/admin'>All User</Link></li>
+                                                        <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/appliedJobs'>Applied Job List</Link></li>
+                                                    </>
+                                                }
+
+
+
+                                                <li className='nav-item  border-0  mx-lg-1  fw-bold mb-2 '>  <Link className='nav_btn' onClick={handleLogOut} >Logout</Link></li>
+                                            </ul>
+                                        </li>
                                     </>
+
+                                    // <li className='nav-item  nav_btn mb-2'><Link className='nav_btn' to="/dashboard">  {user?.displayName}</Link></li>
+                                    // <li className='nav-item  border-0  mx-lg-1  fw-bold mb-2 '>  <Link className='nav_btn' onClick={handleLogOut} >Logout</Link></li>
+
+
                                     :
                                     <>
                                         <li className=" border-0  mx-lg-1  fw-bold mb-2 ">  <Link className=' nav_btn' aria-current="page" to="/login">Login</Link></li>

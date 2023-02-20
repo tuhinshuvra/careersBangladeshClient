@@ -36,9 +36,9 @@ const DashboardLayout = () => {
 
                         {
                             isEmployer && <>
-                                <li className='list-group-item'><Link className=' nav_btn' to='/dashboard/employerDetails'>Manage Company Profile</Link></li>
+                                <li className='list-group-item'><Link className=' nav_btn' to='/dashboard/employerProfileEntry'>Manage Company Profile</Link></li>
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to={`/dashboard/employerProfile/`}>Company Profile</Link></li>
-                                <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/jobpost'>New Job Post</Link></li>
+                                <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/newJobPost'>New Job Post</Link></li>
                                 {/* <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/postedJobDetails'>Posted Job Details</Link></li> */}
                                 <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/postedJobList'>Posted Job List</Link></li>
                             </>

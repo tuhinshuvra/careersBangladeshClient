@@ -2,45 +2,47 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/logo/carriers-bangladesh-logo.png';
 
-const Navbar2 = () => {
+const Navbar3 = () => {
 
-    const menuItems = <React.Fragment>
-        <li className='font-bold'><Link to="/">Home</Link></li>
-        <li className='lg:mx-2 font-bold active:bg-violet-700 '><Link to="/about">About</Link></li>
-        <li className='lg:mx-2 font-bold active:bg-violet-700 '><Link to="/contact">Contact Us</Link></li>
-        <li className='lg:mx-2 font-bold active:bg-violet-700 '><Link to="/dashboardEmployers">Employers</Link></li>
-        <li className='lg:mx-2 font-bold active:bg-violet-700 '><Link to="/dashboardMyJobs">MyJobs</Link></li>
-        <li className='lg:mx-2 font-bold active:bg-violet-700 '><Link to="/signin">Signin</Link></li>
-    </React.Fragment>
+
 
     return (
-        <div>
-            <div className="navbar  bg-base-100 justify-between">
-                <div className="navbar-start">
-                    <div className="dropdown">
-                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                        </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                            {menuItems}
-                        </ul>
-                    </div>
-                    <Link to="/" className="btn btn-ghost normal-case text-3xl font-bold ">
-                        <img className=' w-20 className="transition ease-in-out delay-150  hover:scale-150  duration-300' src={Logo} alt="" />
-                        Careers Bangladesh
-                    </Link>
-                </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                        {menuItems}
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container">
+                <Link class="navbar-brand" href="#">Navbar</Link>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <Link class="nav-link active" aria-current="page" href="#">Home</Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" href="#">Link</Link>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <Link class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown
+                            </Link>
+                            <ul class="dropdown-menu">
+                                <li><Link class="dropdown-item" href="#">Action</Link></li>
+                                <li><Link class="dropdown-item" href="#">Another action</Link></li>
+                                <li><Link class="dropdown-item" href="#">Something else here</Link></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link disabled">Disabled</Link>
+                        </li>
                     </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
                 </div>
-                <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                </label>
             </div>
-        </div>
+        </nav>
     );
 };
 
-export default Navbar2;
+export default Navbar3;
