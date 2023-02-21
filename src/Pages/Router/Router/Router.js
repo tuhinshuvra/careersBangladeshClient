@@ -59,14 +59,15 @@ const router = createBrowserRouter([
                 element: <FindJobsByCategory></FindJobsByCategory>,
                 loader: ({ params }) => fetch(`http://localhost:5000/jobbycategory?category=${params.categoryId}`)
             },
+            // {
+            //     path: '/jobs/:jobTitle',
+            //     element:  <FindJobHomeResult></FindJobHomeResult>,
+            //     loader: ({ params }) => fetch(`http://localhost:5000/jobByTitle?jobTitle=${params.jobTitle}`)
+            // },
             {
-                path: '/jobs/:jobTitle',
-                element:  <FindJobHomeResult></FindJobHomeResult>,
-                loader: ({ params }) => fetch(`http://localhost:5000/jobByTitle?jobTitle=${params.jobTitle}`)
-            },
-            {
-                path: '/findJobHomeResult',
-                element: <FindJobHomeResult></FindJobHomeResult>
+                path: '/searchHomeResult',
+                element: <FindJobHomeResult></FindJobHomeResult>,
+
             },
             {
                 path: '/elearning',

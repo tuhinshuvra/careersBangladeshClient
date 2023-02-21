@@ -8,21 +8,24 @@ import { toast } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../Authentication/AuthProvider';
 
-const FindJobHomeResult = ({jobList}) => {
+const FindJobHomeResult = ({ jobList }) => {
+    const { searchHome } = useContext(AuthContext);
+
+    console.log("searchHome Result : ", searchHome)
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     useTitle('FindJob');
 
 
-    const { data: categories, isLoading } = useQuery({
-        queryKey: ['category'],
-        queryFn: async () => {
-            const res = await fetch('http://localhost:5000/jobCategories');
-            const data = await res.json();
-            return data;
-        }
-    })
+    // const { data: categories, isLoading } = useQuery({
+    //     queryKey: ['category'],
+    //     queryFn: async () => {
+    //         const res = await fetch('http://localhost:5000/jobCategories');
+    //         const data = await res.json();
+    //         return data;
+    //     }
+    // })
 
 
     // const { data: jobs = [], refetch } = useQuery({
@@ -82,7 +85,7 @@ const FindJobHomeResult = ({jobList}) => {
 
 
                                 {/* <!-- BEGIN FILTER BY CATEGORY --> */}
-                                <div className=' my-md-3'>
+                                {/* <div className=' my-md-3'>
                                     <h5 className=' fw-bold'>By Category:</h5>
                                     <select
                                         {...register("category")}
@@ -99,7 +102,7 @@ const FindJobHomeResult = ({jobList}) => {
                                         }
                                     </select>
 
-                                </div>
+                                </div> */}
                                 {/* <!-- END FILTER BY CATEGORY --> */}
 
 
@@ -215,7 +218,7 @@ const FindJobHomeResult = ({jobList}) => {
 
                                         <tbody>
                                             {
-                                                jobList.map((job, index) =>
+                                                searchHome.map((job, index) =>
                                                     <tr key={job._id} className="">
                                                         <td>{index + 1}</td>
                                                         <td className='fw-bold'>

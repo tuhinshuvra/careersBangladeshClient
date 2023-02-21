@@ -7,6 +7,7 @@ import ELearning from '../ELearning/ELearning';
 import useTitle from '../../hooks/useTitle';
 import NewJobs from '../NewJobs/NewJobs';
 import TestSearch from '../JobCategory/TestSearch';
+import StatisticsHome from '../StatisticsHome';
 
 const Home = () => {
 
@@ -14,11 +15,12 @@ const Home = () => {
 
     return (
         <div>
-            <TestSearch></TestSearch>
+            {/* <TestSearch></TestSearch> */}
             <FindJobHome></FindJobHome>
-            {/* <JobCategory></JobCategory> */}
-            {/* <HotJobs></HotJobs> */}
-            {/* <NewJobs></NewJobs> */}
+            <StatisticsHome></StatisticsHome>
+            <JobCategory></JobCategory>
+            <HotJobs></HotJobs>
+            <NewJobs></NewJobs>
 
             {/* <ELearning></ELearning> */}
 
