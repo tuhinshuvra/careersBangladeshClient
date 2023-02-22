@@ -71,16 +71,13 @@ const Navbar = () => {
                                                         <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/savedJobs'>Saved Job List</Link></li>
                                                         <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/appliedJobs'>Applied Job List</Link></li>
                                                     </>
-
-
                                                 }
                                                 {
                                                     isEmployer && <>
-                                                        <li className='list-group-item'><Link className=' nav_btn' to='/dashboard/employerProfileEntry'>Manage Company Profile</Link></li>
+                                                        <li className='list-group-item'><Link className=' nav_btn' to='/dashboard/employerProfileEntry'>Manage Profile</Link></li>
                                                         <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/employerProfile'>Company Profile</Link></li>
                                                         <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/newJobPost'>New Job Post</Link></li>
                                                         <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/postedJobList'>Posted Job List</Link></li>
-
                                                     </>
                                                 }
 
@@ -94,7 +91,6 @@ const Navbar = () => {
                                                 }
 
 
-
                                                 <li className='nav-item  border-0  mx-lg-1  fw-bold mb-2 '>  <Link className='nav_btn' onClick={handleLogOut} >Logout</Link></li>
                                             </ul>
                                         </li>
@@ -102,8 +98,7 @@ const Navbar = () => {
 
                                     // <li className='nav-item  nav_btn mb-2'><Link className='nav_btn' to="/dashboard">  {user?.displayName}</Link></li>
                                     // <li className='nav-item  border-0  mx-lg-1  fw-bold mb-2 '>  <Link className='nav_btn' onClick={handleLogOut} >Logout</Link></li>
-
-
+                                    
                                     :
                                     <>
                                         <li className=" border-0  mx-lg-1  fw-bold mb-2 ">  <Link className=' nav_btn' aria-current="page" to="/login">Login</Link></li>

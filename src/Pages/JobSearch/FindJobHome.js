@@ -13,8 +13,8 @@ const FindJobHome = () => {
         fetch(`http://localhost:5000/jobSearch?search=${search}`)
             .then(response => response.json())
             .then(data => {
-                console.log("Search Result :", data)
-                setSearchHome(data);
+                // console.log("Find Job Home Search Result :", data)
+                // setSearchHome(data);
             })
     }, [search]);
 
@@ -48,11 +48,13 @@ const FindJobHome = () => {
                     <option value="International Agencies">International Agencies</option>
                     <option value="Others">Others</option>
                 </select>
-                <input type="text" id="phone-search" placeholder="Location" className="form-control  w-25" aria-describedby="locationHelp" />
-                <button
-                    onClick={() => handleSearch()}
-                    className=' text-decoration-none custom_btn ms-2'>
+                <input type="text" id="location" placeholder="Location" className="form-control  w-25" />
+                <button onClick={() => handleSearch()}
+                    className=' text-decoration-none custom_btn ms-2'
+                >
+                    {/* <Link to="/searchHomeResult" className=' text-decoration-none custom_btn ms-2' > Search</Link> */}
                     Search
+
                 </button>
             </div>
 

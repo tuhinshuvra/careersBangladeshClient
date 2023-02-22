@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaFile, FaFilter, FaList, FaSearch, FaStar, FaTh } from 'react-icons/fa';
 import './FindJob.css';
@@ -9,10 +9,29 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../Authentication/AuthProvider';
 
 const FindAllJob = () => {
+    useTitle('FindJob');
+    const [search, setSearch] = useState('');
+    const searchRef = useRef();
+    const [showJobs, setShowJobs] = useState([])
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    useTitle('FindJob');
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/jobSearch?search=${search}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Find all Job Search Result :", data);
+                setShowJobs(data);
+            })
+    }, [search]);
+
+
+    const handleSearch = () => {
+        // console.log("searchRef : ", searchRef.current.value)
+        setSearch(searchRef.current.value);
+        searchRef.current.value = "";
+    }
 
 
     const { data: categories, isLoading } = useQuery({
@@ -164,9 +183,21 @@ const FindAllJob = () => {
                                 <hr />
                                 {/* <!-- BEGIN SEARCH INPUT --> */}
                                 <div className="input-group">
-                                    <input type="text" className="form-control" placeholder='input search data' />
+
+                                    <input
+                                        ref={searchRef}
+                                        name="inputSearch"
+                                        id="inputSearch"
+                                        type="text"
+                                        className="form-control"
+                                        placeholder='input search data'
+                                    />
+
                                     <span className="input-group-btn">
-                                        <button className="custom_btn" type="button"><FaSearch className='' />Search</button>
+                                        <button
+                                            onClick={() => handleSearch()}
+                                            className="custom_btn"
+                                            type="button"><FaSearch className='' />Search</button>
                                     </span>
                                 </div>
                                 {/* <!-- END SEARCH INPUT --> */}
@@ -215,7 +246,7 @@ const FindAllJob = () => {
 
                                         <tbody>
                                             {
-                                                jobs.map((job, index) =>
+                                                showJobs.map((job, index) =>
                                                     <tr key={job._id} className="">
                                                         <td>{index + 1}</td>
                                                         <td className='fw-bold'>
@@ -237,7 +268,7 @@ const FindAllJob = () => {
                                 {/* <!-- END TABLE RESULT --> */}
 
                                 {/* <!-- BEGIN PAGINATION --> */}
-                                <div className=' d-flex justify-content-center'>
+                                {/* <div className=' d-flex justify-content-center'>
                                     <nav aria-label="..." className=' '>
                                         <ul className="pagination">
                                             <li className="page-item disabled">
@@ -256,7 +287,7 @@ const FindAllJob = () => {
                                             </li>
                                         </ul>
                                     </nav>
-                                </div>
+                                </div> */}
                                 {/* <!-- END PAGINATION --> */}
                             </div>
                             {/* <!-- END RESULT --> */}
