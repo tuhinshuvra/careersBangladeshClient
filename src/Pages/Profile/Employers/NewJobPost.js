@@ -45,7 +45,7 @@ const NewJobPost = () => {
                         jobTitle: data.job_title,
                         companyLogo: imgData.data.url,
                         organization: data.organization,
-                        orgaType:data.orgaType,
+                        orgaType: data.orgaType,
                         location: data.location,
                         vacancies: data.vacancies,
                         education: data.education,
@@ -390,34 +390,34 @@ const NewJobPost = () => {
                 />
 
                 <div className=' my-lg-4'>
-                    <div class="form-check form-check-inline">
+                    <div className="form-check form-check-inline">
                         <input
                             {...register("status")}
-                            class="form-check-input"
+                            className="form-check-input"
                             type="radio"
                             name="status"
                             id="Active"
                             value="active" checked />
-                        <label class="form-check-label" for="Active">Active</label>
+                        <label className="form-check-label" for="Active">Active</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div className="form-check form-check-inline">
                         <input
                             {...register("status")}
-                            class="form-check-input"
+                            className="form-check-input"
                             type="radio"
                             name="status"
                             id="Inactive"
                             value="inactive" />
-                        <label class="form-check-label" for="Inactive">Inactive</label>
+                        <label className="form-check-label" for="Inactive">Inactive</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div className="form-check form-check-inline">
                         <input
                             {...register("status")}
-                            class="form-check-input"
+                            className="form-check-input"
                             type="radio" name="status"
                             id="Close"
                             value="close" />
-                        <label class="form-check-label" for="Close">Close</label>
+                        <label className="form-check-label" for="Close">Close</label>
                     </div>
                 </div>
 

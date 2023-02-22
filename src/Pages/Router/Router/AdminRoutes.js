@@ -9,8 +9,8 @@ const AdminRoute = ({ children, loading }) => {
     const location = useLocation();
 
     if (loading || isAdminLoading) {
-        return <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
+        return <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
         </div>
     }
     if (user && isAdmin) {

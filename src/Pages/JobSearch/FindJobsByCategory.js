@@ -20,14 +20,14 @@ const FindJobsByCategory = () => {
     console.log("findJobsNo : ", findJobsNo);
 
 
-    const { data: categories, isLoading } = useQuery({
-        queryKey: ['category'],
-        queryFn: async () => {
-            const res = await fetch('http://localhost:5000/jobCategories');
-            const data = await res.json();
-            return data;
-        }
-    })
+    // const { data: categories, isLoading } = useQuery({
+    //     queryKey: ['category'],
+    //     queryFn: async () => {
+    //         const res = await fetch('http://localhost:5000/jobCategories');
+    //         const data = await res.json();
+    //         return data;
+    //     }
+    // })
 
 
     return (
@@ -37,12 +37,12 @@ const FindJobsByCategory = () => {
                     <div className="grid-body">
                         <div className="row">
 
-                            {/* <!-- BEGIN FILTERS --> */}
-                            <div className="col-md-3">
+
+                            {/* <div className="col-md-3">
                                 <h2 className="grid-title"><FaFilter />Filters</h2>
                                 <hr />
 
-                                {/* <!-- BEGIN FILTER BY Location --> */}
+                                
                                 <h5 className=' fw-bold'>By Location:</h5>
                                 <select className="form-select">
                                     <option disabled selected>Select</option>
@@ -54,10 +54,10 @@ const FindJobsByCategory = () => {
                                     <option value={5}>Barishal</option>
                                     <option value={6}>Rangpur</option>
                                 </select>
-                                {/* <!-- END FILTER BY Location --> */}
+                                
 
 
-                                {/* <!-- BEGIN FILTER BY CATEGORY --> */}
+                                
                                 <div className=' my-md-3'>
                                     <h5 className=' fw-bold'>By Category:</h5>
                                     <select
@@ -76,10 +76,10 @@ const FindJobsByCategory = () => {
                                     </select>
 
                                 </div>
-                                {/* <!-- END FILTER BY CATEGORY --> */}
+                                
 
 
-                                {/* <!-- Begin Filter by Employent Status --> */}
+                                
                                 <div className=' my-md-3'>
                                     <h5 className=' fw-bold'>By Employment Status:</h5>
                                     <select className=" form-select ">
@@ -91,10 +91,10 @@ const FindJobsByCategory = () => {
                                         <option value={4}>Freelance</option>
                                     </select>
                                 </div>
-                                {/* <!-- End Filter by Employent Status --> */}
+                                
 
 
-                                {/* <!-- BEGIN FILTER BY POSTED DATE --> */}
+                                
                                 <div className=" my-md-3">
                                     <h5 className=' fw-bold'>By Posted:</h5>
                                     <div className='d-flex justify-content-between align-items-center'>
@@ -103,10 +103,10 @@ const FindJobsByCategory = () => {
                                         <input type="date" name="posted-to" id='posted-to' className="input form-control" data-date="2023-02-01T05:25:07Z" data-date-format="dd-mm-yyyy" />
                                     </div>
                                 </div>
-                                {/* <!-- END FILTER BY POSTED DATE --> */}
+                                
 
 
-                                {/* <!-- BEGIN FILTER BY DEADLINE DATE --> */}
+                                
                                 <div className=" my-md-3">
                                     <h5 className=' fw-bold'>By Deadline:</h5>
                                     <div className='d-flex justify-content-between align-items-center'>
@@ -115,10 +115,10 @@ const FindJobsByCategory = () => {
                                         <input type="date" name="deadline-to" id='deadline-to' className="input form-control" data-date="2023-02-01T05:25:07Z" data-date-format="dd-mm-yyyy" />
                                     </div>
                                 </div>
-                                {/* <!-- END FILTER BY DEADLINE DATE --> */}
+                                
 
 
-                                {/* <!-- BEGIN FILTER BY PRICE --> */}
+                                
 
                                 <div className=" my-md-3">
                                     <h5 className=' fw-bold'>By Salary:</h5>
@@ -130,29 +130,30 @@ const FindJobsByCategory = () => {
                                     </div>
                                 </div>
 
-                            </div>
-                            {/* <!-- END FILTERS --> */}
+                            </div> */}
 
 
-                            {/* <!-- BEGIN RESULT --> */}
-                            <div className="col-md-9 mt-md-0 mt-5">
+
+
+                            {/* <div className="col-md-9 mt-md-0 mt-5"> */}
+                            <div className="mt-md-0 mt-5 ">
                                 <h2><FaFile></FaFile> Result</h2>
                                 <hr />
-                                {/* <!-- BEGIN SEARCH INPUT --> */}
+
                                 <div className="input-group">
                                     <input type="text" className="form-control" placeholder='input search data' />
                                     <span className="input-group-btn">
                                         <button className="custom_btn" type="button"><FaSearch className='' />Search</button>
                                     </span>
                                 </div>
-                                {/* <!-- END SEARCH INPUT --> */}
+
 
                                 <p className=' fw-bold'>Showing search result</p>
 
                                 <div className="padding"></div>
 
                                 <div className="row">
-                                    {/* <!-- BEGIN ORDER RESULT --> */}
+
                                     <div className="col-9">
                                         <select className="form-select">
                                             <option disabled selected>Order By</option>
@@ -162,7 +163,7 @@ const FindJobsByCategory = () => {
                                             <option value={3}>Salary</option>
                                         </select>
                                     </div>
-                                    {/* <!-- END ORDER RESULT --> */}
+
 
                                     <div className="col-3">
                                         <div className=' float-end'>
@@ -174,7 +175,7 @@ const FindJobsByCategory = () => {
                                     </div>
                                 </div>
 
-                                {/* <!-- BEGIN TABLE RESULT --> */}
+
                                 <div className="table-responsive">
                                     <table className="table table-hover">
                                         {
@@ -220,10 +221,10 @@ const FindJobsByCategory = () => {
                                         }
                                     </table>
                                 </div>
-                                {/* <!-- END TABLE RESULT --> */}
 
 
-                                {/* <!-- BEGIN PAGINATION --> */}
+
+
                                 {
                                     findJobsNo > 0 ? <>
                                         {
@@ -259,9 +260,9 @@ const FindJobsByCategory = () => {
                                         </div>
                                     </> : <></>
                                 }
-                                {/* <!-- END PAGINATION --> */}
+
                             </div>
-                            {/* <!-- END RESULT --> */}
+
                         </div>
                     </div>
                 </div>

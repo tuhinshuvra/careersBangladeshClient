@@ -278,32 +278,32 @@ const PostedJobDetails = () => {
 
 
 
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Apply Online</h1>
+                    <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h1 className="modal-title fs-5" id="exampleModalLabel">Apply Online</h1>
                                 </div>
-                                <div class="modal-body d-flex justify-content-center align-items-center">
+                                <div className="modal-body d-flex justify-content-center align-items-center">
                                     <div className=' col-lg-6'>
                                         <input className='input form-control ' type="text" id="exSalary" name='exSalary' placeholder='Input expected salary' />
                                     </div>
                                     <span className=' col-lg-4 fw-bold'> /monthly</span>
                                 </div>
 
-                                <div class="form-check  ms-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-                                    <label class="form-check-label " htmlFor="flexCheckChecked">
+                                <div className="form-check  ms-3">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+                                    <label className="form-check-label " htmlFor="flexCheckChecked">
                                         I am agree with the terms and conditions
                                     </label>
                                 </div>
 
 
-                                <div class="modal-footer">
+                                <div className="modal-footer">
                                     <Link onClick={() => handleApply(jobdetails)}>
                                         <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className=" custom_btn mx-1">Confirm to Apply</button>
                                     </Link>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>

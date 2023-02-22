@@ -11,15 +11,15 @@ const AddressDetails = () => {
                 <form action="">
                     <div className=" d-flex gap-4">
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="inside_bangladesh" id="inside_bangladesh" checked />
-                            <label class="form-check-label" htmlFor="inside_bangladesh">
+                        <div className="form-check">
+                            <input className="form-check-input" type="radio" name="inside_bangladesh" id="inside_bangladesh" checked />
+                            <label className="form-check-label" htmlFor="inside_bangladesh">
                                 Inside Bangladesh
                             </label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="outside_bangladesh" id="outside_bangladesh" />
-                            <label class="form-check-label" htmlFor="outside_bangladesh">
+                        <div className="form-check">
+                            <input className="form-check-input" type="radio" name="outside_bangladesh" id="outside_bangladesh" />
+                            <label className="form-check-label" htmlFor="outside_bangladesh">
                                 Outside Bangladesh
                             </label>
                         </div>

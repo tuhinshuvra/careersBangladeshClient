@@ -157,7 +157,7 @@ const Register = () => {
                                                     <div className=''>
                                                         <Form.Check
                                                             onClick={handleTermsAndConditions}
-                                                            class="form-check-input"
+                                                            className="form-check-input"
                                                             type="checkbox"
                                                             label={<>Accept <Link to="/termsAndConditions" className=' text-decoration-none fw-bold'> Terms and Conditons</Link> </>}
                                                         />

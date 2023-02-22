@@ -31,6 +31,8 @@ const FindAllJob = () => {
         // console.log("searchRef : ", searchRef.current.value)
         setSearch(searchRef.current.value);
         searchRef.current.value = "";
+        console.log("HandleSearch function called")
+        console.log("searchRef Value :", searchRef.current.value);
     }
 
 
@@ -80,30 +82,38 @@ const FindAllJob = () => {
                     <div className="grid-body">
                         <div className="row">
 
-                            {/* <!-- BEGIN FILTERS --> */}
-                            <div className="col-md-3">
+
+                            {/* <div className="col-md-3">
                                 <h2 className="grid-title"><FaFilter />Filters</h2>
                                 <hr />
 
-                                {/* <!-- BEGIN FILTER BY Location --> */}
+
+                                <input
+                                    ref={searchRef}
+                                    name="inputSearch"
+                                    id="inputSearch"
+                                    type="text"
+                                    className="form-control"
+                                    placeholder='input search data'
+                                />
                                 <h5 className=' fw-bold'>By Location:</h5>
-                                <select className="form-select">
+                                <select ref={searchRef} className="form-select">
                                     <option disabled selected>Select</option>
-                                    <option value={0}>Dhaka</option>
-                                    <option value={1}>Chattogram</option>
-                                    <option value={2}>Sylhet</option>
-                                    <option value={3}>Rajshahi</option>
-                                    <option value={4}>Khulna</option>
-                                    <option value={5}>Barishal</option>
-                                    <option value={6}>Rangpur</option>
+                                    <option value="Dhaka">Dhaka</option>
+                                    <option value="Chattogram">Chattogram</option>
+                                    <option value="Sylhet">Sylhet</option>
+                                    <option value="Rajshahi">Rajshahi</option>
+                                    <option value="Khulna">Khulna</option>
+                                    <option value="Barishal">Barishal</option>
+                                    <option value="Rangpur">Rangpur</option>
                                 </select>
-                                {/* <!-- END FILTER BY Location --> */}
 
 
-                                {/* <!-- BEGIN FILTER BY CATEGORY --> */}
+
                                 <div className=' my-md-3'>
                                     <h5 className=' fw-bold'>By Category:</h5>
                                     <select
+                                        ref={searchRef}
                                         {...register("category")}
                                         name='category'
                                         type="text"
@@ -119,69 +129,70 @@ const FindAllJob = () => {
                                     </select>
 
                                 </div>
-                                {/* <!-- END FILTER BY CATEGORY --> */}
 
 
-                                {/* <!-- Begin Filter by Employent Status --> */}
+
+
                                 <div className=' my-md-3'>
                                     <h5 className=' fw-bold'>By Employment Status:</h5>
-                                    <select className=" form-select ">
+                                    <select
+                                        ref={searchRef}
+                                        className=" form-select ">
                                         <option disabled selected>Please Select</option>
-                                        <option value={0}>Full Time</option>
-                                        <option value={1}>Part Time</option>
-                                        <option value={2}>Contactual Time</option>
-                                        <option value={3}>Internship</option>
-                                        <option value={4}>Freelance</option>
+                                        <option value="full time">Full Time</option>
+                                        <option value="Part Time">Part Time</option>
+                                        <option value="Contactual">Contactual</option>
+                                        <option value="Internship">Internship</option>
+                                        <option value="Freelance">Freelance</option>
                                     </select>
                                 </div>
-                                {/* <!-- End Filter by Employent Status --> */}
 
 
-                                {/* <!-- BEGIN FILTER BY POSTED DATE --> */}
+
+
                                 <div className=" my-md-3">
                                     <h5 className=' fw-bold'>By Posted:</h5>
                                     <div className='d-flex justify-content-between align-items-center'>
-                                        <input type="date" name="posted-from" id='posted-from' className="input form-control" data-date="2023-02-01T05:25:07Z" data-date-format="dd-mm-yyyy" />
+                                        <input ref={searchRef} type="date" name="posted-from" id='posted-from' className="input form-control" data-date="2023-02-01T05:25:07Z" data-date-format="dd-mm-yyyy" />
                                         <label className=' fw-bold mx-1'>to</label>
-                                        <input type="date" name="posted-to" id='posted-to' className="input form-control" data-date="2023-02-01T05:25:07Z" data-date-format="dd-mm-yyyy" />
+                                        <input ref={searchRef} type="date" name="posted-to" id='posted-to' className="input form-control" data-date="2023-02-01T05:25:07Z" data-date-format="dd-mm-yyyy" />
                                     </div>
                                 </div>
-                                {/* <!-- END FILTER BY POSTED DATE --> */}
 
 
-                                {/* <!-- BEGIN FILTER BY DEADLINE DATE --> */}
+
+
                                 <div className=" my-md-3">
                                     <h5 className=' fw-bold'>By Deadline:</h5>
                                     <div className='d-flex justify-content-between align-items-center'>
-                                        <input type="date" name="deadline-from" id='deadline-from' className="input form-control" data-date="2023-02-01T05:25:07Z" data-date-format="dd-mm-yyyy" />
+                                        <input ref={searchRef} type="date" name="deadline-from" id='deadline-from' className="input form-control" data-date="2023-02-01T05:25:07Z" data-date-format="dd-mm-yyyy" />
                                         <label className=' fw-bold mx-1'>to</label>
-                                        <input type="date" name="deadline-to" id='deadline-to' className="input form-control" data-date="2023-02-01T05:25:07Z" data-date-format="dd-mm-yyyy" />
+                                        <input ref={searchRef} type="date" name="deadline-to" id='deadline-to' className="input form-control" data-date="2023-02-01T05:25:07Z" data-date-format="dd-mm-yyyy" />
                                     </div>
                                 </div>
-                                {/* <!-- END FILTER BY DEADLINE DATE --> */}
 
 
-                                {/* <!-- BEGIN FILTER BY PRICE --> */}
+
+
 
                                 <div className=" my-md-3">
                                     <h5 className=' fw-bold'>By Salary:</h5>
                                     <div className='d-flex justify-content-between align-items-center'>
 
-                                        <input type="text" id='salary-from' placeholder="Salary From" className="input form-control" />
+                                        <input ref={searchRef} type="text" id='salary-from' placeholder="Salary From" className="input form-control" />
                                         <label className=' fw-bold mx-1'>to</label>
-                                        <input type="text" id='salary-to' placeholder="Salary To" className="input form-control" />
+                                        <input ref={searchRef} type="text" id='salary-to' placeholder="Salary To" className="input form-control" />
                                     </div>
                                 </div>
 
-                            </div>
-                            {/* <!-- END FILTERS --> */}
+                            </div> */}
 
 
-                            {/* <!-- BEGIN RESULT --> */}
-                            <div className="col-md-9 mt-md-0 mt-5">
+                            {/* <div className="col-md-9 mt-md-0 mt-5"> */}
+                            <div className=" mt-md-0 mt-5 px-md-5">
                                 <h2><FaFile></FaFile> Result</h2>
                                 <hr />
-                                {/* <!-- BEGIN SEARCH INPUT --> */}
+
                                 <div className="input-group">
 
                                     <input
@@ -197,17 +208,19 @@ const FindAllJob = () => {
                                         <button
                                             onClick={() => handleSearch()}
                                             className="custom_btn"
-                                            type="button"><FaSearch className='' />Search</button>
+                                            type="button"><FaSearch className=''
+                                            />
+                                            Search</button>
                                     </span>
                                 </div>
-                                {/* <!-- END SEARCH INPUT --> */}
+
 
                                 <p className=' fw-bold'>Showing search result</p>
 
                                 <div className="padding"></div>
 
                                 <div className="row">
-                                    {/* <!-- BEGIN ORDER RESULT --> */}
+
                                     <div className="col-9">
                                         <select className="form-select">
                                             <option disabled selected>Order By</option>
@@ -217,7 +230,7 @@ const FindAllJob = () => {
                                             <option value={3}>Salary</option>
                                         </select>
                                     </div>
-                                    {/* <!-- END ORDER RESULT --> */}
+
 
                                     <div className="col-3">
                                         <div className=' float-end'>
@@ -229,7 +242,7 @@ const FindAllJob = () => {
                                     </div>
                                 </div>
 
-                                {/* <!-- BEGIN TABLE RESULT --> */}
+
                                 <div className="table-responsive">
                                     <table className="table table-hover">
                                         <thead>
@@ -265,9 +278,9 @@ const FindAllJob = () => {
 
                                         </tbody></table>
                                 </div>
-                                {/* <!-- END TABLE RESULT --> */}
 
-                                {/* <!-- BEGIN PAGINATION --> */}
+
+
                                 {/* <div className=' d-flex justify-content-center'>
                                     <nav aria-label="..." className=' '>
                                         <ul className="pagination">
@@ -288,9 +301,9 @@ const FindAllJob = () => {
                                         </ul>
                                     </nav>
                                 </div> */}
-                                {/* <!-- END PAGINATION --> */}
+
                             </div>
-                            {/* <!-- END RESULT --> */}
+
                         </div>
                     </div>
                 </div>

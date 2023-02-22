@@ -5,18 +5,19 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../Authentication/AuthProvider';
 
 const FindJobHome = () => {
-    const { setSearchHome } = useContext(AuthContext);
-    const [search, setSearch] = useState('');
+    const [search, setSearch] = useState('web developer');
     const searchRef = useRef();
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/jobSearch?search=${search}`)
-            .then(response => response.json())
-            .then(data => {
-                // console.log("Find Job Home Search Result :", data)
-                // setSearchHome(data);
-            })
-    }, [search]);
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/jobSearch?search=${search}`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log("Find Job Home Search Result :", data)
+    //         })
+    // }, [search]);
+
+
+
 
     const handleSearch = () => {
         // console.log("searchRef : ", searchRef.current.value)
@@ -37,7 +38,6 @@ const FindJobHome = () => {
                 />
 
                 <select
-                    // {...register("orgaType")}
                     name='orgaType'
                     className="form-select w-25 mx-2">
                     <option disabled selected>Company Type</option>
@@ -49,13 +49,11 @@ const FindJobHome = () => {
                     <option value="Others">Others</option>
                 </select>
                 <input type="text" id="location" placeholder="Location" className="form-control  w-25" />
-                <button onClick={() => handleSearch()}
-                    className=' text-decoration-none custom_btn ms-2'
-                >
-                    {/* <Link to="/searchHomeResult" className=' text-decoration-none custom_btn ms-2' > Search</Link> */}
-                    Search
+                {/* <button onClick={() => handleSearch()} */}
+                    {/* className=' text-decoration-none custom_btn ms-2'/  > */}
+                    <Link to={`/searchHomeResult/:${search}`} className=' text-decoration-none custom_btn ms-2' > Search</Link>
 
-                </button>
+                {/* </button> */}
             </div>
 
 

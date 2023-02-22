@@ -59,11 +59,11 @@ const Navbar = () => {
                             {
                                 user?.uid ?
                                     <>
-                                        <li class="nav-item dropdown mb-2">
-                                            <Link class=" dropdown-toggle nav_btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <li className="nav-item dropdown mb-2">
+                                            <Link className=" dropdown-toggle nav_btn" data-bs-toggle="dropdown" aria-expanded="false">
                                                 {user?.displayName}
                                             </Link>
-                                            <ul class="dropdown-menu">
+                                            <ul className="dropdown-menu">
                                                 {
                                                     isJobSeeker && <>
                                                         <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfileEntry'>Manage Profile</Link></li>
@@ -98,7 +98,7 @@ const Navbar = () => {
 
                                     // <li className='nav-item  nav_btn mb-2'><Link className='nav_btn' to="/dashboard">  {user?.displayName}</Link></li>
                                     // <li className='nav-item  border-0  mx-lg-1  fw-bold mb-2 '>  <Link className='nav_btn' onClick={handleLogOut} >Logout</Link></li>
-                                    
+
                                     :
                                     <>
                                         <li className=" border-0  mx-lg-1  fw-bold mb-2 ">  <Link className=' nav_btn' aria-current="page" to="/login">Login</Link></li>

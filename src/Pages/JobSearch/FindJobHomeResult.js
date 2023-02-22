@@ -9,33 +9,36 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../Authentication/AuthProvider';
 
 const FindJobHomeResult = ({ jobList }) => {
-    const { searchHome } = useContext(AuthContext);
+    // const { searchHome } = useContext(AuthContext);
 
-    console.log("searchHome Result : ", searchHome)
+    // const { jobs } = useLoaderData();
+
+
+    // console.log("searchHome Result : ", jobs)
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     useTitle('FindJob');
 
 
-    // const { data: categories, isLoading } = useQuery({
-    //     queryKey: ['category'],
-    //     queryFn: async () => {
-    //         const res = await fetch('http://localhost:5000/jobCategories');
-    //         const data = await res.json();
-    //         return data;
-    //     }
-    // })
+    const { data: categories, isLoading } = useQuery({
+        queryKey: ['category'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/jobCategories');
+            const data = await res.json();
+            return data;
+        }
+    })
 
 
-    // const { data: jobs = [], refetch } = useQuery({
-    //     queryKey: ['jobs'],
-    //     queryFn: async () => {
-    //         const respone = await fetch('http://localhost:5000/jobs');
-    //         const data = respone.json();
-    //         return data;
-    //     }
-    // })
+    const { data: jobs = [], refetch } = useQuery({
+        queryKey: ['jobs'],
+        queryFn: async () => {
+            const respone = await fetch('http://localhost:5000/jobs');
+            const data = respone.json();
+            return data;
+        }
+    })
 
 
 
@@ -64,12 +67,12 @@ const FindJobHomeResult = ({ jobList }) => {
                     <div className="grid-body">
                         <div className="row">
 
-                            {/* <!-- BEGIN FILTERS --> */}
-                            <div className="col-md-3">
+
+                            {/* <div className="col-md-3">
                                 <h2 className="grid-title"><FaFilter />Filters</h2>
                                 <hr />
 
-                                {/* <!-- BEGIN FILTER BY Location --> */}
+
                                 <h5 className=' fw-bold'>By Location:</h5>
                                 <select className="form-select">
                                     <option disabled selected>Select</option>
@@ -81,11 +84,11 @@ const FindJobHomeResult = ({ jobList }) => {
                                     <option value={5}>Barishal</option>
                                     <option value={6}>Rangpur</option>
                                 </select>
-                                {/* <!-- END FILTER BY Location --> */}
 
 
-                                {/* <!-- BEGIN FILTER BY CATEGORY --> */}
-                                {/* <div className=' my-md-3'>
+
+
+                                <div className=' my-md-3'>
                                     <h5 className=' fw-bold'>By Category:</h5>
                                     <select
                                         {...register("category")}
@@ -102,11 +105,11 @@ const FindJobHomeResult = ({ jobList }) => {
                                         }
                                     </select>
 
-                                </div> */}
-                                {/* <!-- END FILTER BY CATEGORY --> */}
+                                </div>
 
 
-                                {/* <!-- Begin Filter by Employent Status --> */}
+
+
                                 <div className=' my-md-3'>
                                     <h5 className=' fw-bold'>By Employment Status:</h5>
                                     <select className=" form-select ">
@@ -118,10 +121,10 @@ const FindJobHomeResult = ({ jobList }) => {
                                         <option value={4}>Freelance</option>
                                     </select>
                                 </div>
-                                {/* <!-- End Filter by Employent Status --> */}
 
 
-                                {/* <!-- BEGIN FILTER BY POSTED DATE --> */}
+
+
                                 <div className=" my-md-3">
                                     <h5 className=' fw-bold'>By Posted:</h5>
                                     <div className='d-flex justify-content-between align-items-center'>
@@ -130,10 +133,10 @@ const FindJobHomeResult = ({ jobList }) => {
                                         <input type="date" name="posted-to" id='posted-to' className="input form-control" data-date="2023-02-01T05:25:07Z" data-date-format="dd-mm-yyyy" />
                                     </div>
                                 </div>
-                                {/* <!-- END FILTER BY POSTED DATE --> */}
 
 
-                                {/* <!-- BEGIN FILTER BY DEADLINE DATE --> */}
+
+
                                 <div className=" my-md-3">
                                     <h5 className=' fw-bold'>By Deadline:</h5>
                                     <div className='d-flex justify-content-between align-items-center'>
@@ -142,10 +145,10 @@ const FindJobHomeResult = ({ jobList }) => {
                                         <input type="date" name="deadline-to" id='deadline-to' className="input form-control" data-date="2023-02-01T05:25:07Z" data-date-format="dd-mm-yyyy" />
                                     </div>
                                 </div>
-                                {/* <!-- END FILTER BY DEADLINE DATE --> */}
 
 
-                                {/* <!-- BEGIN FILTER BY PRICE --> */}
+
+
 
                                 <div className=" my-md-3">
                                     <h5 className=' fw-bold'>By Salary:</h5>
@@ -157,29 +160,29 @@ const FindJobHomeResult = ({ jobList }) => {
                                     </div>
                                 </div>
 
-                            </div>
-                            {/* <!-- END FILTERS --> */}
+                            </div> */}
 
 
-                            {/* <!-- BEGIN RESULT --> */}
-                            <div className="col-md-9 mt-md-0 mt-5">
+
+
+                            <div className="col-md-9 mt-md-0 mt-5 mx-md-auto">
                                 <h2><FaFile></FaFile> Result</h2>
                                 <hr />
-                                {/* <!-- BEGIN SEARCH INPUT --> */}
+
                                 <div className="input-group">
                                     <input type="text" className="form-control" placeholder='input search data' />
                                     <span className="input-group-btn">
                                         <button className="custom_btn" type="button"><FaSearch className='' />Search</button>
                                     </span>
                                 </div>
-                                {/* <!-- END SEARCH INPUT --> */}
+
 
                                 <p className=' fw-bold'>Showing search result</p>
 
                                 <div className="padding"></div>
 
                                 <div className="row">
-                                    {/* <!-- BEGIN ORDER RESULT --> */}
+
                                     <div className="col-9">
                                         <select className="form-select">
                                             <option disabled selected>Order By</option>
@@ -189,7 +192,7 @@ const FindJobHomeResult = ({ jobList }) => {
                                             <option value={3}>Salary</option>
                                         </select>
                                     </div>
-                                    {/* <!-- END ORDER RESULT --> */}
+
 
                                     <div className="col-3">
                                         <div className=' float-end'>
@@ -201,7 +204,7 @@ const FindJobHomeResult = ({ jobList }) => {
                                     </div>
                                 </div>
 
-                                {/* <!-- BEGIN TABLE RESULT --> */}
+
                                 <div className="table-responsive">
                                     <table className="table table-hover">
                                         <thead>
@@ -218,7 +221,7 @@ const FindJobHomeResult = ({ jobList }) => {
 
                                         <tbody>
                                             {
-                                                searchHome.map((job, index) =>
+                                                jobs.map((job, index) =>
                                                     <tr key={job._id} className="">
                                                         <td>{index + 1}</td>
                                                         <td className='fw-bold'>
@@ -235,11 +238,12 @@ const FindJobHomeResult = ({ jobList }) => {
                                                 )
                                             }
 
-                                        </tbody></table>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                {/* <!-- END TABLE RESULT --> */}
 
-                                {/* <!-- BEGIN PAGINATION --> */}
+
+
                                 <div className=' d-flex justify-content-center'>
                                     <nav aria-label="..." className=' '>
                                         <ul className="pagination">
@@ -260,9 +264,9 @@ const FindJobHomeResult = ({ jobList }) => {
                                         </ul>
                                     </nav>
                                 </div>
-                                {/* <!-- END PAGINATION --> */}
+
                             </div>
-                            {/* <!-- END RESULT --> */}
+
                         </div>
                     </div>
                 </div>

@@ -65,8 +65,9 @@ const router = createBrowserRouter([
             //     loader: ({ params }) => fetch(`http://localhost:5000/jobByTitle?jobTitle=${params.jobTitle}`)
             // },
             {
-                path: '/searchHomeResult',
+                path: '/searchHomeResult/:searchData',
                 element: <FindJobHomeResult></FindJobHomeResult>,
+                loader: ({ params }) => fetch(`http://localhost:5000/jobSearchHome?searchData=${params.searchData}`)
 
             },
             {

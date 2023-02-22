@@ -463,14 +463,14 @@ const JobSeekerProfileEntry = () => {
                             </div>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                             <input
                                 {...register("exOnecurrtlyWorkHere",)}
-                                class="form-check-input"
+                                className="form-check-input"
                                 type="checkbox" value="currentlyWorkHere"
                                 id="exprOneWorkPeriod"
                             />
-                            <label class="form-check-label" htmlFor="exprOneWorkPeriod">
+                            <label className="form-check-label" htmlFor="exprOneWorkPeriod">
                                 Currently working here
                             </label>
                         </div>
@@ -589,14 +589,14 @@ const JobSeekerProfileEntry = () => {
                             </div>
                         </div>
 
-                        <div class="form-check">
+                        <div className="form-check">
                             <input
                                 {...register("exprTwoWorkPeriod",)}
-                                class="form-check-input"
+                                className="form-check-input"
                                 type="checkbox" value="exprTwoWorkPeriod"
                                 id="exprTwoWorkPeriod"
                             />
-                            <label class="form-check-label" htmlFor="exprTwoWorkPeriod">
+                            <label className="form-check-label" htmlFor="exprTwoWorkPeriod">
                                 Currently working here
                             </label>
                         </div>
