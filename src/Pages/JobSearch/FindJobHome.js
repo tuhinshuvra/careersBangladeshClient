@@ -16,9 +16,6 @@ const FindJobHome = () => {
     //         })
     // }, [search]);
 
-
-
-
     const handleSearch = () => {
         // console.log("searchRef : ", searchRef.current.value)
         setSearch(searchRef.current.value);
