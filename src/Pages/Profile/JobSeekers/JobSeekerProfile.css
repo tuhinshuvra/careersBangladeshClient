@@ -2,6 +2,11 @@
     width: 150px;
 }
 
-.hidden {
-    display: none;
+
+.star {
+    color: red;
+    /* Make it red */
+    font-size: 80%;
+    margin-left: 4px;
+    /* Make it twice as large */
 }
