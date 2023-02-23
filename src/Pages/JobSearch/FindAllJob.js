@@ -21,7 +21,7 @@ const FindAllJob = () => {
         fetch(`http://localhost:5000/jobSearch?search=${search}`)
             .then(response => response.json())
             .then(data => {
-                console.log("Find all Job Search Result :", data);
+                // console.log("Find all Job Search Result :", data);
                 setShowJobs(data);
             })
     }, [search]);
@@ -31,8 +31,8 @@ const FindAllJob = () => {
         // console.log("searchRef : ", searchRef.current.value)
         setSearch(searchRef.current.value);
         searchRef.current.value = "";
-        console.log("HandleSearch function called")
-        console.log("searchRef Value :", searchRef.current.value);
+        // console.log("HandleSearch function called")
+        // console.log("searchRef Value :", searchRef.current.value);
     }
 
 
@@ -208,8 +208,7 @@ const FindAllJob = () => {
                                         <button
                                             onClick={() => handleSearch()}
                                             className="custom_btn"
-                                            type="button"><FaSearch className=''
-                                            />
+                                            type="button"><FaSearch className='' />
                                             Search</button>
                                     </span>
                                 </div>
@@ -240,6 +239,7 @@ const FindAllJob = () => {
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
 
 
@@ -272,8 +272,7 @@ const FindAllJob = () => {
                                                         <td>{job.postDate}</td>
                                                         <td>{job.deadLine}</td>
                                                         <td>৳{job.salaryTo}</td>
-                                                    </tr>
-                                                )
+                                                    </tr>)
                                             }
 
                                         </tbody></table>

@@ -46,6 +46,7 @@ const ApplicantList = () => {
                             <th>SL</th>
                             <th>Name</th>
                             <th>Applied</th>
+                            <th>Expected Salary</th>
                             <th>Profile</th>
                             <th>Action</th>
                         </tr>
@@ -58,10 +59,11 @@ const ApplicantList = () => {
                                     <td>{applicant.name}</td>
                                     {/* <td>
                                         <Link className=' text-decoration-none text-primary ' to={`/dashboard/jobs/${applicant._id}`}>
-                                            <b>{applicant.jobTitle}</b>
+                                        <b>{applicant.jobTitle}</b>
                                         </Link>
                                     </td> */}
                                     <td>{applicant.applicationDate}</td>
+                                    <td>{applicant.expectedSalary}</td>
                                     <td>
                                         {/* <Link to="/dashboard/applicantProfile"> */}
                                         <Link to="/dashboard/jobSeekerProfile">

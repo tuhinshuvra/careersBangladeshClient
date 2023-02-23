@@ -67,7 +67,7 @@ const NewJobPost = () => {
                         status: data.status,
                         others: data.others,
                     }
-                    console.log("Job Post Data :", jobPost);
+                    // console.log("Job Post Data :", jobPost);
 
                     fetch('http://localhost:5000/jobs', {
                         method: 'POST',

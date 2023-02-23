@@ -1,13 +1,11 @@
 import React from 'react';
-import FindJobHome from '../JobSearch/FindJobHome';
+import FindJobAndStatistics from '../JobSearch/FindJobAndStatistics';
 import JobCategory from '../JobCategory/JobCategory';
 import HotJobs from '../HotJobs/HotJobs';
 import JobAlert from '../JobAlert/JobAlert';
 import ELearning from '../ELearning/ELearning';
 import useTitle from '../../hooks/useTitle';
 import NewJobs from '../NewJobs/NewJobs';
-import TestSearch from '../JobCategory/TestSearch';
-import StatisticsHome from '../StatisticsHome';
 
 const Home = () => {
 
@@ -15,9 +13,7 @@ const Home = () => {
 
     return (
         <div>
-            {/* <TestSearch></TestSearch> */}
-            <FindJobHome></FindJobHome>
-            <StatisticsHome></StatisticsHome>
+            <FindJobAndStatistics></FindJobAndStatistics>
             <JobCategory></JobCategory>
             <HotJobs></HotJobs>
             <NewJobs></NewJobs>

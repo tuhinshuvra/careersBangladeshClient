@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { FaBookmark, FaBriefcase, FaBuilding, FaCalculator } from 'react-icons/fa';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
@@ -9,42 +10,46 @@ import './PostedJobDetails.css';
 
 const PostedJobDetails = () => {
     const jobdetails = useLoaderData();
+    const [expectedSalary, setExpectedSalary] = useState('0');
+
     const navigate = useNavigate();
 
-    console.log("jobdetails : ", jobdetails)
+    // console.log("jobdetails : ", jobdetails)
     const [jobPosts, setJobPosts] = useState([]);
     const { user } = useContext(AuthContext);
 
     const [isEmployer] = useEmployer(user?.email);
     const [isJobSeeker] = useJobSeeker(user?.email);
 
-    const email = user?.email;
+    const userEmail = user?.email;
 
     const employer = useLoaderData();
 
     // console.log("Employer : ", employer)
 
 
-    const { _id, postersEmail, postersName, jobTitle, companyLogo, organization, vacancies, category, deadLine, education, experience, postDate, applyStatus, employmentStatus, businessDescription, jobLevel, workPlace, jobContext,
+    const { _id, postersName, email, jobTitle, companyLogo, organization, vacancies, category, deadLine, education, experience, postDate, applyStatus, employmentStatus, businessDescription, jobLevel, workPlace, jobContext,
         jobResponst, location, salaryFrom, salaryTo, yearlyBonus, salaryReview, status, others } = jobdetails;
 
     console.log("jobsData : ", jobPosts)
 
     const applicationDate = new Date().toJSON().slice(0, 10);
 
+    // appply job
     const handleApply = (data) => {
-        console.log("Applied jobdetails :", jobdetails);
+        // console.log("Applied jobdetails :", jobdetails);
         const jobApply = {
             jobId: _id,
-            email: user.email,
+            jobSeekerEmail: user.email,
             name: user.displayName,
-            postersEmail: postersEmail,
+            postersEmail: email,
+            expectedSalary: expectedSalary,
             jobTitle: jobTitle,
             organization: organization,
             category: category,
             applicationDate: applicationDate
         }
-        console.log("Job Post Data :", jobApply);
+        console.log("Job Apply Data :", jobApply);
 
         fetch('http://localhost:5000/applications', {
             method: 'POST',
@@ -56,25 +61,32 @@ const PostedJobDetails = () => {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                toast('Post the appliction successfully');
-                navigate("/findJobs")
+                if (data.acknowledged) {
+                    toast.success('Post the appliction successfully');
+                    navigate("/findAllJob")
+                }
+                else {
+                    toast.error(data.message)
+                }
             })
     }
+
+    // save a job to apply future
 
     const handleJobSave = (data) => {
         console.log("Saved Job Details :", jobdetails);
         const savedJob = {
             jobId: _id,
-            email: user.email,
+            jobSeekerEmail: user.email,
             name: user.displayName,
-            postersEmail: postersEmail,
+            postersEmail: email,
             jobTitle: jobTitle,
             organization: organization,
             category: category,
             savedDate: applicationDate
         }
 
-        console.log("Job Post Data :", savedJob);
+        // console.log("Saved Job Data :", savedJob);
 
         fetch('http://localhost:5000/savedjobs', {
             method: 'POST',
@@ -86,20 +98,30 @@ const PostedJobDetails = () => {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                toast('The Job Saved Successfully');
-                navigate("/dashboard/savedJobs")
+                if (data.acknowledged) {
+                    toast.success('The Job Saved Successfully');
+                    navigate("/dashboard/savedJobs")
+                }
+                else {
+                    toast.error(data.message);
+                    navigate("/dashboard/savedJobs");
+                }
             })
     }
 
 
+    const getExpectedSalary = event => {
+        const expSalary = event.target.value;
+        setExpectedSalary(expSalary);
+    }
 
     return (
         <div>
             <div className="card">
                 <div>
-                    <div className=' float-end'>
+                    <div className='float-end'>
                         {
-                            isEmployer && <p className=' fw-bold me-3 mt-2'>  Job Status : {status} </p>
+                            isEmployer && <p className='fw-bold me-3 mt-2'>Job Status : {status} </p>
                         }
                     </div>
                 </div>
@@ -259,9 +281,6 @@ const PostedJobDetails = () => {
                         </ul>
                     </p>
 
-
-
-
                     <p>
                         <b>Job Source</b><br />
                         careersbangladesh.com Online Job Posting.
@@ -271,22 +290,28 @@ const PostedJobDetails = () => {
                         isJobSeeker &&
                         <div className='d-flex justify-content-center'>
                             <button type="button" data-bs-toggle="modal" data-bs-target="#confirmationModal" className=" custom_btn mx-1"> Apply Now</button>
-
                         </div>
                     }
-
-
 
 
                     <div className="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
                         <div className="modal-dialog">
                             <div className="modal-content">
+
+
                                 <div className="modal-header">
                                     <h1 className="modal-title fs-5" id="confirmationModalLabel">Apply Online</h1>
                                 </div>
                                 <div className="modal-body d-flex justify-content-center align-items-center">
                                     <div className=' col-lg-6'>
-                                        <input className='input form-control ' type="text" id="exSalary" name='exSalary' placeholder='Input expected salary' />
+                                        <input
+                                            onBlur={getExpectedSalary}
+                                            className='input form-control'
+                                            name='exSalary'
+                                            type="text"
+                                            id="exSalary"
+                                            placeholder='Input expected salary'
+                                        />
                                     </div>
                                     <span className=' col-lg-4 fw-bold'> /monthly</span>
                                 </div>
@@ -301,7 +326,7 @@ const PostedJobDetails = () => {
 
                                 <div className="modal-footer">
                                     <Link onClick={() => handleApply(jobdetails)}>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#confirmationModal" className=" custom_btn mx-1">Confirm to Apply</button>
+                                        <button type="submit" data-bs-toggle="modal" data-bs-target="#confirmationModal" className=" custom_btn mx-1">Confirm to Apply</button>
                                     </Link>
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 </div>
