@@ -65,6 +65,15 @@ const Navbar = () => {
                                             </Link>
                                             <ul className="dropdown-menu">
                                                 {
+                                                    isAdmin && <>
+                                                        <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/JobCategoryEntry'>Job Category Entry</Link></li>
+                                                        <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/JobCategoryList'>Job Category List</Link></li>
+                                                        <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/admin'>All User</Link></li>
+                                                        <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobseekerList'>All Job Seeker</Link></li>
+                                                        <li className='list-group-item  my-1'><Link className=' nav_btn' to='/dashboard/employeeList'>All Employer</Link></li>
+                                                    </>
+                                                }
+                                                {
                                                     isJobSeeker && <>
                                                         <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfileEntry'>Manage Profile</Link></li>
                                                         <li className='list-group-item   my-1'><Link className=' nav_btn' to='/dashboard/jobSeekerProfile'>My Profile</Link></li>
@@ -81,14 +90,7 @@ const Navbar = () => {
                                                     </>
                                                 }
 
-                                                {
-                                                    isAdmin && <>
-                                                        <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/JobCategoryEntry'>Job Category Entry</Link></li>
-                                                        <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/JobCategoryList'>Job Category List</Link></li>
-                                                        <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/admin'>All User</Link></li>
-                                                        <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/appliedJobs'>Applied Job List</Link></li>
-                                                    </>
-                                                }
+
 
 
                                                 <li className='nav-item  border-0  mx-lg-1  fw-bold mb-2 '>  <Link className='nav_btn' onClick={handleLogOut} >Logout</Link></li>

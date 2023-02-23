@@ -2,24 +2,30 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import ConfirmatinModal from '../../Shared/ConfirmationModal/ConfirmationModal';
+import Loader from '../../Shared/Loader/Loader';
 
 const UserList = () => {
-    // const [users, setUsers] = useState([]);
 
-    const { data: users = [], refetch } = useQuery({
+    const [deletingUser, setDeletingUser] = useState(null);
+
+    const closeModal = () => {
+        setDeletingUser(null)
+    }
+
+    const { data: users = [], isLoading, refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const respone = await fetch('http://localhost:5000/users');
-            const data = respone.json();
-            return data;
+            try {
+                const respone = await fetch('http://localhost:5000/users');
+                const data = respone.json();
+                return data;
+            }
+            catch (error) {
+                console.log(error)
+            }
         }
     })
-
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/users')
-    //         .then(respnse => respnse.json())
-    //         .then(data => setUsers(data))
-    // }, [])
 
 
     const handleMakeAdmin = (email) => {
@@ -47,12 +53,15 @@ const UserList = () => {
                 if (data.deletedCount > 0) {
                     toast('User Deleted Successfully.')
                 }
+                refetch();
             });
         // console.log(user._id);
     }
 
-    const handleUserUpdate = (user) => {
-        console.log("Selected to Update User : ", user._id)
+
+
+    if (isLoading) {
+        return <Loader></Loader>
     }
 
 
@@ -88,21 +97,32 @@ const UserList = () => {
                                         }
                                     </td>
                                     <td>
-                                        <Link to={`/dashboardAdmin/userUpdate/${user._id}`}>
+                                        <Link to={`/dashboard/userUpdate/${user._id}`}>
                                             <button className=' fw-bold btn-sm btn btn-primary mx-1'
-                                                onClick={() => handleUserUpdate(user._id)}
+                                            // onClick={() => handleUserUpdate(user._id)}
                                             >Update</button>
                                         </Link>
 
-                                        <button className=' btn btn-sm  btn-outline-danger'
-                                            onClick={() => handleDelete(user)}
-                                        >Delete</button>
+                                        <button onClick={() => setDeletingUser(user)} data-bs-toggle="modal" data-bs-target="#confirmationModal" className=' btn btn-sm  btn-outline-danger'>Delete</button>
                                     </td>
                                 </tr>
                             )
                         }
                     </tbody>
                 </table>
+                {
+                    deletingUser &&
+                    <ConfirmatinModal
+                        title={'Are you sure you want to delete the user?'}
+                        message={`If you once delete the user ${deletingUser.name} it's can't be recovered.`}
+                        closeModal={closeModal}
+                        successAction={handleDelete}
+                        successButtonName='Delete'
+                        modalData={deletingUser}
+                    ></ConfirmatinModal>
+
+                }
+
             </div >
         </div>
     );

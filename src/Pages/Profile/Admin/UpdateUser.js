@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
 const UpdateUser = () => {
     const storedUser = useLoaderData();
 
     const [user, setUser] = useState(storedUser);
+    const navigate = useNavigate();
 
 
     const handleUpdateUser = (event) => {
@@ -23,6 +24,7 @@ const UpdateUser = () => {
                 console.log("Updated : ", data)
                 if (data.modifiedCount > 0) {
                     toast('User Updated Successfully.');
+                    navigate('/dashboard/admin');
                 }
             })
 
@@ -39,13 +41,13 @@ const UpdateUser = () => {
 
     return (
         <div>
-            <h2 className=' fw-bold text-center my-3'>Please Update {storedUser.name} Data </h2>
+            <h4 className=' fw-bold text-center my-4'>Update {storedUser.name} Data </h4>
             <div className=' col-4 mx-auto'>
                 <form onSubmit={handleUpdateUser} className='d-flex flex-column'>
-                    <input onChange={handleInputChange} type="text" name='name' defaultValue={storedUser.name} id='name' />
-                    <input onChange={handleInputChange} type="email" name='email' defaultValue={storedUser.email} id='email' />
-                    <input onChange={handleInputChange} type="text" name='phone' defaultValue={storedUser.phone} id='phone' />
-                    <button className='custom_btn' type="submit">Update User</button>
+                    <input onChange={handleInputChange} type="text" name='name' defaultValue={storedUser.name} id='name' className=' form-control my-1' />
+                    <input onChange={handleInputChange} type="email" name='email' defaultValue={storedUser.email} id='email' disabled className=' form-control my-1' />
+                    <input onChange={handleInputChange} type="text" name='phone' defaultValue={storedUser.phone} id='phone' className=' form-control my-1' placeholder='Phone no' />
+                    <button className='custom_btn my-2' type="submit">Update User</button>
                 </form>
             </div>
         </div>

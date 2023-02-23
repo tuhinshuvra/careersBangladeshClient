@@ -270,7 +270,7 @@ const PostedJobDetails = () => {
                     {
                         isJobSeeker &&
                         <div className='d-flex justify-content-center'>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className=" custom_btn mx-1"> Apply Now</button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#confirmationModal" className=" custom_btn mx-1"> Apply Now</button>
 
                         </div>
                     }
@@ -278,11 +278,11 @@ const PostedJobDetails = () => {
 
 
 
-                    <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
                         <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h1 className="modal-title fs-5" id="exampleModalLabel">Apply Online</h1>
+                                    <h1 className="modal-title fs-5" id="confirmationModalLabel">Apply Online</h1>
                                 </div>
                                 <div className="modal-body d-flex justify-content-center align-items-center">
                                     <div className=' col-lg-6'>
@@ -301,7 +301,7 @@ const PostedJobDetails = () => {
 
                                 <div className="modal-footer">
                                     <Link onClick={() => handleApply(jobdetails)}>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className=" custom_btn mx-1">Confirm to Apply</button>
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#confirmationModal" className=" custom_btn mx-1">Confirm to Apply</button>
                                     </Link>
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 </div>

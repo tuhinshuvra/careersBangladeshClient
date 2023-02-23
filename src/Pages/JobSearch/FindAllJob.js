@@ -189,7 +189,7 @@ const FindAllJob = () => {
 
 
                             {/* <div className="col-md-9 mt-md-0 mt-5"> */}
-                            <div className=" mt-md-0 mt-5 px-md-5">
+                            <div className=" mt-md-0 mt-5 mx-auto">
                                 <h2><FaFile></FaFile> Result</h2>
                                 <hr />
 
