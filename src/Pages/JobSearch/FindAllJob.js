@@ -55,9 +55,8 @@ const FindAllJob = () => {
         }
     })
 
-    const totalJobs = jobs.length;
 
-    console.log("totalJobs : ", totalJobs);
+   
 
 
 

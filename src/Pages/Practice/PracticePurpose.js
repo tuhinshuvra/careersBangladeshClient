@@ -16,7 +16,7 @@ const PracticePurpose = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.acknowledged) {
+                if (data.acknowledged) {                    
                     toast('Data Added Successfully.');
                     event.target.reset();
                 }

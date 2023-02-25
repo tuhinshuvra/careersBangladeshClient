@@ -26,6 +26,9 @@ const HotJobs = () => {
                     job={job}
                 ></HotJobsDisplay>)}
             </div>
+            <div className=' text-center my-3'>
+                <button onClick={""} className=' custom_btn '>Show All</button>
+            </div>
         </div>
     );
 };

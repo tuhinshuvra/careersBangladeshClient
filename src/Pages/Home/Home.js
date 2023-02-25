@@ -2,7 +2,7 @@ import React from 'react';
 import FindJobAndStatistics from '../JobSearch/FindJobAndStatistics';
 import JobCategory from '../JobCategory/JobCategory';
 import HotJobs from '../HotJobs/HotJobs';
-import JobAlert from '../JobAlert/JobAlert';
+import Subscriber from '../Subscriber/Subscriber';
 import ELearning from '../ELearning/ELearning';
 import useTitle from '../../hooks/useTitle';
 import NewJobs from '../NewJobs/NewJobs';
@@ -20,7 +20,10 @@ const Home = () => {
 
             {/* <ELearning></ELearning> */}
 
-            <JobAlert></JobAlert>
+
+            <Subscriber></Subscriber>
+
+
 
             {/* <PracticePurpose></PracticePurpose> */}
             {/* <AllUser></AllUser> */}

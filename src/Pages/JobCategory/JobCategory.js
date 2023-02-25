@@ -6,10 +6,14 @@ import './JobCategory.css';
 const JobCategory = () => {
     const [categories, setCategories] = useState([]);
 
-    let newcategory = categories.slice(0, 24)
+    let [showCategories, setShowCategories] = useState([]);
+    showCategories = categories.slice(0, 16)
 
 
-    const [categoryToShow, setCategoryToShow] = useState(newcategory);
+    const handleShowAllCategories = (categories) => {
+        setShowCategories(categories)
+        console.log("showAll Categories : ", showCategories);
+    }
 
     useEffect(() => {
         // fetch('job-categories.json')
@@ -23,17 +27,17 @@ const JobCategory = () => {
 
     return (
         <div className=' common-margin '>
-            <h2 className='my-5 careers_title_one'><FaCompressArrowsAlt className=' mx-1'></FaCompressArrowsAlt>  JOB CATEGORIES</h2>
+            <h2 className='my-5 careers_title_one'><FaCompressArrowsAlt className='mx-1'></FaCompressArrowsAlt>JOB CATEGORIES</h2>
             <div className=' job-category'>
                 {
-                    newcategory.map(category => <JobCategoryDisplay
+                    showCategories.map(category => <JobCategoryDisplay
                         key={category._id}
                         category={category}
                     ></JobCategoryDisplay>)
                 }
             </div>
             <div className=' text-center my-3'>
-                {/* <button className=' custom_btn '>Show All</button> */}
+                <button onClick={() => handleShowAllCategories(categories)} className='custom_btn'>Show All</button>
             </div>
         </div>
     );

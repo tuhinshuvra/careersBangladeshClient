@@ -26,6 +26,10 @@ const NewJobs = () => {
                         job={job}
                     ></NewJobsDisplay>)}
                 </div>
+
+                <div className=' text-center my-3'>
+                    <button onClick={""} className=' custom_btn '>Show All</button>
+                </div>
             </div>
         </div>
     );
