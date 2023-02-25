@@ -23,7 +23,6 @@ import JobCategoryEntry from '../../JobCategory/JobCategoryEntry';
 import JobCategoryList from '../../JobCategory/JobCategoryList';
 import ApplicantList from '../../Profile/Employers/ApplicantList';
 import CommonDashboard from '../../../layout/CommonDashboard';
-import Employment from '../../Profile/JobSeekers/Employment/Employment';
 import Photograph from '../../Profile/JobSeekers/Photograph/Photograph';
 import AppliedJobList from '../../Profile/JobSeekers/AppliedJobList/AppliedJobList';
 import JobSeekerProfileEntry from '../../Profile/JobSeekers/JobSeekerProfileEntry';
@@ -114,12 +113,6 @@ const router = createBrowserRouter([
                 element: <JobSeekerProfile></JobSeekerProfile>
             },
 
-           
-            {
-                path: '/dashboard/jobSeekerEmployment',
-                element: <Employment></Employment>
-            },
-           
             {
                 path: '/dashboard/photograph',
                 element: <Photograph></Photograph>

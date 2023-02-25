@@ -39,7 +39,8 @@ const FindJobAndStatistics = () => {
                     <select
                         name='orgaType'
                         className="form-select w-25 mx-2">
-                        <option disabled selected>Company Type</option>
+                        {/* <option>Company Type</option> */}
+                        <option>Select Company Type</option>
                         <option value="Government">Government</option>
                         <option value="Semi Government">Semi Government</option>
                         <option value="NGO">NGO</option>

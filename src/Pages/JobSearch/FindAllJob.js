@@ -55,6 +55,10 @@ const FindAllJob = () => {
         }
     })
 
+    const totalJobs = jobs.length;
+
+    console.log("totalJobs : ", totalJobs);
+
 
 
     // const handleDelete = (job) => {
@@ -98,7 +102,7 @@ const FindAllJob = () => {
                                 />
                                 <h5 className=' fw-bold'>By Location:</h5>
                                 <select ref={searchRef} className="form-select">
-                                    <option disabled selected>Select</option>
+                                    <option>Select</option>
                                     <option value="Dhaka">Dhaka</option>
                                     <option value="Chattogram">Chattogram</option>
                                     <option value="Sylhet">Sylhet</option>
@@ -138,7 +142,7 @@ const FindAllJob = () => {
                                     <select
                                         ref={searchRef}
                                         className=" form-select ">
-                                        <option disabled selected>Please Select</option>
+                                        <option>Please Select</option>
                                         <option value="full time">Full Time</option>
                                         <option value="Part Time">Part Time</option>
                                         <option value="Contactual">Contactual</option>
@@ -222,11 +226,11 @@ const FindAllJob = () => {
 
                                     <div className="col-9">
                                         <select className="form-select">
-                                            <option disabled selected>Order By</option>
-                                            <option value={0}>Name</option>
-                                            <option value={1}>Posted</option>
-                                            <option value={2}>Deadline</option>
-                                            <option value={3}>Salary</option>
+                                            <option>Order By</option>
+                                            <option value="Name">Name</option>
+                                            <option value="Posted">Posted</option>
+                                            <option value="Deadline">Deadline</option>
+                                            <option value="Salary">Salary</option>
                                         </select>
                                     </div>
 
@@ -277,7 +281,6 @@ const FindAllJob = () => {
 
                                         </tbody></table>
                                 </div>
-
 
 
                                 {/* <div className=' d-flex justify-content-center'>

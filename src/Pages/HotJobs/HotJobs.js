@@ -22,7 +22,7 @@ const HotJobs = () => {
             <h2 className='my-5 careers_title_one'><FaHotjar className='mx-1'></FaHotjar>HOT JOBS</h2>
             <div className='hot_job_category'>
                 {newJobs.map(job => <HotJobsDisplay
-                    key={job.id}
+                    key={job._id}
                     job={job}
                 ></HotJobsDisplay>)}
             </div>

@@ -5,7 +5,7 @@ const Loader = () => {
 
     return (
         <div className=' d-flex my-5 justify-content-center align-items-center'>
-            <div class="loader"></div>
+            <div className="loader"></div>
         </div>
     );
 };

@@ -114,7 +114,7 @@ const NewJobPost = () => {
                             {...register("orgaType")}
                             name='orgaType'
                             className="form-select">
-                            <option disabled selected>-Select Type-</option>
+                            <option>-Select Type-</option>
                             <option value="Government">Government</option>
                             <option value="Semi Government">Semi Government</option>
                             <option value="NGO">NGO</option>
@@ -197,7 +197,7 @@ const NewJobPost = () => {
                             name='job_level'
                             className="form-select"
                         >
-                            <option disabled selected>Select Job Level</option>
+                            <option>Select Job Level</option>
                             <option value={0}>Entry</option>
                             <option value={1}>Mid</option>
                             <option value={2}>Top</option>
@@ -210,7 +210,7 @@ const NewJobPost = () => {
                             name="work_place"
                             className="form-select"
                         >
-                            <option disabled selected>Select Work Place</option>
+                            <option>Select Work Place</option>
                             <option value="Work at Office">Work at Office</option>
                             <option value="Work from Home">Work from Home</option>
                             <option value="Hybrid">Hybrid</option>
@@ -227,7 +227,7 @@ const NewJobPost = () => {
                             name="employment_status"
                             className=" form-select "
                         >
-                            <option disabled selected>Employment Status</option>
+                            <option>Employment Status</option>
                             <option value={0}>Full Time</option>
                             <option value={1}>Part Time</option>
                             <option value={2}>Contactual Time</option>
@@ -256,7 +256,7 @@ const NewJobPost = () => {
                             {...register("apply_status")}
                             className=" form-select"
                         >
-                            <option disabled selected>Apply Status</option>
+                            <option>Apply Status</option>
                             <option value="Apply Online">Apply Online</option>
                             <option value="email">Email</option>
                             <option value="Hard Copy">Heard Copy</option>
@@ -359,7 +359,7 @@ const NewJobPost = () => {
                                 name="yearly_bonus"
                                 className=" form-select"
                             >
-                                <option disabled selected>Yearly Bonus</option>
+                                <option>Yearly Bonus</option>
                                 <option value={0}>2</option>
                                 <option value={1}>3</option>
                                 <option value={2}>4</option>
@@ -373,7 +373,7 @@ const NewJobPost = () => {
                             name="salary_review"
                             className="form-select"
                         >
-                            <option disabled selected>Salary Review</option>
+                            <option>Salary Review</option>
                             <option value={0}>Yearly</option>
                             <option value={1}>Halt Yearly</option>
                         </select>

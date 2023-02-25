@@ -207,7 +207,6 @@ const JobSeekerProfileEntry = () => {
                         })
                 }
             })
-
     }
 
     return (
@@ -217,37 +216,36 @@ const JobSeekerProfileEntry = () => {
 
                 <button
                     onClick={() => setPersonalDetails(!personalDetails)}
-                    class="btn btn-primary mb-1">
+                    className="btn btn-primary mb-1">
                     Personal Details
                 </button>
                 <button
                     onClick={() => setExperience(!experience)}
-                    class="btn btn-primary mb-1 mx-1">
+                    className="btn btn-primary mb-1 mx-1">
                     Experience
                 </button>
 
                 <button
                     onClick={() => setAcademic(!academic)}
-                    class="btn btn-primary mb-1 mx-1">
+                    className="btn btn-primary mb-1 mx-1">
                     Academic Qualification
                 </button>
 
                 <button
                     onClick={() => setCareer(!career)}
-                    class="btn btn-primary mb-1 mx-1">
+                    className="btn btn-primary mb-1 mx-1">
                     Career and Application
                 </button>
 
                 <button
                     onClick={() => setLanguage(!language)}
-                    class="btn btn-primary mb-1 mx-1">
+                    className="btn btn-primary mb-1 mx-1">
                     Language and Reference
                 </button>
             </div>
 
 
-
-            {/* <p className=' float-end '> <span class="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
+            {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
             <form onSubmit={handleSubmit(handleJobSeekerProfile)} >
                 {
                     personalDetails && (
@@ -258,10 +256,9 @@ const JobSeekerProfileEntry = () => {
                             <h4 className="label-text text-md fw-bold  text-center">Personal Details</h4>
 
 
-
                             <div className="row ">
                                 <div className='col-md-6 mb-3 mb-3'>
-                                    <span className="label-text text-md fw-bold">Father's Name <span class="star">&#x2605;</span></span>
+                                    <span className="label-text text-md fw-bold">Father's Name <span className="star">&#x2605;</span></span>
                                     <input
                                         {...register("fathers_name", { required: true })}
                                         name='fathers_name'
@@ -273,7 +270,7 @@ const JobSeekerProfileEntry = () => {
                                 </div>
 
                                 <div className='col-md-6 mb-3 mb-3'>
-                                    <span className="label-text text-md fw-bold  ">Mother's Name<span class="star">&#x2605;</span></span>
+                                    <span className="label-text text-md fw-bold  ">Mother's Name<span className="star">&#x2605;</span></span>
                                     <input
                                         {...register("mothers_name", { required: true })}
                                         name='mothers_name'
@@ -286,7 +283,7 @@ const JobSeekerProfileEntry = () => {
 
 
                                 <div className='col-md-3 mb-3 '>
-                                    <span className="label-text text-md fw-bold  ">Nationality<span class="star">&#x2605;</span></span>
+                                    <span className="label-text text-md fw-bold  ">Nationality<span className="star">&#x2605;</span></span>
                                     <input
                                         {...register("nationality",)}
                                         name='nationality'
@@ -310,7 +307,7 @@ const JobSeekerProfileEntry = () => {
                                 </div>
 
                                 <div className='col-md-3 mb-3 '>
-                                    <span className="label-text text-md fw-bold  ">Phone<span class="star">&#x2605;</span></span>
+                                    <span className="label-text text-md fw-bold  ">Phone<span className="star">&#x2605;</span></span>
                                     <input
                                         {...register("phone", { required: true })}
                                         name='phone'
@@ -322,7 +319,7 @@ const JobSeekerProfileEntry = () => {
                                 </div>
 
                                 <div className='col-md-3 mb-3 '>
-                                    <span className="label-text text-md fw-bold  ">Date of Birth<span class="star">&#x2605;</span></span>
+                                    <span className="label-text text-md fw-bold  ">Date of Birth<span className="star">&#x2605;</span></span>
                                     <input
                                         {...register("birth_dete", { required: true })}
                                         name='birth_dete'
@@ -332,16 +329,14 @@ const JobSeekerProfileEntry = () => {
                                     />
                                 </div>
 
-
-
                                 <div className="row">
                                     <div className='col-md-3 mb-3  '>
-                                        <span className="label-text text-md fw-bold  ">Gender<span class="star">&#x2605;</span></span>
+                                        <span className="label-text text-md fw-bold  ">Gender<span className="star">&#x2605;</span></span>
                                         <select
                                             {...register("gender")}
                                             name="gender"
                                             className="form-select  ">
-                                            <option disabled selected>-Select Gender-</option>
+                                            <option>-Select Gender-</option>
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
                                             <option value="others">Others</option>
@@ -354,7 +349,7 @@ const JobSeekerProfileEntry = () => {
                                             {...register("religion")}
                                             name="religion"
                                             className="form-select select-bordered  ">
-                                            <option disabled selected>-Select Religion-</option>
+                                            <option>-Select Religion-</option>
                                             <option value="Islam">Islam</option>
                                             <option value="Buddhism">Buddhism</option>
                                             <option value="Hinduism">Hinduism</option>
@@ -372,9 +367,9 @@ const JobSeekerProfileEntry = () => {
                                             {...register("maritial_status")}
                                             name="marital_status"
                                             id="marital_status"
-                                            className="form-select select-bordered  "
-                                        >
-                                            <option disabled selected>-Select Marital Status-</option>
+                                            className="form-select select-bordered">
+
+                                            <option>-Select Marital Status-</option>
                                             <option value="Single">Single</option>
                                             <option value="Married">Married</option>
                                             <option value="Widowed">Widowed</option>
@@ -385,7 +380,7 @@ const JobSeekerProfileEntry = () => {
 
 
                                     <div className='col-md-3 mb-3 '>
-                                        <span className="label-text text-md fw-bold  ">Photo<span class="star">&#x2605;</span></span>
+                                        <span className="label-text text-md fw-bold  ">Photo<span className="star">&#x2605;</span></span>
                                         <input
                                             {...register("image", { required: true })}
                                             name='image'
@@ -399,7 +394,7 @@ const JobSeekerProfileEntry = () => {
 
                             <div className='row'>
                                 <div className=' col-md-6 mb-3'>
-                                    <span className="label-text text-md fw-bold ">Present Address<span class="star">&#x2605;</span></span>
+                                    <span className="label-text text-md fw-bold ">Present Address<span className="star">&#x2605;</span></span>
                                     <div>
                                         <textarea {...register("present_address", { required: true })}
                                             name='present_address'
@@ -422,7 +417,7 @@ const JobSeekerProfileEntry = () => {
                                 </div>
                             </div>
                             <div className='mb-3 '>
-                                <span className="label-text text-md fw-bold text-center ">Career Objective<span class="star">&#x2605;</span></span>
+                                <span className="label-text text-md fw-bold text-center ">Career Objective<span className="star">&#x2605;</span></span>
                                 <div className=' '>
                                     <textarea {...register("career_objective", { required: true })}
                                         name='career_objective'
@@ -730,7 +725,7 @@ const JobSeekerProfileEntry = () => {
                             </div>
 
                             <div className='col-md-3 mb-3  '>
-                                <span className="label-text text-md fw-bold  ">Concentration/Major<span class="star">&#x2605;</span></span>
+                                <span className="label-text text-md fw-bold  ">Concentration/Major<span className="star">&#x2605;</span></span>
                                 <input
                                     {...register("majorOne", { required: true })}
                                     name='majorOne'
@@ -742,7 +737,7 @@ const JobSeekerProfileEntry = () => {
                             </div>
 
                             <div className='col-md-3 mb-3  '>
-                                <span className="label-text text-md fw-bold  ">Institute<span class="star">&#x2605;</span></span>
+                                <span className="label-text text-md fw-bold  ">Institute<span className="star">&#x2605;</span></span>
                                 <input
                                     {...register("instituteOne", { required: true })}
                                     name='instituteOne'
@@ -753,7 +748,7 @@ const JobSeekerProfileEntry = () => {
                                 />
                             </div>
                             <div className='col-md-2 '>
-                                <span className="label-text text-md fw-bold  ">Result<span class="star">&#x2605;</span></span>
+                                <span className="label-text text-md fw-bold  ">Result<span className="star">&#x2605;</span></span>
                                 <input
                                     {...register("resultOne", { required: true })}
                                     name='resultOne'
@@ -765,14 +760,14 @@ const JobSeekerProfileEntry = () => {
                             </div>
 
                             <div className='col-md-2 '>
-                                <span className="label-text text-md fw-bold  ">Pass.Year<span class="star">&#x2605;</span></span>
+                                <span className="label-text text-md fw-bold  ">Pass.Year<span className="star">&#x2605;</span></span>
                                 <select
                                     {...register("passYearOne", { required: true })}
                                     id="passYearOne"
                                     name="passYearOne"
                                     className='input form-control '
                                 >
-                                    <option selected disabled>-Select Pass.Year-</option>
+                                    <option>-Select Pass.Year-</option>
                                     <option value="2023">2023</option>
                                     <option value="2022">2022</option>
                                     <option value="2021">2021</option>
@@ -889,7 +884,7 @@ const JobSeekerProfileEntry = () => {
                                     name="passYearTwo"
                                     className='input form-control '
                                 >
-                                    <option selected disabled>-Select Pass.Year-</option>
+                                    <option>-Select Pass.Year-</option>
                                     <option value="2023">2023</option>
                                     <option value="2022">2022</option>
                                     <option value="2021">2021</option>
@@ -1006,7 +1001,7 @@ const JobSeekerProfileEntry = () => {
                                     name="passYearThree"
                                     className='input form-control '
                                 >
-                                    <option selected disabled>-Select Pass.Year-</option>
+                                    <option>-Select Pass.Year-</option>
                                     <option value="2023">2023</option>
                                     <option value="2022">2022</option>
                                     <option value="2021">2021</option>
@@ -1123,7 +1118,7 @@ const JobSeekerProfileEntry = () => {
                                     name="passYearFour"
                                     className='input form-control '
                                 >
-                                    <option selected disabled>-Select Pass.Year-</option>
+                                    <option>-Select Pass.Year-</option>
                                     <option value="2023">2023</option>
                                     <option value="2022">2022</option>
                                     <option value="2021">2021</option>
@@ -1250,7 +1245,7 @@ const JobSeekerProfileEntry = () => {
                                     name="traningYearOne"
                                     className='input form-control '
                                 >
-                                    <option selected disabled>-Select Pass.Year-</option>
+                                    <option>-Select Pass.Year-</option>
                                     <option value="2023">2023</option>
                                     <option value="2022">2022</option>
                                     <option value="2021">2021</option>
@@ -1366,7 +1361,7 @@ const JobSeekerProfileEntry = () => {
                                     name="traningYearTwo"
                                     className='input form-control '
                                 >
-                                    <option selected disabled>-Select Pass.Year-</option>
+                                    <option>-Select Pass.Year-</option>
                                     <option value="2023">2023</option>
                                     <option value="2022">2022</option>
                                     <option value="2021">2021</option>
@@ -1482,7 +1477,7 @@ const JobSeekerProfileEntry = () => {
                                     name="traningYearThree"
                                     className='input form-control '
                                 >
-                                    <option selected disabled>-Select Pass.Year-</option>
+                                    <option>-Select Pass.Year-</option>
                                     <option value="2023">2023</option>
                                     <option value="2022">2022</option>
                                     <option value="2021">2021</option>
@@ -1611,7 +1606,7 @@ const JobSeekerProfileEntry = () => {
                                     id="lookingFor"
                                     className="form-select"
                                 >
-                                    <option disabled selected>-Select Job Level-</option>
+                                    <option>-Select Job Level-</option>
                                     <option value="entry">Entry Level</option>
                                     <option value="mid">Mid Level</option>
                                     <option value="top">Top Level</option>
@@ -1625,7 +1620,7 @@ const JobSeekerProfileEntry = () => {
                                     className='input form-control '
                                     id="availbaleFor"
                                 >
-                                    <option disabled selected>-Select Job Nature-</option>
+                                    <option>-Select Job Nature-</option>
                                     <option value="Full time">Full time</option>
                                     <option value="Part time">Part time</option>
                                     <option value="Contract">Contract</option>
@@ -1673,6 +1668,7 @@ const JobSeekerProfileEntry = () => {
                                     name='category'
                                     type="text"
                                     className="form-select">
+                                    <option>-Select Job Category-</option>
                                     {
                                         categories &&
                                         categories.map((category, index) =>
@@ -1867,7 +1863,7 @@ const JobSeekerProfileEntry = () => {
                         <div className='row'>
                             <h5 className="label-text text-md fw-bold mb-2">Language One</h5>
                             <div className=' col-md-3 mb-3'>
-                                <span className="label-text text-md fw-bold  ">Language <span class="star">&#x2605;</span></span>
+                                <span className="label-text text-md fw-bold  ">Language <span className="star">&#x2605;</span></span>
                                 <input
                                     {...register("languOne", { required: true })}
                                     name='languOne'
@@ -1878,13 +1874,13 @@ const JobSeekerProfileEntry = () => {
                                 />
                             </div>
                             <div className=' col-md-3 mb-3'>
-                                <span className="label-text text-md fw-bold  ">Reading<span class="star">&#x2605;</span></span>
+                                <span className="label-text text-md fw-bold  ">Reading<span className="star">&#x2605;</span></span>
                                 <select
                                     {...register("readingOne", { required: 'true' })}
                                     name="readingOne"
                                     id="readingOne"
                                     className="form-select select-bordered  ">
-                                    <option disabled selected>-Select-</option>
+                                    <option>-Select-</option>
                                     <option value="high">High</option>
                                     <option value="medium">Medium</option>
                                     <option value="low">Low</option>
@@ -1892,13 +1888,13 @@ const JobSeekerProfileEntry = () => {
                             </div>
 
                             <div className=' col-md-3 mb-3'>
-                                <span className="label-text text-md fw-bold  ">Writing<span class="star">&#x2605;</span></span>
+                                <span className="label-text text-md fw-bold  ">Writing<span className="star">&#x2605;</span></span>
                                 <select
                                     {...register("writingOne", { required: 'true' })}
                                     name="wriingOne"
                                     id="wriingOne"
                                     className="form-select select-bordered  ">
-                                    <option disabled selected>-Select-</option>
+                                    <option>-Select-</option>
                                     <option value="high">High</option>
                                     <option value="medium">Medium</option>
                                     <option value="low">Low</option>
@@ -1906,12 +1902,12 @@ const JobSeekerProfileEntry = () => {
                             </div>
 
                             <div className=' col-md-3 mb-3'>
-                                <span className="label-text text-md fw-bold  ">Speaking<span class="star">&#x2605;</span></span>
+                                <span className="label-text text-md fw-bold  ">Speaking<span className="star">&#x2605;</span></span>
                                 <select
                                     {...register("readingOne", { required: 'true' })}
                                     name="readingOne"
                                     className="form-select select-bordered  ">
-                                    <option disabled selected>-Select-</option>
+                                    <option>-Select-</option>
                                     <option value="high">High</option>
                                     <option value="medium">Medium</option>
                                     <option value="low">Low</option>
@@ -1942,7 +1938,7 @@ const JobSeekerProfileEntry = () => {
                                     name="readingTwo"
                                     id="readingTwo"
                                     className="form-select select-bordered  ">
-                                    <option disabled selected>-Select-</option>
+                                    <option>-Select-</option>
                                     <option value="high">High</option>
                                     <option value="medium">Medium</option>
                                     <option value="low">Low</option>
@@ -1956,7 +1952,7 @@ const JobSeekerProfileEntry = () => {
                                     name="writingTwo"
                                     id="writingTwo"
                                     className="form-select select-bordered  ">
-                                    <option disabled selected>-Select-</option>
+                                    <option>-Select-</option>
                                     <option value="high">High</option>
                                     <option value="medium">Medium</option>
                                     <option value="low">Low</option>
@@ -1970,7 +1966,7 @@ const JobSeekerProfileEntry = () => {
                                     name="readingTwo"
                                     id="readingTwo"
                                     className="form-select select-bordered  ">
-                                    <option disabled selected>-Select-</option>
+                                    <option>-Select-</option>
                                     <option value="high">High</option>
                                     <option value="medium">Medium</option>
                                     <option value="low">Low</option>
@@ -2001,7 +1997,7 @@ const JobSeekerProfileEntry = () => {
                                     name="readingThree"
                                     id="readingThree"
                                     className="form-select select-bordered  ">
-                                    <option disabled selected>-Select-</option>
+                                    <option>-Select-</option>
                                     <option value="high">High</option>
                                     <option value="medium">Medium</option>
                                     <option value="low">Low</option>
@@ -2015,7 +2011,7 @@ const JobSeekerProfileEntry = () => {
                                     name="writingThree"
                                     id="writingThree"
                                     className="form-select select-bordered  ">
-                                    <option disabled selected>-Select-</option>
+                                    <option>-Select-</option>
                                     <option value="high">High</option>
                                     <option value="medium">Medium</option>
                                     <option value="low">Low</option>
@@ -2029,7 +2025,7 @@ const JobSeekerProfileEntry = () => {
                                     name="readingThree"
                                     id="readingThree"
                                     className="form-select select-bordered  ">
-                                    <option disabled selected>-Select-</option>
+                                    <option>-Select-</option>
                                     <option value="high">High</option>
                                     <option value="medium">Medium</option>
                                     <option value="low">Low</option>

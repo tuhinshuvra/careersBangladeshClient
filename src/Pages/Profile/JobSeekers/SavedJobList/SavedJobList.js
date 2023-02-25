@@ -40,7 +40,7 @@ const SavedJobList = () => {
                         {/* postersEmail  jobTitle organization category applicationDate email name  */}
                         {
                             applications.map((app, index) =>
-                                <tr>
+                                <tr key={app._id}>
                                     <td>{index + 1}</td>
                                     <td>{app.jobTitle}</td>
                                     <td>{app.organization}</td>

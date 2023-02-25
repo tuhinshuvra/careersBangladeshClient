@@ -157,20 +157,20 @@ const Register = () => {
                                                     <div className=''>
                                                         <Form.Check
                                                             onClick={handleTermsAndConditions}
-                                                            className="form-check-input"
+                                                            className=""
                                                             type="checkbox"
                                                             label={<>Accept <Link to="/termsAndConditions" className=' text-decoration-none fw-bold'> Terms and Conditons</Link> </>}
                                                         />
                                                     </div>
 
                                                     {/* {termsAndConditions != checked } */}
+
                                                     <div className="text-center pt-1 mb-5 pb-1">
                                                         <Button
-                                                            className="custom_btn mb-3"
+                                                            className="custom_btn"
                                                             disabled={!accepted}
                                                             type="submit"
                                                         >Register</Button>
-                                                        <a className="text-muted m-2 " href="#!">Forgot password?</a>
                                                     </div>
 
                                                     <div className="d-flex align-items-center justify-content-center pb-4">

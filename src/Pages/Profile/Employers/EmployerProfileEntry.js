@@ -92,7 +92,7 @@ const EmployerProfileEntry = () => {
                             {...register("orgaType")}
                             name='orgaType'
                             className="form-select my-lg-3">
-                            <option disabled selected>-Select Type-</option>
+                            <option>-Select Company Type-</option>
                             <option value="Government">Government</option>
                             <option value="Semi Government">Semi Government</option>
                             <option value="NGO">NGO</option>
@@ -145,13 +145,13 @@ const EmployerProfileEntry = () => {
                             {...register("company_size")}
                             name='company_size'
                             className="form-select">
-                            <option disabled selected>Select Company Size</option>
+                            <option>-Select Company Size-</option>
                             <option value={15}>1-15 Employees</option>
                             <option value={50}>16-50 Employees</option>
                             <option value={100}>51-100 Employees</option>
                             <option value={500}>100-500 Employees</option>
                             <option value={1000}>501-1000 Employees</option>
-                            <option value={2000}>1000+ Employees</option>
+                            <option value={1500}>1000+ Employees</option>
                         </select>
                     </div>
                 </div>

@@ -45,7 +45,7 @@ const FindJobsByCategory = () => {
                                 
                                 <h5 className=' fw-bold'>By Location:</h5>
                                 <select className="form-select">
-                                    <option disabled selected>Select</option>
+                                    <option>Select</option>
                                     <option value={0}>Dhaka</option>
                                     <option value={1}>Chattogram</option>
                                     <option value={2}>Sylhet</option>
@@ -83,7 +83,7 @@ const FindJobsByCategory = () => {
                                 <div className=' my-md-3'>
                                     <h5 className=' fw-bold'>By Employment Status:</h5>
                                     <select className=" form-select ">
-                                        <option disabled selected>Please Select</option>
+                                        <option>Please Select</option>
                                         <option value={0}>Full Time</option>
                                         <option value={1}>Part Time</option>
                                         <option value={2}>Contactual Time</option>
@@ -156,7 +156,7 @@ const FindJobsByCategory = () => {
 
                                     <div className="col-9">
                                         <select className="form-select">
-                                            <option disabled selected>Order By</option>
+                                            <option>Order By</option>
                                             <option value={0}>Name</option>
                                             <option value={1}>Posted</option>
                                             <option value={2}>Deadline</option>
