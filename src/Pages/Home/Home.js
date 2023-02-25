@@ -19,12 +19,7 @@ const Home = () => {
             <NewJobs></NewJobs>
 
             {/* <ELearning></ELearning> */}
-
-
             <Subscriber></Subscriber>
-
-
-
             {/* <PracticePurpose></PracticePurpose> */}
             {/* <AllUser></AllUser> */}
         </div>
