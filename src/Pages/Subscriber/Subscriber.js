@@ -46,60 +46,29 @@ const Subscriber = () => {
 
 
     return (
-        <div className=' subscriber_bg py-5 px-3'>
-            <div className=' d-flex'>
-                <div className='col-md-6'>
-                    <h2> Subscribe your profile and be one stepahead from others</h2>
-                </div>
-                <div className='col-md-6'>
+        <div className=' subscriber_bg'>
+            <div className=' col-lg-10 mx-auto pt-5'>
+                <h2 className='careers_title_one'><HiBell className=' mx-1'></HiBell> GET RELEVANT JOB ALERT</h2>
+                <div className="row align-items-center g-lg-5 py-5">
+                    <div className="col-lg-5 text-center text-lg-start">
+                        <h2 className="fw-bold lh-1 mb-3 text-white ">Get your job alert and always be one step ahead from others</h2>
+                    </div>
 
-
-                    <form onSubmit={handleSubmit(handleEmployeProfile)}>
-
-                        <div className=' row'>
-                            <div className=' col-md-6'>
-                                <div className=' d-flex '>
-                                    <input
-                                        {...register("subsEmail", { required: true })}
-                                        name='subsEmail'
-                                        className='input form-control'
-                                        id="subsEmail"
-                                        type="email"
-                                        placeholder='Enter subscriber email'
-                                    />
-                                    <button type='submit' name='submit' className="custom_btn ms-2">Subscribe</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    <div className="col-md-10 mx-auto col-lg-5">
+                        <form onSubmit={handleSubmit(handleEmployeProfile)} className="p-4 px-md-3 py-md-5 border rounded-3  d-flex justify-content-between">
+                            <input
+                                {...register("subsEmail", { required: true })}
+                                name='subsEmail'
+                                className='input form-control'
+                                id="subsEmail"
+                                type="email"
+                                placeholder='Enter an active email id'
+                            />
+                            <button type='submit' name='submit' className="custom_btn ms-2">Subscribe</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-            {/* <div className="subscriber_bg">
-                <div className=' col-lg-10 mx-auto pt-5'>
-                    <h2 className='careers_title_one'><HiBell className=' mx-1'></HiBell> GET RELEVANT JOB ALERT</h2>
-                    <div className="row align-items-center g-lg-5 py-5">
-                        <div className="col-lg-5 text-center text-lg-start">
-                            <h2 className="fw-bold lh-1 mb-3 text-white ">Get your job alert and always be one step ahead from others</h2>
-                        </div>
-                        <div className="col-md-10 mx-auto col-lg-5">
-
-                            <form className="p-4 px-md-3 py-md-5 border rounded-3  d-flex justify-content-between">
-
-                                <input
-                                    {...register("subsEmail", { required: true })}
-                                    name='subsEmail'
-                                    className='input form-control  '
-                                    id="subsEmail"
-                                    type="email"
-                                    placeholder='Enter subscriber email'
-                                />
-                                <button type='submit' name='submit' className="custom_btn ms-2">Subscribe</button>
-
-                            </form>
-                        </div>
-                    </div>
-                </div >
-            </div > */}
         </div>
     );
 };

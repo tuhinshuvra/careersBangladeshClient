@@ -70,7 +70,8 @@ const Navbar = () => {
                                                         <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/JobCategoryList'>Job Category List</Link></li>
                                                         <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/admin'>All User</Link></li>
                                                         <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobseekerList'>All Job Seeker</Link></li>
-                                                        <li className='list-group-item  my-1'><Link className=' nav_btn' to='/dashboard/employeeList'>All Employer</Link></li>
+                                                        <li className='list-group-item'><Link className=' nav_btn' to='/dashboard/employeeList'>All Employer</Link></li>
+                                                        <li className='list-group-item'><Link className=' nav_btn' to='/dashboard/subscriberList'>Subscriber List</Link></li>
                                                     </>
                                                 }
                                                 {

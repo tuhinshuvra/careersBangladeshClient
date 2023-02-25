@@ -32,6 +32,7 @@ import FindJobsByCategory from '../../JobSearch/FindJobsByCategory';
 import FindAllJob from '../../JobSearch/FindAllJob';
 import TermsAndConditions from '../../TermsAndConditions';
 import FindJobHomeResult from '../../JobSearch/FindJobHomeResult';
+import SubscriberList from '../../Subscriber/SubscriberList';
 
 const router = createBrowserRouter([
 
@@ -187,6 +188,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/jobseekerList',
                 element: <JobSeekerList></JobSeekerList>
+            },
+            {
+                path: '/dashboard/subscriberList',
+                element: <SubscriberList></SubscriberList>
             },
 
             {
