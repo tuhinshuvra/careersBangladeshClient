@@ -76,8 +76,9 @@ const Navbar = () => {
                                                 }
                                                 {
                                                     isJobSeeker && <>
-                                                        <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfileEntry'>Manage Profile</Link></li>
+                                                        <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfileEntry'>Create Profile</Link></li>
                                                         <li className='list-group-item   my-1'><Link className=' nav_btn' to='/dashboard/jobSeekerProfile'>My Profile</Link></li>
+                                                        <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfileEntry'>Manage Profile</Link></li>
                                                         <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/savedJobs'>Saved Job List</Link></li>
                                                         <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/appliedJobs'>Applied Job List</Link></li>
                                                     </>

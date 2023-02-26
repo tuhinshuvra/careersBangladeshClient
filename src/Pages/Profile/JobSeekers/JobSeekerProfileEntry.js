@@ -212,7 +212,7 @@ const JobSeekerProfileEntry = () => {
     return (
         <div>
             <h2 className=" text-center fw-bold my-4">Manage Profile</h2>
-            <div>
+            <div className=' d-flex justify-content-between'>
 
                 <button
                     onClick={() => setPersonalDetails(!personalDetails)}

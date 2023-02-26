@@ -46,8 +46,9 @@ const DashboardLayout = () => {
 
                         {
                             isJobSeeker && <>
-                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfileEntry'>Manage Profile</Link></li>
+                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfileEntry'>Create Profile</Link></li>
                                 <li className='list-group-item   my-1'><Link className=' nav_btn' to='/dashboard/jobSeekerProfile'>My Profile</Link></li>
+                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfileEntry'>Manage Profile</Link></li>
                                 {/* <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerEmployment'>Employment</Link></li> */}
                                 {/* <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/jobSeekerOtherInfo'>Other Information</Link></li> */}
                                 {/* <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/photograph'>Photograph</Link></li> */}
