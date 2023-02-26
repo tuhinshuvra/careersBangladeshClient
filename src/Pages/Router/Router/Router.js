@@ -35,6 +35,7 @@ import TermsAndConditions from '../../TermsAndConditions';
 import FindJobHomeResult from '../../JobSearch/FindJobHomeResult';
 import SubscriberList from '../../Subscriber/SubscriberList';
 import EmployeesPersonalDetailsEntry from '../../Profile/JobSeekers/JobSeekerProfileSection/EmployeesPersonalDetailsEntry';
+import EmployeesExperienceEntry from '../../Profile/JobSeekers/JobSeekerProfileSection/EmployeesExperienceEntry';
 
 const router = createBrowserRouter([
 
@@ -117,6 +118,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/employeesPersonalDetailsEntry',
                 element: <EmployeesPersonalDetailsEntry></EmployeesPersonalDetailsEntry>
+            },
+            {
+                path: '/dashboard/employeesExperienceDataEntry',
+                element: <EmployeesExperienceEntry></EmployeesExperienceEntry>
             },
 
 

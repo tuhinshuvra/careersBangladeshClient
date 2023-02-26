@@ -62,7 +62,7 @@ const PostedJobDetails = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    toast.success('Post the appliction successfully');
+                    toast.success('Post the application successfully');
                     navigate("/findAllJob")
                 }
                 else {

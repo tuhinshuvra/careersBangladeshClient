@@ -26,7 +26,7 @@ const EmployeesPersonalDetailsEntry = () => {
             .then(imgData => {
                 if (imgData.success) {
 
-                    const jobseekerProfile = {
+                    const employeesPersonal = {
                         email: user.email,
                         name: user.displayName,
 
@@ -52,17 +52,24 @@ const EmployeesPersonalDetailsEntry = () => {
                         headers: {
                             "content-type": "application/json"
                         },
-                        body: JSON.stringify(jobseekerProfile)
+                        body: JSON.stringify(employeesPersonal)
                     })
                         .then(response => response.json())
                         .then(data => {
-                            console.log(data)
-                            toast.promise(`${user.displayName}Profile Data Saved Successfully`)
-                            navigate("/dashboard/jobSeekerProfile");
+                            if (data.acknowledged) {
+                                console.log(data)
+                                toast.success(`${user.displayName} Profile Data Saved Successfully`)
+                                navigate("/dashboard/jobSeekerProfile");
+                            }
+                            else {
+                                toast.error(data.message)
+                            }
                         })
                 }
             })
     }
+
+
 
     return (
         <div>
