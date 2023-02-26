@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaFile, FaFilter, FaList, FaSearch, FaStar, FaTh } from 'react-icons/fa';
 import './FindJob.css';
@@ -9,16 +9,25 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../Authentication/AuthProvider';
 
 const FindJobHomeResult = ({ jobList }) => {
-    // const { searchHome } = useContext(AuthContext);
+    const [showJobs, setShowJobs] = useState([])
 
-    // const { jobs } = useLoaderData();
+    const { searchData } = useContext(AuthContext);
 
-
-    // console.log("searchHome Result : ", jobs)
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     useTitle('FindJob');
+
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/jobSearch?search=${searchData}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(" Home Job Search Result :", data);
+                setShowJobs(data);
+            })
+    }, [searchData]);
+
 
 
     const { data: categories, isLoading } = useQuery({
@@ -210,8 +219,9 @@ const FindJobHomeResult = ({ jobList }) => {
                                         <thead>
                                             <tr>
                                                 <th>SL</th>
-                                                <th>Title</th>
-                                                <th>Organization</th>
+                                                <th>Job Title</th>
+                                                <th>Institution</th>
+                                                <th>Organization Type</th>
                                                 <th>Work Place</th>
                                                 <th>Posted</th>
                                                 <th>DeadLine</th>
@@ -221,7 +231,8 @@ const FindJobHomeResult = ({ jobList }) => {
 
                                         <tbody>
                                             {
-                                                jobs.map((job, index) =>
+                                                // jobs.map((job, index) =>
+                                                showJobs.map((job, index) =>
                                                     <tr key={job._id} className="">
                                                         <td>{index + 1}</td>
                                                         <td className='fw-bold'>
@@ -230,6 +241,7 @@ const FindJobHomeResult = ({ jobList }) => {
                                                             </Link>
                                                         </td>
                                                         <td>{job.organization}</td>
+                                                        <td>{job.orgaType}</td>
                                                         <td>{job.location}</td>
                                                         <td>{job.postDate}</td>
                                                         <td>{job.deadLine}</td>

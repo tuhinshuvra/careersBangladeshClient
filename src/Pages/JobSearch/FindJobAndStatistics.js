@@ -1,18 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { FaSearchDollar, FaChartLine, FaRegBuilding } from 'react-icons/fa';
 import { BsPeopleFill } from 'react-icons/bs';
 import './FindJobHome.css';
 import { Link } from 'react-router-dom';
 import CountUp from 'react-countup';
 import './FindJobAndStatistics.css';
+import { AuthContext } from '../Authentication/AuthProvider';
 
 const FindJobAndStatistics = () => {
 
     const [totalJobs, setTotalJobs] = useState('1');
     const [totalCompanies, setTotalCompanies] = useState('1');
     const [totalEmployers, setTotalEmployers] = useState('1');
-    const [search, setSearch] = useState('web developer');
-    const searchRef = useRef();
+
+
+    const { setSearchData } = useContext(AuthContext);
+
+    // const searchRef = useRef();
 
     useEffect(() => {
         fetch('http://localhost:5000/jobs')
@@ -32,6 +36,7 @@ const FindJobAndStatistics = () => {
     const totalEmployersNo = totalEmployers.length + 2000;
     console.log("totalJobs : ", totalJobNo);
 
+
     // useEffect(() => {
     //     fetch(`http://localhost:5000/jobSearch?search=${search}`)
     //         .then(response => response.json())
@@ -40,9 +45,21 @@ const FindJobAndStatistics = () => {
     //         })
     // }, [search]);
 
-    const handleSearch = () => {
-        // console.log("searchRef : ", searchRef.current.value)
-        setSearch(searchRef.current.value);
+
+
+    const getSearchKeyword = event => {
+        const jobTitle = event.target.value;
+        setSearchData(jobTitle);
+    }
+
+    const getSearchOrganization = event => {
+        const orgaName = event.target.value;
+        setSearchData(orgaName);
+    }
+
+    const getSearchPlace = event => {
+        const placeName = event.target.value;
+        setSearchData(placeName);
     }
 
     return (
@@ -51,18 +68,18 @@ const FindJobAndStatistics = () => {
                 <h2 className='careers_title_one'><FaSearchDollar className='mx-1'></FaSearchDollar>LETS FIND YOUR JOB</h2>
                 <div className="d-flex  justify-content-center mt-4">
                     <input
-                        ref={searchRef}
+                        onBlur={getSearchKeyword}
                         name="jobTitle"
                         type="text"
                         id="jobTitle"
-                        placeholder="Job Title"
+                        placeholder="Search with keyword"
                         className="form-control  w-25"
                     />
 
                     <select
+                        onBlur={getSearchOrganization}
                         name='orgaType'
                         className="form-select w-25 mx-2">
-                        {/* <option>Company Type</option> */}
                         <option>Select Company Type</option>
                         <option value="Government">Government</option>
                         <option value="Semi Government">Semi Government</option>
@@ -71,12 +88,20 @@ const FindJobAndStatistics = () => {
                         <option value="International Agencies">International Agencies</option>
                         <option value="Others">Others</option>
                     </select>
-                    <input type="text" id="location" placeholder="Location" className="form-control  w-25" />
-                    {/* <button onClick={() => handleSearch()} */}
-                    {/* className=' text-decoration-none custom_btn ms-2'/  > */}
-                    <Link to={`/searchHomeResult/:${search}`} className=' text-decoration-none custom_btn ms-2' > Search</Link>
 
-                    {/* </button> */}
+
+                    <input
+                        onBlur={getSearchPlace}
+                        name="location"
+                        type="text"
+                        id="location"
+                        placeholder="Location"
+                        className="form-control  w-25"
+                    />
+
+
+                    <Link to={`/searchHomeResult`} className=' text-decoration-none custom_btn ms-2' > Search</Link>
+
                 </div>
 
                 <div className=' my-5'>

@@ -1,3 +1,4 @@
+
 import React, { useContext } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Home from '../../Home/Home';
@@ -63,9 +64,8 @@ const router = createBrowserRouter([
             //     loader: ({ params }) => fetch(`http://localhost:5000/jobByTitle?jobTitle=${params.jobTitle}`)
             // },
             {
-                path: '/searchHomeResult/:searchData',
-                element: <FindJobHomeResult></FindJobHomeResult>,
-                loader: ({ params }) => fetch(`http://localhost:5000/jobSearchHome?searchData=${params.searchData}`)
+                path: '/searchHomeResult',
+                element: <FindJobHomeResult></FindJobHomeResult>
 
             },
             {
