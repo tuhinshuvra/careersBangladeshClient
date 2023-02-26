@@ -1,0 +1,83 @@
+/* css animation text comes from top start */
+
+.animate_top {
+    position: relative;
+    animation: animatetop 1.5s;
+}
+
+@keyframes animatetop {
+    from {
+        top: -30px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+/* css animation text comes from top end */
+
+
+
+/* css animation text comes from bottom start */
+.animate_bottom {
+    position: relative;
+    animation: animatebottom 1.5s;
+}
+
+@keyframes animatebottom {
+    from {
+        bottom: -300px;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
+/* css animation text comes from bottom end */
+
+
+/* start css animation text comes from left */
+.animate_left {
+    position: relative;
+    animation: animateleft 2s
+}
+
+@keyframes animateleft {
+    from {
+        left: -300px;
+        opacity: 0;
+    }
+
+    to {
+        left: 0;
+        opacity: 1;
+    }
+}
+
+/* end css animation text comes from left */
+
+/* start css animation text comes from right */
+.animate_right {
+    position: relative;
+    animation: animateright 2s
+}
+
+@keyframes animateright {
+    from {
+        right: -300px;
+        opacity: 0;
+    }
+
+    to {
+        right: 0;
+        opacity: 1;
+    }
+}
+
+/* end css animation text comes from right */

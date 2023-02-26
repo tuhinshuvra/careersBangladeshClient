@@ -6,6 +6,7 @@ import Subscriber from '../Subscriber/Subscriber';
 import ELearning from '../ELearning/ELearning';
 import useTitle from '../../hooks/useTitle';
 import NewJobs from '../NewJobs/NewJobs';
+import './cb_animation.css';
 
 const Home = () => {
 

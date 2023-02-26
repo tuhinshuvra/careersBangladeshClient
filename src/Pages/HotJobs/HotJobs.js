@@ -12,6 +12,10 @@ const HotJobs = () => {
         setShowAll(true);
     }
 
+    const handleShowLess = () => {
+        setShowAll(false);
+    }
+
 
     const { data: jobs = [], refetch } = useQuery({
         queryKey: ['jobs'],
@@ -46,9 +50,12 @@ const HotJobs = () => {
 
             </div>
             <div className=' text-center my-3'>
-                {
-                    !showAll &&
+                {!showAll &&
                     <button onClick={() => handleShowAll()} className=' custom_btn '>View More</button>
+                }
+
+                {showAll &&
+                    <button onClick={() => handleShowLess()} className=' custom_btn '>View Less</button>
                 }
             </div>
         </div>

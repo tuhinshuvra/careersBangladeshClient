@@ -15,6 +15,10 @@ const JobCategory = () => {
         setShowAll(true);
     }
 
+    const handleShowLessCategories = () => {
+        setShowAll(false);
+    }
+
 
 
     useEffect(() => {
@@ -32,7 +36,7 @@ const JobCategory = () => {
             <h2 className='my-5 careers_title_one'><FaCompressArrowsAlt className='mx-1'></FaCompressArrowsAlt>JOB CATEGORIES</h2>
             <div className=' job-category'>
 
-                {!showAll &&
+                {!showAll && 
                     sliceCategories.map(category => <JobCategoryDisplay
                         key={category._id}
                         category={category}
@@ -49,7 +53,11 @@ const JobCategory = () => {
             <div className=' text-center my-3'>
 
                 {!showAll &&
-                    <button onClick={() => handleShowAllCategories()} className='custom_btn'>Show All</button>
+                    <button onClick={() => handleShowAllCategories()} className='custom_btn'>View More</button>
+                }
+
+                {showAll &&
+                    <button onClick={() => handleShowLessCategories()} className='custom_btn'>View Less</button>
                 }
 
             </div>
