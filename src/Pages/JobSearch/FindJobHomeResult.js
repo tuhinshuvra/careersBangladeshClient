@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaFile, FaFilter, FaList, FaSearch, FaStar, FaTh } from 'react-icons/fa';
 import './FindJob.css';
@@ -9,14 +9,14 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../Authentication/AuthProvider';
 
 const FindJobHomeResult = ({ jobList }) => {
-    const [showJobs, setShowJobs] = useState([])
+    useTitle('FindJob');
 
+    const [search, setSearch] = useState('');
+    const [showJobs, setShowJobs] = useState([]);
+    const searchRef = useRef();
     const { searchData } = useContext(AuthContext);
 
-
     const { register, handleSubmit, formState: { errors } } = useForm();
-
-    useTitle('FindJob');
 
 
     useEffect(() => {
@@ -27,8 +27,6 @@ const FindJobHomeResult = ({ jobList }) => {
                 setShowJobs(data);
             })
     }, [searchData]);
-
-
 
     const { data: categories, isLoading } = useQuery({
         queryKey: ['category'],
@@ -49,25 +47,11 @@ const FindJobHomeResult = ({ jobList }) => {
         }
     })
 
+    const handleSearch = () => {
+        setSearch(searchRef.current.value);
+        searchRef.current.value = "";
+    }
 
-
-    // const handleDelete = (job) => {
-    //     fetch(`http://localhost:5000/jobs/${job._id}`, {
-    //         method: 'DELETE'
-    //     })
-    //         .then(respnse => respnse.json())
-    //         .then(data => {
-    //             console.log(data)
-    //             if (data.deletedCount > 0) {
-    //                 toast('Job Deleted Successfully.')
-    //             }
-    //         });
-    //     // console.log(user._id);
-    // }
-
-    // const handleJobsUpdate = (job) => {
-    //     console.log("Selected to Update Job : ", job._id)
-    // }
 
     return (
         <div className="row">
@@ -95,8 +79,6 @@ const FindJobHomeResult = ({ jobList }) => {
                                 </select>
 
 
-
-
                                 <div className=' my-md-3'>
                                     <h5 className=' fw-bold'>By Category:</h5>
                                     <select
@@ -113,10 +95,7 @@ const FindJobHomeResult = ({ jobList }) => {
                                                 </option>)
                                         }
                                     </select>
-
                                 </div>
-
-
 
 
                                 <div className=' my-md-3'>
@@ -133,7 +112,6 @@ const FindJobHomeResult = ({ jobList }) => {
 
 
 
-
                                 <div className=" my-md-3">
                                     <h5 className=' fw-bold'>By Posted:</h5>
                                     <div className='d-flex justify-content-between align-items-center'>
@@ -144,8 +122,6 @@ const FindJobHomeResult = ({ jobList }) => {
                                 </div>
 
 
-
-
                                 <div className=" my-md-3">
                                     <h5 className=' fw-bold'>By Deadline:</h5>
                                     <div className='d-flex justify-content-between align-items-center'>
@@ -154,7 +130,6 @@ const FindJobHomeResult = ({ jobList }) => {
                                         <input type="date" name="deadline-to" id='deadline-to' className="input form-control" data-date="2023-02-01T05:25:07Z" data-date-format="dd-mm-yyyy" />
                                     </div>
                                 </div>
-
 
 
 
@@ -175,22 +150,35 @@ const FindJobHomeResult = ({ jobList }) => {
 
 
                             <div className="col-md-9 mt-md-0 mt-5 mx-md-auto">
-                                <h2><FaFile></FaFile> Result</h2>
-                                <hr />
-
+                                {/* <h2><FaFile></FaFile> Result</h2> */}
+                                {/* <hr /> */}
+                                {/* 
                                 <div className="input-group">
-                                    <input type="text" className="form-control" placeholder='input search data' />
+
+                                    <input
+                                        ref={searchRef}
+                                        name="inputSearch"
+                                        id="inputSearch"
+                                        type="text"
+                                        className="form-control"
+                                        placeholder='input search data'
+                                    />
+
                                     <span className="input-group-btn">
-                                        <button className="custom_btn" type="button"><FaSearch className='' />Search</button>
+                                        <button
+                                            onClick={() => handleSearch()}
+                                            className="custom_btn"
+                                            type="button"><FaSearch className='' />
+                                            Search</button>
                                     </span>
-                                </div>
+                                </div> */}
 
 
-                                <p className=' fw-bold'>Showing search result</p>
+                                <p className=' fs-4 fw-bold'>Showing Job Search Result of word {searchData}</p>
 
                                 <div className="padding"></div>
 
-                                <div className="row">
+                                {/* <div className="row">
 
                                     <div className="col-9">
                                         <select className="form-select">
@@ -211,7 +199,7 @@ const FindJobHomeResult = ({ jobList }) => {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
 
 
                                 <div className="table-responsive">

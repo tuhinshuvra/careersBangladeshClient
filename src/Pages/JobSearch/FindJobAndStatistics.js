@@ -4,8 +4,8 @@ import { BsPeopleFill } from 'react-icons/bs';
 import './FindJobHome.css';
 import { Link } from 'react-router-dom';
 import CountUp from 'react-countup';
-import './FindJobAndStatistics.css';
 import { AuthContext } from '../Authentication/AuthProvider';
+import './FindJobAndStatistics.css';
 
 const FindJobAndStatistics = () => {
 
@@ -107,7 +107,7 @@ const FindJobAndStatistics = () => {
                 <div className=' my-5'>
 
                     <div className="row justify-content-center">
-                        <div className=" col-md-3 ">
+                        <div className=" col-md-3  home_stat ">
                             <div className="counter-box glow-on-hover ">
                                 <FaChartLine className='  text-secondary fs-1 mt-1'></FaChartLine>
                                 <span className="counter">

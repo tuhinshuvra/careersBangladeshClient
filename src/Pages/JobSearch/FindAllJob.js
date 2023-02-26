@@ -13,7 +13,6 @@ const FindAllJob = () => {
     const [search, setSearch] = useState('');
     const searchRef = useRef();
     const [showJobs, setShowJobs] = useState([])
-    
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 

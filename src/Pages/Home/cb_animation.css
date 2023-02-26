@@ -65,17 +65,17 @@
 /* start css animation text comes from right */
 .animate_right {
     position: relative;
-    animation: animateright 2s
+    animation: animatetop 1.5s;
 }
 
-@keyframes animateright {
+@keyframes animatetop {
     from {
-        right: -300px;
+        top: -30px;
         opacity: 0;
     }
 
     to {
-        right: 0;
+        top: 0;
         opacity: 1;
     }
 }

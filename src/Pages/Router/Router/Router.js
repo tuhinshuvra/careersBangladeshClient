@@ -34,6 +34,7 @@ import FindAllJob from '../../JobSearch/FindAllJob';
 import TermsAndConditions from '../../TermsAndConditions';
 import FindJobHomeResult from '../../JobSearch/FindJobHomeResult';
 import SubscriberList from '../../Subscriber/SubscriberList';
+import EmployeesPersonalDetailsEntry from '../../Profile/JobSeekers/JobSeekerProfileSection/EmployeesPersonalDetailsEntry';
 
 const router = createBrowserRouter([
 
@@ -109,6 +110,19 @@ const router = createBrowserRouter([
                 path: '/dashboard/jobSeekerProfileEntry',
                 element: <JobSeekerProfileEntry></JobSeekerProfileEntry>
             },
+
+
+            // ##################################### employees data save at section wise ##############################################
+
+            {
+                path: '/dashboard/employeesPersonalDetailsEntry',
+                element: <EmployeesPersonalDetailsEntry></EmployeesPersonalDetailsEntry>
+            },
+
+
+
+
+
             {
                 path: '/dashboard/jobSeekerProfile',
                 element: <JobSeekerProfile></JobSeekerProfile>
@@ -143,6 +157,9 @@ const router = createBrowserRouter([
                 path: '/dashboard/employerProfileEntry',
                 element: <EmployerProfileEntry></EmployerProfileEntry>
             },
+
+
+
 
             {
                 path: '/dashboard/newJobPost',
