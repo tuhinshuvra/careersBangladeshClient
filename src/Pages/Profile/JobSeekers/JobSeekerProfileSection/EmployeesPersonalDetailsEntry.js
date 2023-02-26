@@ -76,8 +76,11 @@ const EmployeesPersonalDetailsEntry = () => {
             <div>
                 {/* <h2>Personal Details</h2> */}
 
-
                 <h4 className="label-text text-md fw-bold  text-center">Personal Details</h4>
+
+                <div className=' d-flex justify-content-end'>
+                    <p className=''> <span className="star">&#x2605; </span> <b>(Red Star) denotes must be filled</b></p>
+                </div>
 
                 <form onSubmit={handleSubmit(handleJobSeekerProfile)} >
                     <div className="row ">

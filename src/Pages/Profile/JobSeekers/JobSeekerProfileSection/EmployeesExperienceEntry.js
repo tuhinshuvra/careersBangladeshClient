@@ -75,7 +75,11 @@ const EmployeesExperienceEntry = () => {
             {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
             <form onSubmit={handleSubmit(handleJobSeekerProfile)} >
 
-                <h5 className="label-text text-md fw-bold  mb-2">Experience One</h5>
+                <div className=' d-flex justify-content-between'>
+                    <h5 className="label-text text-md fw-bold">Experience One</h5>
+                    <p className=' float-end '> <span className="star">&#x2605; </span> <b>(Red Star) denotes must be filled</b></p>
+                </div>
+
                 <div className=' row'>
                     <div className=' col-md-6 mb-3'>
                         <span className="label-text text-md fw-bold">Company Name</span>

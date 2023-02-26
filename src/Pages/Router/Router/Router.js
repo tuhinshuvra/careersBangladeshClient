@@ -36,6 +36,9 @@ import FindJobHomeResult from '../../JobSearch/FindJobHomeResult';
 import SubscriberList from '../../Subscriber/SubscriberList';
 import EmployeesPersonalDetailsEntry from '../../Profile/JobSeekers/JobSeekerProfileSection/EmployeesPersonalDetailsEntry';
 import EmployeesExperienceEntry from '../../Profile/JobSeekers/JobSeekerProfileSection/EmployeesExperienceEntry';
+import EmployeesCareerAndSkillEntry from '../../Profile/JobSeekers/JobSeekerProfileSection/EmployeesCareerAndSkillEntry';
+import EmployeesAcademicAndTrainingEntry from '../../Profile/JobSeekers/JobSeekerProfileSection/EmployeesAcademicAndTrainingEntry';
+import EmployeesLanguageAndReferenceEntry from '../../Profile/JobSeekers/JobSeekerProfileSection/EmployeesLanguageAndReferenceEntry';
 
 const router = createBrowserRouter([
 
@@ -123,10 +126,18 @@ const router = createBrowserRouter([
                 path: '/dashboard/employeesExperienceDataEntry',
                 element: <EmployeesExperienceEntry></EmployeesExperienceEntry>
             },
-
-
-
-
+            {
+                path: '/dashboard/employeesCareersAndSkillEntry',
+                element: <EmployeesCareerAndSkillEntry></EmployeesCareerAndSkillEntry>
+            },
+            {
+                path: '/dashboard/employeesAcademicAndTrainingEntry',
+                element: <EmployeesAcademicAndTrainingEntry></EmployeesAcademicAndTrainingEntry>
+            },
+            {
+                path: '/dashboard/employeesLanguageAndReferenceEntry',
+                element: <EmployeesLanguageAndReferenceEntry></EmployeesLanguageAndReferenceEntry>
+            },
 
             {
                 path: '/dashboard/jobSeekerProfile',
@@ -162,8 +173,6 @@ const router = createBrowserRouter([
                 path: '/dashboard/employerProfileEntry',
                 element: <EmployerProfileEntry></EmployerProfileEntry>
             },
-
-
 
 
             {

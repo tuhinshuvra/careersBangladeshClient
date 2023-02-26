@@ -202,7 +202,7 @@ const JobSeekerProfileEntry = () => {
                         .then(response => response.json())
                         .then(data => {
                             console.log(data)
-                            toast.promise(`${user.displayName}Profile Data Saved Successfully`)
+                            toast.success(`${user.displayName}Profile Data Saved Successfully`)
                             navigate("/dashboard/jobSeekerProfile");
                         })
                 }
