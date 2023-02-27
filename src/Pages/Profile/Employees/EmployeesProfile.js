@@ -58,18 +58,16 @@ const JobSeekerProfile = () => {
 
             <article className="resume-wrapper text-center position-relative">
                 <div className="resume-wrapper-inner mx-auto text-start bg-white shadow-lg">
-                    <header className="resume-header pt-4">
-                        <div className=' d-flex justify-content-evenly'>
-                            <div className="col-lg-3 ">
-                                <img className="profile_pic" src={employerData[0]?.image} alt="" />
-                            </div>
+                    <header className="resume-header">
+                        <div className='d-flex justify-content-evenly p-5'>
+
                             {/* <!--//col--> */}
                             <div className="col-lg-9">
                                 <div className="row">
-                                    <div className=' d-flex justify-content-evenly gap-1 mt-lg-4'>
-                                        <div className=' col-lg-8'>
+                                    <div className='d-flex justify-content-between'>
+                                        <div className='col-lg-8'>
                                             <div className="primary-info col-auto">
-                                                <h1 className="name mt-0 mb-1 text-uppercase">{employerData[0]?.name}</h1>
+                                                <h1 className="name mb-1 text-uppercase">{employerData[0]?.name}</h1>
                                                 <div className="title mb-3 fw-bold">Full Stack Developer</div>
                                                 <h4>Mothers Name: {employerData[0]?.mothersName}</h4>
                                                 <h4>Fathers Name: {employerData[0]?.fathersName}</h4>
@@ -83,7 +81,7 @@ const JobSeekerProfile = () => {
                                         </div>
 
                                         {/* <!--//primary-info--> */}
-                                        <div className=' col-lg-4'>
+                                        <div className='col-lg-4'>
                                             <div className="secondary-info col-auto mt-2">
                                                 <ul className="resume-social list-unstyled">
                                                     <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-linkedin-in fa-fw"></i></span>{employerData[0]?.linkOne}</Link></li>
@@ -99,6 +97,10 @@ const JobSeekerProfile = () => {
                             </div>
 
                             {/* <!--//col--> */}
+
+                            <div className="col-lg-3 ">
+                                <img className="profile_pic" src={employerData[0]?.image} alt="" />
+                            </div>
                         </div>
                         {/* <!--//row--> */}
                     </header>
@@ -115,6 +117,121 @@ const JobSeekerProfile = () => {
                                 <h2 className="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Work Experience</h2>
                                 <div className="resume-section-content">
                                     <div className="resume-timeline position-relative">
+
+
+                                        <div>
+                                            <p className=' fw-bold'>Academic Qualification</p>
+                                            <div>
+                                                <table class="table table-bordered border-primary">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">SL</th>
+                                                            <th scope="col">Exam Title</th>
+                                                            <th scope="col">Concentration/Major</th>
+                                                            <th scope="col">Institute</th>
+                                                            <th scope="col">Result</th>
+                                                            <th scope="col">Pas.Year</th>
+                                                            <th scope="col">Duration</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">1</th>
+                                                            <td>Mark</td>
+                                                            <td>Otto</td>
+                                                            <td>Otto</td>
+                                                            <td>Otto</td>
+                                                            <td>Otto</td>
+                                                            <td>Otto</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">2</th>
+                                                            <td>Jacob</td>
+                                                            <td>Thornton</td>
+                                                            <td>Thornton</td>
+                                                            <td>Thornton</td>
+                                                            <td>Thornton</td>
+                                                            <td>Thornton</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">3</th>
+                                                            <td>Larry the Bird</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">3</th>
+                                                            <td>Larry the Bird</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className=' mt-3'>
+                                            <p className=' fw-bold'>Training Summary</p>
+                                            <div>
+                                                <table class="table table-bordered border-primary">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">SL</th>
+                                                            <th scope="col">Exam Title</th>
+                                                            <th scope="col">Concentration/Major</th>
+                                                            <th scope="col">Institute</th>
+                                                            <th scope="col">Result</th>
+                                                            <th scope="col">Pas.Year</th>
+                                                            <th scope="col">Duration</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">1</th>
+                                                            <td>Mark</td>
+                                                            <td>Otto</td>
+                                                            <td>Otto</td>
+                                                            <td>Otto</td>
+                                                            <td>Otto</td>
+                                                            <td>Otto</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">2</th>
+                                                            <td>Jacob</td>
+                                                            <td>Thornton</td>
+                                                            <td>Thornton</td>
+                                                            <td>Thornton</td>
+                                                            <td>Thornton</td>
+                                                            <td>Thornton</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">3</th>
+                                                            <td>Larry the Bird</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">3</th>
+                                                            <td>Larry the Bird</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
 
                                         <div className="resume-timeline-item-header mb-2">
                                             <div className="d-flex flex-column flex-md-row">
