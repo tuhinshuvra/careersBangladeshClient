@@ -1,31 +1,56 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Authentication/AuthProvider';
-import './JobSeekerProfile.css';
+import './EmployeesProfile.css';
 
 const JobSeekerProfile = () => {
     const [employerData, setEmployerData] = useState([]);
     const { user } = useContext(AuthContext);
-    const email = user.email;
+    const email = user?.email;
 
-    const employer = useLoaderData();
+    // const employer = useLoaderData();
 
     // console.log("Employer : ", employer)
 
-
     useEffect(() => {
-        fetch(`http://localhost:5000/jobSeeker/${email}`)
+        // fetch(`http://localhost:5000/employeesAggregatedData/${email}`)
+        fetch(`http://localhost:5000/employeesAggregatedData/${email}`)
             .then(response => response.json())
             .then(data => {
-                // console.log("JobSeeker Data:", data);
+                // console.log("employeesAggregatedData : ", data[0].empAggreAcademics[0])
                 setEmployerData(data)
             })
+
     }, [email])
+
+
+    // console.log("employerData : ", employerData[0])
+    console.log("empAgrreExperience : ", employerData[0]?.empAgrreExperience[0])
+    console.log("empAggreAcademics : ", employerData[0]?.empAggreAcademics[0])
+    console.log("empAggreCareers : ", employerData[0]?.empAggreCareers[0])
+    console.log("empAggreReferences : ", employerData[0]?.empAggreReferences[0])
+
+
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/jobSeeker/${email}`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             // console.log("JobSeeker Data:", data);
+    //             setEmployerData(data)
+    //         })
+    // }, [email])
 
     // console.log("employerData : ", employerData)
 
-    const { _id, name, careerObjective, skill, experience, achivement, birthDete, qualification, institute, passingYear, linkOne,
-        linkTwo, linkThree, portfolio, language, fathersName, mothersName, phone, image, gender, religion, maritialStatus, permanentAddress, refOneName, refOneDetails, refTwoName, refTwoDetails, other } = employerData;
+    //    const {name, fathersName, mothersName,birthDete, phone, image, gender, religion, maritialStatus, permanentAddress} = employerData[0];
+    // const {   phone, image, gender, religion, maritialStatus, permanentAddress } = employerData[0];
+    // const { } = employerData[0]?.empAgrreExperience[0];
+    // const { } = employerData[0]?.empAggreAcademics[0]
+    // const { } = employerData[0]?.empAggreCareers[0];
+    // const { refOneName, refOneDetails, refTwoName, refTwoDetails, other } = employerData[0]?.empAggreReferences[0];
+
+    // const { careerObjective, skill, experience, achivement, qualification, institute, passingYear, linkOne,
+    //     linkTwo, linkThree, portfolio, language, } = employerData;
 
 
     return (
@@ -36,7 +61,7 @@ const JobSeekerProfile = () => {
                     <header className="resume-header pt-4">
                         <div className=' d-flex justify-content-evenly'>
                             <div className="col-lg-3 ">
-                                <img className="profile_pic" src={image} alt="" />
+                                <img className="profile_pic" src={employerData[0]?.image} alt="" />
                             </div>
                             {/* <!--//col--> */}
                             <div className="col-lg-9">
@@ -44,12 +69,14 @@ const JobSeekerProfile = () => {
                                     <div className=' d-flex justify-content-evenly gap-1 mt-lg-4'>
                                         <div className=' col-lg-8'>
                                             <div className="primary-info col-auto">
-                                                <h1 className="name mt-0 mb-1 text-uppercase">{name}</h1>
+                                                <h1 className="name mt-0 mb-1 text-uppercase">{employerData[0]?.name}</h1>
                                                 <div className="title mb-3 fw-bold">Full Stack Developer</div>
+                                                <h4>Mothers Name: {employerData[0]?.mothersName}</h4>
+                                                <h4>Fathers Name: {employerData[0]?.fathersName}</h4>
                                                 <ul className="list-unstyled">
-                                                    <li className="mb-2"><b>Email:</b> {email}</li>
-                                                    <li className="mb-2"><b>Phone:</b> {phone}</li>
-                                                    <li> <b> Portfolio: </b> <a className=' text-decoration-none' href={`${portfolio}`} rel="noreferrer" target="_blank" >{portfolio}</a> </li>
+                                                    <li className="mb-2"><b>Email:</b> {employerData[0]?.email}</li>
+                                                    <li className="mb-2"><b>Phone:</b> {employerData[0]?.phone}</li>
+                                                    <li> <b> Portfolio: </b> <a className=' text-decoration-none' href={`${employerData[0]?.portfolio}`} rel="noreferrer" target="_blank" >{employerData[0]?.portfolio}</a> </li>
 
                                                 </ul>
                                             </div>
@@ -59,9 +86,9 @@ const JobSeekerProfile = () => {
                                         <div className=' col-lg-4'>
                                             <div className="secondary-info col-auto mt-2">
                                                 <ul className="resume-social list-unstyled">
-                                                    <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-linkedin-in fa-fw"></i></span>{linkOne}</Link></li>
-                                                    <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-github-alt fa-fw"></i></span>{linkOne}</Link></li>
-                                                    <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-codepen fa-fw"></i></span>{linkThree}/</Link></li>
+                                                    <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-linkedin-in fa-fw"></i></span>{employerData[0]?.linkOne}</Link></li>
+                                                    <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-github-alt fa-fw"></i></span>{employerData[0]?.linkOne}</Link></li>
+                                                    <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-codepen fa-fw"></i></span>{employerData[0]?.linkThree}/</Link></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -79,7 +106,7 @@ const JobSeekerProfile = () => {
                         <section className="resume-section summary-section mb-5">
                             <h2 className="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Career Summary</h2>
                             <div className="resume-section-content">
-                                <p>{careerObjective}</p>
+                                <p>{employerData[0]?.careerObjective}</p>
                             </div>
                         </section>
                         {/* <!--//summary-section--> */}
@@ -92,16 +119,16 @@ const JobSeekerProfile = () => {
                                         <div className="resume-timeline-item-header mb-2">
                                             <div className="d-flex flex-column flex-md-row">
                                                 <h3 className="resume-position-title font-weight-bold mb-1">Lead Developer</h3>
-                                                <div className="resume-company-name ms-auto">Startup Hub</div>
+                                                <h4 className="resume-company-name ms-auto">{employerData[0]?.empAgrreExperience?.expOneCompanayName}</h4>
                                             </div>
                                             {/* <!--//row--> */}
                                             <div className="resume-position-time">2020 - Present</div>
                                         </div>
                                         {/* <!--//resume-timeline-item-header--> */}
                                         <div className="resume-timeline-item-desc">
-                                            {experience}
+                                            {employerData[0]?.experience}
                                             <h4 className=" fw-bold my-3">Achievements:</h4>
-                                            {achivement}
+                                            {employerData[0]?.achivement}
                                             {/* <p>Praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p> */}
                                             {/* <ul>
                                                         <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
@@ -111,23 +138,21 @@ const JobSeekerProfile = () => {
                                                     </ul> */}
                                             <h4 className="resume-timeline-item-desc-heading font-weight-bold">Technologies used:</h4>
                                             <ul className="list-inline">
-                                                <li className="list-inline-item"><span className="badge bg-secondary badge-pill">Angular</span></li>
-                                                <li className="list-inline-item"><span className="badge bg-secondary badge-pill">Python</span></li>
-                                                <li className="list-inline-item"><span className="badge bg-secondary badge-pill">jQuery</span></li>
-                                                <li className="list-inline-item"><span className="badge bg-secondary badge-pill">Webpack</span></li>
-                                                <li className="list-inline-item"><span className="badge bg-secondary badge-pill">HTML/SASS</span></li>
-                                                <li className="list-inline-item"><span className="badge bg-secondary badge-pill">PostgresSQL</span></li>
+                                                <li className="list-inline-item"><span className="badge bg-secondary badge-pill">{employerData[0]?.empAggreCareers?.skillOne}</span></li>
+                                                <li className="list-inline-item"><span className="badge bg-secondary badge-pill">{employerData[0]?.empAggreCareers?.skillTwo}</span></li>
+                                                <li className="list-inline-item"><span className="badge bg-secondary badge-pill">{employerData[0]?.empAggreCareers?.skillThree}</span></li>
+                                                <li className="list-inline-item"><span className="badge bg-secondary badge-pill">{employerData[0]?.empAggreCareers?.skillFour}</span></li>
                                             </ul>
                                         </div>
                                         {/* <!--//resume-timeline-item-desc--> */}
                                         <h2 className=" fw-bold my-3">Skill and Tools</h2>
-                                        {skill}
+                                        {employerData[0]?.skill}
 
                                         <section className="resume-section education-section my-3">
                                             <h2 className="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Education</h2>
                                             <div className="resume-section-content">
                                                 <div className='row d-flex'>
-                                                    <p className="  "> <b> Degree:</b> {qualification}, <b>From :</b> {institute}, <b>Passing Year : </b> {passingYear}</p>
+                                                    <p className="  "> <b> Degree:</b> {employerData[0]?.qualification}, <b>From :</b> {employerData[0]?.institute}, <b>Passing Year : </b> {employerData[0]?.passingYear}</p>
                                                 </div>
                                                 <ul className="list-unstyled">
                                                     <li className=" my-3 row">
@@ -164,7 +189,7 @@ const JobSeekerProfile = () => {
                                             <h2 className="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Language</h2>
                                             <div className="resume-section-content">
                                                 <ul className="list-unstyled resume-lang-list">
-                                                    <li className="mb-2"><span className="resume-lang-name font-weight-bold">(Native){language}</span> <small className="text-muted font-weight-normal"></small></li>
+                                                    <li className="mb-2"><span className="resume-lang-name font-weight-bold">(Native){employerData[0]?.language}</span> <small className="text-muted font-weight-normal"></small></li>
                                                     {/* <li className="mb-2 align-middle"><span className="resume-lang-name font-weight-bold">French</span> <small className="text-muted font-weight-normal">(Professional)</small></li> */}
                                                     {/* <li><span className="resume-lang-name font-weight-bold">Spanish</span> <small className="text-muted font-weight-normal">(Professional)</small></li> */}
                                                 </ul>
@@ -187,13 +212,13 @@ const JobSeekerProfile = () => {
                                             <div className=' d-flex justify-content-between'>
 
                                                 <div className='col-md-4  '>
-                                                    <h4> {refOneName}</h4>
-                                                    <p className=''>{refOneDetails}</p>
+                                                    <h4> {employerData[0]?.refOneName}</h4>
+                                                    <p className=''>{employerData[0]?.refOneDetails}</p>
                                                 </div>
 
                                                 <div className='col-md-4  '>
-                                                    <h4> {refOneName}</h4>
-                                                    <p>{refOneDetails}</p>
+                                                    <h4> {employerData[0]?.refOneName}</h4>
+                                                    <p>{employerData[0]?.refOneDetails}</p>
                                                 </div>
                                             </div>
                                         </div>

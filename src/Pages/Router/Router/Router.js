@@ -24,21 +24,23 @@ import JobCategoryEntry from '../../JobCategory/JobCategoryEntry';
 import JobCategoryList from '../../JobCategory/JobCategoryList';
 import ApplicantList from '../../Profile/Employers/ApplicantList';
 import CommonDashboard from '../../../layout/CommonDashboard';
-import Photograph from '../../Profile/JobSeekers/Photograph/Photograph';
-import AppliedJobList from '../../Profile/JobSeekers/AppliedJobList/AppliedJobList';
-import JobSeekerProfileEntry from '../../Profile/JobSeekers/JobSeekerProfileEntry';
-import JobSeekerProfile from '../../Profile/JobSeekers/JobSeekerProfile';
-import SavedJobList from '../../Profile/JobSeekers/SavedJobList/SavedJobList';
+ 
 import FindJobsByCategory from '../../JobSearch/FindJobsByCategory';
 import FindAllJob from '../../JobSearch/FindAllJob';
 import TermsAndConditions from '../../TermsAndConditions';
 import FindJobHomeResult from '../../JobSearch/FindJobHomeResult';
 import SubscriberList from '../../Subscriber/SubscriberList';
-import EmployeesPersonalDetailsEntry from '../../Profile/JobSeekers/JobSeekerProfileSection/EmployeesPersonalDetailsEntry';
-import EmployeesExperienceEntry from '../../Profile/JobSeekers/JobSeekerProfileSection/EmployeesExperienceEntry';
-import EmployeesCareerAndSkillEntry from '../../Profile/JobSeekers/JobSeekerProfileSection/EmployeesCareerAndSkillEntry';
-import EmployeesAcademicAndTrainingEntry from '../../Profile/JobSeekers/JobSeekerProfileSection/EmployeesAcademicAndTrainingEntry';
-import EmployeesLanguageAndReferenceEntry from '../../Profile/JobSeekers/JobSeekerProfileSection/EmployeesLanguageAndReferenceEntry';
+import JobSeekerProfileEntry from '../../Profile/Employees/EmployeesProfileEntry';
+import EmployeesPersonalDetailsEntry from '../../Profile/Employees/EmployeesProfileSection/EmployeesPersonalDetailsEntry';
+import EmployeesExperienceEntry from '../../Profile/Employees/EmployeesProfileSection/EmployeesExperienceEntry';
+import EmployeesCareerAndSkillEntry from '../../Profile/Employees/EmployeesProfileSection/EmployeesCareerAndSkillEntry';
+import EmployeesAcademicAndTrainingEntry from '../../Profile/Employees/EmployeesProfileSection/EmployeesAcademicAndTrainingEntry';
+import EmployeesLanguageAndReferenceEntry from '../../Profile/Employees/EmployeesProfileSection/EmployeesLanguageAndReferenceEntry';
+import JobSeekerProfile from '../../Profile/Employees/EmployeesProfile';
+import Photograph from '../../Profile/Employees/Photograph/Photograph';
+import AppliedJobList from '../../Profile/Employees/AppliedJobList/AppliedJobList';
+import SavedJobList from '../../Profile/Employees/SavedJobList/SavedJobList';
+ 
 
 const router = createBrowserRouter([
 
