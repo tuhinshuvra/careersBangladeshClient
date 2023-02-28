@@ -4,358 +4,492 @@ import { AuthContext } from '../../Authentication/AuthProvider';
 import './EmployeesProfile.css';
 
 const JobSeekerProfile = () => {
-    const [employerData, setEmployerData] = useState([]);
+    const [employeesData, setEmployeesData] = useState([]);
     const { user } = useContext(AuthContext);
     const email = user?.email;
-
-    // const employer = useLoaderData();
-
-    // console.log("Employer : ", employer)
 
     useEffect(() => {
         // fetch(`http://localhost:5000/employeesAggregatedData/${email}`)
         fetch(`http://localhost:5000/employeesAggregatedData/${email}`)
             .then(response => response.json())
             .then(data => {
-                // console.log("employeesAggregatedData : ", data[0].empAggreAcademics[0])
-                setEmployerData(data)
+                console.log("employeesAggregatedData : ", data[0])
+                setEmployeesData(data[0])
             })
 
     }, [email])
 
 
-    // console.log("employerData : ", employerData[0])
-    console.log("empAgrreExperience : ", employerData[0]?.empAgrreExperience[0])
-    console.log("empAggreAcademics : ", employerData[0]?.empAggreAcademics[0])
-    console.log("empAggreCareers : ", employerData[0]?.empAggreCareers[0])
-    console.log("empAggreReferences : ", employerData[0]?.empAggreReferences[0])
-
-
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/jobSeeker/${email}`)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             // console.log("JobSeeker Data:", data);
-    //             setEmployerData(data)
-    //         })
-    // }, [email])
-
-    // console.log("employerData : ", employerData)
-
-    //    const {name, fathersName, mothersName,birthDete, phone, image, gender, religion, maritialStatus, permanentAddress} = employerData[0];
-    // const {   phone, image, gender, religion, maritialStatus, permanentAddress } = employerData[0];
-    // const { } = employerData[0]?.empAgrreExperience[0];
-    // const { } = employerData[0]?.empAggreAcademics[0]
-    // const { } = employerData[0]?.empAggreCareers[0];
-    // const { refOneName, refOneDetails, refTwoName, refTwoDetails, other } = employerData[0]?.empAggreReferences[0];
-
-    // const { careerObjective, skill, experience, achivement, qualification, institute, passingYear, linkOne,
-    //     linkTwo, linkThree, portfolio, language, } = employerData;
+    // console.log("employerData : ", employeesData)
+    // console.log("empAgrreExperience : ", employeesData?.empAgrreExperience)
+    // console.log("empAggreAcademics : ", employeesData?.empAggreAcademics)
+    // console.log("empAggreCareers : ", employeesData?.empAggreCareers)
+    // console.log("empAggreReferences : ", employeesData?.empAggreReferences)
 
 
     return (
-        <div>
 
-            <article className="resume-wrapper text-center position-relative">
-                <div className="resume-wrapper-inner mx-auto text-start bg-white shadow-lg">
-                    <header className="resume-header">
-                        <div className='d-flex justify-content-evenly p-5'>
+        <div className="resume-wrapper-inner mx-auto text-start bg-white shadow-lg">
 
-                            {/* <!--//col--> */}
-                            <div className="col-lg-9">
-                                <div className="row">
-                                    <div className='d-flex justify-content-between'>
-                                        <div className='col-lg-8'>
-                                            <div className="primary-info col-auto">
-                                                <h1 className="name mb-1 text-uppercase">{employerData[0]?.name}</h1>
-                                                <div className="title mb-3 fw-bold">Full Stack Developer</div>
-                                                <h4>Mothers Name: {employerData[0]?.mothersName}</h4>
-                                                <h4>Fathers Name: {employerData[0]?.fathersName}</h4>
-                                                <ul className="list-unstyled">
-                                                    <li className="mb-2"><b>Email:</b> {employerData[0]?.email}</li>
-                                                    <li className="mb-2"><b>Phone:</b> {employerData[0]?.phone}</li>
-                                                    <li> <b> Portfolio: </b> <a className=' text-decoration-none' href={`${employerData[0]?.portfolio}`} rel="noreferrer" target="_blank" >{employerData[0]?.portfolio}</a> </li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        {/* <!--//primary-info--> */}
-                                        <div className='col-lg-4'>
-                                            <div className="secondary-info col-auto mt-2">
-                                                <ul className="resume-social list-unstyled">
-                                                    <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-linkedin-in fa-fw"></i></span>{employerData[0]?.linkOne}</Link></li>
-                                                    <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-github-alt fa-fw"></i></span>{employerData[0]?.linkOne}</Link></li>
-                                                    <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-codepen fa-fw"></i></span>{employerData[0]?.linkThree}/</Link></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        {/* <!--//secondary-info--> */}
-                                    </div>
-                                    {/* <!--//row--> */}
-                                </div>
-                            </div>
-
-                            {/* <!--//col--> */}
-
-                            <div className="col-lg-3 ">
-                                <img className="profile_pic" src={employerData[0]?.image} alt="" />
-                            </div>
+            {/* Header Section Start */}
+            <header className="resume-header p-5">
+                <div className=' d-flex justify-content-between'>
+                    <p><b>Download:</b>  Word, PDF</p>
+                    <p><b>View Resume:</b>
+                        <div class="btn-group ms-2" role="group" aria-label="Basic outlined example">
+                            <button type="button" class="btn btn-outline-primary btn-sm">Details</button>
+                            <button type="button" class="btn btn-outline-primary btn-sm">Short</button>
                         </div>
-                        {/* <!--//row--> */}
-                    </header>
-                    <div className="resume-body p-5">
-                        <section className="resume-section summary-section mb-5">
-                            <h2 className="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Career Summary</h2>
-                            <div className="resume-section-content">
-                                <p>{employerData[0]?.careerObjective}</p>
-                            </div>
-                        </section>
-                        {/* <!--//summary-section--> */}
+                    </p>
+                </div>
+
+                <div className='d-flex justify-content-evenly '>
+
+                    <div className="col-lg-9">
                         <div className="row">
-                            <div className="col-md-12">
-                                <h2 className="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Work Experience</h2>
-                                <div className="resume-section-content">
-                                    <div className="resume-timeline position-relative">
+                            <div className='d-flex justify-content-between'>
+                                <div className='col-lg-8'>
+                                    <div className="primary-info col-auto">
+                                        <h5 className="name mb-1 text-uppercase fw-bold">{employeesData?.name}</h5>
+                                        <ul className="list-unstyled">
+                                            <li className=""><b>Address:</b> <span>Address: 200/2 (3B), Baridhara, Dhaka </span>  </li>
+                                            <li className=""><b>Phone:</b> {employeesData?.phone}</li>
+                                            <li className=""><b>Email:</b> {employeesData?.email}</li>
+                                            <li> <b> Portfolio: </b> <a className=' text-decoration-none' href={`${employeesData?.portfolio}`} rel="noreferrer" target="_blank" >{employeesData?.portfolio}</a> </li>
+                                            <li> <b> Work Repository: </b> <a className=' text-decoration-none' href={`${employeesData?.portfolio}`} rel="noreferrer" target="_blank" >{employeesData?.portfolio}</a> </li>
 
-
-                                        <div>
-                                            <p className=' fw-bold'>Academic Qualification</p>
-                                            <div>
-                                                <table class="table table-bordered border-primary">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">SL</th>
-                                                            <th scope="col">Exam Title</th>
-                                                            <th scope="col">Concentration/Major</th>
-                                                            <th scope="col">Institute</th>
-                                                            <th scope="col">Result</th>
-                                                            <th scope="col">Pas.Year</th>
-                                                            <th scope="col">Duration</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row">1</th>
-                                                            <td>Mark</td>
-                                                            <td>Otto</td>
-                                                            <td>Otto</td>
-                                                            <td>Otto</td>
-                                                            <td>Otto</td>
-                                                            <td>Otto</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">2</th>
-                                                            <td>Jacob</td>
-                                                            <td>Thornton</td>
-                                                            <td>Thornton</td>
-                                                            <td>Thornton</td>
-                                                            <td>Thornton</td>
-                                                            <td>Thornton</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">3</th>
-                                                            <td>Larry the Bird</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">3</th>
-                                                            <td>Larry the Bird</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        
-                                        <div className=' mt-3'>
-                                            <p className=' fw-bold'>Training Summary</p>
-                                            <div>
-                                                <table class="table table-bordered border-primary">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">SL</th>
-                                                            <th scope="col">Exam Title</th>
-                                                            <th scope="col">Concentration/Major</th>
-                                                            <th scope="col">Institute</th>
-                                                            <th scope="col">Result</th>
-                                                            <th scope="col">Pas.Year</th>
-                                                            <th scope="col">Duration</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row">1</th>
-                                                            <td>Mark</td>
-                                                            <td>Otto</td>
-                                                            <td>Otto</td>
-                                                            <td>Otto</td>
-                                                            <td>Otto</td>
-                                                            <td>Otto</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">2</th>
-                                                            <td>Jacob</td>
-                                                            <td>Thornton</td>
-                                                            <td>Thornton</td>
-                                                            <td>Thornton</td>
-                                                            <td>Thornton</td>
-                                                            <td>Thornton</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">3</th>
-                                                            <td>Larry the Bird</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">3</th>
-                                                            <td>Larry the Bird</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                            <td>twitter</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-
-                                        <div className="resume-timeline-item-header mb-2">
-                                            <div className="d-flex flex-column flex-md-row">
-                                                <h3 className="resume-position-title font-weight-bold mb-1">Lead Developer</h3>
-                                                <h4 className="resume-company-name ms-auto">{employerData[0]?.empAgrreExperience?.expOneCompanayName}</h4>
-                                            </div>
-                                            {/* <!--//row--> */}
-                                            <div className="resume-position-time">2020 - Present</div>
-                                        </div>
-                                        {/* <!--//resume-timeline-item-header--> */}
-                                        <div className="resume-timeline-item-desc">
-                                            {employerData[0]?.experience}
-                                            <h4 className=" fw-bold my-3">Achievements:</h4>
-                                            {employerData[0]?.achivement}
-                                            {/* <p>Praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p> */}
-                                            {/* <ul>
-                                                        <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                                                        <li>At vero eos et accusamus et iusto odio dignissimos.</li>
-                                                        <li>Blanditiis praesentium voluptatum deleniti atque corrupti.</li>
-                                                        <li>Maecenas tempus tellus eget.</li>
-                                                    </ul> */}
-                                            <h4 className="resume-timeline-item-desc-heading font-weight-bold">Technologies used:</h4>
-                                            <ul className="list-inline">
-                                                <li className="list-inline-item"><span className="badge bg-secondary badge-pill">{employerData[0]?.empAggreCareers?.skillOne}</span></li>
-                                                <li className="list-inline-item"><span className="badge bg-secondary badge-pill">{employerData[0]?.empAggreCareers?.skillTwo}</span></li>
-                                                <li className="list-inline-item"><span className="badge bg-secondary badge-pill">{employerData[0]?.empAggreCareers?.skillThree}</span></li>
-                                                <li className="list-inline-item"><span className="badge bg-secondary badge-pill">{employerData[0]?.empAggreCareers?.skillFour}</span></li>
-                                            </ul>
-                                        </div>
-                                        {/* <!--//resume-timeline-item-desc--> */}
-                                        <h2 className=" fw-bold my-3">Skill and Tools</h2>
-                                        {employerData[0]?.skill}
-
-                                        <section className="resume-section education-section my-3">
-                                            <h2 className="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Education</h2>
-                                            <div className="resume-section-content">
-                                                <div className='row d-flex'>
-                                                    <p className="  "> <b> Degree:</b> {employerData[0]?.qualification}, <b>From :</b> {employerData[0]?.institute}, <b>Passing Year : </b> {employerData[0]?.passingYear}</p>
-                                                </div>
-                                                <ul className="list-unstyled">
-                                                    <li className=" my-3 row">
-                                                    </li>
-                                                    {/* <li>
-                                                                <div className="resume-degree font-weight-bold">BSc Maths and Physics</div>
-                                                                <div className="resume-degree-org">Imperial College London</div>
-                                                                <div className="resume-degree-time">2007 - 2010</div>
-                                                            </li> */}
-                                                </ul>
-                                            </div>
-                                        </section>
-                                        {/* <!--//education-section--> */}
-
-                                        {/* <section className="resume-section reference-section mb-5">
-                                                    <h2 className="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Awards</h2>
-                                                    <div className="resume-section-content">
-                                                        <ul className="list-unstyled resume-awards-list">
-                                                            <li className="mb-2 ps-4 position-relative">
-                                                                <i className="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
-                                                                <div className="resume-award-name">Award Name Lorem</div>
-                                                                <div className="resume-award-desc">Award desc goes here, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo.</div>
-                                                            </li>
-                                                            <li className="mb-0 ps-4 position-relative">
-                                                                <i className="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
-                                                                <div className="resume-award-name">Award Name Ipsum</div>
-                                                                <div className="resume-award-desc">Award desc goes here, ultricies nec, pellentesque.</div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </section> */}
-                                        {/* <!--//interests-section--> */}
-                                        <section className="resume-section language-section mb-5">
-                                            <h2 className="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Language</h2>
-                                            <div className="resume-section-content">
-                                                <ul className="list-unstyled resume-lang-list">
-                                                    <li className="mb-2"><span className="resume-lang-name font-weight-bold">(Native){employerData[0]?.language}</span> <small className="text-muted font-weight-normal"></small></li>
-                                                    {/* <li className="mb-2 align-middle"><span className="resume-lang-name font-weight-bold">French</span> <small className="text-muted font-weight-normal">(Professional)</small></li> */}
-                                                    {/* <li><span className="resume-lang-name font-weight-bold">Spanish</span> <small className="text-muted font-weight-normal">(Professional)</small></li> */}
-                                                </ul>
-                                            </div>
-                                        </section>
-                                        {/* <!--//language-section--> */}
-                                        <section className="resume-section interests-section mb-5">
-                                            <h2 className="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Interests</h2>
-                                            <div className="resume-section-content">
-                                                <ul className="list-unstyled">
-                                                    <li className="mb-1">Climbing</li>
-                                                    <li className="mb-1">Snowboarding</li>
-                                                    <li className="mb-1">Cooking</li>
-                                                </ul>
-                                            </div>
-                                        </section>
-
-                                        <div>
-                                            <h3 className=' fw-bold  my-2'>Refference</h3>
-                                            <div className=' d-flex justify-content-between'>
-
-                                                <div className='col-md-4  '>
-                                                    <h4> {employerData[0]?.refOneName}</h4>
-                                                    <p className=''>{employerData[0]?.refOneDetails}</p>
-                                                </div>
-
-                                                <div className='col-md-4  '>
-                                                    <h4> {employerData[0]?.refOneName}</h4>
-                                                    <p>{employerData[0]?.refOneDetails}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
+                                        </ul>
                                     </div>
+                                </div>
 
+                                <div className='col-lg-4'>
+                                    <div className="secondary-info col-auto mt-2">
+                                        <ul className="resume-social list-unstyled">
+                                            <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-linkedin-in fa-fw"></i></span>{employeesData?.linkOne}</Link></li>
+                                            <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-github-alt fa-fw"></i></span>{employeesData?.linkOne}</Link></li>
+                                            <li className="mb-3"><Link className="text-link text-decoration-none" to="#"><span className="fa-container text-center"><i className="fab fa-codepen fa-fw"></i></span>{employeesData?.linkThree}</Link></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+
+                    <div className="col-lg-3 ">
+                        <img className="profile_pic" src={employeesData?.image} alt="" />
+                    </div>
+
+                </div>
+            </header>
+            {/* Header Section End */}
+
+
+            {/* Resume Body start */}
+            <div className="resume-body p-5">
+                <section className="resume-section summary-section mb-5">
+                    <h5 className="resume-section-title text-uppercase text-decoration-underline">Career Objective</h5>
+                    <div className="resume-section-content">
+                        <p>{employeesData?.careerObjective}</p>
+                    </div>
+                </section>
+
+                {employeesData?.empAggreCareers?.specialQualification ? <>
+
+                    <section className="resume-section summary-section mb-5">
+                        <h5 className="resume-section-title text-uppercase text-decoration-underline">Special Qualification</h5>
+                        <div className="resume-section-content">
+                            <p>{employeesData?.empAggreCareers?.specialQualification}</p>
+                        </div>
+                    </section>
+                </> : <></>}
+
+                {employeesData?.empAgrreExperience?.expOneCompanayName ? <>
+                    <section className="resume-section summary-section mb-5">
+                        <h5 className="resume-section-title text-uppercase text-decoration-underline">History of Employment</h5>
+                        <div className="resume-section-content">
+
+                            <p className='my-3'> <b>Total Year of Experience :</b>  10.9 yrs </p>
+
+                            {/* Employment History Section One */}
+                            <div>
+                                <p className='fw-bold mb-0 '> <span> 1.</span> {employeesData?.empAgrreExperience?.expOneDesignation} <span> ({employeesData?.empAgrreExperience?.exprOneWorkPeriod} yr)</span></p>
+                                <p className=' mb-0'>
+                                    {employeesData?.empAgrreExperience?.expOneFrom}
+                                    <span className=' mx-1'>-</span>
+                                    {employeesData?.empAgrreExperience?.expOneTo}
+                                </p>
+                                <p className=''><b> {employeesData?.empAgrreExperience?.expOneCompanayName}</b></p>
+                                <p className=' mb-0'><b>{employeesData?.empAgrreExperience?.exprOneExpertise}</b></p>
+                                <p className=' mb-0'><b>Area of Expertise</b></p>
+                                <p className=' mb-0'>{employeesData?.empAgrreExperience?.exprOneExpertise}</p>
+                                <p className='mb-0'><b>Duties/Responsibilities</b></p>
+                                <p className='mb-0'>{employeesData?.empAgrreExperience?.exprOneResp}</p>
+                            </div>
+
+                            {employeesData?.empAgrreExperience?.expTwoCompanayName ? <>
+                                {/* Employment History Section Two */}
+                                <div className=' mt-3'>
+                                    <p className='fw-bold mb-0 '> <span> 2.</span> {employeesData?.empAgrreExperience?.expTwoDesignation}
+                                        <span> ({employeesData?.empAgrreExperience?.exprTwoWorkPeriod} yr)</span></p>
+                                    <p className=' mb-0'>
+                                        {employeesData?.empAgrreExperience?.expTwoFrom}
+                                        <span className=' mx-1'>-</span>
+                                        {employeesData?.empAgrreExperience?.expTwoTo}
+                                    </p>
+                                    <p className=''><b> {employeesData?.empAgrreExperience?.expTwoCompanayName}</b></p>
+                                    <p className=' mb-0'><b>{employeesData?.empAgrreExperience?.exprTwoExpertise}</b></p>
+                                    <p className=' mb-0'><b>Area of Expertise</b></p>
+                                    <p className=' mb-0'>{employeesData?.empAgrreExperience?.exprTwoExpertise}</p>
+                                    <p className='mb-0'><b>Duties/Responsibilities</b></p>
+                                    <p className='mb-0'>{employeesData?.empAgrreExperience?.exprTwoResp}</p>
+                                </div>
+                            </> : <></>
+                            }
 
                         </div>
-                        {/* <!--//row--> */}
+                    </section>
+                </> : <></>
+                }
+                {/* <!--//acacemic qualification section--> */}
+
+                {/* Academic Qualification Section Start */}
+                <section className=" my-5">
+                    <h5 className=" fw-bold text-uppercase text-decoration-underline mb-3">Academic Qualification</h5>
+
+                    <div className=''>
+                        <table class="table table-bordered border-secondary">
+                            <thead>
+                                <tr>
+                                    <th scope="col">SL</th>
+                                    <th scope="col">Exam Title</th>
+                                    <th scope="col">Concentration/Major</th>
+                                    <th scope="col">Institute</th>
+                                    <th scope="col">Result</th>
+                                    <th scope="col">Pas.Year</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>{employeesData?.empAggreAcademics?.examTitleOne}</td>
+                                    <td>{employeesData?.empAggreAcademics?.majorOne}</td>
+                                    <td>{employeesData?.empAggreAcademics?.instituteOne}</td>
+                                    <td>{employeesData?.empAggreAcademics?.resultOne}</td>
+                                    <td>{employeesData?.empAggreAcademics?.passYearOne}</td>
+                                </tr>
+
+                                {employeesData?.empAggreAcademics?.examTitleTwo ? <>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>{employeesData?.empAggreAcademics?.examTitleTwo}</td>
+                                        <td>{employeesData?.empAggreAcademics?.majorTwo}</td>
+                                        <td>{employeesData?.empAggreAcademics?.instituteTwo}</td>
+                                        <td>{employeesData?.empAggreAcademics?.resultTwo}</td>
+                                        <td>{employeesData?.empAggreAcademics?.passYearTwo}</td>
+                                    </tr>
+
+                                </> : <></>
+                                }
+
+                                {employeesData?.empAggreAcademics?.examTitleThree ? <>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>{employeesData?.empAggreAcademics?.examTitleThree}</td>
+                                        <td>{employeesData?.empAggreAcademics?.majorThree}</td>
+                                        <td>{employeesData?.empAggreAcademics?.instituteThree}</td>
+                                        <td>{employeesData?.empAggreAcademics?.resultThree}</td>
+                                        <td>{employeesData?.empAggreAcademics?.passYearThree}</td>
+                                    </tr>
+
+                                </> : <></>
+                                }
+
+                                {employeesData?.empAggreAcademics?.examTitleFour ? <>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>{employeesData?.empAggreAcademics?.examTitleFour}</td>
+                                        <td>{employeesData?.empAggreAcademics?.majorFour}</td>
+                                        <td>{employeesData?.empAggreAcademics?.instituteFour}</td>
+                                        <td>{employeesData?.empAggreAcademics?.resultFour}</td>
+                                        <td>{employeesData?.empAggreAcademics?.passYearFour}</td>
+                                    </tr>
+
+                                </> : <></>
+                                }
+                            </tbody>
+                        </table>
                     </div>
-                    {/* <!--//resume-body--> */}
+                </section>
+                {/* Academic Qualification Section End */}
 
-                </div></article>
+
+                {/* Tranining Summary Setcion start */}
+                {employeesData?.empAggreAcademics?.trainingTitleOne ? <>
+                    <section>
+                        <div className=' mt-3'>
+                            <h5 className=" fw-bold text-uppercase text-decoration-underline mb-3">Training Summary</h5>
+                            <div>
+                                <table class="table table-bordered border-secondary">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">SL</th>
+                                            <th scope="col">Exam Title</th>
+                                            <th scope="col">Concentration/Major</th>
+                                            <th scope="col">Institute</th>
+                                            <th scope="col">Duration</th>
+                                            <th scope="col">Pas.Year</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        {employeesData?.empAggreAcademics?.trainingTitleOne ? <>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>{employeesData?.empAggreAcademics?.trainingTitleOne}</td>
+                                                <td>{employeesData?.empAggreAcademics?.topicOne}</td>
+                                                <td>{employeesData?.empAggreAcademics?.insAndLocationOne}</td>
+                                                <td>{employeesData?.empAggreAcademics?.durationOne}</td>
+                                                <td>{employeesData?.empAggreAcademics?.traningYearOne}</td>
+                                            </tr>
+                                        </> : <></>}
+
+                                        {employeesData?.empAggreAcademics?.trainingTitleTwo ? <>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>{employeesData?.empAggreAcademics?.trainingTitleTwo}</td>
+                                                <td>{employeesData?.empAggreAcademics?.topicTwo}</td>
+                                                <td>{employeesData?.empAggreAcademics?.insAndLocationTwo}</td>
+                                                <td>{employeesData?.empAggreAcademics?.durationTwo}</td>
+                                                <td>{employeesData?.empAggreAcademics?.traningYearTwo}</td>
+                                            </tr>
+                                        </> : <></>}
+
+                                        {employeesData?.empAggreAcademics?.trainingTitleThree ? <>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>{employeesData?.empAggreAcademics?.trainingTitleThree}</td>
+                                                <td>{employeesData?.empAggreAcademics?.topicThree}</td>
+                                                <td>{employeesData?.empAggreAcademics?.insAndLocationThree}</td>
+                                                <td>{employeesData?.empAggreAcademics?.durationThree}</td>
+                                                <td>{employeesData?.empAggreAcademics?.traningYearThree}</td>
+                                            </tr>
+                                        </> : <></>}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </> : <></>}
+                {/* Tranining Summary Setcion end */}
+
+
+
+                {/* Career and Application Information Setcion start */}
+                <section className=' my-5'>
+                    <h5 className="resume-section-title text-uppercase text-decoration-underline fw-bold">Career and Application Information</h5>
+                    <div>
+                        <table class="table table-borderless table-sm">
+
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Looking For</th>
+                                    <td>:	{employeesData?.empAggreCareers?.lookingFor}</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">Available For</th>
+                                    <td>:	{employeesData?.empAggreCareers?.availbaleFor}</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">Present Salary</th>
+                                    <td>:	{employeesData?.empAggreCareers?.presentSalary}TK /Month </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">Expected Salary</th>
+                                    <td>:	{employeesData?.empAggreCareers?.expectedSalary}TK /Month</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">Preferred Job Category</th>
+                                    <td>:	{employeesData?.empAggreCareers?.category}</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">Preferred Location</th>
+                                    <td>:	{employeesData?.empAggreCareers?.preferredLocations}</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">Preferred Organization Types</th>
+                                    <td>:	{employeesData?.empAggreCareers?.preferredOrg}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                {/* Career and Application Information Setcion end */}
+
+
+                {/* Specialization Setcion start */}
+                <section className=' my-5'>
+                    <h5 className="resume-section-title text-uppercase text-decoration-underline fw-bold">Specialization</h5>
+                    <div>
+                        <table class="table border my-2">
+
+                            <thead className=' border'>
+                                <th className='border text-center col-md-3'>Fields of Specialization</th>
+                                <th className='border text-center col-md-9'>Description</th>
+                            </thead>
+
+                            <tbody className='border'>
+                                <tr className='border'>
+                                    <td className='border'>
+                                        <ul class=" ">
+                                            <li class="">{employeesData?.empAggreCareers?.skillOne}</li>
+                                            <li class="">{employeesData?.empAggreCareers?.skillTwo}</li>
+                                            <li class="">{employeesData?.empAggreCareers?.skillThree}</li>
+                                            <li class="">{employeesData?.empAggreCareers?.skillFour}</li>
+                                            <li class="">{employeesData?.empAggreCareers?.skillFive}</li>
+                                            <li class="">{employeesData?.empAggreCareers?.skillSix}</li>
+                                            <li class="">{employeesData?.empAggreCareers?.skillSeven}</li>
+                                            <li class="">{employeesData?.empAggreCareers?.skillEight}</li>
+                                            <li class="">{employeesData?.empAggreCareers?.skillNine}</li>
+                                            <li class="">{employeesData?.empAggreCareers?.skillTen}</li>
+                                        </ul>
+                                    </td>
+
+                                    <td className='border'>
+                                        <p><b>Skill Learned By : </b> {employeesData?.empAggreCareers?.skillLearnedBy}</p>
+                                        <p><b>Skill Desciption : </b> {employeesData?.empAggreCareers?.skillDesciption}</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                {/* Specialization Setcion end */}
+
+
+
+                {/* Language Proficiency Section Start */}
+                <section className=" my-5">
+                    <h5 className=" fw-bold text-uppercase text-decoration-underline mb-3">Language Proficiency</h5>
+
+                    <div className=''>
+                        <table class="table table-bordered border-secondary text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">SL</th>
+                                    <th scope="col">Language</th>
+                                    <th scope="col">Reading</th>
+                                    <th scope="col">Writing</th>
+                                    <th scope="col">Speaking</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>{employeesData?.empAggreReferences?.languOne}</td>
+                                    <td>{employeesData?.empAggreReferences?.readingOne}</td>
+                                    <td>{employeesData?.empAggreReferences?.writingOne}</td>
+                                    <td>{employeesData?.empAggreReferences?.speakingOne}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>{employeesData?.empAggreReferences?.languTwo}</td>
+                                    <td>{employeesData?.empAggreReferences?.readingTwo}</td>
+                                    <td>{employeesData?.empAggreReferences?.writingTwo}</td>
+                                    <td>{employeesData?.empAggreReferences?.speakingTwo}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>{employeesData?.empAggreReferences?.languThree}</td>
+                                    <td>{employeesData?.empAggreReferences?.readingThree}</td>
+                                    <td>{employeesData?.empAggreReferences?.writingThree}</td>
+                                    <td>{employeesData?.empAggreReferences?.speakingThree}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                {/*Language Proficiency Section End */}
+
+                {/*Personal Details Setcion start */}
+                <section className=' my-5'>
+                    <h5 className="resume-section-title text-uppercase text-decoration-underline fw-bold">Personal Details</h5>
+                    <div>
+                        <table class="table table-borderless table-sm">
+
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Father's Name</th>
+                                    <td>:	{employeesData?.fathersName} </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">Mother's Name</th>
+                                    <td>:	{employeesData?.mothersName} </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">Date of Birth</th>
+                                    <td>: {employeesData?.birthDete} </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">Gender</th>
+                                    <td>: {employeesData?.gender} </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">Marital Status</th>
+                                    <td>: {employeesData?.maritialStatus} </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">Nationality</th>
+                                    <td>: {employeesData?.birthDete} </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">National Id No.</th>
+                                    <td>: {employeesData?.nationalId} </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Religion</th>
+                                    <td>: {employeesData?.religion} </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Permanent Address</th>
+                                    <td>: {employeesData?.permanentAddress} </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">Current Location</th>
+                                    <td>: {employeesData?.birthDete} </td>
+                                </tr>
+                                {/* <tr>
+                                    <th scope="row">Blood Group</th>
+                                    <td>: {employeesData?.bloodGroup} </td>
+                                </tr> */}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                {/* Personal Details Setcion end */}
+
+            </div>
+            {/* Resume Body End */}
+
         </div>
-
-
-
 
 
 

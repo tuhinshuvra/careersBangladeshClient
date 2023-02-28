@@ -50,6 +50,7 @@ const EmployeesCareerAndSkillEntry = () => {
             skillTen: data.skillTen,
             skillLearnedBy: data.skillLearnedBy,
             skillDesciption: data.skillDesciption,
+            specialQualification: data.specQuali,
         }
         // console.log("Job Seeker Data :", data);
 
@@ -96,9 +97,9 @@ const EmployeesCareerAndSkillEntry = () => {
                             className="form-select"
                         >
                             <option>-Select Job Level-</option>
-                            <option value="entry">Entry Level</option>
-                            <option value="mid">Mid Level</option>
-                            <option value="top">Top Level</option>
+                            <option value="Entry Level">Entry Level</option>
+                            <option value="Mid Level">Mid Level</option>
+                            <option value="Top Level">Top Level</option>
                         </select>
                     </div>
                     <div className='col-md-3 mb-3  '>
@@ -162,7 +163,7 @@ const EmployeesCareerAndSkillEntry = () => {
                                 categories &&
                                 categories.map((category, index) =>
                                     <option key={index}
-                                        value={category._id}>
+                                        value={category.name}>
                                         {category.name}
                                     </option>)
                             }
@@ -331,6 +332,17 @@ const EmployeesCareerAndSkillEntry = () => {
                             className='input form-control '
                             id='skillDesciption' type="text"
                             placeholder='Enter skill desciption'
+                        />
+                    </div>
+
+                    <div className=''>
+                        <span className="label-text text-md fw-bold">Special Qualification</span>
+                        <textarea {...register("specQuali",)}
+                            name='specQuali'
+                            className='input form-control '
+                            id='specQuali'
+                            type="text"
+                            placeholder='Enter special qualification'
                         />
                     </div>
 

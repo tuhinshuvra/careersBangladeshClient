@@ -37,15 +37,18 @@ const EmployeesLanguageAndReferenceEntry = () => {
             languOne: data.languOne,
             writingOne: data.writingOne,
             readingOne: data.readingOne,
+            speakingOne: data.speakingOne,
 
             languTwo: data.languTwo,
             writingTwo: data.writingTwo,
             readingTwo: data.readingTwo,
+            speakingTwo: data.speakingTwo,
 
 
             languThree: data.languThree,
             readingThree: data.readingThree,
             writingThree: data.writingThree,
+            speakingThree: data.speakingThree,
 
             refOneName: data.ref_one_name,
             refOneDetails: data.ref_one_details,
@@ -123,8 +126,8 @@ const EmployeesLanguageAndReferenceEntry = () => {
                             <span className="label-text text-md fw-bold  ">Writing<span className="star">&#x2605;</span></span>
                             <select
                                 {...register("writingOne", { required: 'true' })}
-                                name="wriingOne"
-                                id="wriingOne"
+                                name="writingOne"
+                                id="writingOne"
                                 className="form-select select-bordered  ">
                                 <option>-Select-</option>
                                 <option value="high">High</option>
@@ -136,8 +139,9 @@ const EmployeesLanguageAndReferenceEntry = () => {
                         <div className=' col-md-3 mb-3'>
                             <span className="label-text text-md fw-bold  ">Speaking<span className="star">&#x2605;</span></span>
                             <select
-                                {...register("readingOne", { required: 'true' })}
-                                name="readingOne"
+                                {...register("speakingOne", { required: 'true' })}
+                                name="speakingOne"
+                                id="speakingOne"
                                 className="form-select select-bordered  ">
                                 <option>-Select-</option>
                                 <option value="high">High</option>
@@ -194,9 +198,9 @@ const EmployeesLanguageAndReferenceEntry = () => {
                         <div className=' col-md-3 mb-3'>
                             <span className="label-text text-md fw-bold  ">Speaking</span>
                             <select
-                                {...register("readingTwo")}
-                                name="readingTwo"
-                                id="readingTwo"
+                                {...register("speakingTwo")}
+                                name="speakingTwo"
+                                id="speakingTwo"
                                 className="form-select select-bordered  ">
                                 <option>-Select-</option>
                                 <option value="high">High</option>
@@ -251,12 +255,12 @@ const EmployeesLanguageAndReferenceEntry = () => {
                         </div>
 
                         <div className=' col-md-3 mb-3'>
-                            <span className="label-text text-md fw-bold  ">Speaking</span>
+                            <span className="label-text text-md fw-bol ">Speaking</span>
                             <select
-                                {...register("readingThree",)}
-                                name="readingThree"
-                                id="readingThree"
-                                className="form-select select-bordered  ">
+                                {...register("speakingThree",)}
+                                name="speakingThree"
+                                id="speakingThree"
+                                className="form-select select-bordered">
                                 <option>-Select-</option>
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>

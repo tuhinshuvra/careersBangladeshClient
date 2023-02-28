@@ -87,7 +87,8 @@ const EmployeesExperienceEntry = () => {
                             <input {...register("expOneCompanayName",)}
                                 name='expOneCompanayName'
                                 className='input form-control '
-                                id='expOneCompanayName' type="text"
+                                id='expOneCompanayName'
+                                type="text"
                                 placeholder='Enter data'
                             />
                         </div>
@@ -100,7 +101,8 @@ const EmployeesExperienceEntry = () => {
                             <input {...register("expOneCompanayBusiness",)}
                                 name='expOneCompanayBusiness'
                                 className='input form-control '
-                                id='expOneCompanayBusiness' type="text"
+                                id='expOneCompanayBusiness'
+                                type="text"
                                 placeholder='Enter data'
                             />
                         </div>
@@ -112,7 +114,8 @@ const EmployeesExperienceEntry = () => {
                             <input {...register("expOneDesignation",)}
                                 name='expOneDesignation'
                                 className='input form-control '
-                                id='expOneDesignation' type="text"
+                                id='expOneDesignation'
+                                type="text"
                                 placeholder='Enter data'
                             />
                         </div>
@@ -124,7 +127,8 @@ const EmployeesExperienceEntry = () => {
                             <input {...register("expOneDepartment",)}
                                 name='expOneDepartment'
                                 className='input form-control '
-                                id='expOneDepartment' type="text"
+                                id='expOneDepartment'
+                                type="text"
                                 placeholder='Enter data'
                             />
                         </div>
@@ -156,9 +160,10 @@ const EmployeesExperienceEntry = () => {
 
                         <div className="form-check">
                             <input
-                                {...register("exOnecurrtlyWorkHere",)}
+                                {...register("exprOneWorkPeriod",)}
                                 className="form-check-input"
-                                type="checkbox" value="currentlyWorkHere"
+                                type="checkbox"
+                                value="currentlyWorkHere"
                                 id="exprOneWorkPeriod"
                             />
                             <label className="form-check-label" htmlFor="exprOneWorkPeriod">
@@ -173,7 +178,8 @@ const EmployeesExperienceEntry = () => {
                             <textarea {...register("exprOneResp",)}
                                 name='exprOneResp'
                                 className='input form-control '
-                                id='exprOneResp' type="text"
+                                id='exprOneResp'
+                                type="text"
                                 placeholder='Enter Responsibilities'
                             />
                         </div>
@@ -185,7 +191,8 @@ const EmployeesExperienceEntry = () => {
                             <textarea {...register("exprOneExpertise",)}
                                 name='exprOneExpertise'
                                 className='input form-control '
-                                id='exprOneExpertise' type="text"
+                                id='exprOneExpertise'
+                                type="text"
                                 placeholder='Enter Expertise'
                             />
                         </div>
@@ -197,7 +204,8 @@ const EmployeesExperienceEntry = () => {
                             <textarea {...register("exprCompOneAddress",)}
                                 name='exprCompOneAddress'
                                 className='input form-control '
-                                id='exprCompOneAddress' type="text"
+                                id='exprCompOneAddress'
+                                type="text"
                                 placeholder='Enter Company Address'
                             />
                         </div>
@@ -213,7 +221,8 @@ const EmployeesExperienceEntry = () => {
                             <input {...register("expTwoCompanayName",)}
                                 name='expTwoCompanayName'
                                 className='input form-control '
-                                id='expTwoCompanayName' type="text"
+                                id='expTwoCompanayName'
+                                type="text"
                                 placeholder='Enter Company Name'
                             />
                         </div>
@@ -226,7 +235,8 @@ const EmployeesExperienceEntry = () => {
                             <input {...register("expTwoCompanayBusiness",)}
                                 name='expTwoCompanayBusiness'
                                 className='input form-control '
-                                id='expTwoCompanayBusiness' type="text"
+                                id='expTwoCompanayBusiness'
+                                type="text"
                                 placeholder='Enter Company Business'
                             />
                         </div>
@@ -238,7 +248,8 @@ const EmployeesExperienceEntry = () => {
                             <input {...register("expTwoDesignation",)}
                                 name='expTwoDesignation'
                                 className='input form-control '
-                                id='expTwoDesignation' type="text"
+                                id='expTwoDesignation'
+                                type="text"
                                 placeholder='Enter Designation'
                             />
                         </div>
@@ -250,7 +261,8 @@ const EmployeesExperienceEntry = () => {
                             <input {...register("expTwoDepartment",)}
                                 name='expTwoDepartment'
                                 className='input form-control '
-                                id='expTwoDepartment' type="text"
+                                id='expTwoDepartment'
+                                type="text"
                                 placeholder='Enter data'
                             />
                         </div>
@@ -284,7 +296,8 @@ const EmployeesExperienceEntry = () => {
                             <input
                                 {...register("exprTwoWorkPeriod",)}
                                 className="form-check-input"
-                                type="checkbox" value="exprTwoWorkPeriod"
+                                type="checkbox"
+                                value="exprTwoWorkPeriod"
                                 id="exprTwoWorkPeriod"
                             />
                             <label className="form-check-label" htmlFor="exprTwoWorkPeriod">
@@ -299,7 +312,8 @@ const EmployeesExperienceEntry = () => {
                             <textarea {...register("exprTwoResp",)}
                                 name='exprTwoResp'
                                 className='input form-control '
-                                id='exprTwoResp' type="text"
+                                id='exprTwoResp'
+                                type="text"
                                 placeholder='Enter Responsibilities'
                             />
                         </div>
@@ -311,7 +325,8 @@ const EmployeesExperienceEntry = () => {
                             <textarea {...register("exprTwoExpertise",)}
                                 name='exprTwoExpertise'
                                 className='input form-control '
-                                id='exprTwoExpertise' type="text"
+                                id='exprTwoExpertise'
+                                type="text"
                                 placeholder='Enter Expertise'
                             />
                         </div>
@@ -322,8 +337,9 @@ const EmployeesExperienceEntry = () => {
                         <div>
                             <textarea {...register("exprCompTwoAddress",)}
                                 name='exprCompTwoAddress'
-                                className='input form-control '
-                                id='exprCompTwoAddress' type="text"
+                                className='input form-control'
+                                id='exprCompTwoAddress'
+                                type="text"
                                 placeholder='Enter Company Address'
                             />
                         </div>
