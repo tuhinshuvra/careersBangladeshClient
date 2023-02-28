@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Authentication/AuthProvider';
 import './EmployeesProfile.css';
 
-const JobSeekerProfile = () => {
+const EmployeesProfile = () => {
     const [employeesData, setEmployeesData] = useState([]);
     const { user } = useContext(AuthContext);
     const email = user?.email;
@@ -55,8 +55,8 @@ const JobSeekerProfile = () => {
                                             <li className=""><b>Address:</b> <span>Address: 200/2 (3B), Baridhara, Dhaka </span>  </li>
                                             <li className=""><b>Phone:</b> {employeesData?.phone}</li>
                                             <li className=""><b>Email:</b> {employeesData?.email}</li>
-                                            <li> <b> Portfolio: </b> <a className=' text-decoration-none' href={`${employeesData?.portfolio}`} rel="noreferrer" target="_blank" >{employeesData?.portfolio}</a> </li>
-                                            <li> <b> Work Repository: </b> <a className=' text-decoration-none' href={`${employeesData?.portfolio}`} rel="noreferrer" target="_blank" >{employeesData?.portfolio}</a> </li>
+                                            <li> <b> Portfolio: </b> <a className=' text-decoration-none' href={`${employeesData?.empAggreAcademics?.portfolio}`} rel="noreferrer" target="_blank" >{employeesData?.empAggreAcademics?.portfolio}</a> </li>
+                                            <li> <b> Work Repository: </b> <a className=' text-decoration-none' href={`${employeesData?.empAggreAcademics?.gitHubLink}`} rel="noreferrer" target="_blank" >{employeesData?.empAggreAcademics?.gitHubLink}</a> </li>
 
                                         </ul>
                                     </div>
@@ -103,6 +103,9 @@ const JobSeekerProfile = () => {
                         </div>
                     </section>
                 </> : <></>}
+
+
+                {/* History of Employment Section Start */}
 
                 {employeesData?.empAgrreExperience?.expOneCompanayName ? <>
                     <section className="resume-section summary-section mb-5">
@@ -151,7 +154,8 @@ const JobSeekerProfile = () => {
                     </section>
                 </> : <></>
                 }
-                {/* <!--//acacemic qualification section--> */}
+                {/* History of Employment Section End */}
+
 
                 {/* Academic Qualification Section Start */}
                 <section className=" my-5">
@@ -496,4 +500,4 @@ const JobSeekerProfile = () => {
     );
 };
 
-export default JobSeekerProfile;
+export default EmployeesProfile;

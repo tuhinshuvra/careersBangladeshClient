@@ -2,11 +2,12 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
 import '../../Employees/EmployeesProfile.css';
+import EmployeesProfileManage from './EmployeesProfileManage';
 
-const EmployeesCareerAndSkillEntry = () => {
+const EmployeesCareerAndSkillManage = () => {
 
     const { user } = useContext(AuthContext)
 
@@ -77,6 +78,11 @@ const EmployeesCareerAndSkillEntry = () => {
 
     return (
         <div>
+            <div>
+            <EmployeesProfileManage></EmployeesProfileManage>
+            </div >
+
+
             <h2 className=" text-center fw-bold my-4">Employees Careers and Skill Data</h2>
 
             {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
@@ -358,4 +364,4 @@ const EmployeesCareerAndSkillEntry = () => {
     );
 };
 
-export default EmployeesCareerAndSkillEntry;
+export default EmployeesCareerAndSkillManage;

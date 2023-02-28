@@ -47,13 +47,13 @@ const DashboardLayout = () => {
                         {
                             isJobSeeker && <>
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfileEntry'>Create Profile</Link></li>
-                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesPersonalDetailsEntry'>Employee's Personal Details</Link></li>
+                                {/* <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesPersonalDetailsEntry'>Employee's Personal Details</Link></li>
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesExperienceDataEntry'>Employee's Experience Data</Link></li>
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesAcademicAndTrainingEntry'>Employee's AcademicsAndTraining</Link></li>
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesCareersAndSkillEntry'>Employee's Careers & Skill Data</Link></li>
-                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesLanguageAndReferenceEntry'>Employee's LanguageAndReference Data</Link></li>
+                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesLanguageAndReferenceEntry'>Employee's LanguageAndReference Data</Link></li> */}
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfile'>My Profile</Link></li>
-                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfileEntry'>Manage Profile</Link></li>
+                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesProfileManage'>Manage Profile</Link></li>
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/savedJobs'>Saved Job List</Link></li>
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/appliedJobs'>Applied Job List</Link></li>
                             </>

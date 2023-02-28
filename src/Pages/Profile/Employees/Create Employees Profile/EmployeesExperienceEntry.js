@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
 import '../../Employees/EmployeesProfile.css';
+import EmployeesProfileEntry from './EmployeesProfileEntry';
 
 const EmployeesExperienceEntry = () => {
 
@@ -69,6 +70,7 @@ const EmployeesExperienceEntry = () => {
 
     return (
         <div>
+            <EmployeesProfileEntry></EmployeesProfileEntry>
             <h2 className=" text-center fw-bold my-4">Experience Data</h2>
 
 
