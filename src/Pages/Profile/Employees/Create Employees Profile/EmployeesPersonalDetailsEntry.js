@@ -37,12 +37,12 @@ const EmployeesPersonalDetailsEntry = () => {
                         nationality: data.nationality,
                         nationalId: data.nationalId,
                         phone: data.phone,
-                        birthDete: data.birth_dete,
+                        birthDate: data.birthDate,
                         gender: data.gender,
                         religion: data.religion,
-                        maritialStatus: data.maritial_status,
+                        maritalStatus: data.maritalStatus,
                         image: imgData.data.url,
-                        presentAddress: data.present_addres,
+                        presentAddress: data.presentAddress,
                         permanentAddress: data.permanent_address,
                         careerObjective: data.career_objective,
                     }
@@ -74,9 +74,7 @@ const EmployeesPersonalDetailsEntry = () => {
 
     return (
         <div>
-
-             
-             <EmployeesProfileEntry></EmployeesProfileEntry>
+            <EmployeesProfileEntry></EmployeesProfileEntry>
 
             <div>
                 {/* <h2>Personal Details</h2> */}
@@ -153,10 +151,10 @@ const EmployeesPersonalDetailsEntry = () => {
                         <div className='col-md-3 mb-3 '>
                             <span className="label-text text-md fw-bold  ">Date of Birth<span className="star">&#x2605;</span></span>
                             <input
-                                {...register("birth_dete", { required: true })}
-                                name='birth_dete'
+                                {...register("birthDate", { required: true })}
+                                name='birthDate'
                                 className='input form-control '
-                                id="birth_date"
+                                id="birthDate"
                                 type="date"
                             />
                         </div>
@@ -196,9 +194,9 @@ const EmployeesPersonalDetailsEntry = () => {
                             <div className='col-md-3 mb-3 '>
                                 <span className={`label-text text-md fw-bold`}>Marital Status</span>
                                 <select
-                                    {...register("maritial_status")}
-                                    name="marital_status"
-                                    id="marital_status"
+                                    {...register("maritalStatus")}
+                                    name="maritalStatus"
+                                    id="maritalStatus"
                                     className="form-select select-bordered">
 
                                     <option>-Select Marital Status-</option>
@@ -228,10 +226,10 @@ const EmployeesPersonalDetailsEntry = () => {
                         <div className=' col-md-6 mb-3'>
                             <span className="label-text text-md fw-bold ">Present Address<span className="star">&#x2605;</span></span>
                             <div>
-                                <textarea {...register("present_address", { required: true })}
-                                    name='present_address'
+                                <textarea {...register("presentAddress", { required: true })}
+                                    name='presentAddress'
                                     className='input form-control '
-                                    id='present_address' type="text"
+                                    id='presentAddress' type="text"
                                     placeholder='Write Your Pressent Address'
                                 />
                             </div>

@@ -37,7 +37,7 @@ const EmployeesExperienceEntry = () => {
             expTwoDesignation: data.expTwoDesignation,
             expTwoDepartment: data.expTwoDepartment,
             expTwoFrom: data.expTwoFrom,
-            expTwoeTo: data.expTwoeTo,
+            expTwoTo: data.expTwoTo,
             exprTwoWorkPeriod: data.exprTwoWorkPeriod,
             exprTwoResp: data.exprTwoResp,
             exprTwoExpertise: data.exprTwoExpertise,
@@ -285,10 +285,10 @@ const EmployeesExperienceEntry = () => {
                             <b className=' mx-2'>To</b>
 
                             <div className='col-md-5'>
-                                <input {...register("expTwoeTo",)}
-                                    name='expTwoeTo'
+                                <input {...register("expTwoTo",)}
+                                    name='expTwoTo'
                                     className='input form-control '
-                                    id='expTwoeTo'
+                                    id='expTwoTo'
                                     type="date"
                                 />
                             </div>

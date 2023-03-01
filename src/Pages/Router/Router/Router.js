@@ -74,11 +74,7 @@ const router = createBrowserRouter([
                 element: <FindJobsByCategory></FindJobsByCategory>,
                 loader: ({ params }) => fetch(`http://localhost:5000/jobbycategory?category=${params.categoryId}`)
             },
-            // {
-            //     path: '/jobs/:jobTitle',
-            //     element:  <FindJobHomeResult></FindJobHomeResult>,
-            //     loader: ({ params }) => fetch(`http://localhost:5000/jobByTitle?jobTitle=${params.jobTitle}`)
-            // },
+
             {
                 path: '/searchHomeResult',
                 element: <FindJobHomeResult></FindJobHomeResult>
@@ -164,11 +160,33 @@ const router = createBrowserRouter([
             },
 
             {
-                path: '/dashboard/employeesPersonalDetails/:id',
+                path: '/dashboard/employeesPersonalDetails/:email',
                 element: <EmployeesPersonalDetailsManage></EmployeesPersonalDetailsManage>,
-                loader: ({params})=> fetch(`http://localhost:5000/employeesPersonal/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/employeesPersonal/${params.email}`)
             },
-          
+
+            {
+                path: '/dashboard/employeesExperiences/:email',
+                element: <EmployeesExperienceManage></EmployeesExperienceManage>,
+                loader: ({ params }) => fetch(`http://localhost:5000/employeesExpriences/${params.email}`)
+            },
+
+            {
+                path: '/dashboard/employeesAcademics/:email',
+                element: <EmployeesAcademicAndTrainingManage></EmployeesAcademicAndTrainingManage>,
+                loader: ({ params }) => fetch(`http://localhost:5000/employeesAcademics/${params.email}`)
+            },
+            // {
+            //     path: '/dashboard/employeesCareers/:email',
+            //     element: <EmployeesCareerAndSkillManage></EmployeesCareerAndSkillManage>,
+            //     loader: ({ params }) => fetch(`http://localhost:5000/employeesAcademics/${params.email}`)
+            // },
+            // {
+            //     path: '/dashboard/employeesReferences/:email',
+            //     element: <EmployeesLanguageAndReferenceManage></EmployeesLanguageAndReferenceManage>,
+            //     loader: ({ params }) => fetch(`http://localhost:5000/employeesAcademics/${params.email}`)
+            // },
+
             {
                 path: '/dashboard/employeesExperienceEdit',
                 element: <EmployeesExperienceManage ></EmployeesExperienceManage>

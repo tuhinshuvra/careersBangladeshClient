@@ -13,7 +13,7 @@ const EmployeesProfile = () => {
         fetch(`http://localhost:5000/employeesAggregatedData/${email}`)
             .then(response => response.json())
             .then(data => {
-                console.log("employeesAggregatedData : ", data[0])
+                // console.log("employeesAggregatedData : ", data[0])
                 setEmployeesData(data[0])
             })
 
@@ -444,7 +444,7 @@ const EmployeesProfile = () => {
 
                                 <tr>
                                     <th scope="row">Date of Birth</th>
-                                    <td>: {employeesData?.birthDete} </td>
+                                    <td>: {employeesData?.birthDate} </td>
                                 </tr>
 
                                 <tr>
@@ -454,12 +454,12 @@ const EmployeesProfile = () => {
 
                                 <tr>
                                     <th scope="row">Marital Status</th>
-                                    <td>: {employeesData?.maritialStatus} </td>
+                                    <td>: {employeesData?.maritalStatus} </td>
                                 </tr>
 
                                 <tr>
                                     <th scope="row">Nationality</th>
-                                    <td>: {employeesData?.birthDete} </td>
+                                    <td>: {employeesData?.nationality} </td>
                                 </tr>
 
                                 <tr>
@@ -477,7 +477,7 @@ const EmployeesProfile = () => {
 
                                 <tr>
                                     <th scope="row">Current Location</th>
-                                    <td>: {employeesData?.birthDete} </td>
+                                    <td>: {employeesData?.presentAddress} </td>
                                 </tr>
                                 {/* <tr>
                                     <th scope="row">Blood Group</th>

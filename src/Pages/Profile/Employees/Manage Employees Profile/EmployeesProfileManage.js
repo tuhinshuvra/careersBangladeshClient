@@ -8,7 +8,8 @@ import '../EmployeesProfile.css';
 
 const EmployeesProfileManage = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext);
+    // console.log("User Id :", user.email)
 
     return (
         <div>
@@ -18,21 +19,21 @@ const EmployeesProfileManage = () => {
 
                     <button type="button" class="btn btn-outline-secondary">
                         <Link
-                            to={`/dashboard/employeesPersonalDetails/${user?._id}`}
+                            to={`/dashboard/employeesPersonalDetails/${user?.email}`}
                             className=' text-decoration-none'
                         >Personal Details
                         </Link>
                     </button>
                     <button type="button" class="btn btn-outline-secondary">
                         <Link
-                            to="/dashboard/employeesExperienceDataEntry"
+                            to={`/dashboard/employeesExperiences/${user?.email}`}
                             className=' text-decoration-none'
                         >Experience
                         </Link>
                     </button>
                     <button type="button" class="btn btn-outline-secondary">
                         <Link
-                            to="/dashboard/employeesAcademicAndTrainingEntry"
+                            to={`/dashboard/employeesAcademics/${user?.email}`}
                             className=' text-decoration-none'
                         >Academic and Training
                         </Link>
@@ -40,14 +41,14 @@ const EmployeesProfileManage = () => {
                     </button>
                     <button type="button" class="btn btn-outline-secondary">
                         <Link
-                            to="/dashboard/employeesCareersAndSkillEntry"
+                            to={`/dashboard/employeesCareers/${user?.email}`}
                             className=' text-decoration-none'
                         > Career and Application
                         </Link>
                     </button>
                     <button type="button" class="btn btn-outline-secondary">
                         <Link
-                            to="/dashboard/employeesLanguageAndReferenceEntry"
+                            to={`/dashboard/employeesReferences/${user?.email}`}
                             className=' text-decoration-none'
                         > Language and Reference
                         </Link>

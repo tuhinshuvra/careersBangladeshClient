@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
@@ -6,74 +6,52 @@ import { AuthContext } from '../../../Authentication/AuthProvider';
 import EmployeesProfileManage from './EmployeesProfileManage';
 
 const EmployeesPersonalDetailsManage = () => {
-
-    const { personalDetails } = useLoaderData();
-
-    console.log("personalDetails : ", personalDetails);
-
     const { user } = useContext(AuthContext)
+
+    const storedData = useLoaderData();
+    const [personalDetails, setPersonalDetails] = useState(storedData);
+
+    // console.log("personalDetails : ", personalDetails);
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
 
     const imageHostKey = process.env.REACT_APP_CABD_imagebb_hostKey;
 
 
-    const handleJobSeekerProfile = (data) => {
-        const image = data.image[0];
-        const formData = new FormData();
-        formData.append('image', image);
-        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
-        fetch(url, {
-            method: 'POST',
-            body: formData
+    const handleUpdatePersonalDoc = (event) => {
+        event.preventDefault();
+
+
+
+        console.log("personalDetails :", personalDetails)
+        fetch(`http://localhost:5000/employeesPersonal/${storedData._id}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(personalDetails)
         })
             .then(res => res.json())
-            .then(imgData => {
-                if (imgData.success) {
-
-                    const employeesPersonal = {
-                        email: user.email,
-                        name: user.displayName,
-
-                        skill: data.skill,
-                        fathersName: data.fathers_name,
-                        mothersName: data.mothers_name,
-                        nationality: data.nationality,
-                        nationalId: data.nationalId,
-                        phone: data.phone,
-                        birthDete: data.birth_dete,
-                        gender: data.gender,
-                        religion: data.religion,
-                        maritialStatus: data.maritial_status,
-                        image: imgData.data.url,
-                        presentAddress: data.present_addres,
-                        permanentAddress: data.permanent_address,
-                        careerObjective: data.career_objective,
-                    }
-                    // console.log("Job Seeker Data :", data);
-
-                    fetch('http://localhost:5000/employeesPersonal', {
-                        method: 'POST',
-                        headers: {
-                            "content-type": "application/json"
-                        },
-                        body: JSON.stringify(employeesPersonal)
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.acknowledged) {
-                                console.log(data)
-                                toast.success(`${user.displayName} Profile Data Saved Successfully`)
-                                navigate("/dashboard/jobSeekerProfile");
-                            }
-                            else {
-                                toast.error(data.message)
-                            }
-                        })
+            .then(data => {
+                console.log("Updated Data :", data)
+                if (data.modifiedCount > 0) {
+                    toast.success('Data Updated Successfully.');
+                    // navigate('');
                 }
             })
     }
 
+
+
+    const handleInputChange = event => {
+        const field = event.target.name;
+        const value = event.target.value;
+
+        const newData = { ...personalDetails }
+        newData[field] = value;
+        setPersonalDetails(newData);
+    }
 
 
     return (
@@ -91,29 +69,29 @@ const EmployeesPersonalDetailsManage = () => {
                     <p className=''> <span className="star">&#x2605; </span> <b>(Red Star) denotes must be filled</b></p>
                 </div>
 
-                <form onSubmit={handleSubmit(handleJobSeekerProfile)} >
+                <form onSubmit={handleUpdatePersonalDoc} >
                     <div className="row ">
                         <div className='col-md-6 mb-3 mb-3'>
                             <span className="label-text text-md fw-bold">Father's Name <span className="star">&#x2605;</span></span>
                             <input
-                                {...register("fathers_name", { required: true })}
-                                name='fathers_name'
+                                onChange={handleInputChange}
+                                defaultValue={storedData.fathersName}
+                                name='fathersName'
                                 className='input form-control '
-                                id="fathers_name"
+                                id="fathersName"
                                 type="text"
-                                placeholder='Enter Fathers Name'
                             />
                         </div>
 
                         <div className='col-md-6 mb-3 mb-3'>
                             <span className="label-text text-md fw-bold  ">Mother's Name<span className="star">&#x2605;</span></span>
                             <input
-                                {...register("mothers_name", { required: true })}
-                                name='mothers_name'
+                                onChange={handleInputChange}
+                                defaultValue={storedData.mothersName}
+                                name='mothersName'
                                 className='input form-control '
-                                id="mothers_name"
+                                id="mothersName"
                                 type="text"
-                                placeholder='Enter Mothers Name'
                             />
                         </div>
 
@@ -121,46 +99,47 @@ const EmployeesPersonalDetailsManage = () => {
                         <div className='col-md-3 mb-3 '>
                             <span className="label-text text-md fw-bold  ">Nationality<span className="star">&#x2605;</span></span>
                             <input
-                                {...register("nationality",)}
+                                onChange={handleInputChange}
+                                defaultValue={storedData.nationality}
                                 name='nationality'
                                 className='input form-control '
                                 id="nationality"
                                 type="text"
-                                placeholder='Enter nationality'
                             />
                         </div>
 
                         <div className='col-md-3 mb-3 '>
                             <span className="label-text text-md fw-bold  ">National Id No.</span>
                             <input
-                                {...register("nationalId",)}
+                                onChange={handleInputChange}
+                                defaultValue={storedData.nationalId}
                                 name='nationalId'
                                 className='input form-control '
                                 id="nationalId"
                                 type="text"
-                                placeholder='Enter nationalId No'
                             />
                         </div>
 
                         <div className='col-md-3 mb-3 '>
                             <span className="label-text text-md fw-bold  ">Phone<span className="star">&#x2605;</span></span>
                             <input
-                                {...register("phone", { required: true })}
+                                onChange={handleInputChange}
+                                defaultValue={storedData.phone}
                                 name='phone'
                                 className='input form-control '
                                 id="phone"
                                 type="text"
-                                placeholder='Enter Phone No'
                             />
                         </div>
 
                         <div className='col-md-3 mb-3 '>
                             <span className="label-text text-md fw-bold  ">Date of Birth<span className="star">&#x2605;</span></span>
                             <input
-                                {...register("birth_dete", { required: true })}
-                                name='birth_dete'
+                                onChange={handleInputChange}
+                                defaultValue={storedData.birthDate}
+                                name='birthDate'
                                 className='input form-control '
-                                id="birth_date"
+                                id="birthDate"
                                 type="date"
                             />
                         </div>
@@ -169,23 +148,23 @@ const EmployeesPersonalDetailsManage = () => {
                             <div className='col-md-3 mb-3  '>
                                 <span className="label-text text-md fw-bold  ">Gender<span className="star">&#x2605;</span></span>
                                 <select
-                                    {...register("gender")}
+                                    onChange={handleInputChange}
                                     name="gender"
                                     className="form-select  ">
-                                    <option>-Select Gender-</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="others">Others</option>
+                                    <option defaultValue={storedData.gender}>{storedData.gender}</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Others">Others</option>
                                 </select>
                             </div>
 
                             <div className='col-md-3 mb-3 '>
                                 <span className="label-text text-md fw-bold  ">Religion</span>
                                 <select
-                                    {...register("religion")}
+                                    onChange={handleInputChange}
                                     name="religion"
-                                    className="form-select select-bordered  ">
-                                    <option>-Select Religion-</option>
+                                    className="form-select select-bordered">
+                                    <option defaultValue={storedData.religion}>{storedData.religion}</option>
                                     <option value="Islam">Islam</option>
                                     <option value="Buddhism">Buddhism</option>
                                     <option value="Hinduism">Hinduism</option>
@@ -200,12 +179,11 @@ const EmployeesPersonalDetailsManage = () => {
                             <div className='col-md-3 mb-3 '>
                                 <span className={`label-text text-md fw-bold`}>Marital Status</span>
                                 <select
-                                    {...register("maritial_status")}
-                                    name="marital_status"
-                                    id="marital_status"
+                                    onChange={handleInputChange}
+                                    name="maritalStatus"
                                     className="form-select select-bordered">
 
-                                    <option>-Select Marital Status-</option>
+                                    <option defaultValue={storedData.maritalStatus}>{storedData.maritalStatus}</option>
                                     <option value="Single">Single</option>
                                     <option value="Married">Married</option>
                                     <option value="Widowed">Widowed</option>
@@ -218,7 +196,7 @@ const EmployeesPersonalDetailsManage = () => {
                             <div className='col-md-3 mb-3 '>
                                 <span className="label-text text-md fw-bold  ">Photo<span className="star">&#x2605;</span></span>
                                 <input
-                                    {...register("image", { required: true })}
+                                    // onChange={handleInputChange}
                                     name='image'
                                     className='input form-control '
                                     id="image"
@@ -232,22 +210,24 @@ const EmployeesPersonalDetailsManage = () => {
                         <div className=' col-md-6 mb-3'>
                             <span className="label-text text-md fw-bold ">Present Address<span className="star">&#x2605;</span></span>
                             <div>
-                                <textarea {...register("present_address", { required: true })}
-                                    name='present_address'
+                                <textarea
+                                    defaultValue={storedData.presentAddress}
+                                    name='presentAddress'
                                     className='input form-control '
-                                    id='present_address' type="text"
-                                    placeholder='Write Your Pressent Address'
+                                    id='presentAddress' type="text"
                                 />
                             </div>
                         </div>
                         <div className=' col-md-6 mb-3'>
                             <span className="label-text text-md fw-bold  ">Permanent Address</span>
                             <div>
-                                <textarea {...register("permanent_address",)}
-                                    name='permanent_address'
+                                <textarea
+                                    onChange={handleInputChange}
+                                    defaultValue={storedData.permanentAddress}
+                                    name='permanentAddress'
                                     className='input form-control '
-                                    id='permanent_address' type="text"
-                                    placeholder='Write Your Permanent Address'
+                                    id='permanentAddress'
+                                    type="text"
                                 />
                             </div>
                         </div>
@@ -255,8 +235,10 @@ const EmployeesPersonalDetailsManage = () => {
                     <div className='mb-3 '>
                         <span className="label-text text-md fw-bold text-center ">Career Objective<span className="star">&#x2605;</span></span>
                         <div className=' '>
-                            <textarea {...register("career_objective", { required: true })}
-                                name='career_objective'
+                            <textarea
+                                onChange={handleInputChange}
+                                defaultValue={storedData.careerObjective}
+                                name='careerObjective'
                                 className='input form-control '
                                 id='career_objective' type="text"
                                 placeholder='Enter Career Objective'

@@ -27,7 +27,6 @@ const UpdateUser = () => {
                     navigate('/dashboard/admin');
                 }
             })
-
     }
 
     const handleInputChange = event => {
@@ -44,7 +43,14 @@ const UpdateUser = () => {
             <h4 className=' fw-bold text-center my-4'>Update {storedUser.name} Data </h4>
             <div className=' col-4 mx-auto'>
                 <form onSubmit={handleUpdateUser} className='d-flex flex-column'>
-                    <input onChange={handleInputChange} type="text" name='name' defaultValue={storedUser.name} id='name' className=' form-control my-1' />
+                    <input
+                        onChange={handleInputChange}
+                        type="text"
+                        name='name'
+                        defaultValue={storedUser.name}
+                        id='name'
+                        className=' form-control my-1' />
+
                     <input onChange={handleInputChange} type="email" name='email' defaultValue={storedUser.email} id='email' disabled className=' form-control my-1' />
                     <input onChange={handleInputChange} type="text" name='phone' defaultValue={storedUser.phone} id='phone' className=' form-control my-1' placeholder='Phone no' />
                     <button className='custom_btn my-2' type="submit">Update User</button>
