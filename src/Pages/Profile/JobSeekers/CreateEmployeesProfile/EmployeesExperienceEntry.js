@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
-import '../../Employees/EmployeesProfile.css';
+import '../../JobSeekers/EmployeesProfile.css';
 import EmployeesProfileEntry from './EmployeesProfileEntry';
 
 const EmployeesExperienceEntry = () => {

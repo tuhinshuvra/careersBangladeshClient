@@ -2,46 +2,108 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
-import '../../Employees/EmployeesProfile.css';
-import EmployeesProfileManage from './EmployeesProfileManage';
+import '../../JobSeekers/EmployeesProfile.css';
+import EmployeesProfileEntry from './EmployeesProfileEntry';
 
-const EmployeesAcademicAndTrainingManage = () => {
+const EmployeesAcademicAndTrainingEntry = () => {
 
-    // const { user } = useContext(AuthContext)
-    // const storedData = useLoaderData();
-    // const [experiencesData, setExperiencesData] = useState(storedData);
+    const { user } = useContext(AuthContext)
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
+
+    const handleJobSeekerProfile = (data) => {
+
+        const emplyeesAcademics = {
+            email: user.email,
+            name: user.displayName,
+
+            examTitleOne: data.examTitleOne,
+            majorOne: data.majorOne,
+            instituteOne: data.instituteOne,
+            resultOne: data.resultOne,
+            passYearOne: data.passYearOne,
 
 
+            examTitleTwo: data.examTitleTwo,
+            majorTwo: data.majorTwo,
+            instituteTwo: data.instituteTwo,
+            resultTwo: data.resultTwo,
+            passYearTwo: data.passYearTwo,
 
-    // console.log("Academics And Training storedData : ", storedData);
 
-    
-    // const navigate = useNavigate();
+            examTitleThree: data.examTitleThree,
+            majorThree: data.majorThree,
+            instituteThree: data.instituteThree,
+            resultThree: data.resultThree,
+            passYearThree: data.passYearThree,
 
 
-     const handleUdateAcademicsDoc = (event) => {
+            examTitleFour: data.examTitleFour,
+            majorFour: data.majorFour,
+            instituteFour: data.instituteFour,
+            resultFour: data.resultFour,
+            passYearFour: data.passYearFour,
 
-     }
 
-    // const handleInputChange = event => {
-    //     const field = event.target.name;
-    //     const value = event.target.value;
+            trainingTitleOne: data.trainingTitleOne,
+            topicOne: data.topicOne,
+            insAndLocationOne: data.insAndLocationOne,
+            durationOne: data.durationOne,
+            traningYearOne: data.traningYearOne,
 
-    //     const newData = { ...experiencesData }
-    //     newData[field] = value;
-    //     setExperiencesData(newData);
-    // }
+
+            trainingTitleTwo: data.trainingTitleTwo,
+            topicTwo: data.topicTwo,
+            insAndLocationTwo: data.insAndLocationTwo,
+            durationTwo: data.durationTwo,
+            traningYearTwo: data.traningYearTwo,
+
+
+            trainingTitleThree: data.trainingTitleThree,
+            topicThree: data.topicThree,
+            insAndLocationThree: data.insAndLocationThree,
+            durationThree: data.durationThree,
+            traningYearThree: data.traningYearThree,
+
+
+            gitHubLink: data.gitHubLink,
+            link_two: data.link_two,
+            link_three: data.link_three,
+            portfolio: data.portfolio,
+        }
+        // console.log("Job Seeker Data :", data);
+
+        fetch('http://localhost:5000/employeesAcademics', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(emplyeesAcademics)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    console.log(data)
+                    toast.success(`${user.displayName} Academic and Training Data Saved Successfully`)
+                    navigate("/dashboard/jobSeekerProfile");
+                }
+                else {
+                    toast.error(data.message)
+                }
+            })
+    }
 
 
     return (
         <div>
-            <EmployeesProfileManage></EmployeesProfileManage>
+            <EmployeesProfileEntry></EmployeesProfileEntry>
             <h2 className=" text-center fw-bold my-4">Academic and Training Data</h2>
 
             {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
-            <form onSubmit={(handleUdateAcademicsDoc)}>
+            <form onSubmit={handleSubmit(handleJobSeekerProfile)}>
                 {/* Enter Educational Qualification One */}
                 <div className=' d-flex justify-content-between'>
                     <h5 className="label-text text-md fw-bold ">Academic One</h5>
@@ -51,7 +113,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2  '>
                         <span className="label-text text-md fw-bold  ">Exam Title<span className="star">&#x2605;</span></span>
                         <input
-                            
+                            {...register("examTitleOne", { required: true })}
                             name='examTitleOne'
                             className='input form-control '
                             id="examTitleOne"
@@ -63,7 +125,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold  ">Concentration/Major<span className="star">&#x2605;</span></span>
                         <input
-                            
+                            {...register("majorOne", { required: true })}
                             name='majorOne'
                             className='input form-control '
                             id="majorOne"
@@ -75,7 +137,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold  ">Institute<span className="star">&#x2605;</span></span>
                         <input
-                            
+                            {...register("instituteOne", { required: true })}
                             name='instituteOne'
                             className='input form-control '
                             id="instituteOne"
@@ -87,7 +149,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Result<span className="star">&#x2605;</span></span>
                         <input
-                             
+                            {...register("resultOne", { required: true })}
                             name='resultOne'
                             className='input form-control '
                             id="resultOne"
@@ -99,7 +161,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Pass.Year<span className="star">&#x2605;</span></span>
                         <select
-                             
+                            {...register("passYearOne", { required: true })}
                             id="passYearOne"
                             name="passYearOne"
                             className='input form-control '
@@ -169,7 +231,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2   '>
                         <span className="label-text text-md fw-bold  ">Exam Title</span>
                         <input
-                            
+                            {...register("examTitleTwo", {})}
                             name='examTitleTwo'
                             className='input form-control '
                             id="examTitleTwo"
@@ -181,7 +243,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Concentration/Major</span>
                         <input
-                            
+                            {...register("majorTwo", {})}
                             name='majorTwo'
                             className='input form-control '
                             id="majorTwo"
@@ -193,7 +255,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Institute</span>
                         <input
-                            
+                            {...register("instituteTwo", {})}
                             name='instituteTwo'
                             className='input form-control '
                             id="instituteTwo"
@@ -204,7 +266,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Result</span>
                         <input
-                             
+                            {...register("resultTwo", {})}
                             name='instituteTwo'
                             className='input form-control '
                             id="instituteTwo"
@@ -216,7 +278,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Pass.Year</span>
                         <select
-                            
+                            {...register("passYearTwo", {})}
                             id="passYearTwo"
                             name="passYearTwo"
                             className='input form-control '
@@ -285,7 +347,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Exam Title</span>
                         <input
-                            
+                            {...register("examTitleThree", {})}
                             name='examTitleThree'
                             className='input form-control '
                             id="examTitleThree"
@@ -297,7 +359,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Concentration/Major</span>
                         <input
-                            
+                            {...register("majorThree", {})}
                             name='majorThree'
                             className='input form-control '
                             id="majorThree"
@@ -309,7 +371,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Institute</span>
                         <input
-                            
+                            {...register("instituteThree", {})}
                             name='instituteThree'
                             className='input form-control '
                             id="instituteThree"
@@ -321,7 +383,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Result</span>
                         <input
-                            
+                            {...register("resultThree", {})}
                             name='resultThree'
                             className='input form-control '
                             id="resultThree"
@@ -333,7 +395,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Pass.Year</span>
                         <select
-                            
+                            {...register("passYearThree",)}
                             id="passYearThree"
                             name="passYearThree"
                             className='input form-control '
@@ -402,7 +464,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Exam Title</span>
                         <input
-                            
+                            {...register("examTitleFour", {})}
                             name='examTitleFour'
                             className='input form-control '
                             id="examTitleFour"
@@ -414,7 +476,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Concentration/Major</span>
                         <input
-                           
+                            {...register("majorFour", {})}
                             name='majorFour'
                             className='input form-control '
                             id="majorFour"
@@ -426,7 +488,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Institute</span>
                         <input
-                            
+                            {...register("instituteFour", {})}
                             name='instituteFour'
                             className='input form-control '
                             id="instituteFour"
@@ -438,7 +500,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Result</span>
                         <input
-                           
+                            {...register("resultFour", {})}
                             name='resultFour'
                             className='input form-control '
                             id="resultFour"
@@ -450,7 +512,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Pass.Year</span>
                         <select
-                            
+                            {...register("passYearFour", {})}
                             id="passYearFour"
                             name="passYearFour"
                             className='input form-control '
@@ -530,7 +592,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2  '>
                         <span className="label-text text-md fw-bold  ">Training Title</span>
                         <input
-                            
+                            {...register("trainingTitleOne", {})}
                             name='trainingTitleOne'
                             className='input form-control '
                             id="trainingTitleOne"
@@ -542,7 +604,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Topic</span>
                         <input
-                            
+                            {...register("topicOne", {})}
                             name='topicOne'
                             className='input form-control '
                             id="topicOne"
@@ -554,7 +616,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold  ">Institute and Location</span>
                         <input
-                            
+                            {...register("insAndLocationOne", {})}
                             name='insAndLocationOne'
                             className='input form-control '
                             id="insAndLocationOne"
@@ -565,7 +627,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2  '>
                         <span className="label-text text-md fw-bold  ">Duration</span>
                         <input
-                            
+                            {...register("durationOne", {})}
                             name='durationOne'
                             className='input form-control '
                             id="durationOne"
@@ -577,7 +639,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Year</span>
                         <select
-                             
+                            {...register("traningYearOne", {})}
                             id="traningYearOne"
                             name="traningYearOne"
                             className='input form-control '
@@ -646,7 +708,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2  '>
                         <span className="label-text text-md fw-bold  ">Training Title</span>
                         <input
-                            
+                            {...register("trainingTitleTwo",)}
                             name='trainingTitleTwo'
                             className='input form-control '
                             id="trainingTitleTwo"
@@ -658,7 +720,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Topic</span>
                         <input
-                           
+                            {...register("topicTwo",)}
                             name='topicTwo'
                             className='input form-control '
                             id="topicTwo"
@@ -670,7 +732,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold  ">Institute and Location</span>
                         <input
-                            
+                            {...register("insAndLocationTwo",)}
                             name='insAndLocationTwo'
                             className='input form-control '
                             id="insAndLocationTwo"
@@ -681,7 +743,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Duration</span>
                         <input
-                            
+                            {...register("durationTwo",)}
                             name='durationTwo'
                             className='input form-control '
                             id="durationTwo"
@@ -693,7 +755,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2  '>
                         <span className="label-text text-md fw-bold  ">Year</span>
                         <select
-                            
+                            {...register("traningYearTwo",)}
                             id="traningYearTwo"
                             name="traningYearTwo"
                             className='input form-control '
@@ -762,7 +824,7 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2'>
                         <span className="label-text text-md fw-bold  ">Training Title</span>
                         <input
-                           
+                            {...register("trainingTitleThree",)}
                             name='trainingTitleThree'
                             className='input form-control '
                             id="trainingTitleThree"
@@ -773,7 +835,8 @@ const EmployeesAcademicAndTrainingManage = () => {
 
                     <div className='col-md-3 mb-3 mb-3'>
                         <span className="label-text text-md fw-bold  ">Topic</span>
-                        <input                            
+                        <input
+                            {...register("topicThree",)}
                             name='topicThree'
                             className='input form-control '
                             id="topicThree"
@@ -784,7 +847,8 @@ const EmployeesAcademicAndTrainingManage = () => {
 
                     <div className='col-md-3 mb-3 mb-3'>
                         <span className="label-text text-md fw-bold  ">Institute and Location</span>
-                        <input                            
+                        <input
+                            {...register("insAndLocationThree",)}
                             name='insAndLocationThree'
                             className='input form-control '
                             id="insAndLocationThree"
@@ -794,7 +858,8 @@ const EmployeesAcademicAndTrainingManage = () => {
                     </div>
                     <div className='col-md-2'>
                         <span className="label-text text-md fw-bold  ">Duration</span>
-                        <input                            
+                        <input
+                            {...register("durationThree",)}
                             name='durationThree'
                             className='input form-control '
                             id="durationThree"
@@ -805,7 +870,8 @@ const EmployeesAcademicAndTrainingManage = () => {
 
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Year</span>
-                        <select                            
+                        <select
+                            {...register("traningYearThree",)}
                             id="traningYearThree"
                             name="traningYearThree"
                             className='input form-control '
@@ -875,7 +941,8 @@ const EmployeesAcademicAndTrainingManage = () => {
                 <div className="row ">
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold   ">Github Link</span>
-                        <input                            
+                        <input
+                            {...register("gitHubLink",)}
                             name='gitHubLink'
                             className='input form-control '
                             id="gitHubLink"
@@ -885,7 +952,8 @@ const EmployeesAcademicAndTrainingManage = () => {
                     </div>
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold   ">Link Other</span>
-                        <input                            
+                        <input
+                            {...register("link_two",)}
                             name='link_two'
                             className='input form-control '
                             id="link_two"
@@ -896,7 +964,8 @@ const EmployeesAcademicAndTrainingManage = () => {
 
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold">Link Other</span>
-                        <input                            
+                        <input
+                            {...register("link_three",)}
                             name='link_three'
                             className='input form-control '
                             id="link_three"
@@ -906,7 +975,8 @@ const EmployeesAcademicAndTrainingManage = () => {
                     </div>
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold">Portfolio</span>
-                        <input                            
+                        <input
+                            {...register("portfolio")}
                             name='portfolio'
                             className='input form-control '
                             id="portfolio"
@@ -925,4 +995,4 @@ const EmployeesAcademicAndTrainingManage = () => {
     );
 };
 
-export default EmployeesAcademicAndTrainingManage;
+export default EmployeesAcademicAndTrainingEntry;

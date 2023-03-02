@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
-import '../../Employees/EmployeesProfile.css';
+import '../../JobSeekers/EmployeesProfile.css';
 import EmployeesProfileManage from './EmployeesProfileManage';
 
 const EmployeesExperienceManage = () => {
@@ -50,7 +50,7 @@ const EmployeesExperienceManage = () => {
     return (
         <div>
             <EmployeesProfileManage></EmployeesProfileManage>
-            <h2 className=" text-center fw-bold my-4">Experience Data</h2>
+            <h4 className=" text-center fw-bold my-3">Experience Data</h4>
 
 
             <form onSubmit={handleUpdateExperiencesDoc}>

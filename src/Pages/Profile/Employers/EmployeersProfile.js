@@ -32,16 +32,14 @@ const EmployersProfile = () => {
         <div>
 
             <article className="resume-wrapper text-center position-relative">
-                <div className="resume-wrapper-inner mx-auto text-start bg-white shadow-lg">
-                    <header className="resume-header pt-4">
+                <div className="resume-wrapper-inner text-start bg-white shadow-sm my-4 ">
+                    <header className="resume-header mx-4">
                         <div className=' d-flex justify-content-evenly'>
-                            <div className="col-lg-4 ">
-                                <img className="companyLogo" src={companyLogo} alt="" />
-                            </div>
 
+                            {/* Employers Data */}
                             <div className="col-lg-8">
                                 <div className="row">
-                                    <div className=' d-flex justify-content-evenly gap-1  '>
+                                    <div className=' d-flex  '>
                                         <div className=' col-lg-8'>
                                             <div className="primary-info col-auto">
                                                 {/* <h1 className="name mt-0 mb-1 text-uppercase">{name}</h1> */}
@@ -56,10 +54,15 @@ const EmployersProfile = () => {
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Employeers Image  */}
+                            <div className="col-lg-4 ">
+                                <img className="companyLogo" src={companyLogo} alt="" />
+                            </div>
                         </div>
                     </header>
-                    <div className="resume-body p-3">
-                        <section className="resume-section summary-section mb-5">
+                    <div className="resume-body my-4 mx-4">
+                        <section className="resume-section summary-section">
                             <h2 className=""> Description</h2>
                             <div className="resume-section-content">
                                 <p>{busiDescription}</p>

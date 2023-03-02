@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { FaSun } from 'react-icons/fa';
-import './NewJobs.css';
 import { useQuery } from '@tanstack/react-query';
 import NewJobsDisplay from './NewJobsDisplay';
+import './NewJobs.css';
 
 const HotJobs = () => {
 
@@ -29,7 +29,7 @@ const HotJobs = () => {
     let sliceJobs = jobs.slice(0, 6)
 
     return (
-        <div className=' common-margin '>
+        <div className='newjob_bg'>
             <h2 className='my-5 careers_title_one'><FaSun className='mx-1'></FaSun>New JOBS</h2>
             <div className='hot_job_category'>
 

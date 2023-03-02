@@ -3,10 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../../assets/logo/carriers-bangladesh-logo.png';
 import { AuthContext } from '../Authentication/AuthProvider';
 import { toast } from 'react-hot-toast';
-import './Navbar.css';
 import useAdmin from '../../hooks/useAdmin';
 import useEmployer from '../../hooks/useEmployer';
 import useJobSeeker from '../../hooks/useJobSeeker';
+import './Navbar.css';
+
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)

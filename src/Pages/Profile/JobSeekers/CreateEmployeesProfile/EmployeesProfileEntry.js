@@ -1,39 +1,32 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../../Authentication/AuthProvider';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import '../EmployeesProfile.css';
 
-const EmployeesProfileManage = () => {
-
-    const { user } = useContext(AuthContext);
-    // console.log("User Id :", user.email)
+const EmployeesProfileEntry = () => {
 
     return (
         <div>
-            <h2 className=" text-center fw-bold my-4">Manage Profile</h2>
+            <h2 className=" text-center fw-bold my-4">Create Profile</h2>
             <div className=' d-flex justify-content-center'>
                 <div class="btn-group" role="group" aria-label="Employee profile button group">
 
                     <button type="button" class="btn btn-outline-secondary">
                         <Link
-                            to={`/dashboard/employeesPersonalDetails/${user?.email}`}
+                            to="/dashboard/employeesPersonalDetailsEntry"
                             className=' text-decoration-none'
                         >Personal Details
                         </Link>
                     </button>
                     <button type="button" class="btn btn-outline-secondary">
                         <Link
-                            to={`/dashboard/employeesExperiences/${user?.email}`}
+                            to="/dashboard/employeesExperienceDataEntry"
                             className=' text-decoration-none'
                         >Experience
                         </Link>
                     </button>
                     <button type="button" class="btn btn-outline-secondary">
                         <Link
-                            to={`/dashboard/employeesAcademics/${user?.email}`}
+                            to="/dashboard/employeesAcademicAndTrainingEntry"
                             className=' text-decoration-none'
                         >Academic and Training
                         </Link>
@@ -41,14 +34,14 @@ const EmployeesProfileManage = () => {
                     </button>
                     <button type="button" class="btn btn-outline-secondary">
                         <Link
-                            to={`/dashboard/employeesCareers/${user?.email}`}
+                            to="/dashboard/employeesCareersAndSkillEntry"
                             className=' text-decoration-none'
                         > Career and Application
                         </Link>
                     </button>
                     <button type="button" class="btn btn-outline-secondary">
                         <Link
-                            to={`/dashboard/employeesReferences/${user?.email}`}
+                            to="/dashboard/employeesLanguageAndReferenceEntry"
                             className=' text-decoration-none'
                         > Language and Reference
                         </Link>
@@ -60,4 +53,4 @@ const EmployeesProfileManage = () => {
     );
 };
 
-export default EmployeesProfileManage;
+export default EmployeesProfileEntry;

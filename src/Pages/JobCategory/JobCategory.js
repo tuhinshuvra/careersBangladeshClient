@@ -32,11 +32,11 @@ const JobCategory = () => {
     }, [])
 
     return (
-        <div className=' common-margin '>
-            <h2 className='my-5 careers_title_one'><FaCompressArrowsAlt className='mx-1'></FaCompressArrowsAlt>JOB CATEGORIES</h2>
-            <div className=' job-category'>
+        <div className='category_bg'>
+            <h2 className=' careers_title_one'><FaCompressArrowsAlt className=''></FaCompressArrowsAlt>JOB CATEGORIES</h2>
+            <div className=' job-category m-4'>
 
-                {!showAll && 
+                {!showAll &&
                     sliceCategories.map(category => <JobCategoryDisplay
                         key={category._id}
                         category={category}

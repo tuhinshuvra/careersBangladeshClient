@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
-import '../../Employees/EmployeesProfile.css';
+import '../../JobSeekers/EmployeesProfile.css';
 import EmployeesProfileManage from './EmployeesProfileManage';
 
 const EmployeesCareerAndSkillManage = () => {
@@ -79,11 +79,11 @@ const EmployeesCareerAndSkillManage = () => {
     return (
         <div>
             <div>
-            <EmployeesProfileManage></EmployeesProfileManage>
+                <EmployeesProfileManage></EmployeesProfileManage>
             </div >
 
 
-            <h2 className=" text-center fw-bold my-4">Employees Careers and Skill Data</h2>
+            <h4 className=" text-center fw-bold my-3">Employees Careers and Skill Data</h4>
 
             {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
             <form onSubmit={handleSubmit(handleJobSeekerProfile)} >

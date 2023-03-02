@@ -1,7 +1,9 @@
 .findAndStat {
-    /* background-color: rgba(0, 255, 255, 0.421); */
+    background-color: #E5F7E5;
+    /* background-image: url('../../assets/images/hero_bg.png'); */
     /* height: 400px !important; */
-    padding-top: 100px;
+    padding-top: 70px;
+    padding-bottom: 35px;
 }
 
 /* start glow animatio on couter hover  */

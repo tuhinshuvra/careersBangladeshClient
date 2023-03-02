@@ -244,7 +244,7 @@ const FindJobHomeResult = ({ jobList }) => {
 
 
 
-                                <div className=' d-flex justify-content-center'>
+                                {/* <div className=' d-flex justify-content-center'>
                                     <nav aria-label="..." className=' '>
                                         <ul className="pagination">
                                             <li className="page-item disabled">
@@ -263,7 +263,7 @@ const FindJobHomeResult = ({ jobList }) => {
                                             </li>
                                         </ul>
                                     </nav>
-                                </div>
+                                </div> */}
 
                             </div>
 

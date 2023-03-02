@@ -4,10 +4,10 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
-import '../../Employees/EmployeesProfile.css';
-import EmployeesProfileEntry from './EmployeesProfileEntry';
+import '../../JobSeekers/EmployeesProfile.css';
+import EmployeesProfileManage from './EmployeesProfileManage';
 
-const EmployeesLanguageAndReferenceEntry = () => {
+const EmployeesLanguageAndReferenceManage = () => {
 
     const { user } = useContext(AuthContext)
 
@@ -84,8 +84,8 @@ const EmployeesLanguageAndReferenceEntry = () => {
 
     return (
         <div>
-            <EmployeesProfileEntry></EmployeesProfileEntry>
-            <h2 className=" text-center fw-bold my-4">Employees Language and Reference Data</h2>
+            <EmployeesProfileManage></EmployeesProfileManage>
+            <h4 className=" text-center fw-bold my-3">Employees Language and Reference Data</h4>
 
             {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
             <form onSubmit={handleSubmit(handleJobSeekerProfile)} >
@@ -355,4 +355,4 @@ const EmployeesLanguageAndReferenceEntry = () => {
     );
 };
 
-export default EmployeesLanguageAndReferenceEntry;
+export default EmployeesLanguageAndReferenceManage;
