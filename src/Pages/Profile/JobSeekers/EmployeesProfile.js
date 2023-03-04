@@ -36,9 +36,9 @@ const EmployeesProfile = () => {
                 <div className=' d-flex justify-content-between'>
                     <p><b>Download:</b>  Word, PDF</p>
                     <p><b>View Resume:</b>
-                        <div class="btn-group ms-2" role="group" aria-label="Basic outlined example">
-                            <button type="button" class="btn btn-outline-primary btn-sm">Details</button>
-                            <button type="button" class="btn btn-outline-primary btn-sm">Short</button>
+                        <div className="btn-group ms-2" role="group" aria-label="Basic outlined example">
+                            <button type="button" className="btn btn-outline-primary btn-sm">Details</button>
+                            <button type="button" className="btn btn-outline-primary btn-sm">Short</button>
                         </div>
                     </p>
                 </div>
@@ -162,7 +162,7 @@ const EmployeesProfile = () => {
                     <h5 className=" fw-bold text-uppercase text-decoration-underline mb-3">Academic Qualification</h5>
 
                     <div className=''>
-                        <table class="table table-bordered border-secondary">
+                        <table className="table table-bordered border-secondary">
                             <thead>
                                 <tr>
                                     <th scope="col">SL</th>
@@ -235,7 +235,7 @@ const EmployeesProfile = () => {
                         <div className=' mt-3'>
                             <h5 className=" fw-bold text-uppercase text-decoration-underline mb-3">Training Summary</h5>
                             <div>
-                                <table class="table table-bordered border-secondary">
+                                <table className="table table-bordered border-secondary">
                                     <thead>
                                         <tr>
                                             <th scope="col">SL</th>
@@ -295,7 +295,7 @@ const EmployeesProfile = () => {
                 <section className=' my-5'>
                     <h5 className="resume-section-title text-uppercase text-decoration-underline fw-bold">Career and Application Information</h5>
                     <div>
-                        <table class="table table-borderless table-sm">
+                        <table className="table table-borderless table-sm">
 
                             <tbody>
                                 <tr>
@@ -344,7 +344,7 @@ const EmployeesProfile = () => {
                 <section className=' my-5'>
                     <h5 className="resume-section-title text-uppercase text-decoration-underline fw-bold">Specialization</h5>
                     <div>
-                        <table class="table border my-2">
+                        <table className="table border my-2">
 
                             <thead className=' border'>
                                 <th className='border text-center col-md-3'>Fields of Specialization</th>
@@ -354,17 +354,17 @@ const EmployeesProfile = () => {
                             <tbody className='border'>
                                 <tr className='border'>
                                     <td className='border'>
-                                        <ul class=" ">
-                                            <li class="">{employeesData?.empAggreCareers?.skillOne}</li>
-                                            <li class="">{employeesData?.empAggreCareers?.skillTwo}</li>
-                                            <li class="">{employeesData?.empAggreCareers?.skillThree}</li>
-                                            <li class="">{employeesData?.empAggreCareers?.skillFour}</li>
-                                            <li class="">{employeesData?.empAggreCareers?.skillFive}</li>
-                                            <li class="">{employeesData?.empAggreCareers?.skillSix}</li>
-                                            <li class="">{employeesData?.empAggreCareers?.skillSeven}</li>
-                                            <li class="">{employeesData?.empAggreCareers?.skillEight}</li>
-                                            <li class="">{employeesData?.empAggreCareers?.skillNine}</li>
-                                            <li class="">{employeesData?.empAggreCareers?.skillTen}</li>
+                                        <ul className=" ">
+                                            <li className="">{employeesData?.empAggreCareers?.skillOne}</li>
+                                            <li className="">{employeesData?.empAggreCareers?.skillTwo}</li>
+                                            <li className="">{employeesData?.empAggreCareers?.skillThree}</li>
+                                            <li className="">{employeesData?.empAggreCareers?.skillFour}</li>
+                                            <li className="">{employeesData?.empAggreCareers?.skillFive}</li>
+                                            <li className="">{employeesData?.empAggreCareers?.skillSix}</li>
+                                            <li className="">{employeesData?.empAggreCareers?.skillSeven}</li>
+                                            <li className="">{employeesData?.empAggreCareers?.skillEight}</li>
+                                            <li className="">{employeesData?.empAggreCareers?.skillNine}</li>
+                                            <li className="">{employeesData?.empAggreCareers?.skillTen}</li>
                                         </ul>
                                     </td>
 
@@ -386,7 +386,7 @@ const EmployeesProfile = () => {
                     <h5 className=" fw-bold text-uppercase text-decoration-underline mb-3">Language Proficiency</h5>
 
                     <div className=''>
-                        <table class="table table-bordered border-secondary text-center">
+                        <table className="table table-bordered border-secondary text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">SL</th>
@@ -429,7 +429,7 @@ const EmployeesProfile = () => {
                 <section className=' my-5'>
                     <h5 className="resume-section-title text-uppercase text-decoration-underline fw-bold">Personal Details</h5>
                     <div>
-                        <table class="table table-borderless table-sm">
+                        <table className="table table-borderless table-sm">
 
                             <tbody>
                                 <tr>

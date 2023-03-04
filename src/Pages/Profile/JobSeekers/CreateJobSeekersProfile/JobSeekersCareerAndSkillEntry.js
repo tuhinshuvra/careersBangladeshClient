@@ -51,7 +51,7 @@ const JobSeekersCareerAndSkillEntry = () => {
             skillTen: data.skillTen,
             skillLearnedBy: data.skillLearnedBy,
             skillDesciption: data.skillDesciption,
-            specialQualification: data.specQuali,
+            specialQualification: data.specialQualification,
         }
         // console.log("Job Seeker Data :", data);
 
@@ -345,10 +345,10 @@ const JobSeekersCareerAndSkillEntry = () => {
                     <div className=''>
                         <span className="label-text text-md fw-bold">Special Qualification</span>
                         <textarea
-                            {...register("specQuali",)}
-                            name='specQuali'
+                            {...register("specialQualification",)}
+                            name='specialQualification'
                             className='input form-control '
-                            id='specQuali'
+                            id='specialQualification'
                             type="text"
                             placeholder='Enter special qualification'
                         />

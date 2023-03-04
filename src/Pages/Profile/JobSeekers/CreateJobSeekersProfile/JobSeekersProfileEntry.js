@@ -8,23 +8,23 @@ const JobSeekersProfileEntry = () => {
         <div>
             <h2 className=" text-center fw-bold my-4">Create Profile</h2>
             <div className=' d-flex justify-content-center'>
-                <div class="btn-group" role="group" aria-label="Employee profile button group">
+                <div className="btn-group" role="group" aria-label="Employee profile button group">
 
-                    <button type="button" class="btn btn-outline-secondary">
+                    <button type="button" className="btn btn-outline-secondary">
                         <Link
                             to="/dashboard/employeesPersonalDetailsEntry"
                             className=' text-decoration-none'
                         >Personal Details
                         </Link>
                     </button>
-                    <button type="button" class="btn btn-outline-secondary">
+                    <button type="button" className="btn btn-outline-secondary">
                         <Link
                             to="/dashboard/employeesExperienceDataEntry"
                             className=' text-decoration-none'
                         >Experience
                         </Link>
                     </button>
-                    <button type="button" class="btn btn-outline-secondary">
+                    <button type="button" className="btn btn-outline-secondary">
                         <Link
                             to="/dashboard/employeesAcademicAndTrainingEntry"
                             className=' text-decoration-none'
@@ -32,14 +32,14 @@ const JobSeekersProfileEntry = () => {
                         </Link>
 
                     </button>
-                    <button type="button" class="btn btn-outline-secondary">
+                    <button type="button" className="btn btn-outline-secondary">
                         <Link
                             to="/dashboard/employeesCareersAndSkillEntry"
                             className=' text-decoration-none'
                         > Career and Skilll
                         </Link>
                     </button>
-                    <button type="button" class="btn btn-outline-secondary">
+                    <button type="button" className="btn btn-outline-secondary">
                         <Link
                             to="/dashboard/employeesLanguageAndReferenceEntry"
                             className=' text-decoration-none'

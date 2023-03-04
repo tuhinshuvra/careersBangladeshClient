@@ -6,15 +6,14 @@ import { AuthContext } from '../../../Authentication/AuthProvider';
 import JobSeekersProfileManage from './JobSeekersProfileManage';
 
 const JobSeekersPersonalDetailsManage = () => {
-    const { user } = useContext(AuthContext)
+    // const { user } = useContext(AuthContext)
 
     const storedData = useLoaderData();
     const [personalDetails, setPersonalDetails] = useState(storedData);
 
     // console.log("personalDetails : ", personalDetails);
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const imageHostKey = process.env.REACT_APP_CABD_imagebb_hostKey;
 
@@ -36,12 +35,9 @@ const JobSeekersPersonalDetailsManage = () => {
                 console.log("Updated Data :", data)
                 if (data.modifiedCount > 0) {
                     toast.success('Data Updated Successfully.');
-                    // navigate('');
                 }
             })
     }
-
-
 
     const handleInputChange = event => {
         const field = event.target.name;

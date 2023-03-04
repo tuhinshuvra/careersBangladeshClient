@@ -1,6 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
@@ -8,10 +6,8 @@ import '../../JobSeekers/EmployeesProfile.css';
 import JobSeekersProfileManage from './JobSeekersProfileManage';
 
 const JobSeekersAcademicAndTrainingManage = () => {
-
-    // const { user } = useContext(AuthContext)
     const storedData = useLoaderData();
-    console.log("Academics And Training storedData : ", storedData);
+    // console.log("Academics And Training storedData : ", storedData);\
 
     const [academicsData, setAcademicsData] = useState(storedData);
 
@@ -21,22 +17,22 @@ const JobSeekersAcademicAndTrainingManage = () => {
 
 
     const handleUdateAcademicsDoc = (event) => {
+        event.preventDefault();
 
-        // fetch(`http://localhost:5000/jobseekersAcademics/${storedData._id}`, {
-        //     method: "PUT",
-        //     headers: {
-        //         "content-type": "application/json"
-        //     },
-        //     body: JSON.stringify(academicsData)
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         console.log("Updated data :", data)
-        //         if (data.modifiedCount > 0) {
-        //             toast.success('Data Updated Successfully.');
-        //             // navigate('');
-        //         }
-        //     })
+        fetch(`http://localhost:5000/jobseekersAcademics/${storedData._id}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(academicsData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Updated data :", data)
+                if (data.modifiedCount > 0) {
+                    toast.success('Data Updated Successfully.');
+                }
+            })
     }
 
     const handleInputChange = event => {
@@ -61,8 +57,8 @@ const JobSeekersAcademicAndTrainingManage = () => {
                     <h5 className="label-text text-md fw-bold ">Academic One</h5>
                     <p className=' float-end '> <span className="star">&#x2605; </span> <b>(Red Star) denotes must be filled</b></p>
                 </div>
-                <div className="row  ">
-                    <div className='col-md-2  '>
+                <div className="row">
+                    <div className='col-md-2'>
                         <span className="label-text text-md fw-bold  ">Exam Title<span className="star">&#x2605;</span></span>
                         <input
                             onChange={handleInputChange}
@@ -114,8 +110,8 @@ const JobSeekersAcademicAndTrainingManage = () => {
                         <span className="label-text text-md fw-bold  ">Pass.Year<span className="star">&#x2605;</span></span>
                         <select
                             onChange={handleInputChange}
-                            id="passYearOne"
                             name="passYearOne"
+                            id="passYearOne"
                             className='input form-control '
                         >
                             <option defaultValue={storedData.passYearOne}>{storedData.passYearOne}</option>
@@ -208,7 +204,7 @@ const JobSeekersAcademicAndTrainingManage = () => {
                         <span className="label-text text-md fw-bold  ">Institute</span>
                         <input
                             onChange={handleInputChange}
-                            defaultValue={storedData.instituteOne}
+                            defaultValue={storedData.instituteTwo}
                             name='instituteTwo'
                             className='input form-control '
                             id="instituteTwo"

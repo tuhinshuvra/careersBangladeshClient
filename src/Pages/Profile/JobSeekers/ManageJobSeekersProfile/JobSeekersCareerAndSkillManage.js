@@ -8,13 +8,12 @@ import JobSeekersProfileManage from './JobSeekersProfileManage';
 import '../../JobSeekers/EmployeesProfile.css';
 
 const JobSeekersCareerAndSkillManage = () => {
-
     const storedData = useLoaderData();
+
     const [careersData, setCareersData] = useState(storedData);
 
-    console.log("Careers and Skill storedData :", storedData);
-
-    const { user } = useContext(AuthContext)
+    // console.log("Careers and Skill storedData :", storedData);
+    // const { user } = useContext(AuthContext)
 
     const { data: categories, isLoading } = useQuery({
         queryKey: ['category'],
@@ -25,10 +24,25 @@ const JobSeekersCareerAndSkillManage = () => {
         }
     })
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const handleUpdateCareersDoc = (event) => {
+        event.preventDefault();
 
+        fetch(`http://localhost:5000/jobseekersCareersSkill/${storedData._id}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(careersData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Updatd Data: ", data);
+                if (data.modifiedCount > 0) {
+                    toast.success('Data Updated Successfully.');
+                }
+            })
     }
 
     const handleInputChange = event => {
@@ -43,11 +57,7 @@ const JobSeekersCareerAndSkillManage = () => {
 
     return (
         <div>
-            <div>
-                <JobSeekersProfileManage></JobSeekersProfileManage>
-            </div >
-
-
+            <JobSeekersProfileManage></JobSeekersProfileManage>
             <h4 className=" text-center fw-bold my-3">Employees Careers and Skill Data</h4>
 
             {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
@@ -310,10 +320,10 @@ const JobSeekersCareerAndSkillManage = () => {
                         <span className="label-text text-md fw-bold">Special Qualification</span>
                         <textarea
                             onChange={handleInputChange}
-                            defaultValue={storedData.specQuali}
-                            name='specQuali'
+                            defaultValue={storedData.specialQualification}
+                            name='specialQualification'
                             className='input form-control '
-                            id='specQuali'
+                            id='specialQualification'
                             type="text"
                         />
                     </div>

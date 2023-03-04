@@ -31,10 +31,24 @@ const JobSeekersLanguageAndReferenceManage = () => {
         }
     })
 
-    const handleUpdateReferenceData = () => {
+    const handleUpdateReferenceData = (event) => {
+        event.preventDefault();
 
+        fetch(`http://localhost:5000/jobseekersLanguagesReferences/${storedData._id}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(referencesData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Updatd Data: ", data);
+                if (data.modifiedCount > 0) {
+                    toast.success('Data Updated Successfully.');
+                }
+            })
     }
-
 
     const handleInputChange = event => {
         const field = event.target.name;
@@ -44,7 +58,6 @@ const JobSeekersLanguageAndReferenceManage = () => {
         newData[field] = value;
         setReferencesData(newData);
     }
-
 
 
     return (

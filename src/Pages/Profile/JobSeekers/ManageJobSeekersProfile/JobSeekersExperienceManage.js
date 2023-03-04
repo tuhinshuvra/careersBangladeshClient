@@ -1,5 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
@@ -8,19 +7,17 @@ import '../../JobSeekers/EmployeesProfile.css';
 import JobSeekersProfileManage from './JobSeekersProfileManage';
 
 const JobSeekersExperienceManage = () => {
-    const { user } = useContext(AuthContext);
-
     const storedData = useLoaderData();
     const [experienceData, setExperienceData] = useState(storedData);
 
     // console.log("Job Seeker StoredData : ", storedData);
 
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const handleUpdateExperiencesDoc = (event) => {
         event.preventDefault();
+
         fetch(`http://localhost:5000/jobseekersExperiences/${storedData._id}`, {
             method: "PUT",
             headers: {
@@ -32,7 +29,7 @@ const JobSeekersExperienceManage = () => {
             .then(data => {
                 console.log("Updatd Data: ", data);
                 if (data.modifiedCount > 0) {
-                    toast.success("Data Updated Successfully");
+                    toast.success('Data Updated Successfully.');
                 }
             })
     }
