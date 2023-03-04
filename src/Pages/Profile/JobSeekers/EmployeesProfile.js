@@ -52,7 +52,7 @@ const EmployeesProfile = () => {
                                     <div className="primary-info col-auto">
                                         <h5 className="name mb-1 text-uppercase fw-bold">{employeesData?.name}</h5>
                                         <ul className="list-unstyled">
-                                            <li className=""><b>Address:</b> <span>Address: 200/2 (3B), Baridhara, Dhaka </span>  </li>
+                                            <li className=""><b>Address:</b> <span>{employeesData?.presentAddress}</span>  </li>
                                             <li className=""><b>Phone:</b> {employeesData?.phone}</li>
                                             <li className=""><b>Email:</b> {employeesData?.email}</li>
                                             <li> <b> Portfolio: </b> <a className=' text-decoration-none' href={`${employeesData?.empAggreAcademics?.portfolio}`} rel="noreferrer" target="_blank" >{employeesData?.empAggreAcademics?.portfolio}</a> </li>

@@ -47,6 +47,7 @@ import JobSeekersExperienceManage from '../../Profile/JobSeekers/ManageJobSeeker
 import JobSeekersAcademicAndTrainingManage from '../../Profile/JobSeekers/ManageJobSeekersProfile/JobSeekersAcademicAndTrainingManage';
 import JobSeekersCareerAndSkillManage from '../../Profile/JobSeekers/ManageJobSeekersProfile/JobSeekersCareerAndSkillManage';
 import JobSeekersLanguageAndReferenceManage from '../../Profile/JobSeekers/ManageJobSeekersProfile/JobSeekersLanguageAndReferenceManage';
+import EmployersProfileManage from '../../Profile/Employers/EmployersProfileManage';
 
 const router = createBrowserRouter([
     {
@@ -222,14 +223,18 @@ const router = createBrowserRouter([
 
             // employer dashboard section
             {
-                path: '/dashboard/employerProfile',
-                element: <EmployersProfile></EmployersProfile>,
-            },
-
-            {
                 path: '/dashboard/employerProfileEntry',
                 element: <EmployerProfileEntry></EmployerProfileEntry>
             },
+            {
+                path: '/dashboard/employerProfile',
+                element: <EmployersProfile></EmployersProfile>,
+            },
+            {
+                path: '/dashboard/employerProfileManage',
+                element: <EmployersProfileManage></EmployersProfileManage>,
+            },
+
 
 
             {
