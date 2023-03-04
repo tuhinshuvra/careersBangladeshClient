@@ -20,7 +20,6 @@ const JobCategory = () => {
     }
 
 
-
     useEffect(() => {
         // fetch('job-categories.json')
         fetch('http://localhost:5000/jobCategories')

@@ -35,18 +35,18 @@ import EmployeesProfile from '../../Profile/JobSeekers/EmployeesProfile';
 import Photograph from '../../Profile/JobSeekers/Photograph/Photograph';
 import AppliedJobList from '../../Profile/JobSeekers/AppliedJobList/AppliedJobList';
 import SavedJobList from '../../Profile/JobSeekers/SavedJobList/SavedJobList';
-import EmployeesProfileEntry from '../../Profile/JobSeekers/CreateEmployeesProfile/EmployeesProfileEntry';
-import EmployeesPersonalDetailsEntry from '../../Profile/JobSeekers/CreateEmployeesProfile/EmployeesPersonalDetailsEntry';
-import EmployeesExperienceEntry from '../../Profile/JobSeekers/CreateEmployeesProfile/EmployeesExperienceEntry';
-import EmployeesCareerAndSkillEntry from '../../Profile/JobSeekers/CreateEmployeesProfile/EmployeesCareerAndSkillEntry';
-import EmployeesAcademicAndTrainingEntry from '../../Profile/JobSeekers/CreateEmployeesProfile/EmployeesAcademicAndTrainingEntry';
-import EmployeesLanguageAndReferenceEntry from '../../Profile/JobSeekers/CreateEmployeesProfile/EmployeesLanguageAndReferenceEntry';
-import EmployeesProfileManage from '../../Profile/JobSeekers/ManageEmployeesProfile/EmployeesProfileManage';
-import EmployeesPersonalDetailsManage from '../../Profile/JobSeekers/ManageEmployeesProfile/EmployeesPersonalDetailsManage';
-import EmployeesExperienceManage from '../../Profile/JobSeekers/ManageEmployeesProfile/EmployeesExperienceManage';
-import EmployeesAcademicAndTrainingManage from '../../Profile/JobSeekers/ManageEmployeesProfile/EmployeesAcademicAndTrainingManage';
-import EmployeesCareerAndSkillManage from '../../Profile/JobSeekers/ManageEmployeesProfile/EmployeesCareerAndSkillManage';
-import EmployeesLanguageAndReferenceManage from '../../Profile/JobSeekers/ManageEmployeesProfile/EmployeesLanguageAndReferenceManage';
+import EmployeesProfileEntry from '../../Profile/JobSeekers/CreateJobSeekersProfile/JobSeekersProfileEntry';
+import JobSeekersPersonalDetailsEntry from '../../Profile/JobSeekers/CreateJobSeekersProfile/JobSeekersPersonalDetailsEntry';
+import JobSeekersExperienceEntry from '../../Profile/JobSeekers/CreateJobSeekersProfile/JobSeekersExperienceEntry';
+import JobSeekersCareerAndSkillEntry from '../../Profile/JobSeekers/CreateJobSeekersProfile/JobSeekersCareerAndSkillEntry';
+import JobSeekersAcademicAndTrainingEntry from '../../Profile/JobSeekers/CreateJobSeekersProfile/JobSeekersAcademicAndTrainingEntry';
+import JobSeekersLanguageAndReferenceEntry from '../../Profile/JobSeekers/CreateJobSeekersProfile/JobSeekersLanguageAndReferenceEntry';
+import JobSeekersProfileManage from '../../Profile/JobSeekers/ManageJobSeekersProfile/JobSeekersProfileManage';
+import JobSeekersPersonalDetailsManage from '../../Profile/JobSeekers/ManageJobSeekersProfile/JobSeekersPersonalDetailsManage';
+import JobSeekersExperienceManage from '../../Profile/JobSeekers/ManageJobSeekersProfile/JobSeekersExperienceManage';
+import JobSeekersAcademicAndTrainingManage from '../../Profile/JobSeekers/ManageJobSeekersProfile/JobSeekersAcademicAndTrainingManage';
+import JobSeekersCareerAndSkillManage from '../../Profile/JobSeekers/ManageJobSeekersProfile/JobSeekersCareerAndSkillManage';
+import JobSeekersLanguageAndReferenceManage from '../../Profile/JobSeekers/ManageJobSeekersProfile/JobSeekersLanguageAndReferenceManage';
 
 const router = createBrowserRouter([
     {
@@ -119,27 +119,27 @@ const router = createBrowserRouter([
 
             {
                 path: '/dashboard/employeesPersonalDetailsEntry',
-                element: <EmployeesPersonalDetailsEntry></EmployeesPersonalDetailsEntry>
+                element: <JobSeekersPersonalDetailsEntry></JobSeekersPersonalDetailsEntry>
             },
 
             {
                 path: '/dashboard/employeesExperienceDataEntry',
-                element: <EmployeesExperienceEntry></EmployeesExperienceEntry>
+                element: <JobSeekersExperienceEntry></JobSeekersExperienceEntry>
             },
 
             {
                 path: '/dashboard/employeesCareersAndSkillEntry',
-                element: <EmployeesCareerAndSkillEntry></EmployeesCareerAndSkillEntry>
+                element: <JobSeekersCareerAndSkillEntry></JobSeekersCareerAndSkillEntry>
             },
 
             {
                 path: '/dashboard/employeesAcademicAndTrainingEntry',
-                element: <EmployeesAcademicAndTrainingEntry></EmployeesAcademicAndTrainingEntry>
+                element: <JobSeekersAcademicAndTrainingEntry></JobSeekersAcademicAndTrainingEntry>
             },
 
             {
                 path: '/dashboard/employeesLanguageAndReferenceEntry',
-                element: <EmployeesLanguageAndReferenceEntry></EmployeesLanguageAndReferenceEntry>
+                element: <JobSeekersLanguageAndReferenceEntry></JobSeekersLanguageAndReferenceEntry>
             },
 
             // ##################################### employees Profile Entry Section Wise End ##############################################
@@ -149,53 +149,53 @@ const router = createBrowserRouter([
 
             {
                 path: '/dashboard/employeesProfileManage',
-                element: <EmployeesProfileManage></EmployeesProfileManage>
+                element: <JobSeekersProfileManage></JobSeekersProfileManage>
             },
 
             {
                 path: '/dashboard/employeesPersonalDetails/:email',
-                element: <EmployeesPersonalDetailsManage></EmployeesPersonalDetailsManage>,
+                element: <JobSeekersPersonalDetailsManage></JobSeekersPersonalDetailsManage>,
                 loader: ({ params }) => fetch(`http://localhost:5000/employeesPersonal/${params.email}`)
             },
 
             {
                 path: '/dashboard/employeesExperiences/:email',
-                element: <EmployeesExperienceManage></EmployeesExperienceManage>,
+                element: <JobSeekersExperienceManage></JobSeekersExperienceManage>,
                 loader: ({ params }) => fetch(`http://localhost:5000/employeesExpriences/${params.email}`)
             },
             {
                 path: '/dashboard/employeesAcademicsAndTraining/:email',
-                element: <EmployeesAcademicAndTrainingManage></EmployeesAcademicAndTrainingManage>,
-                loader: ({ params }) => fetch(`http://localhost:5000/employeesAcademics/${params.email}`)
+                element: <JobSeekersAcademicAndTrainingManage></JobSeekersAcademicAndTrainingManage>,
+                loader: ({ params }) => fetch(`http://localhost:5000/jobseekersAcademics/${params.email}`)
             },
 
             {
                 path: '/dashboard/employeesCareersAndSkill/:email',
-                element: <EmployeesCareerAndSkillManage></EmployeesCareerAndSkillManage>,
+                element: <JobSeekersCareerAndSkillManage></JobSeekersCareerAndSkillManage>,
                 loader: ({ params }) => fetch(`http://localhost:5000/employeesCareers/${params.email}`)
             },
 
             {
                 path: '/dashboard/employeesLanguagesAndReferences/:email',
-                element: <EmployeesLanguageAndReferenceManage></EmployeesLanguageAndReferenceManage>,
+                element: <JobSeekersLanguageAndReferenceManage></JobSeekersLanguageAndReferenceManage>,
                 loader: ({ params }) => fetch(`http://localhost:5000/employeesReferences/${params.email}`)
             },
 
             {
                 path: '/dashboard/employeesExperienceEdit',
-                element: <EmployeesExperienceManage ></EmployeesExperienceManage>
+                element: <JobSeekersExperienceManage ></JobSeekersExperienceManage>
             },
             {
                 path: '/dashboard/employeesAcademicAndTrainingEdit',
-                element: <EmployeesAcademicAndTrainingManage></EmployeesAcademicAndTrainingManage>
+                element: <JobSeekersAcademicAndTrainingManage></JobSeekersAcademicAndTrainingManage>
             },
             {
                 path: '/dashboard/employeesCareerAndSkillEdit',
-                element: <EmployeesCareerAndSkillManage></EmployeesCareerAndSkillManage>
+                element: <JobSeekersCareerAndSkillManage></JobSeekersCareerAndSkillManage>
             },
             {
                 path: '/dashboard/employeesLanguageAndReferenceEdit',
-                element: <EmployeesLanguageAndReferenceManage></EmployeesLanguageAndReferenceManage>
+                element: <JobSeekersLanguageAndReferenceManage></JobSeekersLanguageAndReferenceManage>
             },
             // ##################################### employees Profile Edit Section Wise End ##############################################
 

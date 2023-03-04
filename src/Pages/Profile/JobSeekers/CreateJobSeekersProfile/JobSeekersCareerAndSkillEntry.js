@@ -5,9 +5,9 @@ import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
 import '../../JobSeekers/EmployeesProfile.css';
-import EmployeesProfileManage from './EmployeesProfileManage';
+import JobSeekersProfileEntry from './JobSeekersProfileEntry';
 
-const EmployeesCareerAndSkillManage = () => {
+const JobSeekersCareerAndSkillEntry = () => {
 
     const { user } = useContext(AuthContext)
 
@@ -79,11 +79,11 @@ const EmployeesCareerAndSkillManage = () => {
     return (
         <div>
             <div>
-                <EmployeesProfileManage></EmployeesProfileManage>
+                <JobSeekersProfileEntry></JobSeekersProfileEntry>
             </div >
 
 
-            <h4 className=" text-center fw-bold my-3">Employees Careers and Skill Data</h4>
+            <h2 className=" text-center fw-bold my-4">Employees Careers and Skill Data</h2>
 
             {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
             <form onSubmit={handleSubmit(handleJobSeekerProfile)} >
@@ -180,7 +180,7 @@ const EmployeesCareerAndSkillManage = () => {
                     <div className='col-md-6 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Preferred Locations</span>
                         <input
-                            {...register("p")}
+                            {...register("preferredLocations")}
                             name='preferredLocations'
                             className='input form-control '
                             id="preferredLocations"
@@ -333,7 +333,8 @@ const EmployeesCareerAndSkillManage = () => {
 
                     <div className=''>
                         <span className="label-text text-md fw-bold">Skill Description</span>
-                        <textarea {...register("skillDesciption",)}
+                        <textarea
+                            {...register("skillDesciption",)}
                             name='skillDesciption'
                             className='input form-control '
                             id='skillDesciption' type="text"
@@ -343,7 +344,8 @@ const EmployeesCareerAndSkillManage = () => {
 
                     <div className=''>
                         <span className="label-text text-md fw-bold">Special Qualification</span>
-                        <textarea {...register("specQuali",)}
+                        <textarea
+                            {...register("specQuali",)}
                             name='specQuali'
                             className='input form-control '
                             id='specQuali'
@@ -364,4 +366,4 @@ const EmployeesCareerAndSkillManage = () => {
     );
 };
 
-export default EmployeesCareerAndSkillManage;
+export default JobSeekersCareerAndSkillEntry;

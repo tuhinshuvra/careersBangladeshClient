@@ -5,17 +5,16 @@ import { toast } from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
 import '../../JobSeekers/EmployeesProfile.css';
-import EmployeesProfileManage from './EmployeesProfileManage';
+import JobSeekersProfileManage from './JobSeekersProfileManage';
 
-const EmployeesAcademicAndTrainingManage = () => {
+const JobSeekersAcademicAndTrainingManage = () => {
 
     // const { user } = useContext(AuthContext)
     const storedData = useLoaderData();
-    const [experiencesData, setExperiencesData] = useState(storedData);
-
-
-
     console.log("Academics And Training storedData : ", storedData);
+
+    const [academicsData, setAcademicsData] = useState(storedData);
+
 
 
     // const navigate = useNavigate();
@@ -23,21 +22,36 @@ const EmployeesAcademicAndTrainingManage = () => {
 
     const handleUdateAcademicsDoc = (event) => {
 
+        // fetch(`http://localhost:5000/jobseekersAcademics/${storedData._id}`, {
+        //     method: "PUT",
+        //     headers: {
+        //         "content-type": "application/json"
+        //     },
+        //     body: JSON.stringify(academicsData)
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log("Updated data :", data)
+        //         if (data.modifiedCount > 0) {
+        //             toast.success('Data Updated Successfully.');
+        //             // navigate('');
+        //         }
+        //     })
     }
 
-    // const handleInputChange = event => {
-    //     const field = event.target.name;
-    //     const value = event.target.value;
+    const handleInputChange = event => {
+        const field = event.target.name;
+        const value = event.target.value;
 
-    //     const newData = { ...experiencesData }
-    //     newData[field] = value;
-    //     setExperiencesData(newData);
-    // }
+        const newData = { ...academicsData }
+        newData[field] = value;
+        setAcademicsData(newData);
+    }
 
 
     return (
         <div>
-            <EmployeesProfileManage></EmployeesProfileManage>
+            <JobSeekersProfileManage></JobSeekersProfileManage>
             <h4 className=" text-center fw-bold my-3">Academic and Training Data</h4>
 
             {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
@@ -51,60 +65,60 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2  '>
                         <span className="label-text text-md fw-bold  ">Exam Title<span className="star">&#x2605;</span></span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.examTitleOne}
                             name='examTitleOne'
                             className='input form-control '
                             id="examTitleOne"
                             type="text"
-                            placeholder='Enter exam title'
                         />
                     </div>
 
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold  ">Concentration/Major<span className="star">&#x2605;</span></span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.majorOne}
                             name='majorOne'
                             className='input form-control '
                             id="majorOne"
                             type="text"
-                            placeholder='Enter data here'
                         />
                     </div>
 
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold  ">Institute<span className="star">&#x2605;</span></span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.instituteOne}
                             name='instituteOne'
                             className='input form-control '
                             id="instituteOne"
                             type="text"
-                            placeholder='Enter Institute'
                         />
                     </div>
 
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Result<span className="star">&#x2605;</span></span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.resultOne}
                             name='resultOne'
                             className='input form-control '
                             id="resultOne"
                             type="text"
-                            placeholder='Enter result'
                         />
                     </div>
 
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Pass.Year<span className="star">&#x2605;</span></span>
                         <select
-
+                            onChange={handleInputChange}
                             id="passYearOne"
                             name="passYearOne"
                             className='input form-control '
                         >
-                            <option>-Select Pass.Year-</option>
+                            <option defaultValue={storedData.passYearOne}>{storedData.passYearOne}</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
@@ -169,59 +183,59 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2   '>
                         <span className="label-text text-md fw-bold  ">Exam Title</span>
                         <input
-
+                            defaultValue={storedData.examTitleTwo}
+                            onChange={handleInputChange}
                             name='examTitleTwo'
                             className='input form-control '
                             id="examTitleTwo"
                             type="text"
-                            placeholder='Enter exam title'
                         />
                     </div>
 
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Concentration/Major</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.majorTwo}
                             name='majorTwo'
                             className='input form-control '
                             id="majorTwo"
                             type="text"
-                            placeholder='Enter data here'
                         />
                     </div>
 
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Institute</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.instituteOne}
                             name='instituteTwo'
                             className='input form-control '
                             id="instituteTwo"
                             type="text"
-                            placeholder='Enter Institute'
                         />
                     </div>
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Result</span>
                         <input
-
-                            name='instituteTwo'
+                            onChange={handleInputChange}
+                            defaultValue={storedData.resultTwo}
+                            name='resultTwo'
                             className='input form-control '
-                            id="instituteTwo"
+                            id="resultTwo"
                             type="text"
-                            placeholder='Enter result'
                         />
                     </div>
 
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Pass.Year</span>
                         <select
-
+                            onChange={handleInputChange}
                             id="passYearTwo"
                             name="passYearTwo"
                             className='input form-control '
                         >
-                            <option>-Select Pass.Year-</option>
+                            <option defaultValue={storedData.passYearTwo}>{storedData.passYearTwo}</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
@@ -280,65 +294,65 @@ const EmployeesAcademicAndTrainingManage = () => {
                 </div>
 
                 {/* Enter Educational Qualification Three */}
-                <h5 className="label-text text-md fw-bold ">Academic Three</h5>
-                <div className="row  ">
-                    <div className='col-md-2 '>
-                        <span className="label-text text-md fw-bold  ">Exam Title</span>
+                <h5 className="label-text text-md fw-bold">Academic Three</h5>
+                <div className="row">
+                    <div className='col-md-2'>
+                        <span className="label-text text-md fw-bold">Exam Title</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.examTitleThree}
                             name='examTitleThree'
                             className='input form-control '
                             id="examTitleThree"
                             type="text"
-                            placeholder='Enter exam title'
                         />
                     </div>
 
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Concentration/Major</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.majorThree}
                             name='majorThree'
                             className='input form-control '
                             id="majorThree"
                             type="text"
-                            placeholder='Enter data here'
                         />
                     </div>
 
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Institute</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.instituteThree}
                             name='instituteThree'
                             className='input form-control '
                             id="instituteThree"
                             type="text"
-                            placeholder='Enter Institute'
                         />
                     </div>
 
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Result</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.resultThree}
                             name='resultThree'
                             className='input form-control '
                             id="resultThree"
                             type="text"
-                            placeholder='Enter result'
                         />
                     </div>
 
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Pass.Year</span>
                         <select
-
+                            onChange={handleInputChange}
                             id="passYearThree"
                             name="passYearThree"
-                            className='input form-control '
+                            className='input form-control'
                         >
-                            <option>-Select Pass.Year-</option>
+                            <option defaultValue={storedData.passYearThree}>{storedData.passYearThree}</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
@@ -402,60 +416,60 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Exam Title</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.resultThree}
                             name='examTitleFour'
                             className='input form-control '
                             id="examTitleFour"
                             type="text"
-                            placeholder='Enter exam title'
                         />
                     </div>
 
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Concentration/Major</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.majorFour}
                             name='majorFour'
                             className='input form-control '
                             id="majorFour"
                             type="text"
-                            placeholder='Enter data here'
                         />
                     </div>
 
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Institute</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.instituteFour}
                             name='instituteFour'
                             className='input form-control '
                             id="instituteFour"
                             type="text"
-                            placeholder='Enter Institute'
                         />
                     </div>
 
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Result</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.resultFour}
                             name='resultFour'
                             className='input form-control '
                             id="resultFour"
                             type="text"
-                            placeholder='Enter result'
                         />
                     </div>
 
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Pass.Year</span>
                         <select
-
+                            onChange={handleInputChange}
                             id="passYearFour"
                             name="passYearFour"
                             className='input form-control '
                         >
-                            <option>-Select Pass.Year-</option>
+                            <option defaultValue={storedData.passYearFour}>{storedData.passYearFour}</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
@@ -530,59 +544,59 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2  '>
                         <span className="label-text text-md fw-bold  ">Training Title</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.trainingTitleOne}
                             name='trainingTitleOne'
                             className='input form-control '
                             id="trainingTitleOne"
                             type="text"
-                            placeholder='Enter training title'
                         />
                     </div>
 
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Topic</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.topicOne}
                             name='topicOne'
                             className='input form-control '
                             id="topicOne"
                             type="text"
-                            placeholder='Enter topic here'
                         />
                     </div>
 
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold  ">Institute and Location</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.insAndLocationOne}
                             name='insAndLocationOne'
                             className='input form-control '
                             id="insAndLocationOne"
                             type="text"
-                            placeholder='Enter data here'
                         />
                     </div>
                     <div className='col-md-2  '>
                         <span className="label-text text-md fw-bold  ">Duration</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.durationOne}
                             name='durationOne'
                             className='input form-control '
                             id="durationOne"
                             type="text"
-                            placeholder='Enter duration'
                         />
                     </div>
 
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Year</span>
                         <select
-
+                            onChange={handleInputChange}
                             id="traningYearOne"
                             name="traningYearOne"
                             className='input form-control '
                         >
-                            <option>-Select Pass.Year-</option>
+                            <option defaultValue={storedData.traningYearOne}>{storedData.traningYearOne}</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
@@ -646,59 +660,59 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2  '>
                         <span className="label-text text-md fw-bold  ">Training Title</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.trainingTitleTwo}
                             name='trainingTitleTwo'
                             className='input form-control '
                             id="trainingTitleTwo"
                             type="text"
-                            placeholder='Enter training title'
                         />
                     </div>
 
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold  ">Topic</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.topicTwo}
                             name='topicTwo'
                             className='input form-control '
                             id="topicTwo"
                             type="text"
-                            placeholder='Enter topic here'
                         />
                     </div>
 
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold  ">Institute and Location</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.insAndLocationTwo}
                             name='insAndLocationTwo'
                             className='input form-control '
                             id="insAndLocationTwo"
                             type="text"
-                            placeholder='Enter data here'
                         />
                     </div>
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Duration</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.durationTwo}
                             name='durationTwo'
                             className='input form-control '
                             id="durationTwo"
                             type="text"
-                            placeholder='Enter duration'
                         />
                     </div>
 
                     <div className='col-md-2  '>
                         <span className="label-text text-md fw-bold  ">Year</span>
                         <select
-
+                            onChange={handleInputChange}
                             id="traningYearTwo"
                             name="traningYearTwo"
                             className='input form-control '
                         >
-                            <option>-Select Pass.Year-</option>
+                            <option defaultValue={storedData.traningYearTwo}>{storedData.traningYearTwo}</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
@@ -762,55 +776,59 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-2'>
                         <span className="label-text text-md fw-bold  ">Training Title</span>
                         <input
-
+                            onChange={handleInputChange}
+                            defaultValue={storedData.trainingTitleThree}
                             name='trainingTitleThree'
                             className='input form-control '
                             id="trainingTitleThree"
                             type="text"
-                            placeholder='Enter training title'
                         />
                     </div>
 
                     <div className='col-md-3 mb-3 mb-3'>
                         <span className="label-text text-md fw-bold  ">Topic</span>
                         <input
+                            onChange={handleInputChange}
+                            defaultValue={storedData.topicThree}
                             name='topicThree'
                             className='input form-control '
                             id="topicThree"
                             type="text"
-                            placeholder='Enter topic here'
                         />
                     </div>
 
                     <div className='col-md-3 mb-3 mb-3'>
                         <span className="label-text text-md fw-bold  ">Institute and Location</span>
                         <input
+                            onChange={handleInputChange}
+                            defaultValue={storedData.insAndLocationThree}
                             name='insAndLocationThree'
                             className='input form-control '
                             id="insAndLocationThree"
                             type="text"
-                            placeholder='Enter data here'
                         />
                     </div>
                     <div className='col-md-2'>
                         <span className="label-text text-md fw-bold  ">Duration</span>
                         <input
+                            onChange={handleInputChange}
+                            defaultValue={storedData.durationThree}
                             name='durationThree'
                             className='input form-control '
                             id="durationThree"
                             type="text"
-                            placeholder='Enter duration'
                         />
                     </div>
 
                     <div className='col-md-2 '>
                         <span className="label-text text-md fw-bold  ">Year</span>
                         <select
+                            onChange={handleInputChange}
                             id="traningYearThree"
                             name="traningYearThree"
                             className='input form-control '
                         >
-                            <option>-Select Pass.Year-</option>
+                            <option defaultValue={storedData.traningYearThree}>{storedData.traningYearThree}</option>
                             <option value="2023">2023</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
@@ -874,21 +892,24 @@ const EmployeesAcademicAndTrainingManage = () => {
 
                 <div className="row ">
                     <div className='col-md-3 mb-3  '>
-                        <span className="label-text text-md fw-bold   ">Github Link</span>
+                        <span className="label-text text-md fw-bold">Github Link</span>
                         <input
+                            onChange={handleInputChange}
+                            defaultValue={storedData.gitHubLink}
                             name='gitHubLink'
                             className='input form-control '
                             id="gitHubLink"
                             type="text"
-                            placeholder='Enter your gitHub Link'
                         />
                     </div>
                     <div className='col-md-3 mb-3  '>
-                        <span className="label-text text-md fw-bold   ">Link Other</span>
+                        <span className="label-text text-md fw-bold">Link Other</span>
                         <input
-                            name='link_two'
+                            onChange={handleInputChange}
+                            defaultValue={storedData.linkTwo}
+                            name='linkTwo'
                             className='input form-control '
-                            id="link_two"
+                            id="linkTwo"
                             type="text"
                             placeholder='Enter Link Address'
                         />
@@ -897,21 +918,23 @@ const EmployeesAcademicAndTrainingManage = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold">Link Other</span>
                         <input
-                            name='link_three'
+                            onChange={handleInputChange}
+                            defaultValue={storedData.linkThree}
+                            name='linkThree'
                             className='input form-control '
-                            id="link_three"
+                            id="linkThree"
                             type="text"
-                            placeholder='Enter Link Address'
                         />
                     </div>
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold">Portfolio</span>
                         <input
+                            onChange={handleInputChange}
+                            defaultValue={storedData.portfolio}
                             name='portfolio'
                             className='input form-control '
                             id="portfolio"
                             type="text"
-                            placeholder='Enter Portfolio Link'
                         />
                     </div>
                 </div>
@@ -925,4 +948,4 @@ const EmployeesAcademicAndTrainingManage = () => {
     );
 };
 
-export default EmployeesAcademicAndTrainingManage;
+export default JobSeekersAcademicAndTrainingManage;

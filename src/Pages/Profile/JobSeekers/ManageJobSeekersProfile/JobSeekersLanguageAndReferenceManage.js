@@ -2,21 +2,24 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
 import '../../JobSeekers/EmployeesProfile.css';
-import EmployeesProfileEntry from './EmployeesProfileEntry';
+import JobSeekersProfileManage from './JobSeekersProfileManage';
 
-const EmployeesLanguageAndReferenceEntry = () => {
+const JobSeekersLanguageAndReferenceManage = () => {
+    const storedData = useLoaderData();
+    console.log("Languages and references storedData : ", storedData);
+
+    const [referencesData, setReferencesData] = useState(storedData);
 
     const { user } = useContext(AuthContext)
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+
     const navigate = useNavigate();
 
 
     // console.log("imageBBHostKey  : ", imageHostKey)
-
 
 
     const { data: categories, isLoading } = useQuery({
@@ -28,67 +31,29 @@ const EmployeesLanguageAndReferenceEntry = () => {
         }
     })
 
-    const handleJobSeekerProfile = (data) => {
+    const handleUpdateReferenceData = () => {
 
-
-        const jobseekerProfile = {
-            email: user.email,
-            name: user.displayName,
-
-            languOne: data.languOne,
-            writingOne: data.writingOne,
-            readingOne: data.readingOne,
-            speakingOne: data.speakingOne,
-
-            languTwo: data.languTwo,
-            writingTwo: data.writingTwo,
-            readingTwo: data.readingTwo,
-            speakingTwo: data.speakingTwo,
-
-
-            languThree: data.languThree,
-            readingThree: data.readingThree,
-            writingThree: data.writingThree,
-            speakingThree: data.speakingThree,
-
-            refOneName: data.ref_one_name,
-            refOneDetails: data.ref_one_details,
-            refTwoName: data.ref_two_name,
-            refTwoDetails: data.ref_two_details,
-
-            other: data.other,
-
-        }
-        // console.log("Job Seeker Data :", data);
-
-        fetch('http://localhost:5000/employeesReferences', {
-            method: 'POST',
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(jobseekerProfile)
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    console.log(data)
-                    toast.success(`${user.displayName} Language and Reference Data Saved Successfully`)
-                    navigate("/dashboard/jobSeekerProfile");
-                }
-                else {
-                    toast.error(data.message);
-                }
-            })
     }
+
+
+    const handleInputChange = event => {
+        const field = event.target.name;
+        const value = event.target.value;
+
+        const newData = { ...referencesData }
+        newData[field] = value;
+        setReferencesData(newData);
+    }
+
 
 
     return (
         <div>
-            <EmployeesProfileEntry></EmployeesProfileEntry>
-            <h2 className=" text-center fw-bold my-4">Employees Language and Reference Data</h2>
+            <JobSeekersProfileManage></JobSeekersProfileManage>
+            <h4 className=" text-center fw-bold my-3">Employees Language and Reference Data</h4>
 
             {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
-            <form onSubmit={handleSubmit(handleJobSeekerProfile)} >
+            <form onSubmit={handleUpdateReferenceData} >
 
                 <div>
                     <div className=' d-flex justify-content-between'>
@@ -102,22 +67,22 @@ const EmployeesLanguageAndReferenceEntry = () => {
                         <div className=' col-md-3 mb-3'>
                             <span className="label-text text-md fw-bold  ">Language <span className="star">&#x2605;</span></span>
                             <input
-                                {...register("languOne", { required: true })}
+                                onChange={handleInputChange}
+                                defaultValue={storedData.languOne}
                                 name='languOne'
                                 id='languOne'
                                 className='input form-control'
                                 type="text"
-                                placeholder='Enter Language'
                             />
                         </div>
                         <div className=' col-md-3 mb-3'>
                             <span className="label-text text-md fw-bold  ">Reading<span className="star">&#x2605;</span></span>
                             <select
-                                {...register("readingOne", { required: 'true' })}
+                                onChange={handleInputChange}
                                 name="readingOne"
                                 id="readingOne"
                                 className="form-select select-bordered  ">
-                                <option>-Select-</option>
+                                <option defaultValue={storedData.readingOne}>{storedData.readingOne}</option>
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
@@ -127,11 +92,11 @@ const EmployeesLanguageAndReferenceEntry = () => {
                         <div className=' col-md-3 mb-3'>
                             <span className="label-text text-md fw-bold  ">Writing<span className="star">&#x2605;</span></span>
                             <select
-                                {...register("writingOne", { required: 'true' })}
+                                onChange={handleInputChange}
                                 name="writingOne"
                                 id="writingOne"
                                 className="form-select select-bordered  ">
-                                <option>-Select-</option>
+                                <option defaultValue={storedData.writingOne}>{storedData.writingOne}</option>
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
@@ -141,11 +106,11 @@ const EmployeesLanguageAndReferenceEntry = () => {
                         <div className=' col-md-3 mb-3'>
                             <span className="label-text text-md fw-bold  ">Speaking<span className="star">&#x2605;</span></span>
                             <select
-                                {...register("speakingOne", { required: 'true' })}
+                                onChange={handleInputChange}
                                 name="speakingOne"
                                 id="speakingOne"
                                 className="form-select select-bordered  ">
-                                <option>-Select-</option>
+                                <option defaultValue={storedData.speakingOne}>{storedData.speakingOne}</option>
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
@@ -159,24 +124,24 @@ const EmployeesLanguageAndReferenceEntry = () => {
                     <div className='row'>
                         <h5 className="label-text text-md fw-bold mb-2">Language Two</h5>
                         <div className=' col-md-3 mb-3'>
-                            <span className="label-text text-md fw-bold  ">Language</span>
+                            <span className="label-text text-md fw-bold">Language</span>
                             <input
-                                {...register("languTwo",)}
+                                onChange={handleInputChange}
+                                defaultValue={storedData.languTwo}
                                 name='languTwo'
                                 id='languTwo'
                                 className='input form-control'
                                 type="text"
-                                placeholder='Enter Language'
                             />
                         </div>
                         <div className=' col-md-3 mb-3'>
                             <span className="label-text text-md fw-bold  ">Reading</span>
                             <select
-                                {...register("readingTwo")}
+                                onChange={handleInputChange}
                                 name="readingTwo"
                                 id="readingTwo"
-                                className="form-select select-bordered  ">
-                                <option>-Select-</option>
+                                className="form-select select-bordered">
+                                <option defaultValue={storedData.readingTwo}>{storedData.readingTwo}</option>
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
@@ -184,13 +149,13 @@ const EmployeesLanguageAndReferenceEntry = () => {
                         </div>
 
                         <div className=' col-md-3 mb-3'>
-                            <span className="label-text text-md fw-bold  ">Writing</span>
+                            <span className="label-text text-md fw-bold">Writing</span>
                             <select
-                                {...register("writingTwo")}
+                                onChange={handleInputChange}
                                 name="writingTwo"
                                 id="writingTwo"
                                 className="form-select select-bordered  ">
-                                <option>-Select-</option>
+                                <option defaultValue={storedData.writingTwo}>{storedData.writingTwo}</option>
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
@@ -200,11 +165,11 @@ const EmployeesLanguageAndReferenceEntry = () => {
                         <div className=' col-md-3 mb-3'>
                             <span className="label-text text-md fw-bold  ">Speaking</span>
                             <select
-                                {...register("speakingTwo")}
+                                onChange={handleInputChange}
                                 name="speakingTwo"
                                 id="speakingTwo"
                                 className="form-select select-bordered  ">
-                                <option>-Select-</option>
+                                <option defaultValue={storedData.speakingTwo}>{storedData.speakingTwo}</option>
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
@@ -220,22 +185,22 @@ const EmployeesLanguageAndReferenceEntry = () => {
                         <div className=' col-md-3 mb-3'>
                             <span className="label-text text-md fw-bold  ">Language</span>
                             <input
-                                {...register("languThree",)}
+                                onChange={handleInputChange}
+                                defaultValue={storedData.languThree}
                                 name='languThree'
                                 id='languThree'
                                 className='input form-control'
                                 type="text"
-                                placeholder='Enter Language'
                             />
                         </div>
                         <div className=' col-md-3 mb-3'>
                             <span className="label-text text-md fw-bold  ">Reading</span>
                             <select
-                                {...register("readingThree",)}
+                                onChange={handleInputChange}
                                 name="readingThree"
                                 id="readingThree"
                                 className="form-select select-bordered  ">
-                                <option>-Select-</option>
+                                <option defaultValue={storedData.readingThree}>{storedData.readingThree}</option>
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
@@ -245,11 +210,12 @@ const EmployeesLanguageAndReferenceEntry = () => {
                         <div className=' col-md-3 mb-3'>
                             <span className="label-text text-md fw-bold  ">Writing</span>
                             <select
-                                {...register("writingThree",)}
+                                onChange={handleInputChange}
+                                defaultValue={storedData.resultTwo}
                                 name="writingThree"
                                 id="writingThree"
                                 className="form-select select-bordered  ">
-                                <option>-Select-</option>
+                                <option defaultValue={storedData.writingThree}>{storedData.writingThree}</option>
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
@@ -259,11 +225,11 @@ const EmployeesLanguageAndReferenceEntry = () => {
                         <div className=' col-md-3 mb-3'>
                             <span className="label-text text-md fw-bol ">Speaking</span>
                             <select
-                                {...register("speakingThree",)}
+                                onChange={handleInputChange}
                                 name="speakingThree"
                                 id="speakingThree"
                                 className="form-select select-bordered">
-                                <option>-Select-</option>
+                                <option defaultValue={storedData.speakingThree}>{storedData.speakingThree}</option>
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
@@ -283,22 +249,23 @@ const EmployeesLanguageAndReferenceEntry = () => {
                             <div className=' mb-3'>
                                 <span className="label-text text-md fw-bold  mb-3">Refference One Name</span>
                                 <input
-                                    {...register("ref_one_name",)}
+                                    onChange={handleInputChange}
+                                    defaultValue={storedData.refOneName}
                                     name='ref_one_name'
                                     className='input form-control '
                                     id="ref_one_name"
                                     type="text"
-                                    placeholder='Enter Refference One Name'
                                 />
                             </div>
 
                             <div className=''>
                                 <span className="label-text text-md fw-bold">Refference One Details</span>
-                                <textarea {...register("ref_one_details",)}
+                                <input
+                                    onChange={handleInputChange}
+                                    defaultValue={storedData.refOneDetails}
                                     name='ref_one_details'
                                     className='input form-control '
                                     id='ref_one_details' type="text"
-                                    placeholder='Enter Refference One Details'
                                 />
                             </div>
                         </div>
@@ -308,12 +275,12 @@ const EmployeesLanguageAndReferenceEntry = () => {
                             <div className='  mb-3 '>
                                 <span className="label-text text-md fw-bold  ">Refference Two Name</span>
                                 <input
-                                    {...register("ref_two_name",)}
+                                    onChange={handleInputChange}
+                                    defaultValue={storedData.refTwoName}
                                     name='ref_two_name'
                                     className='input form-control '
                                     id="ref_two_name"
                                     type="text"
-                                    placeholder='Enter Refference Two Name'
                                 />
                             </div>
 
@@ -321,11 +288,12 @@ const EmployeesLanguageAndReferenceEntry = () => {
                             <div className='  '>
                                 <span className="label-text text-md fw-bold  ">Refference Two Details</span>
                                 <div>
-                                    <textarea {...register("ref_two_details",)}
+                                    <input
+                                        onChange={handleInputChange}
+                                        defaultValue={storedData.refTwoDetails}
                                         name='ref_two_details'
                                         className='input form-control '
                                         id='ref_two_details' type="text"
-                                        placeholder='Enter Refference Two Details'
                                     />
                                 </div>
                             </div>
@@ -336,11 +304,12 @@ const EmployeesLanguageAndReferenceEntry = () => {
 
                     <h4 className="label-text text-md fw-bold  text-center ">Other</h4>
                     <div>
-                        <textarea {...register("other")}
+                        <input
+                            onChange={handleInputChange}
+                            defaultValue={storedData.other}
                             name='other'
                             className='input form-control '
                             id='other' type="text"
-                            placeholder='Enter Other Relevant Information'
                         />
                     </div>
 
@@ -355,4 +324,4 @@ const EmployeesLanguageAndReferenceEntry = () => {
     );
 };
 
-export default EmployeesLanguageAndReferenceEntry;
+export default JobSeekersLanguageAndReferenceManage;

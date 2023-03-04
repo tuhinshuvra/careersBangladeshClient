@@ -5,9 +5,9 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
 import '../../JobSeekers/EmployeesProfile.css';
-import EmployeesProfileEntry from './EmployeesProfileEntry';
+import JobSeekersProfileEntry from './JobSeekersProfileEntry';
 
-const EmployeesAcademicAndTrainingEntry = () => {
+const JobSeekersAcademicAndTrainingEntry = () => {
 
     const { user } = useContext(AuthContext)
 
@@ -70,8 +70,8 @@ const EmployeesAcademicAndTrainingEntry = () => {
 
 
             gitHubLink: data.gitHubLink,
-            link_two: data.link_two,
-            link_three: data.link_three,
+            linkTwo: data.linkTwo,
+            linkThree: data.linkThree,
             portfolio: data.portfolio,
         }
         // console.log("Job Seeker Data :", data);
@@ -99,7 +99,7 @@ const EmployeesAcademicAndTrainingEntry = () => {
 
     return (
         <div>
-            <EmployeesProfileEntry></EmployeesProfileEntry>
+            <JobSeekersProfileEntry></JobSeekersProfileEntry>
             <h2 className=" text-center fw-bold my-4">Academic and Training Data</h2>
 
             {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
@@ -267,9 +267,9 @@ const EmployeesAcademicAndTrainingEntry = () => {
                         <span className="label-text text-md fw-bold  ">Result</span>
                         <input
                             {...register("resultTwo", {})}
-                            name='instituteTwo'
+                            name='resultTwo'
                             className='input form-control '
-                            id="instituteTwo"
+                            id="resultTwo"
                             type="text"
                             placeholder='Enter result'
                         />
@@ -953,10 +953,10 @@ const EmployeesAcademicAndTrainingEntry = () => {
                     <div className='col-md-3 mb-3  '>
                         <span className="label-text text-md fw-bold   ">Link Other</span>
                         <input
-                            {...register("link_two",)}
-                            name='link_two'
+                            {...register("linkTwo",)}
+                            name='linkTwo'
                             className='input form-control '
-                            id="link_two"
+                            id="linkTwo"
                             type="text"
                             placeholder='Enter Link Address'
                         />
@@ -965,10 +965,10 @@ const EmployeesAcademicAndTrainingEntry = () => {
                     <div className='col-md-3 mb-3 '>
                         <span className="label-text text-md fw-bold">Link Other</span>
                         <input
-                            {...register("link_three",)}
-                            name='link_three'
+                            {...register("linkThree",)}
+                            name='linkThree'
                             className='input form-control '
-                            id="link_three"
+                            id="linkThree"
                             type="text"
                             placeholder='Enter Link Address'
                         />
@@ -995,4 +995,4 @@ const EmployeesAcademicAndTrainingEntry = () => {
     );
 };
 
-export default EmployeesAcademicAndTrainingEntry;
+export default JobSeekersAcademicAndTrainingEntry;

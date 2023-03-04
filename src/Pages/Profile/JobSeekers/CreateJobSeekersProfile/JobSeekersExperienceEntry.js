@@ -2,74 +2,96 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
 import '../../JobSeekers/EmployeesProfile.css';
-import EmployeesProfileManage from './EmployeesProfileManage';
+import EmployeesProfileEntry from './JobSeekersProfileEntry';
 
-const EmployeesExperienceManage = () => {
-    const { user } = useContext(AuthContext);
+const EmployeesExperienceEntry = () => {
 
-    const storedData = useLoaderData();
-    const [experienceData, setExperienceData] = useState(storedData);
-
-    // console.log("Job Seeker StoredData : ", storedData);
-
+    const { user } = useContext(AuthContext)
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
 
-    const handleUpdateExperiencesDoc = (event) => {
-        event.preventDefault();
-        fetch(`http://localhost:5000/jobseekersExperiences/${storedData._id}`, {
-            method: "PUT",
+
+    const handleJobSeekerProfile = (data) => {
+
+        const jobseekerProfile = {
+            email: user.email,
+            name: user.displayName,
+
+            expOneCompanayName: data.expOneCompanayName,
+            expOneCompanayBusiness: data.expOneCompanayBusiness,
+            expOneDesignation: data.expOneDesignation,
+            expOneDepartment: data.expOneDepartment,
+            expOneFrom: data.expOneFrom,
+            expOneTo: data.expOneTo,
+            exprOneWorkPeriod: data.exprOneWorkPeriod,
+            exprOneResp: data.exprOneResp,
+            exprOneExpertise: data.exprOneExpertise,
+            exprCompOneAddress: data.exprCompOneAddress,
+
+            expTwoCompanayName: data.expTwoCompanayName,
+            expTwoCompanayBusiness: data.expTwoCompanayBusiness,
+            expTwoDesignation: data.expTwoDesignation,
+            expTwoDepartment: data.expTwoDepartment,
+            expTwoFrom: data.expTwoFrom,
+            expTwoTo: data.expTwoTo,
+            exprTwoWorkPeriod: data.exprTwoWorkPeriod,
+            exprTwoResp: data.exprTwoResp,
+            exprTwoExpertise: data.exprTwoExpertise,
+            exprCompTwoAddress: data.exprCompTwoAddress,
+        }
+        // console.log("Job Seeker Data :", data);
+
+        fetch('http://localhost:5000/employeesExperiences', {
+            method: 'POST',
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(experienceData)
+            body: JSON.stringify(jobseekerProfile)
         })
             .then(response => response.json())
             .then(data => {
-                console.log("Updatd Data: ", data);
-                if (data.modifiedCount > 0) {
-                    toast.success("Data Updated Successfully");
+
+                if (data.acknowledged) {
+                    console.log(data)
+                    toast.success(`${user.displayName} Experience Data Saved Successfully`)
+                    navigate("/dashboard/jobSeekerProfile");
+                }
+                else {
+                    toast.error(data.message)
                 }
             })
     }
 
-    const handleInputChange = event => {
-        const field = event.target.name;
-        const value = event.target.value;
-
-        const newData = { ...experienceData }
-        newData[field] = value;
-        setExperienceData(newData);
-    }
 
 
     return (
         <div>
-            <EmployeesProfileManage></EmployeesProfileManage>
-            <h4 className=" text-center fw-bold my-3">Experience Data</h4>
+            <EmployeesProfileEntry></EmployeesProfileEntry>
+            <h2 className=" text-center fw-bold my-4">Experience Data</h2>
 
 
-            <form onSubmit={handleUpdateExperiencesDoc}>
+            {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
+            <form onSubmit={handleSubmit(handleJobSeekerProfile)} >
+
                 <div className=' d-flex justify-content-between'>
                     <h5 className="label-text text-md fw-bold">Experience One</h5>
-                    {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b>(Red Star) denotes must be filled</b></p> */}
+                    <p className=' float-end '> <span className="star">&#x2605; </span> <b>(Red Star) denotes must be filled</b></p>
                 </div>
 
                 <div className=' row'>
                     <div className=' col-md-6 mb-3'>
                         <span className="label-text text-md fw-bold">Company Name</span>
                         <div>
-                            <input
-                                onChange={handleInputChange}
-                                defaultValue={storedData.expOneCompanayName}
+                            <input {...register("expOneCompanayName",)}
                                 name='expOneCompanayName'
                                 className='input form-control '
                                 id='expOneCompanayName'
                                 type="text"
+                                placeholder='Enter data'
                             />
                         </div>
                     </div>
@@ -78,13 +100,12 @@ const EmployeesExperienceManage = () => {
                     <div className=' col-md-6 mb-3 '>
                         <span className="label-text text-md fw-bold">Company Business</span>
                         <div>
-                            <input
-                                onChange={handleInputChange}
-                                defaultValue={storedData.expOneCompanayBusiness}
+                            <input {...register("expOneCompanayBusiness",)}
                                 name='expOneCompanayBusiness'
                                 className='input form-control '
                                 id='expOneCompanayBusiness'
                                 type="text"
+                                placeholder='Enter data'
                             />
                         </div>
                     </div>
@@ -92,13 +113,12 @@ const EmployeesExperienceManage = () => {
                     <div className=' col-md-4 mb-3 '>
                         <span className="label-text text-md fw-bold">Designation</span>
                         <div>
-                            <input
-                                onChange={handleInputChange}
-                                defaultValue={storedData.expOneDesignation}
+                            <input {...register("expOneDesignation",)}
                                 name='expOneDesignation'
                                 className='input form-control '
                                 id='expOneDesignation'
                                 type="text"
+                                placeholder='Enter data'
                             />
                         </div>
                     </div>
@@ -106,13 +126,12 @@ const EmployeesExperienceManage = () => {
                     <div className=' col-md-4 mb-3 '>
                         <span className="label-text text-md fw-bold">Departemnt</span>
                         <div>
-                            <input
-                                onChange={handleInputChange}
-                                defaultValue={storedData.expOneDepartment}
+                            <input {...register("expOneDepartment",)}
                                 name='expOneDepartment'
                                 className='input form-control '
                                 id='expOneDepartment'
                                 type="text"
+                                placeholder='Enter data'
                             />
                         </div>
                     </div>
@@ -121,9 +140,7 @@ const EmployeesExperienceManage = () => {
                         <span className="label-text text-md fw-bold">Employment Period</span>
                         <div className=' d-flex '>
                             <div className='col-md-5'>
-                                <input
-                                    onChange={handleInputChange}
-                                    defaultValue={storedData.expOneFrom}
+                                <input {...register("expOneFrom",)}
                                     name='expOneFrom'
                                     className='input form-control '
                                     id='expOneFrom'
@@ -134,9 +151,7 @@ const EmployeesExperienceManage = () => {
                             <b className=' mx-2'>To</b>
 
                             <div className='col-md-5'>
-                                <input
-                                    onChange={handleInputChange}
-                                    defaultValue={storedData.expOneTo}
+                                <input {...register("expOneTo",)}
                                     name='expOneTo'
                                     className='input form-control '
                                     id='expOneTo'
@@ -147,8 +162,7 @@ const EmployeesExperienceManage = () => {
 
                         <div className="form-check">
                             <input
-                                onChange={handleInputChange}
-                                defaultValue={storedData.currentlyWorkHere}
+                                {...register("exprOneWorkPeriod",)}
                                 className="form-check-input"
                                 type="checkbox"
                                 value="currentlyWorkHere"
@@ -163,13 +177,12 @@ const EmployeesExperienceManage = () => {
                     <div className='  mb-3 '>
                         <span className="label-text text-md fw-bold mt-2">Responsibilities</span>
                         <div>
-                            <textarea
-                                onChange={handleInputChange}
-                                defaultValue={storedData.exprOneResp}
+                            <textarea {...register("exprOneResp",)}
                                 name='exprOneResp'
                                 className='input form-control '
                                 id='exprOneResp'
                                 type="text"
+                                placeholder='Enter Responsibilities'
                             />
                         </div>
                     </div>
@@ -177,13 +190,12 @@ const EmployeesExperienceManage = () => {
                     <div className='  mb-3 '>
                         <span className="label-text text-md fw-bold mt-2">Expertise Area</span>
                         <div>
-                            <textarea
-                                onChange={handleInputChange}
-                                defaultValue={storedData.exprOneExpertise}
+                            <textarea {...register("exprOneExpertise",)}
                                 name='exprOneExpertise'
                                 className='input form-control '
                                 id='exprOneExpertise'
                                 type="text"
+                                placeholder='Enter Expertise'
                             />
                         </div>
                     </div>
@@ -191,13 +203,12 @@ const EmployeesExperienceManage = () => {
                     <div className='   mb-3 '>
                         <span className="label-text text-md fw-bold mt-2">Company Address</span>
                         <div>
-                            <textarea
-                                onChange={handleInputChange}
-                                defaultValue={storedData.exprCompOneAddress}
+                            <textarea {...register("exprCompOneAddress",)}
                                 name='exprCompOneAddress'
                                 className='input form-control '
                                 id='exprCompOneAddress'
                                 type="text"
+                                placeholder='Enter Company Address'
                             />
                         </div>
                     </div>
@@ -209,13 +220,12 @@ const EmployeesExperienceManage = () => {
                     <div className=' col-md-6 mb-3'>
                         <span className="label-text text-md fw-bold">Company Name</span>
                         <div>
-                            <input
-                                onChange={handleInputChange}
-                                defaultValue={storedData.expTwoCompanayName}
+                            <input {...register("expTwoCompanayName",)}
                                 name='expTwoCompanayName'
                                 className='input form-control '
                                 id='expTwoCompanayName'
                                 type="text"
+                                placeholder='Enter Company Name'
                             />
                         </div>
                     </div>
@@ -224,13 +234,12 @@ const EmployeesExperienceManage = () => {
                     <div className=' col-md-6 mb-3 '>
                         <span className="label-text text-md fw-bold">Company Business</span>
                         <div>
-                            <input
-                                onChange={handleInputChange}
-                                defaultValue={storedData.expTwoCompanayBusiness}
+                            <input {...register("expTwoCompanayBusiness",)}
                                 name='expTwoCompanayBusiness'
                                 className='input form-control '
                                 id='expTwoCompanayBusiness'
                                 type="text"
+                                placeholder='Enter Company Business'
                             />
                         </div>
                     </div>
@@ -238,13 +247,12 @@ const EmployeesExperienceManage = () => {
                     <div className=' col-md-4 mb-3 '>
                         <span className="label-text text-md fw-bold">Designation</span>
                         <div>
-                            <input
-                                onChange={handleInputChange}
-                                defaultValue={storedData.expTwoDesignation}
+                            <input {...register("expTwoDesignation",)}
                                 name='expTwoDesignation'
                                 className='input form-control '
                                 id='expTwoDesignation'
                                 type="text"
+                                placeholder='Enter Designation'
                             />
                         </div>
                     </div>
@@ -252,13 +260,12 @@ const EmployeesExperienceManage = () => {
                     <div className=' col-md-4 mb-3 '>
                         <span className="label-text text-md fw-bold">Departemnt</span>
                         <div>
-                            <input
-                                onChange={handleInputChange}
-                                defaultValue={storedData.expTwoDepartment}
+                            <input {...register("expTwoDepartment",)}
                                 name='expTwoDepartment'
                                 className='input form-control '
                                 id='expTwoDepartment'
                                 type="text"
+                                placeholder='Enter data'
                             />
                         </div>
                     </div>
@@ -267,9 +274,7 @@ const EmployeesExperienceManage = () => {
                         <span className="label-text text-md fw-bold">Employment Period</span>
                         <div className=' d-flex '>
                             <div className='col-md-5'>
-                                <input
-                                    onChange={handleInputChange}
-                                    defaultValue={storedData.expTwoFrom}
+                                <input {...register("expTwoFrom",)}
                                     name='expTwoFrom'
                                     className='input form-control '
                                     id='expTwoFrom'
@@ -280,9 +285,7 @@ const EmployeesExperienceManage = () => {
                             <b className=' mx-2'>To</b>
 
                             <div className='col-md-5'>
-                                <input
-                                    onChange={handleInputChange}
-                                    defaultValue={storedData.expTwoTo}
+                                <input {...register("expTwoTo",)}
                                     name='expTwoTo'
                                     className='input form-control '
                                     id='expTwoTo'
@@ -293,12 +296,11 @@ const EmployeesExperienceManage = () => {
 
                         <div className="form-check">
                             <input
-                                onChange={handleInputChange}
-                                defaultValue={storedData.exprTwoWorkPeriod}
+                                {...register("exprTwoWorkPeriod",)}
                                 className="form-check-input"
-                                name="exprTwoWorkPeriod"
-                                id="exprTwoWorkPeriod"
                                 type="checkbox"
+                                value="exprTwoWorkPeriod"
+                                id="exprTwoWorkPeriod"
                             />
                             <label className="form-check-label" htmlFor="exprTwoWorkPeriod">
                                 Currently working here
@@ -309,9 +311,7 @@ const EmployeesExperienceManage = () => {
                     <div className='  mb-3 '>
                         <span className="label-text text-md fw-bold mt-2">Responsibilities</span>
                         <div>
-                            <textarea
-                                onChange={handleInputChange}
-                                defaultValue={storedData.exprTwoResp}
+                            <textarea {...register("exprTwoResp",)}
                                 name='exprTwoResp'
                                 className='input form-control '
                                 id='exprTwoResp'
@@ -324,13 +324,12 @@ const EmployeesExperienceManage = () => {
                     <div className='  mb-3 '>
                         <span className="label-text text-md fw-bold mt-2">Expertise Area</span>
                         <div>
-                            <textarea
-                                onChange={handleInputChange}
-                                defaultValue={storedData.exprTwoExpertise}
+                            <textarea {...register("exprTwoExpertise",)}
                                 name='exprTwoExpertise'
                                 className='input form-control '
                                 id='exprTwoExpertise'
                                 type="text"
+                                placeholder='Enter Expertise'
                             />
                         </div>
                     </div>
@@ -338,13 +337,12 @@ const EmployeesExperienceManage = () => {
                     <div className='   mb-3 '>
                         <span className="label-text text-md fw-bold mt-2">Company Address</span>
                         <div>
-                            <textarea
-                                onChange={handleInputChange}
-                                defaultValue={storedData.exprCompTwoAddress}
+                            <textarea {...register("exprCompTwoAddress",)}
                                 name='exprCompTwoAddress'
                                 className='input form-control'
                                 id='exprCompTwoAddress'
                                 type="text"
+                                placeholder='Enter Company Address'
                             />
                         </div>
                     </div>
@@ -360,4 +358,4 @@ const EmployeesExperienceManage = () => {
     );
 };
 
-export default EmployeesExperienceManage;
+export default EmployeesExperienceEntry;
