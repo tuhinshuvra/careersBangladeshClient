@@ -21,6 +21,7 @@ const EmployeesExperienceEntry = () => {
             email: user.email,
             name: user.displayName,
 
+            haveExperience: data.haveExperience,
             expOneCompanayName: data.expOneCompanayName,
             expOneCompanayBusiness: data.expOneCompanayBusiness,
             expOneDesignation: data.expOneDesignation,
@@ -58,14 +59,13 @@ const EmployeesExperienceEntry = () => {
                 if (data.acknowledged) {
                     console.log(data)
                     toast.success(`${user.displayName} Experience Data Saved Successfully`)
-                    navigate("/dashboard/jobSeekerProfile");
+                    navigate("/dashboard/jobSeekerProfileEntry");
                 }
                 else {
                     toast.error(data.message)
                 }
             })
     }
-
 
 
     return (
@@ -77,16 +77,36 @@ const EmployeesExperienceEntry = () => {
             {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
             <form onSubmit={handleSubmit(handleJobSeekerProfile)} >
 
+                <div className=' col-3 my-4  '>
+                    <span className="label-text text-md fw-bold "> <span className="star">&#x2605; </span>Have Experience</span>
+                    <select
+                        {...register("haveExperience",)}
+                        name='haveExperience'
+                        className='input form-control '
+                        id="haveExperience"
+                    >
+                        <option>-Select Experience-</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+
                 <div className=' d-flex justify-content-between'>
                     <h5 className="label-text text-md fw-bold">Experience One</h5>
-                    <p className=' float-end '> <span className="star">&#x2605; </span> <b>(Red Star) denotes must be filled</b></p>
+                    {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b>(Red Star) denotes must be filled</b></p> */}
                 </div>
+
+
+
+
 
                 <div className=' row'>
                     <div className=' col-md-6 mb-3'>
                         <span className="label-text text-md fw-bold">Company Name</span>
                         <div>
-                            <input {...register("expOneCompanayName",)}
+                            <input
+                                {...register("expOneCompanayName",)}
                                 name='expOneCompanayName'
                                 className='input form-control '
                                 id='expOneCompanayName'

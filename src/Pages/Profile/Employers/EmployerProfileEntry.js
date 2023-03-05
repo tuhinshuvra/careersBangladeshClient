@@ -29,16 +29,18 @@ const EmployerProfileEntry = () => {
                     const emplyerProfile = {
                         email: user?.email,
                         name: user?.displayName,
+
                         companyNameEn: data.company_name_en,
-                        organizationType: data.orgaType,
+                        organizationType: data.organizationType,
                         companyNameBn: data.company_name_bn,
-                        // image: imgData.data.url,
+                        image: imgData.data.url,
                         companyLogo: imgData.data.url,
                         estdYear: data.estd_year,
                         companySize: data.company_size,
                         addressEng: data.address_en,
                         addressBng: data.address_bn,
                         busiDescription: data.busi_description,
+                        
                         tradeLicense: data.trade_license,
                         websiteURL: data.website_url,
                         contactPersonName: data.contact_person_name,
@@ -89,8 +91,8 @@ const EmployerProfileEntry = () => {
                     <div className=' col-md-3'>
                         <label htmlFor="company_logo"> <b> Company Type</b></label>
                         <select
-                            {...register("orgaType")}
-                            name='orgaType'
+                            {...register("organizationType")}
+                            name='organizationType'
                             className="form-select my-lg-3">
                             <option>-Select Company Type-</option>
                             <option value="Government">Government</option>

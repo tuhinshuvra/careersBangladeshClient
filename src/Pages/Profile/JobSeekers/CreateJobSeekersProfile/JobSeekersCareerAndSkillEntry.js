@@ -67,7 +67,7 @@ const JobSeekersCareerAndSkillEntry = () => {
                 if (data.acknowledged) {
                     console.log(data)
                     toast.success(`${user.displayName} Career and Skill Data Saved Successfully`)
-                    navigate("/dashboard/jobSeekerProfile");
+                    navigate("/dashboard/jobSeekerProfileEntry");
                 }
                 else {
                     toast.error(data.message)

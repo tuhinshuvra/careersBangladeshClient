@@ -11,7 +11,6 @@ const JobSeekersPersonalDetailsManage = () => {
     const storedData = useLoaderData();
     const [personalDetails, setPersonalDetails] = useState(storedData);
 
-    // console.log("personalDetails : ", personalDetails);
 
     // const navigate = useNavigate();
 

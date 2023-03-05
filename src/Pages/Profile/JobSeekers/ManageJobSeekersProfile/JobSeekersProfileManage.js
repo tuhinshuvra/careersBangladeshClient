@@ -18,24 +18,16 @@ const JobSeekersProfileManage = () => {
                         <Link
                             to={`/dashboard/employeesPersonalDetails/${user?.email}`}
                             className=' text-decoration-none'
-                        >Personal Details
-                        </Link>
-                    </button>
-                    <button type="button" className="btn btn-outline-secondary">
-                        <Link
-                            to={`/dashboard/employeesExperiences/${user?.email}`}
-                            className=' text-decoration-none'
-                        >Experience
+                        >Personal
                         </Link>
                     </button>
                     <button type="button" className="btn btn-outline-secondary">
                         <Link
                             to={`/dashboard/employeesAcademicsAndTraining/${user?.email}`}
                             className=' text-decoration-none'
-                        >Academic and Training
+                        >Education/Training
                         </Link>
                     </button>
-
                     <button type="button" className="btn btn-outline-secondary">
                         <Link
                             to={`/dashboard/employeesCareersAndSkill/${user?.email}`}
@@ -43,6 +35,15 @@ const JobSeekersProfileManage = () => {
                         > Career and Skilll
                         </Link>
                     </button>
+                    
+                    <button type="button" className="btn btn-outline-secondary">
+                        <Link
+                            to={`/dashboard/employeesExperiences/${user?.email}`}
+                            className=' text-decoration-none'
+                        >Experience
+                        </Link>
+                    </button>
+
                     <button type="button" className="btn btn-outline-secondary">
                         <Link
                             to={`/dashboard/employeesLanguagesAndReferences/${user?.email}`}

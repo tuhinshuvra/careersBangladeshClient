@@ -72,7 +72,7 @@ const JobSeekersLanguageAndReferenceEntry = () => {
                 if (data.acknowledged) {
                     console.log(data)
                     toast.success(`${user.displayName} Language and Reference Data Saved Successfully`)
-                    navigate("/dashboard/jobSeekerProfile");
+                    navigate("/dashboard/jobSeekerProfileEntry");
                 }
                 else {
                     toast.error(data.message);

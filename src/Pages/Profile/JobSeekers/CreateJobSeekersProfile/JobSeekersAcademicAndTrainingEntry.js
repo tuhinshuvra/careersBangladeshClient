@@ -88,7 +88,7 @@ const JobSeekersAcademicAndTrainingEntry = () => {
                 if (data.acknowledged) {
                     console.log(data)
                     toast.success(`${user.displayName} Academic and Training Data Saved Successfully`)
-                    navigate("/dashboard/jobSeekerProfile");
+                    navigate("/dashboard/jobSeekerProfileEntry");
                 }
                 else {
                     toast.error(data.message)

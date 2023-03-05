@@ -23,7 +23,7 @@ const EmployersProfile = () => {
             })
     }, [email])
 
-    console.log("employerData : ", employerData)
+    // console.log("employerData : ", employerData)
 
     const { _id, name, companyNameEn, companyLogo, companyNameBn, estdYear, companySize, addressEng, addressBng, busiDescription, tradeLicense, websiteURL, contactPersonName, contactPersonDesignation,
         contactPersonEmail, contactPersonPhone } = employerData;

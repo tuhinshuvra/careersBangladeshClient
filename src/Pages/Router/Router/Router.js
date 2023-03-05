@@ -146,6 +146,7 @@ const router = createBrowserRouter([
             // ##################################### employees Profile Entry Section Wise End ##############################################
 
 
+
             // ##################################### employees Profile Edit Section Wise Start #############################################
 
             {
@@ -197,8 +198,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/employeesLanguageAndReferenceEdit',
                 element: <JobSeekersLanguageAndReferenceManage></JobSeekersLanguageAndReferenceManage>
+
             },
-            // ##################################### employees Profile Edit Section Wise End ##############################################
+
+            // ##################################### jobseeker Edit Section Wise End ##############################################
 
             {
                 path: '/dashboard/jobSeekerProfile',
@@ -221,7 +224,10 @@ const router = createBrowserRouter([
                 // loader: () => fetch('http://localhost:5000/jobseekersavedjobs')
             },
 
-            // employer dashboard section
+
+
+
+            /////////////////////////////// employer dashboard section///////////////////////////////////////
             {
                 path: '/dashboard/employerProfileEntry',
                 element: <EmployerProfileEntry></EmployerProfileEntry>
@@ -231,8 +237,9 @@ const router = createBrowserRouter([
                 element: <EmployersProfile></EmployersProfile>,
             },
             {
-                path: '/dashboard/employerProfileManage',
+                path: '/dashboard/employerProfileManage/:email',
                 element: <EmployersProfileManage></EmployersProfileManage>,
+                loader: ({ params }) => fetch(`http://localhost:5000/employer/${params.email}`)
             },
 
 
