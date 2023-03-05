@@ -11,6 +11,7 @@ import useJobSeeker from '../hooks/useJobSeeker';
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
 
+
     const [isAdmin] = useAdmin(user?.email);
     const [isEmployer] = useEmployer(user?.email);
     const [isJobSeeker] = useJobSeeker(user?.email);
@@ -47,8 +48,8 @@ const DashboardLayout = () => {
 
                         {
                             isJobSeeker && <>
-                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekerProfileEntry'>Create Profile</Link></li>
-                                {/* <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesPersonalDetailsEntry'>Employee's Personal Details</Link></li>
+                                <li className='list-group-item'><Link className='nav_btn' to='/dashboard/jobSeekerProfileEntry'>Create Profile</Link></li>
+                                {/* <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekersPersonalDetailsEntry'>Employee's Personal Details</Link></li>
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesExperienceDataEntry'>Employee's Experience Data</Link></li>
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesAcademicAndTrainingEntry'>Employee's AcademicsAndTraining</Link></li>
                                 <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesCareersAndSkillEntry'>Employee's Careers & Skill Data</Link></li>

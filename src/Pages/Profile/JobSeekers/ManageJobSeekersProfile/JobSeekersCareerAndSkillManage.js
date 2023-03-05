@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
 import JobSeekersProfileManage from './JobSeekersProfileManage';
-import '../../JobSeekers/EmployeesProfile.css';
+import '../../JobSeekers/JobSeekersProfile.css';
 
 const JobSeekersCareerAndSkillManage = () => {
     const storedData = useLoaderData();

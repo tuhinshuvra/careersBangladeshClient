@@ -7,10 +7,9 @@ import About from '../../About/About';
 import Contact from '../../Contact/Contact';
 import MainLayout from '../../../layout/MainLayout';
 import PostedJobList from '../../Profile/Employers/PostedJobList';
-import EmployerProfileEntry from '../../Profile/Employers/EmployerProfileEntry';
 import WrongRoute from '../../Shared/ErrorDisplay/WrongRoute';
 import Login from '../../Login/Login';
-import PostedJobDetails from '../../Profile/Employers/PostedJobDetails';
+
 import NewJobPost from '../../Profile/Employers/NewJobPost';
 import UserList from '../../Profile/Admin/AllUser';
 import UpdateUser from '../../Profile/Admin/UpdateUser';
@@ -18,7 +17,6 @@ import EmployerList from '../../Profile/Admin/EmployerList';
 import JobSeekerList from '../../Profile/Admin/JobSeekerList';
 import PrivateRoute from '../PrivateRoute';
 import DashboardLayout from '../../../layout/DashboardLayout';
-import EmployersProfile from '../../Profile/Employers/EmployeersProfile';
 import ELearning from '../../ELearning/ELearning';
 import JobCategoryEntry from '../../JobCategory/JobCategoryEntry';
 import JobCategoryList from '../../JobCategory/JobCategoryList';
@@ -31,11 +29,14 @@ import TermsAndConditions from '../../TermsAndConditions';
 import FindJobHomeResult from '../../JobSearch/FindJobHomeResult';
 import SubscriberList from '../../Subscriber/SubscriberList';
 
-import EmployeesProfile from '../../Profile/JobSeekers/EmployeesProfile';
+import EmployerProfileEntry from '../../Profile/Employers/EmployerProfileEntry';
+import PostedJobDetails from '../../Profile/Employers/PostedJobDetails';
+import EmployersProfileManage from '../../Profile/Employers/EmployersProfileManage';
 import Photograph from '../../Profile/JobSeekers/Photograph/Photograph';
+
 import AppliedJobList from '../../Profile/JobSeekers/AppliedJobList/AppliedJobList';
 import SavedJobList from '../../Profile/JobSeekers/SavedJobList/SavedJobList';
-import EmployeesProfileEntry from '../../Profile/JobSeekers/CreateJobSeekersProfile/JobSeekersProfileEntry';
+import JobSeekersProfileEntry from '../../Profile/JobSeekers/CreateJobSeekersProfile/JobSeekersProfileEntry';
 import JobSeekersPersonalDetailsEntry from '../../Profile/JobSeekers/CreateJobSeekersProfile/JobSeekersPersonalDetailsEntry';
 import JobSeekersExperienceEntry from '../../Profile/JobSeekers/CreateJobSeekersProfile/JobSeekersExperienceEntry';
 import JobSeekersCareerAndSkillEntry from '../../Profile/JobSeekers/CreateJobSeekersProfile/JobSeekersCareerAndSkillEntry';
@@ -47,7 +48,8 @@ import JobSeekersExperienceManage from '../../Profile/JobSeekers/ManageJobSeeker
 import JobSeekersAcademicAndTrainingManage from '../../Profile/JobSeekers/ManageJobSeekersProfile/JobSeekersAcademicAndTrainingManage';
 import JobSeekersCareerAndSkillManage from '../../Profile/JobSeekers/ManageJobSeekersProfile/JobSeekersCareerAndSkillManage';
 import JobSeekersLanguageAndReferenceManage from '../../Profile/JobSeekers/ManageJobSeekersProfile/JobSeekersLanguageAndReferenceManage';
-import EmployersProfileManage from '../../Profile/Employers/EmployersProfileManage';
+import EmployeesProfile from '../../Profile/JobSeekers/JobSeekersProfile';
+import EmployersProfile from '../../Profile/Employers/EmployeersProfile';
 
 const router = createBrowserRouter([
     {
@@ -115,11 +117,11 @@ const router = createBrowserRouter([
             // ##################################### employees Profile Entry Section Wise Start ##############################################
             {
                 path: '/dashboard/jobSeekerProfileEntry',
-                element: <EmployeesProfileEntry></EmployeesProfileEntry>
+                element: <JobSeekersProfileEntry></JobSeekersProfileEntry>
             },
 
             {
-                path: '/dashboard/employeesPersonalDetailsEntry',
+                path: '/dashboard/jobSeekersPersonalDetailsEntry',
                 element: <JobSeekersPersonalDetailsEntry></JobSeekersPersonalDetailsEntry>
             },
 
@@ -241,9 +243,6 @@ const router = createBrowserRouter([
                 element: <EmployersProfileManage></EmployersProfileManage>,
                 loader: ({ params }) => fetch(`http://localhost:5000/employer/${params.email}`)
             },
-
-
-
             {
                 path: '/dashboard/newJobPost',
                 element: <NewJobPost></NewJobPost>

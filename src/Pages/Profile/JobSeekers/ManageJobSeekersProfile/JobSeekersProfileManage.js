@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
-import '../EmployeesProfile.css';
+import '../JobSeekersProfile.css';
 
 const JobSeekersProfileManage = () => {
 
@@ -35,7 +35,7 @@ const JobSeekersProfileManage = () => {
                         > Career and Skilll
                         </Link>
                     </button>
-                    
+
                     <button type="button" className="btn btn-outline-secondary">
                         <Link
                             to={`/dashboard/employeesExperiences/${user?.email}`}

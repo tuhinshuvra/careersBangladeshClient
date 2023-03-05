@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Authentication/AuthProvider';
-import '../../JobSeekers/EmployeesProfile.css';
+import '../../JobSeekers/JobSeekersProfile.css';
 import JobSeekersProfileManage from './JobSeekersProfileManage';
 
 const JobSeekersAcademicAndTrainingManage = () => {
