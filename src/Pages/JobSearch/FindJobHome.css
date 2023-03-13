@@ -1,40 +1,48 @@
+.findAndStat {
+  background-color: #e5f7e5;
+  /* background-image: url('../../assets/images/hero_bg.png'); */
+  /* height: 400px !important; */
+  padding-top: 70px;
+  padding-bottom: 35px;
+}
+
 .search {
-    width: 18%;
+  width: 18%;
 }
 
 .counter-box {
-    display: block;
-    background: #f6f6f6;
-    padding: 0px 0px 10px;
-    text-align: center;
-    border-radius: 5px;
-    border: 1px solid rgb(211, 207, 207);
+  display: block;
+  background: #f6f6f6;
+  padding: 0px 0px 10px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid rgb(211, 207, 207);
 }
 
 .counter-box p {
-    margin: 5px 0 0;
-    padding: 0;
-    color: #909090;
-    font-size: 18px;
-    font-weight: 500
+  margin: 5px 0 0;
+  padding: 0;
+  color: #909090;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .counter-box i {
-    font-size: 60px;
-    margin: 0 0 15px;
-    color: #d2d2d2
+  font-size: 60px;
+  margin: 0 0 15px;
+  color: #d2d2d2;
 }
 
 .counter {
-    display: block;
-    font-size: 32px;
-    font-weight: 700;
-    color: #666;
-    line-height: 28px
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+  color: #666;
+  line-height: 28px;
 }
 
 @media (min-width: 320px) and (max-width: 767.98px) {
-    .counter-box {
-        margin: 0 0px 10px 0;
-    }
+  .counter-box {
+    margin: 0 0px 10px 0;
+  }
 }
