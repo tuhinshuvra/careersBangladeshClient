@@ -1,36 +1,38 @@
+.cateNameText {
+  font-size: 14px;
+}
+
 .category_bg {
-    background-color: #FEF9F9;
-    padding-top: 70px;
-    padding-bottom: 35px;
+  background-color: #fef9f9;
+  padding-top: 70px;
+  padding-bottom: 35px;
 }
 
 .common-margin {
-    margin-top: 100px;
+  margin-top: 100px;
 }
 
 .job-category {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    text-decoration: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  text-decoration: none;
 }
 
 .category_link {
-    position: relative;
-    display: block;
-    font-size: 16px;
-    color: #A51E67;
-    transition: .3s;
+  position: relative;
+  display: block;
+  font-size: 16px;
+  color: #a51e67;
+  transition: 0.3s;
 }
 
 .category_link:hover {
-    font-size: 17px;
-    color: white;
-    background-color: #A51E67;
-    border-radius: 6px;
+  font-size: 17px;
+  color: white;
+  background-color: #a51e67;
+  border-radius: 6px;
 }
-
-
 
 /* 
 @keyframes fading {
@@ -47,29 +49,56 @@
     }
 } */
 
-@media (min-width: 992px) and (max-width: 1024px) {
-    .job-category {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-        text-decoration: none;
-    }
+@media (min-width: 1200px) {
+  .job-category {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    text-decoration: none;
+  }
+  .cateNameText {
+    font-size: 16px;
+  }
 }
 
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-    .job-category {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-        text-decoration: none;
-    }
+@media (min-width: 1024px) and (max-width: 1199.98px) {
+  .job-category {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    text-decoration: none;
+  }
+  .cateNameText {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1023.98px) {
+  .job-category {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    text-decoration: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .job-category {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    text-decoration: none;
+  }
 }
 
 @media (min-width: 320px) and (max-width: 767.98px) {
-    .job-category {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        gap: 4px;
-        text-decoration: none;
-    }
+  .job-category {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 4px;
+    text-decoration: none;
+  }
+  .cateNameText {
+    font-size: 12px;
+  }
 }

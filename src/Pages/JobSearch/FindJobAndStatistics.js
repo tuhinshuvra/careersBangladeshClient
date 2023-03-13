@@ -61,20 +61,20 @@ const FindJobAndStatistics = () => {
         <h2 className="careers_title_one">
           <FaSearchDollar className="mx-1"></FaSearchDollar>LETS FIND YOUR JOB
         </h2>
-        <div className="d-flex  justify-content-center mt-4">
+        <div className="d-md-flex  justify-content-center mt-4 mx-md-2">
           <input
             onBlur={getSearchKeyword}
             name="jobTitle"
             type="text"
             id="jobTitle"
             placeholder="Search with keyword"
-            className="form-control  w-25"
+            className=" form-control w-75  w-md-25  mx-auto"
           />
 
           <select
             onBlur={getSearchOrganization}
             name="orgaType"
-            className="form-select w-25 mx-2"
+            className="form-select w-75  w-md-25 ms-md-1 me-md-1 mx-auto marginSM "
           >
             <option>Select Company Type</option>
             <option value="Government">Government</option>
@@ -93,12 +93,12 @@ const FindJobAndStatistics = () => {
             type="text"
             id="location"
             placeholder="Location"
-            className="form-control  w-25"
+            className="form-control  w-75 w-md-25 mx-auto "
           />
 
           <Link
             to={`/searchHomeResult`}
-            className=" text-decoration-none custom_btn ms-2"
+            className=" text-decoration-none custom_btn"
           >
             {" "}
             Search
