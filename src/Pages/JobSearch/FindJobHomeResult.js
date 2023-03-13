@@ -1,67 +1,79 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
-import { FaFile, FaFilter, FaList, FaSearch, FaStar, FaTh } from 'react-icons/fa';
-import './FindJob.css';
-import useTitle from '../../hooks/useTitle';
-import { useQuery } from '@tanstack/react-query';
-import { toast } from 'react-hot-toast';
-import { useForm } from 'react-hook-form';
-import { AuthContext } from '../Authentication/AuthProvider';
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
+import {
+  FaFile,
+  FaFilter,
+  FaList,
+  FaSearch,
+  FaStar,
+  FaTh,
+} from "react-icons/fa";
+import "./FindJob.css";
+import useTitle from "../../hooks/useTitle";
+import { useQuery } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
+import { useForm } from "react-hook-form";
+import { AuthContext } from "../Authentication/AuthProvider";
 
 const FindJobHomeResult = ({ jobList }) => {
-    useTitle('FindJob');
+  useTitle("FindJob");
 
-    const [search, setSearch] = useState('');
-    const [showJobs, setShowJobs] = useState([]);
-    const searchRef = useRef();
-    const { searchData } = useContext(AuthContext);
+  const [search, setSearch] = useState("");
+  const [showJobs, setShowJobs] = useState([]);
+  const searchRef = useRef();
+  const { searchData } = useContext(AuthContext);
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
+  useEffect(() => {
+    fetch(
+      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobSearch?search=${searchData}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(" Home Job Search Result :", data);
+        setShowJobs(data);
+      });
+  }, [searchData]);
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/jobSearch?search=${searchData}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(" Home Job Search Result :", data);
-                setShowJobs(data);
-            })
-    }, [searchData]);
+  const { data: categories, isLoading } = useQuery({
+    queryKey: ["category"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobCategories"
+      );
+      const data = await res.json();
+      return data;
+    },
+  });
 
-    const { data: categories, isLoading } = useQuery({
-        queryKey: ['category'],
-        queryFn: async () => {
-            const res = await fetch('http://localhost:5000/jobCategories');
-            const data = await res.json();
-            return data;
-        }
-    })
+  const { data: jobs = [], refetch } = useQuery({
+    queryKey: ["jobs"],
+    queryFn: async () => {
+      const respone = await fetch(
+        "https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobs"
+      );
+      const data = respone.json();
+      return data;
+    },
+  });
 
+  const handleSearch = () => {
+    setSearch(searchRef.current.value);
+    searchRef.current.value = "";
+  };
 
-    const { data: jobs = [], refetch } = useQuery({
-        queryKey: ['jobs'],
-        queryFn: async () => {
-            const respone = await fetch('http://localhost:5000/jobs');
-            const data = respone.json();
-            return data;
-        }
-    })
-
-    const handleSearch = () => {
-        setSearch(searchRef.current.value);
-        searchRef.current.value = "";
-    }
-
-
-    return (
-        <div className="row">
-            <div className="col-md-12">
-                <div className="grid search">
-                    <div className="grid-body">
-                        <div className="row">
-
-
-                            {/* <div className="col-md-3">
+  return (
+    <div className="row">
+      <div className="col-md-12">
+        <div className="grid search">
+          <div className="grid-body">
+            <div className="row">
+              {/* <div className="col-md-3">
                                 <h2 className="grid-title"><FaFilter />Filters</h2>
                                 <hr />
 
@@ -146,13 +158,10 @@ const FindJobHomeResult = ({ jobList }) => {
 
                             </div> */}
 
-
-
-
-                            <div className="col-md-9 mt-md-0 mt-5 mx-md-auto">
-                                {/* <h2><FaFile></FaFile> Result</h2> */}
-                                {/* <hr /> */}
-                                {/* 
+              <div className="col-md-9 mt-md-0 mt-5 mx-md-auto">
+                {/* <h2><FaFile></FaFile> Result</h2> */}
+                {/* <hr /> */}
+                {/* 
                                 <div className="input-group">
 
                                     <input
@@ -173,12 +182,13 @@ const FindJobHomeResult = ({ jobList }) => {
                                     </span>
                                 </div> */}
 
+                <p className=" fs-4 fw-bold">
+                  Showing Job Search Result of word {searchData}
+                </p>
 
-                                <p className=' fs-4 fw-bold'>Showing Job Search Result of word {searchData}</p>
+                <div className="padding"></div>
 
-                                <div className="padding"></div>
-
-                                {/* <div className="row">
+                {/* <div className="row">
 
                                     <div className="col-9">
                                         <select className="form-select">
@@ -201,50 +211,49 @@ const FindJobHomeResult = ({ jobList }) => {
                                     </div>
                                 </div> */}
 
+                <div className="table-responsive">
+                  <table className="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>SL</th>
+                        <th>Job Title</th>
+                        <th>Institution</th>
+                        <th>Organization Type</th>
+                        <th>Work Place</th>
+                        <th>Posted</th>
+                        <th>DeadLine</th>
+                        <th>Salary</th>
+                      </tr>
+                    </thead>
 
-                                <div className="table-responsive">
-                                    <table className="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>SL</th>
-                                                <th>Job Title</th>
-                                                <th>Institution</th>
-                                                <th>Organization Type</th>
-                                                <th>Work Place</th>
-                                                <th>Posted</th>
-                                                <th>DeadLine</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                        </thead>
+                    <tbody>
+                      {
+                        // jobs.map((job, index) =>
+                        showJobs.map((job, index) => (
+                          <tr key={job._id} className="">
+                            <td>{index + 1}</td>
+                            <td className="fw-bold">
+                              <Link
+                                className=" text-decoration-none text-primary "
+                                to={`/dashboard/jobs/${job._id}`}
+                              >
+                                {job.jobTitle}
+                              </Link>
+                            </td>
+                            <td>{job.organization}</td>
+                            <td>{job.orgaType}</td>
+                            <td>{job.location}</td>
+                            <td>{job.postDate}</td>
+                            <td>{job.deadLine}</td>
+                            <td>৳{job.salaryTo}</td>
+                          </tr>
+                        ))
+                      }
+                    </tbody>
+                  </table>
+                </div>
 
-                                        <tbody>
-                                            {
-                                                // jobs.map((job, index) =>
-                                                showJobs.map((job, index) =>
-                                                    <tr key={job._id} className="">
-                                                        <td>{index + 1}</td>
-                                                        <td className='fw-bold'>
-                                                            <Link className=' text-decoration-none text-primary ' to={`/dashboard/jobs/${job._id}`}>
-                                                                {job.jobTitle}
-                                                            </Link>
-                                                        </td>
-                                                        <td>{job.organization}</td>
-                                                        <td>{job.orgaType}</td>
-                                                        <td>{job.location}</td>
-                                                        <td>{job.postDate}</td>
-                                                        <td>{job.deadLine}</td>
-                                                        <td>৳{job.salaryTo}</td>
-                                                    </tr>
-                                                )
-                                            }
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-
-
-                                {/* <div className=' d-flex justify-content-center'>
+                {/* <div className=' d-flex justify-content-center'>
                                     <nav aria-label="..." className=' '>
                                         <ul className="pagination">
                                             <li className="page-item disabled">
@@ -264,15 +273,13 @@ const FindJobHomeResult = ({ jobList }) => {
                                         </ul>
                                     </nav>
                                 </div> */}
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default FindJobHomeResult;

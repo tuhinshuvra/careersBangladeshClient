@@ -1,92 +1,98 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
-import { FaFile, FaFilter, FaList, FaSearch, FaStar, FaTh } from 'react-icons/fa';
-import './FindJob.css';
-import useTitle from '../../hooks/useTitle';
-import { useQuery } from '@tanstack/react-query';
-import { toast } from 'react-hot-toast';
-import { useForm } from 'react-hook-form';
-import { AuthContext } from '../Authentication/AuthProvider';
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
+import {
+  FaFile,
+  FaFilter,
+  FaList,
+  FaSearch,
+  FaStar,
+  FaTh,
+} from "react-icons/fa";
+import "./FindJob.css";
+import useTitle from "../../hooks/useTitle";
+import { useQuery } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
+import { useForm } from "react-hook-form";
+import { AuthContext } from "../Authentication/AuthProvider";
 
 const FindAllJob = () => {
-    useTitle('FindJob');
-    const [search, setSearch] = useState('');
-    const searchRef = useRef();
-    const [showJobs, setShowJobs] = useState([])
+  useTitle("FindJob");
+  const [search, setSearch] = useState("");
+  const searchRef = useRef();
+  const [showJobs, setShowJobs] = useState([]);
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
+  useEffect(() => {
+    fetch(
+      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobSearch?search=${search}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log("Find all Job Search Result :", data);
+        setShowJobs(data);
+      });
+  }, [search]);
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/jobSearch?search=${search}`)
-            .then(response => response.json())
-            .then(data => {
-                // console.log("Find all Job Search Result :", data);
-                setShowJobs(data);
-            })
-    }, [search]);
+  const handleSearch = () => {
+    // console.log("searchRef : ", searchRef.current.value)
+    setSearch(searchRef.current.value);
+    searchRef.current.value = "";
+    // console.log("HandleSearch function called")
+    // console.log("searchRef Value :", searchRef.current.value);
+  };
 
+  const { data: categories, isLoading } = useQuery({
+    queryKey: ["category"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobCategories"
+      );
+      const data = await res.json();
+      return data;
+    },
+  });
 
-    const handleSearch = () => {
-        // console.log("searchRef : ", searchRef.current.value)
-        setSearch(searchRef.current.value);
-        searchRef.current.value = "";
-        // console.log("HandleSearch function called")
-        // console.log("searchRef Value :", searchRef.current.value);
-    }
+  const { data: jobs = [], refetch } = useQuery({
+    queryKey: ["jobs"],
+    queryFn: async () => {
+      const respone = await fetch(
+        "https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobs"
+      );
+      const data = respone.json();
+      return data;
+    },
+  });
 
+  // const handleDelete = (job) => {
+  //     fetch(`https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobs/${job._id}`, {
+  //         method: 'DELETE'
+  //     })
+  //         .then(respnse => respnse.json())
+  //         .then(data => {
+  //             console.log(data)
+  //             if (data.deletedCount > 0) {
+  //                 toast('Job Deleted Successfully.')
+  //             }
+  //         });
+  //     // console.log(user._id);
+  // }
 
-    const { data: categories, isLoading } = useQuery({
-        queryKey: ['category'],
-        queryFn: async () => {
-            const res = await fetch('http://localhost:5000/jobCategories');
-            const data = await res.json();
-            return data;
-        }
-    })
+  // const handleJobsUpdate = (job) => {
+  //     console.log("Selected to Update Job : ", job._id)
+  // }
 
-
-    const { data: jobs = [], refetch } = useQuery({
-        queryKey: ['jobs'],
-        queryFn: async () => {
-            const respone = await fetch('http://localhost:5000/jobs');
-            const data = respone.json();
-            return data;
-        }
-    })
-
-
-
-
-
-
-    // const handleDelete = (job) => {
-    //     fetch(`http://localhost:5000/jobs/${job._id}`, {
-    //         method: 'DELETE'
-    //     })
-    //         .then(respnse => respnse.json())
-    //         .then(data => {
-    //             console.log(data)
-    //             if (data.deletedCount > 0) {
-    //                 toast('Job Deleted Successfully.')
-    //             }
-    //         });
-    //     // console.log(user._id);
-    // }
-
-    // const handleJobsUpdate = (job) => {
-    //     console.log("Selected to Update Job : ", job._id)
-    // }
-
-    return (
-        <div className="row">
-            <div className="col-md-12">
-                <div className="grid search">
-                    <div className="grid-body">
-                        <div className="row">
-
-
-                            {/* <div className="col-md-3">
+  return (
+    <div className="row">
+      <div className="col-md-12">
+        <div className="grid search">
+          <div className="grid-body">
+            <div className="row">
+              {/* <div className="col-md-3">
                                 <h2 className="grid-title"><FaFilter />Filters</h2>
                                 <hr />
 
@@ -190,99 +196,105 @@ const FindAllJob = () => {
 
                             </div> */}
 
+              {/* <div className="col-md-9 mt-md-0 mt-5"> */}
+              <div className=" mt-md-0 mt-5 mx-auto">
+                <h2>
+                  <FaFile></FaFile> Result
+                </h2>
+                <hr />
 
-                            {/* <div className="col-md-9 mt-md-0 mt-5"> */}
-                            <div className=" mt-md-0 mt-5 mx-auto">
-                                <h2><FaFile></FaFile> Result</h2>
-                                <hr />
+                <div className="input-group">
+                  <input
+                    ref={searchRef}
+                    name="inputSearch"
+                    id="inputSearch"
+                    type="text"
+                    className="form-control"
+                    placeholder="input search data"
+                  />
 
-                                <div className="input-group">
+                  <span className="input-group-btn">
+                    <button
+                      onClick={() => handleSearch()}
+                      className="custom_btn"
+                      type="button"
+                    >
+                      <FaSearch className="" />
+                      Search
+                    </button>
+                  </span>
+                </div>
 
-                                    <input
-                                        ref={searchRef}
-                                        name="inputSearch"
-                                        id="inputSearch"
-                                        type="text"
-                                        className="form-control"
-                                        placeholder='input search data'
-                                    />
+                <p className=" fw-bold">Showing search result</p>
 
-                                    <span className="input-group-btn">
-                                        <button
-                                            onClick={() => handleSearch()}
-                                            className="custom_btn"
-                                            type="button"><FaSearch className='' />
-                                            Search</button>
-                                    </span>
-                                </div>
+                <div className="padding"></div>
 
+                <div className="row">
+                  <div className="col-9">
+                    <select className="form-select">
+                      <option>Order By</option>
+                      <option value="Name">Name</option>
+                      <option value="Posted">Posted</option>
+                      <option value="Deadline">Deadline</option>
+                      <option value="Salary">Salary</option>
+                    </select>
+                  </div>
 
-                                <p className=' fw-bold'>Showing search result</p>
+                  <div className="col-3">
+                    <div className=" float-end">
+                      <div className="btn-group">
+                        <button
+                          type="button"
+                          className="btn btn-default active"
+                        >
+                          <FaList></FaList>{" "}
+                        </button>
+                        <button type="button" className="btn btn-default">
+                          <FaTh></FaTh>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-                                <div className="padding"></div>
+                <div className="table-responsive">
+                  <table className="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>SL</th>
+                        <th>Title</th>
+                        <th>Organization</th>
+                        <th>Work Place</th>
+                        <th>Posted</th>
+                        <th>DeadLine</th>
+                        <th>Salary</th>
+                      </tr>
+                    </thead>
 
-                                <div className="row">
+                    <tbody>
+                      {showJobs.map((job, index) => (
+                        <tr key={job._id} className="">
+                          <td>{index + 1}</td>
+                          <td className="fw-bold">
+                            <Link
+                              className=" text-decoration-none text-primary "
+                              to={`/dashboard/jobs/${job._id}`}
+                            >
+                              {job.jobTitle}
+                            </Link>
+                          </td>
+                          <td>{job.organization}</td>
+                          <td>{job.location}</td>
+                          <td>{job.postDate}</td>
+                          <td>{job.deadLine}</td>
+                          <td>৳{job.salaryTo}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
 
-                                    <div className="col-9">
-                                        <select className="form-select">
-                                            <option>Order By</option>
-                                            <option value="Name">Name</option>
-                                            <option value="Posted">Posted</option>
-                                            <option value="Deadline">Deadline</option>
-                                            <option value="Salary">Salary</option>
-                                        </select>
-                                    </div>
-
-
-                                    <div className="col-3">
-                                        <div className=' float-end'>
-                                            <div className="btn-group">
-                                                <button type="button" className="btn btn-default active"><FaList></FaList> </button>
-                                                <button type="button" className="btn btn-default"><FaTh></FaTh></button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-                                <div className="table-responsive">
-                                    <table className="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>SL</th>
-                                                <th>Title</th>
-                                                <th>Organization</th>
-                                                <th>Work Place</th>
-                                                <th>Posted</th>
-                                                <th>DeadLine</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            {
-                                                showJobs.map((job, index) =>
-                                                    <tr key={job._id} className="">
-                                                        <td>{index + 1}</td>
-                                                        <td className='fw-bold'>
-                                                            <Link className=' text-decoration-none text-primary ' to={`/dashboard/jobs/${job._id}`}>
-                                                                {job.jobTitle}
-                                                            </Link>
-                                                        </td>
-                                                        <td>{job.organization}</td>
-                                                        <td>{job.location}</td>
-                                                        <td>{job.postDate}</td>
-                                                        <td>{job.deadLine}</td>
-                                                        <td>৳{job.salaryTo}</td>
-                                                    </tr>)
-                                            }
-
-                                        </tbody></table>
-                                </div>
-
-
-                                {/* <div className=' d-flex justify-content-center'>
+                {/* <div className=' d-flex justify-content-center'>
                                     <nav aria-label="..." className=' '>
                                         <ul className="pagination">
                                             <li className="page-item disabled">
@@ -302,15 +314,13 @@ const FindAllJob = () => {
                                         </ul>
                                     </nav>
                                 </div> */}
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default FindAllJob;

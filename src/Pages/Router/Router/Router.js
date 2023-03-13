@@ -72,7 +72,7 @@ const router = createBrowserRouter([
         element: <FindJobsByCategory></FindJobsByCategory>,
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/jobbycategory?category=${params.categoryId}`
+            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobbycategory?category=${params.categoryId}`
           ),
       },
 
@@ -173,14 +173,18 @@ const router = createBrowserRouter([
           <JobSeekersPersonalDetailsManage></JobSeekersPersonalDetailsManage>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/employeesPersonal/${params.email}`),
+          fetch(
+            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesPersonal/${params.email}`
+          ),
       },
 
       {
         path: "/dashboard/employeesExperiences/:email",
         element: <JobSeekersExperienceManage></JobSeekersExperienceManage>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/employeesExpriences/${params.email}`),
+          fetch(
+            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesExpriences/${params.email}`
+          ),
       },
       {
         path: "/dashboard/employeesAcademicsAndTraining/:email",
@@ -188,7 +192,9 @@ const router = createBrowserRouter([
           <JobSeekersAcademicAndTrainingManage></JobSeekersAcademicAndTrainingManage>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/jobseekersAcademics/${params.email}`),
+          fetch(
+            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobseekersAcademics/${params.email}`
+          ),
       },
 
       {
@@ -197,7 +203,9 @@ const router = createBrowserRouter([
           <JobSeekersCareerAndSkillManage></JobSeekersCareerAndSkillManage>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/employeesCareers/${params.email}`),
+          fetch(
+            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesCareers/${params.email}`
+          ),
       },
 
       {
@@ -206,7 +214,9 @@ const router = createBrowserRouter([
           <JobSeekersLanguageAndReferenceManage></JobSeekersLanguageAndReferenceManage>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/employeesReferences/${params.email}`),
+          fetch(
+            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesReferences/${params.email}`
+          ),
       },
 
       {
@@ -252,7 +262,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/savedJobs",
         element: <SavedJobList></SavedJobList>,
-        // loader: () => fetch('http://localhost:5000/jobseekersavedjobs')
+        // loader: () => fetch('https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobseekersavedjobs')
       },
 
       /////////////////////////////// employer dashboard section///////////////////////////////////////
@@ -268,7 +278,9 @@ const router = createBrowserRouter([
         path: "/dashboard/employerProfileManage/:email",
         element: <EmployersProfileManage></EmployersProfileManage>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/employer/${params.email}`),
+          fetch(
+            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employer/${params.email}`
+          ),
       },
       {
         path: "/dashboard/newJobPost",
@@ -279,7 +291,9 @@ const router = createBrowserRouter([
         path: "/dashboard/jobs/:id",
         element: <PostedJobDetails></PostedJobDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/jobs/${params.id}`),
+          fetch(
+            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobs/${params.id}`
+          ),
       },
 
       {
@@ -323,7 +337,9 @@ const router = createBrowserRouter([
         path: "/dashboard/userUpdate/:id",
         element: <UpdateUser></UpdateUser>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/users/${params.id}`),
+          fetch(
+            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/users/${params.id}`
+          ),
       },
     ],
   },

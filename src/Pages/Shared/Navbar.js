@@ -16,14 +16,30 @@ const Navbar = () => {
   const [isEmployer] = useEmployer(user?.email);
   const [isJobSeeker] = useJobSeeker(user?.email);
   const [employerData, setEmployerData] = useState([]);
+  const [jobSeekersData, setJobSeekersData] = useState([]);
+
   const navigate = useNavigate();
 
+  // Employer data show
   useEffect(() => {
-    fetch(`http://localhost:5000/employer/${email}`)
+    fetch(
+      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employer/${email}`
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log("Employee Data:", data);
         setEmployerData(data);
+      });
+  }, [email]);
+
+  //   jobseekers data show
+  useEffect(() => {
+    fetch(
+      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesAggregatedData/${email}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setJobSeekersData(data[0]);
       });
   }, [email]);
 
@@ -147,30 +163,40 @@ const Navbar = () => {
                       )}
                       {isJobSeeker && (
                         <>
-                          <li className="list-group-item ">
-                            <Link
-                              className=" nav_btn"
-                              to="/dashboard/jobSeekerProfileEntry"
-                            >
-                              Create Profile
-                            </Link>
-                          </li>
-                          <li className="list-group-item   my-1">
-                            <Link
-                              className=" nav_btn"
-                              to="/dashboard/jobSeekerProfile"
-                            >
-                              My Profile
-                            </Link>
-                          </li>
-                          <li className="list-group-item ">
-                            <Link
-                              className=" nav_btn"
-                              to="/dashboard/employeesProfileManage"
-                            >
-                              Manage Profile
-                            </Link>
-                          </li>
+                          {/* {jobSeekersData.length === 0 && ( */}
+                          <>
+                            <li className="list-group-item ">
+                              <Link
+                                className=" nav_btn"
+                                to="/dashboard/jobSeekerProfileEntry"
+                              >
+                                Create Profile
+                              </Link>
+                            </li>
+                          </>
+                          {/* )} */}
+
+                          {/* {jobSeekersData.length !== 0 && ( */}
+                          <>
+                            <li className="list-group-item   my-1">
+                              <Link
+                                className=" nav_btn"
+                                to="/dashboard/jobSeekerProfile"
+                              >
+                                My Profile
+                              </Link>
+                            </li>
+                            <li className="list-group-item ">
+                              <Link
+                                className=" nav_btn"
+                                to="/dashboard/employeesProfileManage"
+                              >
+                                Manage Profile
+                              </Link>
+                            </li>
+                          </>
+                          {/* )} */}
+
                           <li className="list-group-item my-1">
                             <Link
                               className=" nav_btn"
@@ -191,18 +217,18 @@ const Navbar = () => {
                       )}
                       {isEmployer && (
                         <>
-                          <li className="list-group-item">
-                            {employerData.length === 0 && (
-                              <>
+                          {employerData.length === 0 && (
+                            <>
+                              <li className="list-group-item">
                                 <Link
                                   className=" nav_btn"
                                   to="/dashboard/employerProfileEntry"
                                 >
                                   Entry Profile
                                 </Link>
-                              </>
-                            )}
-                          </li>
+                              </li>
+                            </>
+                          )}
                           {employerData.length !== 0 && (
                             <>
                               <li className="list-group-item my-1">

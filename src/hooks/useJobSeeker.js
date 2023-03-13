@@ -1,22 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const useJobSeeker = (email) => {
+  const [isJobSeeker, setIsJobSeeker] = useState(false);
+  const [isJobSeekerLoading, setIsJobSeekerLoading] = useState(true);
 
-    const [isJobSeeker, setIsJobSeeker] = useState(false);
-    const [isJobSeekerLoading, setIsJobSeekerLoading] = useState(true);
-
-    useEffect(() => {
-        if (email) {
-            fetch(`http://localhost:5000/users/jobseeker/${email}`)
-                .then(response => response.json())
-                .then(data => {
-                    // console.log(data);
-                    setIsJobSeeker(data.isJobSeeker)
-                    setIsJobSeekerLoading(false)
-                })
-        }
-    }, [email])
-    return [isJobSeeker, isJobSeekerLoading]
+  useEffect(() => {
+    if (email) {
+      fetch(
+        `https://careers-bangladesh-server-tuhinshuvra.vercel.app/users/jobseeker/${email}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log(data);
+          setIsJobSeeker(data.isJobSeeker);
+          setIsJobSeekerLoading(false);
+        });
+    }
+  }, [email]);
+  return [isJobSeeker, isJobSeekerLoading];
 };
 
 export default useJobSeeker;

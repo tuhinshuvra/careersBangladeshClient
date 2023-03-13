@@ -16,13 +16,13 @@ const FindJobAndStatistics = () => {
   // const searchRef = useRef();
 
   useEffect(() => {
-    fetch("http://localhost:5000/jobs")
+    fetch("https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobs")
       .then((response) => response.json())
       .then((data) => setTotalJobs(data));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/employers")
+    fetch("https://careers-bangladesh-server-tuhinshuvra.vercel.app/employers")
       .then((response) => response.json())
       .then((data) => setTotalEmployers(data));
   }, []);
@@ -33,7 +33,7 @@ const FindJobAndStatistics = () => {
   console.log("totalJobs : ", totalJobNo);
 
   // useEffect(() => {
-  //     fetch(`http://localhost:5000/jobSearch?search=${search}`)
+  //     fetch(`https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobSearch?search=${search}`)
   //         .then(response => response.json())
   //         .then(data => {
   //             console.log("Find Job Home Search Result :", data)

@@ -18,13 +18,16 @@ const EmployersProfileManage = () => {
 
     // console.log("personalDetails :", employerData)
 
-    fetch(`http://localhost:5000/employerupdate/${storedData._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(employerData),
-    })
+    fetch(
+      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employerupdate/${storedData._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(employerData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log("Updated Data :", data);

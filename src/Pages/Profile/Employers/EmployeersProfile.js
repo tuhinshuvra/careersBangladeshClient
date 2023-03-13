@@ -14,7 +14,9 @@ const EmployersProfile = () => {
   console.log("Employer : ", employer);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/employer/${email}`)
+    fetch(
+      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employer/${email}`
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log("Employee Data:", data);

@@ -9,8 +9,9 @@ const JobSeekersProfile = () => {
   const email = user?.email;
 
   useEffect(() => {
-    // fetch(`http://localhost:5000/employeesAggregatedData/${email}`)
-    fetch(`http://localhost:5000/employeesAggregatedData/${email}`)
+    fetch(
+      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesAggregatedData/${email}`
+    )
       .then((response) => response.json())
       .then((data) => {
         // console.log("employeesAggregatedData : ", data[0])

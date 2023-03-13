@@ -11,24 +11,40 @@ import useJobSeeker from "../hooks/useJobSeeker";
 const DashboardLayout = () => {
   useTitle("My Jobs");
   const { user } = useContext(AuthContext);
+  const email = user?.email;
 
   const [isAdmin] = useAdmin(user?.email);
   const [isEmployer] = useEmployer(user?.email);
   const [isJobSeeker] = useJobSeeker(user?.email);
 
   const [employerData, setEmployerData] = useState([]);
-  const email = user?.email;
+  const [jobSeekersData, setJobSeekersData] = useState([]);
 
   //   console.log("employerData :", employerData);
+  console.log("jobSeekersData :", jobSeekersData);
   //   const employer = useLoaderData();
   //   console.log("Employer : ", employer);
 
+  //   employerData show
   useEffect(() => {
-    fetch(`http://localhost:5000/employer/${email}`)
+    fetch(
+      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employer/${email}`
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log("Employee Data:", data);
         setEmployerData(data);
+      });
+  }, [email]);
+
+  //   jobseekers data show
+  useEffect(() => {
+    fetch(
+      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesAggregatedData/${email}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setJobSeekersData(data[0]);
       });
   }, [email]);
 
@@ -76,18 +92,18 @@ const DashboardLayout = () => {
 
             {isEmployer && (
               <>
-                <li className="list-group-item">
-                  {employerData.length === 0 && (
-                    <>
+                {employerData.length === 0 && (
+                  <>
+                    <li className="list-group-item">
                       <Link
                         className=" nav_btn"
                         to="/dashboard/employerProfileEntry"
                       >
                         Entry Profile
                       </Link>
-                    </>
-                  )}
-                </li>
+                    </li>
+                  </>
+                )}
 
                 {employerData.length !== 0 && (
                   <>
@@ -123,34 +139,47 @@ const DashboardLayout = () => {
               </>
             )}
 
+            {/* Object.keys(jobSeekersData.empAggreAcademics).length === 0 &&
+                  Object.keys(jobSeekersData.empAgrreExperience).length === 0 &&
+                  Object.keys(jobSeekersData.empAggreReferences).length === 0 &&
+                  Object.keys(jobSeekersData.empAggreCareers).length === 0 && */}
+
             {isJobSeeker && (
               <>
-                <li className="list-group-item">
-                  <Link
-                    className="nav_btn"
-                    to="/dashboard/jobSeekerProfileEntry"
-                  >
-                    Create Profile
-                  </Link>
-                </li>
-                {/* <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/jobSeekersPersonalDetailsEntry'>Employee's Personal Details</Link></li>
-                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesExperienceDataEntry'>Employee's Experience Data</Link></li>
-                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesAcademicAndTrainingEntry'>Employee's AcademicsAndTraining</Link></li>
-                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesCareersAndSkillEntry'>Employee's Careers & Skill Data</Link></li>
-                                <li className='list-group-item '><Link className=' nav_btn' to='/dashboard/employeesLanguageAndReferenceEntry'>Employee's LanguageAndReference Data</Link></li> */}
-                <li className="list-group-item ">
-                  <Link className=" nav_btn" to="/dashboard/jobSeekerProfile">
-                    My Profile
-                  </Link>
-                </li>
-                <li className="list-group-item ">
-                  <Link
-                    className=" nav_btn"
-                    to="/dashboard/employeesProfileManage"
-                  >
-                    Manage Profile
-                  </Link>
-                </li>
+                {/* {jobSeekersData.empAggreAcademics === 0 && ( */}
+                {jobSeekersData?.length === undefined &&
+                  jobSeekersData?.length === 0 && (
+                    <>
+                      <li className="list-group-item">
+                        <Link
+                          className="nav_btn"
+                          to="/dashboard/jobSeekerProfileEntry"
+                        >
+                          Create Profile
+                        </Link>
+                      </li>
+                    </>
+                  )}
+                {/* )} */}
+
+                {/* {jobSeekersData.length !== 0 && ( */}
+                <>
+                  <li className="list-group-item ">
+                    <Link className=" nav_btn" to="/dashboard/jobSeekerProfile">
+                      My Profile
+                    </Link>
+                  </li>
+                  <li className="list-group-item ">
+                    <Link
+                      className=" nav_btn"
+                      to="/dashboard/employeesProfileManage"
+                    >
+                      Manage Profile
+                    </Link>
+                  </li>
+                </>
+                {/* )} */}
+
                 <li className="list-group-item ">
                   <Link className=" nav_btn" to="/dashboard/savedJobs">
                     Saved Job List
