@@ -1,19 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
-import {
-  FaFile,
-  FaFilter,
-  FaList,
-  FaSearch,
-  FaStar,
-  FaTh,
-} from "react-icons/fa";
-import "./FindJob.css";
-import useTitle from "../../hooks/useTitle";
 import { useQuery } from "@tanstack/react-query";
-import { toast } from "react-hot-toast";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../Authentication/AuthProvider";
+import { FaFile, FaList, FaSearch, FaTh } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
+import "./FindJob.css";
 
 const FindAllJob = () => {
   useTitle("FindJob");
@@ -26,18 +17,26 @@ const FindAllJob = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  //pagnation work code
+  const [pageCount, setPageCount] = useState(0);
+  const [page, setPage] = useState(0);
+  let size = 10;
   useEffect(() => {
     fetch(
-      `${process.env.REACT_APP_CABD_server_address}/jobSearch?search=${search}`
+      `${process.env.REACT_APP_CABD_server_address}/jobSearch?search=${search}&&page=${page}&&size=${size}`
     )
       .then((response) => response.json())
       .then((data) => {
-        // console.log("Find all Job Search Result :", data);
-        setShowJobs(data);
+        console.log("in effect", data.job.length);
+        setShowJobs(data.job);
+        const count = data.job.length;
+        const pageNumber = Math.ceil(count / size);
+        setPageCount(pageNumber);
       });
-  }, [search]);
-
+  }, [page, search]);
+  console.log("Find all Job Search Result :", showJobs.length);
+  console.log("page", pageCount);
+  console.log("page222", [...Array(pageCount)?.keys()]);
   const handleSearch = () => {
     // console.log("searchRef : ", searchRef.current.value)
     setSearch(searchRef.current.value);
@@ -294,26 +293,44 @@ const FindAllJob = () => {
                   </table>
                 </div>
 
-                {/* <div className=' d-flex justify-content-center'>
-                                    <nav aria-label="..." className=' '>
-                                        <ul className="pagination">
-                                            <li className="page-item disabled">
-                                                <span className="page-link">Previous</span>
-                                            </li>
-                                            <li className="page-item active" aria-current="page">
-                                                <span className="page-link">1</span>
-                                            </li>
-                                            <li className="page-item"><Link className="page-link" to="#">2</Link></li>
-                                            <li className="page-item"><Link className="page-link" to="#">3</Link></li>
-                                            <li className="page-item"><Link className="page-link" to="#">4</Link></li>
-                                            <li className="page-item"><Link className="page-link" to="#">5</Link></li>
-                                            <li className="page-item"><Link className="page-link" to="#">6</Link></li>
-                                            <li className="page-item">
-                                                <Link className="page-link" to="#">Next</Link>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div> */}
+                <div className=" d-flex justify-content-center">
+                  <nav aria-label="..." className=" ">
+                    <ul className="pagination">
+                      {page === 0 ? (
+                        <li className="page-item disabled">
+                          <button>
+                            <span className="page-link">Previous</span>
+                          </button>
+                        </li>
+                      ) : (
+                        <li className="page-item ">
+                          <button onClick={() => setPage(page - 1)}>
+                            <span className="page-link">Previous</span>
+                          </button>
+                        </li>
+                      )}
+                      {[...Array(pageCount)?.keys()]?.map((number) => (
+                        <li
+                          className="page-item active"
+                          aria-current="page"
+                          key={number}
+                        >
+                          <button onClick={() => setPage(number)}>
+                            <span className="page-link">
+                              {parseInt(number + 1)}
+                            </span>
+                          </button>
+                        </li>
+                      ))}
+
+                      <li className="page-item">
+                        <button onClick={() => setPage(page + 1)}>
+                          <span className="page-link">Next</span>
+                        </button>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
               </div>
             </div>
           </div>
