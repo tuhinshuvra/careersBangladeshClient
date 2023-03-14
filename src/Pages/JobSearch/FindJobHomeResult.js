@@ -21,7 +21,14 @@ const FindJobHomeResult = ({ jobList }) => {
   const [search, setSearch] = useState("");
   const [showJobs, setShowJobs] = useState([]);
   const searchRef = useRef();
-  const { searchData } = useContext(AuthContext);
+  const {
+    searchData,
+    searchOrganizationData,
+    searchLocationtionData,
+    setSearchData,
+    setSearchLocationtionData,
+    setSearchOrganizationData,
+  } = useContext(AuthContext);
 
   const {
     register,
@@ -31,14 +38,17 @@ const FindJobHomeResult = ({ jobList }) => {
 
   useEffect(() => {
     fetch(
-      `${process.env.REACT_APP_CABD_server_address}/jobSearch?search=${searchData}`
+      `${process.env.REACT_APP_CABD_server_address}/jobSearch/${searchData.jobTitle}/${searchLocationtionData.location}/${searchOrganizationData.orgaType}`
     )
       .then((response) => response.json())
       .then((data) => {
         console.log(" Home Job Search Result :", data);
         setShowJobs(data);
+        // setSearchData("");
+        // setSearchLocationtionData("");
+        // setSearchOrganizationData("");
       });
-  }, [searchData]);
+  }, [searchData, searchLocationtionData, searchOrganizationData]);
 
   const { data: categories, isLoading } = useQuery({
     queryKey: ["category"],

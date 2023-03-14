@@ -76,10 +76,20 @@ const router = createBrowserRouter([
           ),
       },
 
+      // {
+      //   path: "/searchHomeResult",
+      //   element: <FindJobHomeResult></FindJobHomeResult>,
+      // },
+
       {
-        path: "/searchHomeResult",
+        path: "/searchHomeResult/:search/:search2/:search3",
         element: <FindJobHomeResult></FindJobHomeResult>,
+        loader: ({ params }) =>
+          fetch(
+            `http://localhost:5000/jobSearch?${params.search}&${params.search2}&${params.search3}`
+          ),
       },
+
       {
         path: "/elearning",
         element: <ELearning></ELearning>,

@@ -11,7 +11,14 @@ const FindJobAndStatistics = () => {
   const [totalCompanies, setTotalCompanies] = useState("1");
   const [totalEmployers, setTotalEmployers] = useState("1");
 
-  const { setSearchData } = useContext(AuthContext);
+  const {
+    searchData,
+    setSearchData,
+    searchOrganizationData,
+    setSearchOrganizationData,
+    searchLocationtionData,
+    setSearchLocationtionData,
+  } = useContext(AuthContext);
 
   // const searchRef = useRef();
 
@@ -41,18 +48,28 @@ const FindJobAndStatistics = () => {
   // }, [search]);
 
   const getSearchKeyword = (event) => {
-    const jobTitle = event.target.value;
-    setSearchData(jobTitle);
-  };
+    const field = event.target.name;
+    const value = event.target.value;
+    const newData = [...searchData];
+    newData[field] = value;
 
-  const getSearchOrganization = (event) => {
-    const orgaName = event.target.value;
-    setSearchData(orgaName);
+    setSearchData(newData);
   };
+  const getSearchOrgabnizationKeyword = (event) => {
+    const field = event.target.name;
+    const value = event.target.value;
+    const newData = [...searchData];
+    newData[field] = value;
 
-  const getSearchPlace = (event) => {
-    const placeName = event.target.value;
-    setSearchData(placeName);
+    setSearchOrganizationData(newData);
+  };
+  const getSearchLocationKeyword = (event) => {
+    const field = event.target.name;
+    const value = event.target.value;
+    const newData = [...searchData];
+    newData[field] = value;
+
+    setSearchLocationtionData(newData);
   };
 
   return (
@@ -63,7 +80,7 @@ const FindJobAndStatistics = () => {
         </h2>
         <div className="d-md-flex  justify-content-center mt-4 mx-md-2">
           <input
-            onBlur={getSearchKeyword}
+            onChange={getSearchKeyword}
             name="jobTitle"
             type="text"
             id="jobTitle"
@@ -72,7 +89,7 @@ const FindJobAndStatistics = () => {
           />
 
           <select
-            onBlur={getSearchOrganization}
+            onChange={getSearchOrgabnizationKeyword}
             name="orgaType"
             className="form-select w-75  w-md-25 ms-md-1 me-md-1 mx-auto marginSM "
           >
@@ -88,7 +105,7 @@ const FindJobAndStatistics = () => {
           </select>
 
           <input
-            onBlur={getSearchPlace}
+            onChange={getSearchLocationKeyword}
             name="location"
             type="text"
             id="location"
@@ -97,10 +114,9 @@ const FindJobAndStatistics = () => {
           />
 
           <Link
-            to={`/searchHomeResult`}
-            className=" text-decoration-none custom_btn"
+            to={`/searchHomeResult/${searchData.jobTitle}/${searchLocationtionData.location}/${searchOrganizationData.orgaType}`}
+            className=" text-decoration-none custom_btn ms-2"
           >
-            {" "}
             Search
           </Link>
         </div>
