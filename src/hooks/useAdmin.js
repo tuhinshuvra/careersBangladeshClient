@@ -5,9 +5,7 @@ const useAdmin = (email) => {
   const [isAdminLoading, setIsAdminLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(
-        `https://careers-bangladesh-server-tuhinshuvra.vercel.app/users/admin/${email}`
-      )
+      fetch(`${process.env.REACT_APP_CABD_server_address}/users/admin/${email}`)
         .then((res) => res.json())
         .then((data) => {
           // console.log(data);

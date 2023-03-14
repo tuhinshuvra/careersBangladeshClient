@@ -10,7 +10,7 @@ const AppliedJobList = () => {
 
   useEffect(() => {
     fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobseekerapply?email=${user?.email}`,
+      `${process.env.REACT_APP_CABD_server_address}/jobseekerapply?email=${user?.email}`,
       {
         headers: {},
       }

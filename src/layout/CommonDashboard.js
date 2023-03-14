@@ -22,9 +22,7 @@ const CommonDashboard = () => {
   // console.log("Employer : ", employer)
 
   useEffect(() => {
-    fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employer/${email}`
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/employer/${email}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log("Employee Data:", data);
@@ -33,9 +31,7 @@ const CommonDashboard = () => {
   }, [email]);
 
   useEffect(() => {
-    fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobSeeker/${email}`
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeeker/${email}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log("JobSeeker Data:", data);

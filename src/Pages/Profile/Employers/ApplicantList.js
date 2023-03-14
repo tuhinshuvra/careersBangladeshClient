@@ -12,7 +12,7 @@ const ApplicantList = () => {
 
   useEffect(() => {
     fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobapplicant?jobId=${jobId}`
+      `${process.env.REACT_APP_CABD_server_address}/jobapplicant?jobId=${jobId}`
     )
       .then((response) => response.json())
       .then((data) => {

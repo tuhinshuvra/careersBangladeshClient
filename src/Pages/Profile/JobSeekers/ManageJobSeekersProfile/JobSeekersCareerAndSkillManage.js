@@ -19,7 +19,7 @@ const JobSeekersCareerAndSkillManage = () => {
     queryKey: ["category"],
     queryFn: async () => {
       const res = await fetch(
-        "https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobCategories"
+        `${process.env.REACT_APP_CABD_server_address}/jobCategories`
       );
       const data = await res.json();
       return data;
@@ -32,7 +32,7 @@ const JobSeekersCareerAndSkillManage = () => {
     event.preventDefault();
 
     fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobseekersCareersSkill/${storedData._id}`,
+      `${process.env.REACT_APP_CABD_server_address}/jobseekersCareersSkill/${storedData._id}`,
       {
         method: "PUT",
         headers: {

@@ -21,7 +21,7 @@ const SubscriberList = () => {
     queryFn: async () => {
       try {
         const respone = await fetch(
-          "https://careers-bangladesh-server-tuhinshuvra.vercel.app/subscribers"
+          `${process.env.REACT_APP_CABD_server_address}/subscribers`
         );
         const data = respone.json();
         return data;
@@ -33,7 +33,7 @@ const SubscriberList = () => {
 
   const handleDelete = (subscriber) => {
     fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/subscribers/${subscriber._id}`,
+      `${process.env.REACT_APP_CABD_server_address}/subscribers/${subscriber._id}`,
       {
         method: "DELETE",
       }

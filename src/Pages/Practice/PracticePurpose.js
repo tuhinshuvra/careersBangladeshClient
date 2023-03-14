@@ -7,7 +7,7 @@ const PracticePurpose = () => {
   const handleAddUser = (event) => {
     event.preventDefault();
     // console.log("User List :", users)
-    fetch("https://careers-bangladesh-server-tuhinshuvra.vercel.app/users", {
+    fetch(`${process.env.REACT_APP_CABD_server_address}/users`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

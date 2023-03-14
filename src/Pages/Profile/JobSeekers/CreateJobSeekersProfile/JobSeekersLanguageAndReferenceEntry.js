@@ -23,7 +23,7 @@ const JobSeekersLanguageAndReferenceEntry = () => {
     queryKey: ["category"],
     queryFn: async () => {
       const res = await fetch(
-        "https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobCategories"
+        `${process.env.REACT_APP_CABD_server_address}/jobCategories`
       );
       const data = await res.json();
       return data;
@@ -59,16 +59,13 @@ const JobSeekersLanguageAndReferenceEntry = () => {
     };
     // console.log("Job Seeker Data :", data);
 
-    fetch(
-      "https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesReferences",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(jobseekerProfile),
-      }
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/employeesReferences`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(jobseekerProfile),
+    })
       .then((response) => response.json())
       .then((data) => {
         if (data.acknowledged) {

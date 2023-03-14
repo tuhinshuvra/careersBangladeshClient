@@ -19,7 +19,7 @@ const EmployersProfileManage = () => {
     // console.log("personalDetails :", employerData)
 
     fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employerupdate/${storedData._id}`,
+      `${process.env.REACT_APP_CABD_server_address}/employerupdate/${storedData._id}`,
       {
         method: "PUT",
         headers: {

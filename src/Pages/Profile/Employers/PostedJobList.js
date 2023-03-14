@@ -17,7 +17,7 @@ const PostedJobList = () => {
     queryFn: async () => {
       // const respone = await fetch('https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobs');
       const respone = await fetch(
-        `https://careers-bangladesh-server-tuhinshuvra.vercel.app/postedjob?email=${email}`
+        `${process.env.REACT_APP_CABD_server_address}/postedjob?email=${email}`
       );
       const data = respone.json();
       return data;

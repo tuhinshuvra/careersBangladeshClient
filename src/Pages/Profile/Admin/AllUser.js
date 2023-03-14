@@ -21,7 +21,7 @@ const UserList = () => {
     queryFn: async () => {
       try {
         const respone = await fetch(
-          "https://careers-bangladesh-server-tuhinshuvra.vercel.app/users"
+          `${process.env.REACT_APP_CABD_server_address}/users`
         );
         const data = respone.json();
         return data;
@@ -32,13 +32,10 @@ const UserList = () => {
   });
 
   const handleMakeAdmin = (email) => {
-    fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/users/admin/${email}`,
-      {
-        method: "PUT",
-        headers: {},
-      }
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/users/admin/${email}`, {
+      method: "PUT",
+      headers: {},
+    })
       .then((respnse) => respnse.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -49,12 +46,9 @@ const UserList = () => {
   };
 
   const handleDelete = (user) => {
-    fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/users/${user._id}`,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/users/${user._id}`, {
+      method: "DELETE",
+    })
       .then((respnse) => respnse.json())
       .then((data) => {
         console.log(data);

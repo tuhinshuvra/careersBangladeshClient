@@ -21,7 +21,7 @@ const EmployerList = () => {
     queryFn: async () => {
       try {
         const respone = await fetch(
-          "https://careers-bangladesh-server-tuhinshuvra.vercel.app/employers"
+          `${process.env.REACT_APP_CABD_server_address}/employers`
         );
         const data = respone.json();
         return data;
@@ -32,12 +32,9 @@ const EmployerList = () => {
   });
 
   const handleDelete = (user) => {
-    fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/users/${user._id}`,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/users/${user._id}`, {
+      method: "DELETE",
+    })
       .then((respnse) => respnse.json())
       .then((data) => {
         console.log(data);

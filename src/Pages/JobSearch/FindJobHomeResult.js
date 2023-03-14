@@ -31,7 +31,7 @@ const FindJobHomeResult = ({ jobList }) => {
 
   useEffect(() => {
     fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobSearch?search=${searchData}`
+      `${process.env.REACT_APP_CABD_server_address}/jobSearch?search=${searchData}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -44,7 +44,7 @@ const FindJobHomeResult = ({ jobList }) => {
     queryKey: ["category"],
     queryFn: async () => {
       const res = await fetch(
-        "https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobCategories"
+        `${process.env.REACT_APP_CABD_server_address}/jobCategories`
       );
       const data = await res.json();
       return data;
@@ -55,7 +55,7 @@ const FindJobHomeResult = ({ jobList }) => {
     queryKey: ["jobs"],
     queryFn: async () => {
       const respone = await fetch(
-        "https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobs"
+        `${process.env.REACT_APP_CABD_server_address}/jobs`
       );
       const data = respone.json();
       return data;

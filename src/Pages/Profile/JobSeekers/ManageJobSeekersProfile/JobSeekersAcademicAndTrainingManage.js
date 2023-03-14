@@ -17,7 +17,7 @@ const JobSeekersAcademicAndTrainingManage = () => {
     event.preventDefault();
 
     fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobseekersAcademics/${storedData._id}`,
+      `${process.env.REACT_APP_CABD_server_address}/jobseekersAcademics/${storedData._id}`,
       {
         method: "PUT",
         headers: {

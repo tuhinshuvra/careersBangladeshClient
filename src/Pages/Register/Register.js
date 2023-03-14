@@ -61,7 +61,7 @@ const Register = () => {
   const saveUser = (name, email, userType) => {
     const user = { name, email, userType };
 
-    fetch("https://careers-bangladesh-server-tuhinshuvra.vercel.app/users", {
+    fetch(`${process.env.REACT_APP_CABD_server_address}/users`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

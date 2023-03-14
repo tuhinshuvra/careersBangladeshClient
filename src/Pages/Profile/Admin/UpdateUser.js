@@ -12,7 +12,7 @@ const UpdateUser = () => {
     event.preventDefault();
     // console.log(user);
     fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/users/${storedUser._id}`,
+      `${process.env.REACT_APP_CABD_server_address}/users/${storedUser._id}`,
       {
         method: "PUT",
         headers: {

@@ -10,7 +10,7 @@ const JobSeekersProfile = () => {
 
   useEffect(() => {
     fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesAggregatedData/${email}`
+      `${process.env.REACT_APP_CABD_server_address}/employeesAggregatedData/${email}`
     )
       .then((response) => response.json())
       .then((data) => {

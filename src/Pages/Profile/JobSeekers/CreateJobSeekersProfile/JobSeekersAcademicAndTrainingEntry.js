@@ -71,16 +71,13 @@ const JobSeekersAcademicAndTrainingEntry = () => {
     };
     // console.log("Job Seeker Data :", data);
 
-    fetch(
-      "https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesAcademics",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(emplyeesAcademics),
-      }
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/employeesAcademics`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(emplyeesAcademics),
+    })
       .then((response) => response.json())
       .then((data) => {
         if (data.acknowledged) {

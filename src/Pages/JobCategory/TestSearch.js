@@ -178,7 +178,7 @@ function TestSearch() {
     queryKey: ["jobs"],
     queryFn: async () => {
       const respone = await fetch(
-        "https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobs"
+        `${process.env.REACT_APP_CABD_server_address}/jobs`
       );
       const data = respone.json();
       return data;

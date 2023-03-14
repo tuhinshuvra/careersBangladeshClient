@@ -21,7 +21,8 @@ const JobCategory = () => {
   useEffect(() => {
     // fetch('job-categories.json')
     fetch(
-      "https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobCategories"
+      // "http://localhost:5000/jobCategories"
+      `${process.env.REACT_APP_CABD_server_address}/jobCategories`
     )
       .then((response) => response.json())
       .then((data) => {

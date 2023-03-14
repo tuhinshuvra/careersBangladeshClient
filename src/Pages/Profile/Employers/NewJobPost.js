@@ -20,7 +20,7 @@ const NewJobPost = () => {
     queryKey: ["category"],
     queryFn: async () => {
       const res = await fetch(
-        "https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobCategories"
+        `${process.env.REACT_APP_CABD_server_address}/jobCategories`
       );
       const data = await res.json();
       return data;
@@ -72,16 +72,13 @@ const NewJobPost = () => {
           };
           // console.log("Job Post Data :", jobPost);
 
-          fetch(
-            "https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobs",
-            {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(jobPost),
-            }
-          )
+          fetch(`${process.env.REACT_APP_CABD_server_address}/jobs`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(jobPost),
+          })
             .then((response) => response.json())
             .then((data) => {
               console.log(data);

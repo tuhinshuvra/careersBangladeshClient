@@ -50,7 +50,7 @@ const JobSeekersPersonalDetailsEntry = () => {
           // console.log("Job Seeker Data :", data);
 
           fetch(
-            "https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesPersonal",
+            `${process.env.REACT_APP_CABD_server_address}/employeesPersonal`,
             {
               method: "POST",
               headers: {

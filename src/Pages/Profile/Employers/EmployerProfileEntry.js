@@ -52,16 +52,13 @@ const EmployerProfileEntry = () => {
           };
           console.log("Employee Data :", data);
 
-          fetch(
-            "https://careers-bangladesh-server-tuhinshuvra.vercel.app/emplyerProfile",
-            {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(emplyerProfile),
-            }
-          )
+          fetch(`${process.env.REACT_APP_CABD_server_address}/emplyerProfile`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(emplyerProfile),
+          })
             .then((response) => response.json())
             .then((data) => {
               console.log(data);

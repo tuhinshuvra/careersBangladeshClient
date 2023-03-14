@@ -6,18 +6,15 @@ const PractiveAllUser = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://careers-bangladesh-server-tuhinshuvra.vercel.app/users")
+    fetch(`${process.env.REACT_APP_CABD_server_address}/users`)
       .then((respnse) => respnse.json())
       .then((data) => setUsers(data));
   }, []);
 
   const handleDelete = (user) => {
-    fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/users/${user._id}`,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/users/${user._id}`, {
+      method: "DELETE",
+    })
       .then((respnse) => respnse.json())
       .then((data) => {
         console.log(data);

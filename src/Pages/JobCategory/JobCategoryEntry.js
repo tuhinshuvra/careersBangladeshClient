@@ -21,16 +21,13 @@ const JobCategoryEntry = () => {
     };
     // console.log("Category Data :", data);
 
-    fetch(
-      "https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobCategories",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(categoryData),
-      }
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobCategories`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(categoryData),
+    })
       .then((response) => response.json())
       .then((data) => {
         // console.log(data)

@@ -27,9 +27,7 @@ const DashboardLayout = () => {
 
   //   employerData show
   useEffect(() => {
-    fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employer/${email}`
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/employer/${email}`)
       .then((response) => response.json())
       .then((data) => {
         console.log("Employee Data:", data);
@@ -40,7 +38,7 @@ const DashboardLayout = () => {
   //   jobseekers data show
   useEffect(() => {
     fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesAggregatedData/${email}`
+      `${process.env.REACT_APP_CABD_server_address}/employeesAggregatedData/${email}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -53,7 +51,7 @@ const DashboardLayout = () => {
       <Navbar></Navbar>
 
       <div className="row">
-        <div className=" col-lg-3 mt-lg-3">
+        <div className=" col-lg-3 mt-md-5">
           <ul className=" list-group">
             {isAdmin && (
               <>
@@ -139,27 +137,21 @@ const DashboardLayout = () => {
               </>
             )}
 
-            {/* Object.keys(jobSeekersData.empAggreAcademics).length === 0 &&
-                  Object.keys(jobSeekersData.empAgrreExperience).length === 0 &&
-                  Object.keys(jobSeekersData.empAggreReferences).length === 0 &&
-                  Object.keys(jobSeekersData.empAggreCareers).length === 0 && */}
-
             {isJobSeeker && (
               <>
                 {/* {jobSeekersData.empAggreAcademics === 0 && ( */}
-                {jobSeekersData?.length === undefined &&
-                  jobSeekersData?.length === 0 && (
-                    <>
-                      <li className="list-group-item">
-                        <Link
-                          className="nav_btn"
-                          to="/dashboard/jobSeekerProfileEntry"
-                        >
-                          Create Profile
-                        </Link>
-                      </li>
-                    </>
-                  )}
+                {jobSeekersData === undefined && (
+                  <>
+                    <li className="list-group-item">
+                      <Link
+                        className="nav_btn"
+                        to="/dashboard/jobSeekerProfileEntry"
+                      >
+                        Create Profile
+                      </Link>
+                    </li>
+                  </>
+                )}
                 {/* )} */}
 
                 {/* {jobSeekersData.length !== 0 && ( */}

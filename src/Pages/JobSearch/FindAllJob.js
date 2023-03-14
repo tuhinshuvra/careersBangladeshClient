@@ -29,7 +29,7 @@ const FindAllJob = () => {
 
   useEffect(() => {
     fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobSearch?search=${search}`
+      `${process.env.REACT_APP_CABD_server_address}/jobSearch?search=${search}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -50,7 +50,7 @@ const FindAllJob = () => {
     queryKey: ["category"],
     queryFn: async () => {
       const res = await fetch(
-        "https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobCategories"
+        `${process.env.REACT_APP_CABD_server_address}/jobCategories`
       );
       const data = await res.json();
       return data;
@@ -61,7 +61,7 @@ const FindAllJob = () => {
     queryKey: ["jobs"],
     queryFn: async () => {
       const respone = await fetch(
-        "https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobs"
+        `${process.env.REACT_APP_CABD_server_address}/jobs`
       );
       const data = respone.json();
       return data;
@@ -69,7 +69,7 @@ const FindAllJob = () => {
   });
 
   // const handleDelete = (job) => {
-  //     fetch(`https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobs/${job._id}`, {
+  //     fetch(`${process.env.REACT_APP_CABD_server_address}/jobs/${job._id}`, {
   //         method: 'DELETE'
   //     })
   //         .then(respnse => respnse.json())

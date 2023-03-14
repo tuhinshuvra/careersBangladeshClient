@@ -72,7 +72,7 @@ const router = createBrowserRouter([
         element: <FindJobsByCategory></FindJobsByCategory>,
         loader: ({ params }) =>
           fetch(
-            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobbycategory?category=${params.categoryId}`
+            `${process.env.REACT_APP_CABD_server_address}/jobbycategory?category=${params.categoryId}`
           ),
       },
 
@@ -174,7 +174,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesPersonal/${params.email}`
+            `${process.env.REACT_APP_CABD_server_address}/employeesPersonal/${params.email}`
           ),
       },
 
@@ -183,7 +183,7 @@ const router = createBrowserRouter([
         element: <JobSeekersExperienceManage></JobSeekersExperienceManage>,
         loader: ({ params }) =>
           fetch(
-            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesExpriences/${params.email}`
+            `${process.env.REACT_APP_CABD_server_address}/employeesExpriences/${params.email}`
           ),
       },
       {
@@ -193,7 +193,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobseekersAcademics/${params.email}`
+            `${process.env.REACT_APP_CABD_server_address}/jobseekersAcademics/${params.email}`
           ),
       },
 
@@ -204,7 +204,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesCareers/${params.email}`
+            `${process.env.REACT_APP_CABD_server_address}/employeesCareers/${params.email}`
           ),
       },
 
@@ -215,7 +215,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesReferences/${params.email}`
+            `${process.env.REACT_APP_CABD_server_address}/employeesReferences/${params.email}`
           ),
       },
 
@@ -279,7 +279,7 @@ const router = createBrowserRouter([
         element: <EmployersProfileManage></EmployersProfileManage>,
         loader: ({ params }) =>
           fetch(
-            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employer/${params.email}`
+            `${process.env.REACT_APP_CABD_server_address}/employer/${params.email}`
           ),
       },
       {
@@ -292,7 +292,7 @@ const router = createBrowserRouter([
         element: <PostedJobDetails></PostedJobDetails>,
         loader: ({ params }) =>
           fetch(
-            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobs/${params.id}`
+            `${process.env.REACT_APP_CABD_server_address}/jobs/${params.id}`
           ),
       },
 
@@ -338,7 +338,7 @@ const router = createBrowserRouter([
         element: <UpdateUser></UpdateUser>,
         loader: ({ params }) =>
           fetch(
-            `https://careers-bangladesh-server-tuhinshuvra.vercel.app/users/${params.id}`
+            `${process.env.REACT_APP_CABD_server_address}/users/${params.id}`
           ),
       },
     ],

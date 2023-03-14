@@ -17,7 +17,7 @@ const JobCategoryList = () => {
 
   const handleDelete = (category) => {
     fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/categories/${category._id}`,
+      `${process.env.REACT_APP_CABD_server_address}/categories/${category._id}`,
       {
         method: "DELETE",
       }

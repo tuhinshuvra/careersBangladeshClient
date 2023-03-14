@@ -47,16 +47,13 @@ const EmployeesExperienceEntry = () => {
     };
     // console.log("Job Seeker Data :", data);
 
-    fetch(
-      "https://careers-bangladesh-server-tuhinshuvra.vercel.app/employeesExperiences",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(jobseekerProfile),
-      }
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/employeesExperiences`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(jobseekerProfile),
+    })
       .then((response) => response.json())
       .then((data) => {
         if (data.acknowledged) {

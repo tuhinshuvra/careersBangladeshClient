@@ -19,7 +19,7 @@ const SavedJobList = () => {
 
   useEffect(() => {
     fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobseekersavedjobs?email=${user?.email}`,
+      `${process.env.REACT_APP_CABD_server_address}/jobseekersavedjobs?email=${user?.email}`,
       {
         headers: {},
       }
@@ -32,7 +32,7 @@ const SavedJobList = () => {
   //     queryKey: ['users'],
   //     queryFn: async () => {
   //         try {
-  //             const respone = await fetch(`https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobseekersavedjobs?email=${user?.email}`);
+  //             const respone = await fetch(`${process.env.REACT_APP_CABD_server_address}/jobseekersavedjobs?email=${user?.email}`);
   //             const data = respone.json();
   //             return data;
   //         }
@@ -45,12 +45,9 @@ const SavedJobList = () => {
   // console.log("applications : ", applications)
 
   const handleDelete = (jobs) => {
-    fetch(
-      `https://careers-bangladesh-server-tuhinshuvra.vercel.app/savedjob/${jobs._id}`,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/savedjob/${jobs._id}`, {
+      method: "DELETE",
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

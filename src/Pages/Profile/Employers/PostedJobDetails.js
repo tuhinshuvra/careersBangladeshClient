@@ -81,16 +81,13 @@ const PostedJobDetails = () => {
     };
     console.log("Job Apply Data :", jobApply);
 
-    fetch(
-      "https://careers-bangladesh-server-tuhinshuvra.vercel.app/applications",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(jobApply),
-      }
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/applications`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(jobApply),
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -120,16 +117,13 @@ const PostedJobDetails = () => {
 
     // console.log("Saved Job Data :", savedJob);
 
-    fetch(
-      "https://careers-bangladesh-server-tuhinshuvra.vercel.app/savedjobs",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(savedJob),
-      }
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/savedjobs`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(savedJob),
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

@@ -6,9 +6,7 @@ const useEmployerActivate = (email) => {
     useState(true);
   useEffect(() => {
     if (email) {
-      fetch(
-        `https://careers-bangladesh-server-tuhinshuvra.vercel.app/employers/${email}`
-      )
+      fetch(`${process.env.REACT_APP_CABD_server_address}/employers/${email}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

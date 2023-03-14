@@ -26,16 +26,13 @@ const Subscriber = () => {
 
     console.log("Employee Data :", subscribers);
 
-    fetch(
-      "https://careers-bangladesh-server-tuhinshuvra.vercel.app/subscribers",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(subscribers),
-      }
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/subscribers`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(subscribers),
+    })
       .then((response) => response.json())
       .then((data) => {
         if (data.acknowledged) {
