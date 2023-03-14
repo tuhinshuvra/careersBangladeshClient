@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import LoginLogo from "../../assets/logo/carriers-bangladesh-logo.png";
 import { FaFacebook, FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../Authentication/AuthProvider";
@@ -10,16 +10,18 @@ import "./Login.css";
 
 const Login = () => {
   useTitle("Login");
-  const { signIn } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [loginError, setLoginError] = useState("");
-  const [loginUserEmail, setLoginUserEmail] = useState("");
 
+  const { signIn } = useContext(AuthContext);
+  const location = useLocation();
   const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+  const [loginError, setLoginError] = useState("");
+  // const [loginUserEmail, setLoginUserEmail] = useState("");
 
   const handleLogin = (data) => {
     setLoginError("");
@@ -27,9 +29,9 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         toast.success("User Login Successfully.");
-        navigate("/");
+        navigate(from, { replace: true });
         // console.log(user);
-        setLoginUserEmail(data.email);
+        // setLoginUserEmail(data.email);
       })
       .catch((error) => {
         setLoginError(error.message);
@@ -100,7 +102,7 @@ const Login = () => {
                           </div>
                           <div className="form-outline mb-4">
                             <label className="form-label" htmlFor="username">
-                              Username
+                              Email
                             </label>
                             <input
                               type="email"

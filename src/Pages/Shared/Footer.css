@@ -1,24 +1,26 @@
 .footer_bg {
-    background-color: rgba(135, 207, 235, 0.467);
-    /* height: 36vh; */
-    margin-bottom: 0px;
-
+  background-color: rgba(135, 207, 235, 0.467);
+  /* height: 36vh; */
+  margin-bottom: 0px;
 }
 
-
 .footer_logo {
-    width: 120px;
+  width: 120px;
 }
 
 .social_icon {
-    color: #A51E67;
-    font-size: 30px;
-    margin: 0 7px;
+  color: #a51e67;
+  font-size: 30px;
+  margin: 0 7px;
 }
 
 .social_icon:hover {
-    color: black;
-    font-size: 30.3px;
-    /* font-size: 10px; */
-    /* margin: 0 10px; */
+  color: black;
+  font-size: 30.3px;
+  /* font-size: 10px; */
+  /* margin: 0 10px; */
+}
+
+.appStore {
+  width: 130px;
 }

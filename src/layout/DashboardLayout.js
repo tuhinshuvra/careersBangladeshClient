@@ -7,10 +7,11 @@ import useAdmin from "../hooks/useAdmin";
 import { AuthContext } from "../Pages/Authentication/AuthProvider";
 import useEmployer from "../hooks/useEmployer";
 import useJobSeeker from "../hooks/useJobSeeker";
+import Loader from "../Pages/Shared/Loader/Loader";
 
 const DashboardLayout = () => {
   useTitle("My Jobs");
-  const { user } = useContext(AuthContext);
+  const { user, loading, setLoading } = useContext(AuthContext);
   const email = user?.email;
 
   const [isAdmin] = useAdmin(user?.email);
@@ -25,24 +26,32 @@ const DashboardLayout = () => {
   //   const employer = useLoaderData();
   //   console.log("Employer : ", employer);
 
+  if (loading) {
+    <Loader></Loader>;
+  }
+
   //   employerData show
   useEffect(() => {
+    // setLoading(true);
     fetch(`${process.env.REACT_APP_CABD_server_address}/employer/${email}`)
       .then((response) => response.json())
       .then((data) => {
         console.log("Employee Data:", data);
         setEmployerData(data);
+        setLoading(false);
       });
   }, [email]);
 
   //   jobseekers data show
   useEffect(() => {
+    // setLoading(true);
     fetch(
       `${process.env.REACT_APP_CABD_server_address}/employeesAggregatedData/${email}`
     )
       .then((response) => response.json())
       .then((data) => {
         setJobSeekersData(data[0]);
+        setLoading(false);
       });
   }, [email]);
 

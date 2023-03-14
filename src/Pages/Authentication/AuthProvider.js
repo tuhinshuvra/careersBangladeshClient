@@ -56,7 +56,6 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     user,
-    loading,
     jobId,
     setJobId,
     applicantShow,
@@ -67,6 +66,7 @@ const AuthProvider = ({ children }) => {
     setSearchOrganizationData,
     searchLocationtionData,
     setSearchLocationtionData,
+    loading,
     setLoading,
     createUser,
     updateUser,

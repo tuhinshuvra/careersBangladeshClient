@@ -15,7 +15,10 @@ import "./PostedJobDetails.css";
 
 const PostedJobDetails = () => {
   const jobdetails = useLoaderData();
+  // const [applications, setApplications] = useState([]);
   const [expectedSalary, setExpectedSalary] = useState("0");
+
+  // console.log(applyStatus, applications);
 
   const navigate = useNavigate();
 
@@ -70,7 +73,7 @@ const PostedJobDetails = () => {
     // console.log("Applied jobdetails :", jobdetails);
     const jobApply = {
       jobId: _id,
-      jobSeekerEmail: user.email,
+      email: user.email,
       name: user.displayName,
       postersEmail: email,
       expectedSalary: expectedSalary,
@@ -93,7 +96,7 @@ const PostedJobDetails = () => {
         console.log(data);
         if (data.acknowledged) {
           toast.success("Post the application successfully");
-          navigate("/findAllJob");
+          // navigate("/findAllJob");
         } else {
           toast.error(data.message);
         }
@@ -106,7 +109,7 @@ const PostedJobDetails = () => {
     console.log("Saved Job Details :", jobdetails);
     const savedJob = {
       jobId: _id,
-      jobSeekerEmail: user.email,
+      email: user.email,
       name: user.displayName,
       postersEmail: email,
       jobTitle: jobTitle,
@@ -141,6 +144,19 @@ const PostedJobDetails = () => {
     const expSalary = event.target.value;
     setExpectedSalary(expSalary);
   };
+
+  //////////// show all saved job by user email/////////////////////
+
+  // useEffect(() => {
+  //   fetch(
+  //     `${process.env.REACT_APP_CABD_server_address}/jobseekersavedjobs?email=${user?.email}`,
+  //     {
+  //       headers: {},
+  //     }
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data) => setApplications(data));
+  // }, [user?.email]);
 
   return (
     <div>
@@ -302,7 +318,6 @@ const PostedJobDetails = () => {
                 data-bs-target="#confirmationModal"
                 className=" custom_btn mx-1"
               >
-                {" "}
                 Apply Now
               </button>
             </div>

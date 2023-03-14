@@ -49,6 +49,7 @@ import JobSeekersCareerAndSkillManage from "../../Profile/JobSeekers/ManageJobSe
 import JobSeekersLanguageAndReferenceManage from "../../Profile/JobSeekers/ManageJobSeekersProfile/JobSeekersLanguageAndReferenceManage";
 import JobSeekersProfile from "../../Profile/JobSeekers/JobSeekersProfile";
 import EmployersProfile from "../../Profile/Employers/EmployeersProfile";
+import AdminRoute from "./AdminRoutes";
 
 const router = createBrowserRouter([
   {
@@ -118,7 +119,6 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <PrivateRoute>
-        {" "}
         <DashboardLayout></DashboardLayout>
       </PrivateRoute>
     ),
@@ -320,32 +320,60 @@ const router = createBrowserRouter([
 
       {
         path: "/dashboard/admin",
-        element: <UserList></UserList>,
+        element: (
+          <AdminRoute>
+            <UserList></UserList>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/JobCategoryEntry",
-        element: <JobCategoryEntry></JobCategoryEntry>,
+        element: (
+          <AdminRoute>
+            <JobCategoryEntry></JobCategoryEntry>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/JobCategoryList",
-        element: <JobCategoryList></JobCategoryList>,
+        element: (
+          <AdminRoute>
+            <JobCategoryList></JobCategoryList>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/employeeList",
-        element: <EmployerList></EmployerList>,
+        element: (
+          <AdminRoute>
+            <EmployerList></EmployerList> ,
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/jobseekerList",
-        element: <JobSeekerList></JobSeekerList>,
+        element: (
+          <AdminRoute>
+            <JobSeekerList></JobSeekerList>{" "}
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/subscriberList",
-        element: <SubscriberList></SubscriberList>,
+        element: (
+          <AdminRoute>
+            <SubscriberList></SubscriberList>{" "}
+          </AdminRoute>
+        ),
       },
 
       {
         path: "/dashboard/userUpdate/:id",
-        element: <UpdateUser></UpdateUser>,
+        element: (
+          <AdminRoute>
+            <UpdateUser></UpdateUser>{" "}
+          </AdminRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `${process.env.REACT_APP_CABD_server_address}/users/${params.id}`

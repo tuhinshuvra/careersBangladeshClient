@@ -81,7 +81,7 @@ const Navbar = () => {
                   aria-current="page"
                   to="/findAllJob"
                 >
-                  FindJobs
+                  AllJobs
                 </Link>
               </li>
 
