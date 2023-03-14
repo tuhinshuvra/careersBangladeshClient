@@ -11,9 +11,9 @@ import {
 import "./FindJob.css";
 import useTitle from "../../hooks/useTitle";
 import { useQuery } from "@tanstack/react-query";
-import { toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../Authentication/AuthProvider";
+import Loader from "../Shared/Loader/Loader";
 
 const FindJobHomeResult = ({ jobList }) => {
   useTitle("FindJob");
@@ -76,6 +76,10 @@ const FindJobHomeResult = ({ jobList }) => {
     setSearch(searchRef.current.value);
     searchRef.current.value = "";
   };
+
+  if (isLoading) {
+    return <Loader></Loader>;
+  }
 
   return (
     <div className="row">

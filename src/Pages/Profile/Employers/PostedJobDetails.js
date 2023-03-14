@@ -70,7 +70,7 @@ const PostedJobDetails = () => {
     // console.log("Applied jobdetails :", jobdetails);
     const jobApply = {
       jobId: _id,
-      jobSeekerEmail: user.email,
+      email: user.email,
       name: user.displayName,
       postersEmail: email,
       expectedSalary: expectedSalary,
@@ -93,7 +93,7 @@ const PostedJobDetails = () => {
         console.log(data);
         if (data.acknowledged) {
           toast.success("Post the application successfully");
-          navigate("/findAllJob");
+          // navigate("/findAllJob");
         } else {
           toast.error(data.message);
         }
@@ -106,7 +106,7 @@ const PostedJobDetails = () => {
     console.log("Saved Job Details :", jobdetails);
     const savedJob = {
       jobId: _id,
-      jobSeekerEmail: user.email,
+      email: user.email,
       name: user.displayName,
       postersEmail: email,
       jobTitle: jobTitle,
@@ -302,7 +302,6 @@ const PostedJobDetails = () => {
                 data-bs-target="#confirmationModal"
                 className=" custom_btn mx-1"
               >
-                {" "}
                 Apply Now
               </button>
             </div>
