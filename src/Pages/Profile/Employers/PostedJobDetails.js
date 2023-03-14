@@ -15,7 +15,10 @@ import "./PostedJobDetails.css";
 
 const PostedJobDetails = () => {
   const jobdetails = useLoaderData();
+  // const [applications, setApplications] = useState([]);
   const [expectedSalary, setExpectedSalary] = useState("0");
+
+  // console.log(applyStatus, applications);
 
   const navigate = useNavigate();
 
@@ -141,6 +144,19 @@ const PostedJobDetails = () => {
     const expSalary = event.target.value;
     setExpectedSalary(expSalary);
   };
+
+  //////////// show all saved job by user email/////////////////////
+
+  // useEffect(() => {
+  //   fetch(
+  //     `${process.env.REACT_APP_CABD_server_address}/jobseekersavedjobs?email=${user?.email}`,
+  //     {
+  //       headers: {},
+  //     }
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data) => setApplications(data));
+  // }, [user?.email]);
 
   return (
     <div>

@@ -120,8 +120,8 @@ const Register = () => {
                           </h5>
 
                           <div className="form-outline mb-4">
-                            <label className="form-label" htmlFor="username">
-                              Username
+                            <label className="form-label" htmlFor="fullname">
+                              Full Name
                             </label>
                             <input
                               type="name"
