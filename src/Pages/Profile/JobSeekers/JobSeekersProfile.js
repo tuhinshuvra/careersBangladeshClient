@@ -7,7 +7,7 @@ const JobSeekersProfile = () => {
   //const [jobSeekersData, setJobSeekersData] = useState([]);
   const { user, jobSeekersData, setJobSeekersData, setLoading } =
     useContext(AuthContext);
-  setLoading(true);
+  // setLoading(true);
   const email = user?.email;
   const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
@@ -34,9 +34,9 @@ const JobSeekersProfile = () => {
     <div className="resume-wrapper-inner mx-auto text-start bg-white shadow-lg">
       {/* Header Section Start */}
 
-      <div className=" d-flex justify-content-between  ">
-        <h1 className=" text-center  "> RESUME</h1>
-        <div>
+      <div className=" d-flex justify-content-between   mx-5   ">
+        <h1 className=" text-center mt-4 "> RESUME</h1>
+        <div className="mt-4">
           <button
             className=" btn btn-primary btn-sm  fw-bold"
             onClick={handlePrint}
