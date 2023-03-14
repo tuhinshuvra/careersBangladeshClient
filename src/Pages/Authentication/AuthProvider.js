@@ -1,13 +1,12 @@
-import React, { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
+import React, { createContext, useEffect, useState } from "react";
 import app from "../../firebase/firebase.config";
 
 export const AuthContext = createContext();
@@ -22,7 +21,7 @@ const AuthProvider = ({ children }) => {
   const [searchData, setSearchData] = useState("");
   const [searchOrganizationData, setSearchOrganizationData] = useState("");
   const [searchLocationtionData, setSearchLocationtionData] = useState("");
-
+  const [jobSeekersData, setJobSeekersData] = useState([]);
   const signIn = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
@@ -73,6 +72,8 @@ const AuthProvider = ({ children }) => {
     updateUser,
     signIn,
     logOut,
+    jobSeekersData,
+    setJobSeekersData,
   };
 
   return (
