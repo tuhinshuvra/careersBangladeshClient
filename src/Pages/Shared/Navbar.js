@@ -159,41 +159,42 @@ const Navbar = () => {
                           </li>
                         </>
                       )}
+
                       {isJobSeeker && (
                         <>
-                          {/* {jobSeekersData.length === 0 && ( */}
-                          <>
-                            <li className="list-group-item ">
-                              <Link
-                                className=" nav_btn"
-                                to="/dashboard/jobSeekerProfileEntry"
-                              >
-                                Create Profile
-                              </Link>
-                            </li>
-                          </>
-                          {/* )} */}
+                          {jobSeekersData === undefined && (
+                            <>
+                              <li className="list-group-item ">
+                                <Link
+                                  className=" nav_btn"
+                                  to="/dashboard/jobSeekerProfileEntry"
+                                >
+                                  Create Profile
+                                </Link>
+                              </li>
+                            </>
+                          )}
 
-                          {/* {jobSeekersData.length !== 0 && ( */}
-                          <>
-                            <li className="list-group-item   my-1">
-                              <Link
-                                className=" nav_btn"
-                                to="/dashboard/jobSeekerProfile"
-                              >
-                                My Profile
-                              </Link>
-                            </li>
-                            <li className="list-group-item ">
-                              <Link
-                                className=" nav_btn"
-                                to="/dashboard/employeesProfileManage"
-                              >
-                                Manage Profile
-                              </Link>
-                            </li>
-                          </>
-                          {/* )} */}
+                          {jobSeekersData !== undefined && (
+                            <>
+                              <li className="list-group-item   my-1">
+                                <Link
+                                  className=" nav_btn"
+                                  to="/dashboard/jobSeekerProfile"
+                                >
+                                  My Profile
+                                </Link>
+                              </li>
+                              <li className="list-group-item ">
+                                <Link
+                                  className=" nav_btn"
+                                  to="/dashboard/employeesProfileManage"
+                                >
+                                  Manage Profile
+                                </Link>
+                              </li>
+                            </>
+                          )}
 
                           <li className="list-group-item my-1">
                             <Link

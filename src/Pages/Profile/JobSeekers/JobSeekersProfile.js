@@ -29,26 +29,18 @@ const JobSeekersProfile = () => {
     <div className="resume-wrapper-inner mx-auto text-start bg-white shadow-lg">
       {/* Header Section Start */}
       <header className="resume-header p-5">
-        <div className=" d-flex justify-content-between">
-          <p>
-            <b>Download:</b> Word, PDF
-          </p>
-          <p>
-            <b>View Resume:</b>
-            <div
-              className="btn-group ms-2"
-              role="group"
-              aria-label="Basic outlined example"
-            >
-              <button type="button" className="btn btn-outline-primary btn-sm">
-                Details
-              </button>
-              <button type="button" className="btn btn-outline-primary btn-sm">
-                Short
-              </button>
-            </div>
-          </p>
+        <div className=" d-flex justify-content-between  ">
+          <h1 className=" text-center  "> RESUME</h1>
+          <div>
+            <button className=" btn btn-primary btn-sm  fw-bold">
+              Download PDF
+            </button>
+            <button className=" btn btn-primary btn-sm ms-1 fw-bold ">
+              Print Resume
+            </button>
+          </div>
         </div>
+        <hr />
 
         <div className="d-flex justify-content-evenly ">
           <div className="col-lg-9">
@@ -56,9 +48,9 @@ const JobSeekersProfile = () => {
               <div className="d-flex justify-content-between">
                 <div className="col-lg-8">
                   <div className="primary-info col-auto">
-                    <h5 className="name mb-1 text-uppercase fw-bold">
+                    <h2 className="name mb-1 text-uppercase ">
                       {jobSeekersData?.name}
-                    </h5>
+                    </h2>
                     <ul className="list-unstyled">
                       <li className="">
                         <b>Address:</b>{" "}

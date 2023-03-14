@@ -48,7 +48,9 @@ const EmployersProfile = () => {
       <article className="resume-wrapper text-center position-relative">
         <div className="resume-wrapper-inner text-start bg-white shadow-sm my-4 ">
           <header className="resume-header mx-4">
-            <div className=" d-flex justify-content-evenly">
+            <h1 className=" text-center mt-5 mb-4">Employer Profile</h1>
+            <hr />
+            <div className=" d-flex justify-content-evenly ">
               {/* Employers Data */}
               <div className="col-lg-8">
                 <div className="row">
