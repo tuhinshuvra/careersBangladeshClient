@@ -71,7 +71,7 @@ const JobSeekersAcademicAndTrainingEntry = () => {
     };
     // console.log("Job Seeker Data :", data);
 
-    fetch(`${process.env.REACT_APP_CABD_server_address}/employeesAcademics`, {
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersAcademics`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

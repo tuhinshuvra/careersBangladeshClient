@@ -28,7 +28,7 @@ const JobSeekersPersonalDetailsEntry = () => {
       .then((res) => res.json())
       .then((imgData) => {
         if (imgData.success) {
-          const employeesPersonal = {
+          const jobSeekersPersonal = {
             email: user.email,
             name: user.displayName,
 
@@ -50,13 +50,13 @@ const JobSeekersPersonalDetailsEntry = () => {
           // console.log("Job Seeker Data :", data);
 
           fetch(
-            `${process.env.REACT_APP_CABD_server_address}/employeesPersonal`,
+            `${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal`,
             {
               method: "POST",
               headers: {
                 "content-type": "application/json",
               },
-              body: JSON.stringify(employeesPersonal),
+              body: JSON.stringify(jobSeekersPersonal),
             }
           )
             .then((response) => response.json())

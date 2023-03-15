@@ -17,7 +17,7 @@ const EmployeesExperienceEntry = () => {
   } = useForm();
   const navigate = useNavigate();
 
-  const handleJobSeekerProfile = (data) => {
+  const handleJobSeekerExperience = (data) => {
     const jobseekerProfile = {
       email: user.email,
       name: user.displayName,
@@ -47,13 +47,16 @@ const EmployeesExperienceEntry = () => {
     };
     // console.log("Job Seeker Data :", data);
 
-    fetch(`${process.env.REACT_APP_CABD_server_address}/employeesExperiences`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(jobseekerProfile),
-    })
+    fetch(
+      `${process.env.REACT_APP_CABD_server_address}/jobSeekersExperiences`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(jobseekerProfile),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         if (data.acknowledged) {
@@ -74,7 +77,7 @@ const EmployeesExperienceEntry = () => {
       <h2 className=" text-center fw-bold my-4">Experience Data</h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
-      <form onSubmit={handleSubmit(handleJobSeekerProfile)}>
+      <form onSubmit={handleSubmit(handleJobSeekerExperience)}>
         <div className=" col-3 my-4  ">
           <span className="label-text text-md fw-bold ">
             {" "}

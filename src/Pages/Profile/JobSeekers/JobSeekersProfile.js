@@ -15,11 +15,11 @@ const JobSeekersProfile = () => {
   });
   useEffect(() => {
     fetch(
-      `${process.env.REACT_APP_CABD_server_address}/employeesAggregatedData/${email}`
+      `${process.env.REACT_APP_CABD_server_address}/jobSeekersAllData/${email}`
     )
       .then((response) => response.json())
       .then((data) => {
-        // console.log("employeesAggregatedData : ", data[0])
+        // console.log("jobSeekersAllData : ", data[0])
         setJobSeekersData(data[0]);
       });
   }, [email]);

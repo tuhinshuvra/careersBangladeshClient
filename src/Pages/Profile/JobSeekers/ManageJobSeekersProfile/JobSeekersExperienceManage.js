@@ -18,7 +18,7 @@ const JobSeekersExperienceManage = () => {
     event.preventDefault();
 
     fetch(
-      `${process.env.REACT_APP_CABD_server_address}/jobseekersExperiences/${storedData._id}`,
+      `${process.env.REACT_APP_CABD_server_address}/jobSeekersExperiences/${storedData._id}`,
       {
         method: "PUT",
         headers: {

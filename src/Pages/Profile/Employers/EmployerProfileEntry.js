@@ -28,7 +28,7 @@ const EmployerProfileEntry = () => {
       .then((res) => res.json())
       .then((imgData) => {
         if (imgData.success) {
-          const emplyerProfile = {
+          const employerProfile = {
             email: user?.email,
             name: user?.displayName,
 
@@ -52,13 +52,16 @@ const EmployerProfileEntry = () => {
           };
           console.log("Employee Data :", data);
 
-          fetch(`${process.env.REACT_APP_CABD_server_address}/emplyerProfile`, {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(emplyerProfile),
-          })
+          fetch(
+            `${process.env.REACT_APP_CABD_server_address}/employerProfile`,
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(employerProfile),
+            }
+          )
             .then((response) => response.json())
             .then((data) => {
               console.log(data);

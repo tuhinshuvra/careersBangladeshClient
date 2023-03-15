@@ -184,7 +184,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `${process.env.REACT_APP_CABD_server_address}/employeesPersonal/${params.email}`
+            `${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal/${params.email}`
           ),
       },
 
@@ -193,7 +193,7 @@ const router = createBrowserRouter([
         element: <JobSeekersExperienceManage></JobSeekersExperienceManage>,
         loader: ({ params }) =>
           fetch(
-            `${process.env.REACT_APP_CABD_server_address}/employeesExpriences/${params.email}`
+            `${process.env.REACT_APP_CABD_server_address}/jobSeekersExpriences/${params.email}`
           ),
       },
       {
@@ -203,7 +203,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `${process.env.REACT_APP_CABD_server_address}/jobseekersAcademics/${params.email}`
+            `${process.env.REACT_APP_CABD_server_address}/jobSeekersAcademics/${params.email}`
           ),
       },
 
@@ -214,7 +214,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `${process.env.REACT_APP_CABD_server_address}/employeesCareers/${params.email}`
+            `${process.env.REACT_APP_CABD_server_address}/jobSeekersCareers/${params.email}`
           ),
       },
 
@@ -225,7 +225,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `${process.env.REACT_APP_CABD_server_address}/employeesReferences/${params.email}`
+            `${process.env.REACT_APP_CABD_server_address}/jobSeekersReferences/${params.email}`
           ),
       },
 

@@ -30,7 +30,7 @@ const JobSeekersLanguageAndReferenceEntry = () => {
     },
   });
 
-  const handleJobSeekerProfile = (data) => {
+  const handleJobSeekersReference = (data) => {
     const jobseekerProfile = {
       email: user.email,
       name: user.displayName,
@@ -59,7 +59,7 @@ const JobSeekersLanguageAndReferenceEntry = () => {
     };
     // console.log("Job Seeker Data :", data);
 
-    fetch(`${process.env.REACT_APP_CABD_server_address}/employeesReferences`, {
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersReferences`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -88,7 +88,7 @@ const JobSeekersLanguageAndReferenceEntry = () => {
       </h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
-      <form onSubmit={handleSubmit(handleJobSeekerProfile)}>
+      <form onSubmit={handleSubmit(handleJobSeekersReference)}>
         <div>
           <div className=" d-flex justify-content-between">
             <h4 className="label-text text-md fw-bold">Language Proficiency</h4>

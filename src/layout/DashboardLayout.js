@@ -46,7 +46,7 @@ const DashboardLayout = () => {
   useEffect(() => {
     // setLoading(true);
     fetch(
-      `${process.env.REACT_APP_CABD_server_address}/employeesAggregatedData/${email}`
+      `${process.env.REACT_APP_CABD_server_address}/jobSeekersAllData/${email}`
     )
       .then((response) => response.json())
       .then((data) => {
