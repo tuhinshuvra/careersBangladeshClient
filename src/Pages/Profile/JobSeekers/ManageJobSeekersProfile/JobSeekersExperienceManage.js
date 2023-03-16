@@ -48,7 +48,7 @@ const JobSeekersExperienceManage = () => {
   return (
     <div>
       <JobSeekersProfileManage></JobSeekersProfileManage>
-      <h4 className=" text-center fw-bold my-3">Experience Data</h4>
+      <h2 className=" text-center fw-bold my-3">Update Experience Data</h2>
 
       <form onSubmit={handleUpdateExperiencesDoc}>
         <div className=" d-flex justify-content-between">

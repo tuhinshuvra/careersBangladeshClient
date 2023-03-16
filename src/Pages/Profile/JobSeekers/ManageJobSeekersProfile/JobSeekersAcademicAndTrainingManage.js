@@ -47,7 +47,9 @@ const JobSeekersAcademicAndTrainingManage = () => {
   return (
     <div>
       <JobSeekersProfileManage></JobSeekersProfileManage>
-      <h4 className=" text-center fw-bold my-3">Academic and Training Data</h4>
+      <h2 className=" text-center fw-bold my-3">
+        Update Academic and Training Data
+      </h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
       <form onSubmit={handleUdateAcademicsDoc}>

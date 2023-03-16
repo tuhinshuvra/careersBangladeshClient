@@ -80,11 +80,9 @@ const JobSeekersPersonalDetailsEntry = () => {
       <JobSeekersProfileEntry></JobSeekersProfileEntry>
 
       <div>
-        {/* <h2>Personal Details</h2> */}
-
-        <h4 className="label-text text-md fw-bold  text-center">
-          Personal Details
-        </h4>
+        <h2 className=" text-center fw-bold my-4">
+          Enter Personal Details Data
+        </h2>
 
         <div className=" d-flex justify-content-end">
           <p className="">
@@ -124,35 +122,7 @@ const JobSeekersPersonalDetailsEntry = () => {
               />
             </div>
 
-            <div className="col-md-3 mb-3 ">
-              <span className="label-text text-md fw-bold  ">
-                Nationality<span className="star">&#x2605;</span>
-              </span>
-              <input
-                {...register("nationality")}
-                name="nationality"
-                className="input form-control "
-                id="nationality"
-                type="text"
-                placeholder="Enter nationality"
-              />
-            </div>
-
-            <div className="col-md-3 mb-3 ">
-              <span className="label-text text-md fw-bold  ">
-                National Id No.
-              </span>
-              <input
-                {...register("nationalId")}
-                name="nationalId"
-                className="input form-control "
-                id="nationalId"
-                type="text"
-                placeholder="Enter nationalId No"
-              />
-            </div>
-
-            <div className="col-md-3 mb-3 ">
+            <div className="col-md-4 mb-3 ">
               <span className="label-text text-md fw-bold  ">
                 Phone<span className="star">&#x2605;</span>
               </span>
@@ -166,7 +136,7 @@ const JobSeekersPersonalDetailsEntry = () => {
               />
             </div>
 
-            <div className="col-md-3 mb-3 ">
+            <div className="col-md-4 mb-3 ">
               <span className="label-text text-md fw-bold  ">
                 Date of Birth<span className="star">&#x2605;</span>
               </span>
@@ -179,93 +149,176 @@ const JobSeekersPersonalDetailsEntry = () => {
               />
             </div>
 
-            <div className="row">
-              <div className="col-md-3 mb-3  ">
-                <span className="label-text text-md fw-bold  ">
-                  Gender<span className="star">&#x2605;</span>
-                </span>
-                <select
-                  {...register("gender")}
-                  name="gender"
-                  className="form-select  "
-                >
-                  <option>-Select Gender-</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="others">Others</option>
-                </select>
-              </div>
+            <div className="col-md-4 mb-3  ">
+              <span className="label-text text-md fw-bold  ">
+                Gender<span className="star">&#x2605;</span>
+              </span>
+              <select
+                {...register("gender")}
+                name="gender"
+                className="form-select  "
+              >
+                <option>-Select Gender-</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="others">Others</option>
+              </select>
+            </div>
 
-              <div className="col-md-3 mb-3 ">
-                <span className="label-text text-md fw-bold  ">Religion</span>
-                <select
-                  {...register("religion")}
-                  name="religion"
-                  className="form-select select-bordered  "
-                >
-                  <option>-Select Religion-</option>
-                  <option value="Islam">Islam</option>
-                  <option value="Buddhism">Buddhism</option>
-                  <option value="Hinduism">Hinduism</option>
-                  <option value="Christianity">Christianity</option>
-                  <option value="Judaism">Judaism</option>
-                  <option value="Irreligion">Irreligion</option>
-                  <option value="Folk religions">Folk religions</option>
-                  <option value="Others">Others</option>
-                </select>
-              </div>
+            <div className="col-md-4 mb-3 ">
+              <span className="label-text text-md fw-bold  ">
+                Nationality<span className="star">&#x2605;</span>
+              </span>
+              <input
+                {...register("nationality")}
+                name="nationality"
+                className="input form-control "
+                id="nationality"
+                type="text"
+                placeholder="Enter nationality"
+              />
+            </div>
 
-              <div className="col-md-3 mb-3 ">
-                <span className={`label-text text-md fw-bold`}>
-                  Marital Status
-                </span>
-                <select
-                  {...register("maritalStatus")}
-                  name="maritalStatus"
-                  id="maritalStatus"
-                  className="form-select select-bordered"
-                >
-                  <option>-Select Marital Status-</option>
-                  <option value="Single">Single</option>
-                  <option value="Married">Married</option>
-                  <option value="Widowed">Widowed</option>
-                  <option value="Separated">Separated</option>
-                  <option value="Divorced">Divorced</option>
-                </select>
-              </div>
+            <div className="col-md-4 mb-3 ">
+              <span className="label-text text-md fw-bold  ">
+                National Id No.<span className="star">&#x2605;</span>
+              </span>
+              <input
+                {...register("nationalId")}
+                name="nationalId"
+                className="input form-control "
+                id="nationalId"
+                type="text"
+                required
+                placeholder="Enter nationalId No"
+              />
+            </div>
 
-              <div className="col-md-3 mb-3 ">
-                <span className="label-text text-md fw-bold  ">
-                  Photo<span className="star">&#x2605;</span>
-                </span>
-                <input
-                  {...register("image", { required: true })}
-                  name="image"
-                  className="input form-control "
-                  id="image"
-                  type="file"
-                />
-              </div>
+            <div className="col-md-4 mb-3 ">
+              <span className="label-text text-md fw-bold  ">Passport No.</span>
+              <input
+                {...register("passportNo")}
+                name="passportNo"
+                className="input form-control "
+                id="passportNo"
+                type="text"
+                placeholder="Enter passport no"
+              />
+            </div>
+
+            <div className="col-md-4 mb-3 ">
+              <span className="label-text text-md fw-bold  ">Religion</span>
+              <select
+                {...register("religion")}
+                name="religion"
+                className="form-select"
+              >
+                <option>-Select Religion-</option>
+                <option value="Islam">Islam</option>
+                <option value="Buddhism">Buddhism</option>
+                <option value="Hinduism">Hinduism</option>
+                <option value="Christianity">Christianity</option>
+                <option value="Judaism">Judaism</option>
+                <option value="Irreligion">Irreligion</option>
+                <option value="Folk religions">Folk religions</option>
+                <option value="Others">Others</option>
+              </select>
+            </div>
+
+            <div className="col-md-4 mb-3 ">
+              <span className={`label-text text-md fw-bold`}>
+                Marital Status
+              </span>
+              <select
+                {...register("maritalStatus")}
+                name="maritalStatus"
+                id="maritalStatus"
+                className="form-select select-bordered"
+              >
+                <option>-Select Marital Status-</option>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Widowed">Widowed</option>
+                <option value="Separated">Separated</option>
+                <option value="Divorced">Divorced</option>
+              </select>
+            </div>
+
+            <div className="col-md-4 mb-3 ">
+              <span className="label-text text-md fw-bold  ">
+                Photo<span className="star">&#x2605;</span>
+              </span>
+              <input
+                {...register("image", { required: true })}
+                name="image"
+                className="input form-control "
+                id="image"
+                type="file"
+              />
             </div>
           </div>
 
-          <div className="row">
-            <div className=" col-md-6 mb-3">
+          <div className="row p-2">
+            <div className=" mb-3">
               <span className="label-text text-md fw-bold ">
                 Present Address<span className="star">&#x2605;</span>
               </span>
-              <div>
-                <textarea
+
+              <div className=" row border border-secondary-subtel rounded-2">
+                <div className="col-md-4 my-3 ">
+                  <span className="label-text text-md fw-bold">District</span>
+                  <select
+                    {...register("district")}
+                    name="district"
+                    id="district"
+                    className="form-select select-bordered"
+                  >
+                    <option>-Select District-</option>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Widowed">Widowed</option>
+                    <option value="Separated">Separated</option>
+                    <option value="Divorced">Divorced</option>
+                  </select>
+                </div>
+                <div className="col-md-4 my-3 ">
+                  <span className="label-text text-md fw-bold">Thana</span>
+                  <select
+                    {...register("thana")}
+                    name="thana"
+                    id="thana"
+                    className="form-select select-bordered"
+                  >
+                    <option>-Select Thana-</option>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Widowed">Widowed</option>
+                    <option value="Separated">Separated</option>
+                    <option value="Divorced">Divorced</option>
+                  </select>
+                </div>
+
+                <span className="label-text text-md fw-bold  ">P.O.</span>
+                <input
+                  {...register("postOffice")}
+                  name="postOffice"
+                  className="input form-control "
+                  id="postOffice"
+                  type="text"
+                  placeholder="Enter post office"
+                />
+
+                {/* <textarea
                   {...register("presentAddress", { required: true })}
                   name="presentAddress"
                   className="input form-control "
                   id="presentAddress"
                   type="text"
                   placeholder="Write Your Pressent Address"
-                />
+                /> */}
               </div>
             </div>
-            <div className=" col-md-6 mb-3">
+            <div className=" mb-3">
               <span className="label-text text-md fw-bold  ">
                 Permanent Address
               </span>

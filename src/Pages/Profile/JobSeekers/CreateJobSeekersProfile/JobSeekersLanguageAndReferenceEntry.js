@@ -84,7 +84,7 @@ const JobSeekersLanguageAndReferenceEntry = () => {
     <div>
       <JobSeekersProfileEntry></JobSeekersProfileEntry>
       <h2 className=" text-center fw-bold my-4">
-        Employees Language and Reference Data
+        Enter Language and Reference Data
       </h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}

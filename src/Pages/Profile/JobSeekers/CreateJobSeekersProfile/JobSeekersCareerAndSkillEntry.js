@@ -85,7 +85,7 @@ const JobSeekersCareerAndSkillEntry = () => {
       </div>
 
       <h2 className=" text-center fw-bold my-4">
-        Employees Careers and Skill Data
+        Enter Careers and Skill Data
       </h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}

@@ -95,7 +95,9 @@ const JobSeekersAcademicAndTrainingEntry = () => {
   return (
     <div>
       <JobSeekersProfileEntry></JobSeekersProfileEntry>
-      <h2 className=" text-center fw-bold my-4">Academic and Training Data</h2>
+      <h2 className=" text-center fw-bold my-4">
+        Enter Academic and Training Data
+      </h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
       <form onSubmit={handleSubmit(handleJobSeekerProfile)}>

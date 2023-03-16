@@ -74,7 +74,7 @@ const EmployeesExperienceEntry = () => {
   return (
     <div>
       <EmployeesProfileEntry></EmployeesProfileEntry>
-      <h2 className=" text-center fw-bold my-4">Experience Data</h2>
+      <h2 className=" text-center fw-bold my-4">Enter Experience Data</h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
       <form onSubmit={handleSubmit(handleJobSeekerExperience)}>

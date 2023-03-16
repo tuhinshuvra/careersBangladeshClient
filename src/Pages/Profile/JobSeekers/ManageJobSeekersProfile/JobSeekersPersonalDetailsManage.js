@@ -55,9 +55,9 @@ const JobSeekersPersonalDetailsManage = () => {
       <div>
         {/* <h2>Personal Details</h2> */}
 
-        <h4 className="label-text text-md fw-bold  text-center my-3">
-          Personal Details
-        </h4>
+        <h2 className=" text-center fw-bold my-4">
+          Update Personal Details Data
+        </h2>
 
         <div className=" d-flex justify-content-end">
           <p className="">

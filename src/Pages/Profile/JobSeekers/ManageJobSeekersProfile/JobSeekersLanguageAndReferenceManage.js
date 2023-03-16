@@ -64,9 +64,10 @@ const JobSeekersLanguageAndReferenceManage = () => {
   return (
     <div>
       <JobSeekersProfileManage></JobSeekersProfileManage>
-      <h4 className=" text-center fw-bold my-3">
-        Employees Language and Reference Data
-      </h4>
+
+      <h2 className=" text-center fw-bold my-4">
+        Update Language and Reference Data
+      </h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
       <form onSubmit={handleUpdateReferenceData}>

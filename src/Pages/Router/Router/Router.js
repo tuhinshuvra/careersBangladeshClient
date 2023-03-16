@@ -87,7 +87,7 @@ const router = createBrowserRouter([
         element: <FindJobHomeResult></FindJobHomeResult>,
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/jobSearch?${params.search}&${params.search2}&${params.search3}`
+            `${process.env.REACT_APP_CABD_server_address}/jobSearch?${params.search}&${params.search2}&${params.search3}`
           ),
       },
 

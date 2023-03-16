@@ -20,10 +20,7 @@ const JobCategory = () => {
 
   useEffect(() => {
     // fetch('job-categories.json')
-    fetch(
-      // "http://localhost:5000/jobCategories"
-      `${process.env.REACT_APP_CABD_server_address}/jobCategories`
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobCategories`)
       .then((response) => response.json())
       .then((data) => {
         setCategories(data);
