@@ -1,19 +1,11 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
-import {
-  FaFile,
-  FaFilter,
-  FaList,
-  FaSearch,
-  FaStar,
-  FaTh,
-} from "react-icons/fa";
-import "./FindJob.css";
-import useTitle from "../../hooks/useTitle";
 import { useQuery } from "@tanstack/react-query";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 import { AuthContext } from "../Authentication/AuthProvider";
 import Loader from "../Shared/Loader/Loader";
+import "./FindJob.css";
 
 const FindJobHomeResult = ({ jobList }) => {
   useTitle("FindJob");
@@ -44,11 +36,12 @@ const FindJobHomeResult = ({ jobList }) => {
       .then((data) => {
         console.log(" Home Job Search Result :", data);
         setShowJobs(data);
-        // setSearchData("");
-        // setSearchLocationtionData("");
-        // setSearchOrganizationData("");
+         setSearchData("");
+        setSearchLocationtionData("");
+         setSearchOrganizationData("");
+        console.log(" Home Job Search Result22 :", data);
       });
-  }, [searchData, searchLocationtionData, searchOrganizationData]);
+  }, []);
 
   const { data: categories, isLoading } = useQuery({
     queryKey: ["category"],
