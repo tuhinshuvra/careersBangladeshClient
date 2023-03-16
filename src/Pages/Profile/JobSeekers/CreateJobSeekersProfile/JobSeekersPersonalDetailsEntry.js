@@ -14,6 +14,9 @@ const JobSeekersPersonalDetailsEntry = () => {
   } = useForm();
   const navigate = useNavigate();
 
+  // const address = require("@bangladeshi/bangladesh-address");
+  // console.log("address allUpazila: ", address.allUpazila());
+
   const imageHostKey = process.env.REACT_APP_CABD_imagebb_hostKey;
 
   const handleJobSeekerProfile = (data) => {
@@ -43,10 +46,22 @@ const JobSeekersPersonalDetailsEntry = () => {
             religion: data.religion,
             maritalStatus: data.maritalStatus,
             image: imgData.data.url,
-            presentAddress: data.presentAddress,
-            permanentAddress: data.permanent_address,
+
+            // presentAddress
+            presentDistrict: data.presentDistrict,
+            presentThana: data.presentThana,
+            presentPostOffice: data.presentPostOffice,
+            presentAddressLine2: data.presentAddressLine2,
+
+            // permanentAddress
+            permanentDistrict: data.permanentDistrict,
+            permanentThana: data.permanentThana,
+            permanentPostOffice: data.permanentPostOffice,
+            permanentAddressLine2: data.permanentAddressLine2,
+
             careerObjective: data.career_objective,
           };
+
           // console.log("Job Seeker Data :", data);
 
           fetch(
@@ -73,6 +88,25 @@ const JobSeekersPersonalDetailsEntry = () => {
             });
         }
       });
+  };
+
+  const handlePermanentAddress = () => {
+    console.log("I am clicked");
+    let presentDistrict = document.getElementById("presentDistrict");
+    let presentThana = document.getElementById("presentThana");
+    let presentPostOffice = document.getElementById("presentPostOffice");
+    let presentAddressLine2 = document.getElementById("presentAddressLine2");
+
+    let permanentDistrict = document.getElementById("permanentDistrict");
+    let permanentThana = document.getElementById("permanentThana");
+    let permanentPostOffice = document.getElementById("permanentPostOffice");
+    let permanentAddressLine2 = document.getElementById(
+      "permanentAddressLine2"
+    );
+    permanentDistrict.value = presentDistrict.value;
+    permanentThana.value = presentThana.value;
+    permanentPostOffice.value = presentPostOffice.value;
+    permanentAddressLine2.value = presentAddressLine2.value;
   };
 
   return (
@@ -258,82 +292,281 @@ const JobSeekersPersonalDetailsEntry = () => {
             </div>
           </div>
 
-          <div className="row p-2">
-            <div className=" mb-3">
-              <span className="label-text text-md fw-bold ">
-                Present Address<span className="star">&#x2605;</span>
-              </span>
+          {/* present Address section start */}
+          <div className=" mb-3 mt-3">
+            <span className="label-text text-md fw-bold ">Present Address</span>
 
-              <div className=" row border border-secondary-subtel rounded-2">
-                <div className="col-md-4 my-3 ">
-                  <span className="label-text text-md fw-bold">District</span>
-                  <select
-                    {...register("district")}
-                    name="district"
-                    id="district"
-                    className="form-select select-bordered"
-                  >
-                    <option>-Select District-</option>
-                    <option value="Single">Single</option>
-                    <option value="Married">Married</option>
-                    <option value="Widowed">Widowed</option>
-                    <option value="Separated">Separated</option>
-                    <option value="Divorced">Divorced</option>
-                  </select>
-                </div>
-                <div className="col-md-4 my-3 ">
-                  <span className="label-text text-md fw-bold">Thana</span>
-                  <select
-                    {...register("thana")}
-                    name="thana"
-                    id="thana"
-                    className="form-select select-bordered"
-                  >
-                    <option>-Select Thana-</option>
-                    <option value="Single">Single</option>
-                    <option value="Married">Married</option>
-                    <option value="Widowed">Widowed</option>
-                    <option value="Separated">Separated</option>
-                    <option value="Divorced">Divorced</option>
-                  </select>
-                </div>
+            <div className=" row border border-secondary-subtel rounded-2">
+              <div className="col-md-4 my-2 ">
+                <span className="label-text text-md fw-bold">
+                  District <span className="star">&#x2605;</span>
+                </span>
+                <select
+                  {...register("presentDistrict")}
+                  name="presentDistrict"
+                  id="presentDistrict"
+                  required
+                  className="form-select select-bordered"
+                >
+                  <option>-Select District-</option>
+                  <option value="Bagerhat">Bagerhat</option>
+                  <option value="Bandarban">Bandarban</option>
+                  <option value="Barguna">Barguna</option>
+                  <option value="Barisal">Barisal</option>
+                  <option value="Bhola">Bhola</option>
+                  <option value="Bogra">Bogra</option>
+                  <option value="Brahmanbaria">Brahmanbaria</option>
+                  <option value="Chandpur">Chandpur</option>
+                  <option value="Chittagong">Chittagong</option>
+                  <option value="Chuadanga">Chuadanga</option>
+                  <option value="Comilla">Comilla</option>
+                  <option value="Cox'sBazar">Cox'sBazar</option>
+                  <option value="Dhaka">Dhaka</option>
+                  <option value="Dinajpur">Dinajpur</option>
+                  <option value="Faridpur">Faridpur</option>
+                  <option value="Feni">Feni</option>
+                  <option value="Gaibandha">Gaibandha</option>
+                  <option value="Gazipur">Gazipur</option>
+                  <option value="Gopalganj">Gopalganj</option>
+                  <option value="Habiganj">Habiganj</option>
+                  <option value="Jaipurhat">Jaipurhat</option>
+                  <option value="Jamalpur">Jamalpur</option>
+                  <option value="Jessore">Jessore</option>
+                  <option value="Jhalokati">Jhalokati</option>
+                  <option value="Jhenaidah">Jhenaidah</option>
+                  <option value="Khagrachari">Khagrachari</option>
+                  <option value="Khulna">Khulna</option>
+                  <option value="Kishoreganj">Kishoreganj</option>
+                  <option value="Kurigram">Kurigram</option>
+                  <option value="Kushtia">Kushtia</option>
+                  <option value="Lakshmipur">Lakshmipur</option>
+                  <option value="Lalmonirhat">Lalmonirhat</option>
+                  <option value="Madaripur">Madaripur</option>
+                  <option value="Magura">Magura</option>
+                  <option value="Manikganj">Manikganj</option>
+                  <option value="Maulvibazar">Maulvibazar</option>
+                  <option value="Meherpur">Meherpur</option>
+                  <option value="Munshiganj">Munshiganj</option>
+                  <option value="Mymensingh">Mymensingh</option>
+                  <option value="Naogaon">Naogaon</option>
+                  <option value="Narail">Narail</option>
+                  <option value="Narayanganj">Narayanganj</option>
+                  <option value="Narsingdi">Narsingdi</option>
+                  <option value="Natore">Natore</option>
+                  <option value="Nawabganj">Nawabganj</option>
+                  <option value="Netrokona">Netrokona</option>
+                  <option value="Nilphamari">Nilphamari</option>
+                  <option value="Noakhali">Noakhali</option>
+                  <option value="Pabna">Pabna</option>
+                  <option value="Panchagarh">Panchagarh</option>
+                  <option value="Patuakhali">Patuakhali</option>
+                  <option value="Pirojpur">Pirojpur</option>
+                  <option value="Rajbari">Rajbari</option>
+                  <option value="Rajshahi">Rajshahi</option>
+                  <option value="Rangamati">Rangamati</option>
+                  <option value="Rangpur">Rangpur</option>
+                  <option value="Satkhira">Satkhira</option>
+                  <option value="Shariatpur">Shariatpur</option>
+                  <option value="Sherpur">Sherpur</option>
+                  <option value="Sirajganj">Sirajganj</option>
+                  <option value="Sunamganj">Sunamganj</option>
+                  <option value="Sylhet">Sylhet</option>
+                  <option value="Tangail">Tangail</option>
+                  <option value="Thakurgaon">Thakurgaon</option>
+                </select>
+              </div>
 
-                <span className="label-text text-md fw-bold  ">P.O.</span>
+              <div className="col-md-4 my-2 ">
+                <span className="label-text text-md fw-bold  ">
+                  Thana <span className="star">&#x2605;</span>
+                </span>
                 <input
-                  {...register("postOffice")}
-                  name="postOffice"
+                  {...register("presentThana")}
+                  name="presentThana"
                   className="input form-control "
-                  id="postOffice"
+                  id="presentThana"
                   type="text"
+                  required
+                  placeholder="Enter thana"
+                />
+              </div>
+
+              <div className="col-md-4 my-2 ">
+                <span className="label-text text-md fw-bold  ">
+                  Post Office<span className="star">&#x2605;</span>
+                </span>
+                <input
+                  {...register("presentPostOffice")}
+                  name="presentPostOffice"
+                  className="input form-control "
+                  id="presentPostOffice"
+                  type="text"
+                  required
                   placeholder="Enter post office"
                 />
-
-                {/* <textarea
-                  {...register("presentAddress", { required: true })}
-                  name="presentAddress"
-                  className="input form-control "
-                  id="presentAddress"
-                  type="text"
-                  placeholder="Write Your Pressent Address"
-                /> */}
               </div>
-            </div>
-            <div className=" mb-3">
-              <span className="label-text text-md fw-bold  ">
-                Permanent Address
-              </span>
-              <div>
-                <textarea
-                  {...register("permanent_address")}
-                  name="permanent_address"
+
+              <div className="p-2">
+                <span
+                  className="label-text text-md fw-bold ms-1
+                   "
+                >
+                  Address Line 2
+                </span>
+                <input
+                  {...register("presentAddressLine2")}
+                  name="presentAddressLine2"
+                  id="presentAddressLine2"
                   className="input form-control "
-                  id="permanent_address"
                   type="text"
-                  placeholder="Write Your Permanent Address"
+                  placeholder="Enter address line 2"
                 />
               </div>
             </div>
           </div>
+          {/* present Address section end */}
+
+          {/* permanent Address section start */}
+
+          <div className=" mt-5 mb-3">
+            <div className=" d-flex justify-content-between">
+              <span className="label-text text-md fw-bold ">
+                Permanent Address
+              </span>
+              <button
+                onClick={handlePermanentAddress}
+                className=" btn btn-secondary btn-sm"
+              >
+                Same as Permanent
+              </button>
+            </div>
+
+            <div className=" row border border-secondary-subtel rounded-2">
+              <div className="col-md-4 my-2 ">
+                <span className="label-text text-md fw-bold">District</span>
+                <select
+                  {...register("permanentDistrict")}
+                  name="permanentDistrict"
+                  id="permanentDistrict"
+                  required
+                  className="form-select select-bordered"
+                >
+                  <option>-Select District-</option>
+                  <option value="Bagerhat">Bagerhat</option>
+                  <option value="Bandarban">Bandarban</option>
+                  <option value="Barguna">Barguna</option>
+                  <option value="Barisal">Barisal</option>
+                  <option value="Bhola">Bhola</option>
+                  <option value="Bogra">Bogra</option>
+                  <option value="Brahmanbaria">Brahmanbaria</option>
+                  <option value="Chandpur">Chandpur</option>
+                  <option value="Chittagong">Chittagong</option>
+                  <option value="Chuadanga">Chuadanga</option>
+                  <option value="Comilla">Comilla</option>
+                  <option value="Cox'sBazar">Cox'sBazar</option>
+                  <option value="Dhaka">Dhaka</option>
+                  <option value="Dinajpur">Dinajpur</option>
+                  <option value="Faridpur">Faridpur</option>
+                  <option value="Feni">Feni</option>
+                  <option value="Gaibandha">Gaibandha</option>
+                  <option value="Gazipur">Gazipur</option>
+                  <option value="Gopalganj">Gopalganj</option>
+                  <option value="Habiganj">Habiganj</option>
+                  <option value="Jaipurhat">Jaipurhat</option>
+                  <option value="Jamalpur">Jamalpur</option>
+                  <option value="Jessore">Jessore</option>
+                  <option value="Jhalokati">Jhalokati</option>
+                  <option value="Jhenaidah">Jhenaidah</option>
+                  <option value="Khagrachari">Khagrachari</option>
+                  <option value="Khulna">Khulna</option>
+                  <option value="Kishoreganj">Kishoreganj</option>
+                  <option value="Kurigram">Kurigram</option>
+                  <option value="Kushtia">Kushtia</option>
+                  <option value="Lakshmipur">Lakshmipur</option>
+                  <option value="Lalmonirhat">Lalmonirhat</option>
+                  <option value="Madaripur">Madaripur</option>
+                  <option value="Magura">Magura</option>
+                  <option value="Manikganj">Manikganj</option>
+                  <option value="Maulvibazar">Maulvibazar</option>
+                  <option value="Meherpur">Meherpur</option>
+                  <option value="Munshiganj">Munshiganj</option>
+                  <option value="Mymensingh">Mymensingh</option>
+                  <option value="Naogaon">Naogaon</option>
+                  <option value="Narail">Narail</option>
+                  <option value="Narayanganj">Narayanganj</option>
+                  <option value="Narsingdi">Narsingdi</option>
+                  <option value="Natore">Natore</option>
+                  <option value="Nawabganj">Nawabganj</option>
+                  <option value="Netrokona">Netrokona</option>
+                  <option value="Nilphamari">Nilphamari</option>
+                  <option value="Noakhali">Noakhali</option>
+                  <option value="Pabna">Pabna</option>
+                  <option value="Panchagarh">Panchagarh</option>
+                  <option value="Patuakhali">Patuakhali</option>
+                  <option value="Pirojpur">Pirojpur</option>
+                  <option value="Rajbari">Rajbari</option>
+                  <option value="Rajshahi">Rajshahi</option>
+                  <option value="Rangamati">Rangamati</option>
+                  <option value="Rangpur">Rangpur</option>
+                  <option value="Satkhira">Satkhira</option>
+                  <option value="Shariatpur">Shariatpur</option>
+                  <option value="Sherpur">Sherpur</option>
+                  <option value="Sirajganj">Sirajganj</option>
+                  <option value="Sunamganj">Sunamganj</option>
+                  <option value="Sylhet">Sylhet</option>
+                  <option value="Tangail">Tangail</option>
+                  <option value="Thakurgaon">Thakurgaon</option>
+                </select>
+              </div>
+
+              <div className="col-md-4 my-2 ">
+                <span className="label-text text-md fw-bold  ">Thana</span>
+                <input
+                  {...register("permanentThana")}
+                  name="permanentThana"
+                  id="permanentThana"
+                  className="input form-control "
+                  type="text"
+                  required
+                  placeholder="Enter thana"
+                />
+              </div>
+
+              <div className="col-md-4 my-2 ">
+                <span className="label-text text-md fw-bold  ">
+                  Post Office
+                </span>
+                <input
+                  {...register("permanentPostOffice")}
+                  name="permanentPostOffice"
+                  className="input form-control "
+                  id="permanentPostOffice"
+                  type="text"
+                  required
+                  placeholder="Enter post office"
+                />
+              </div>
+
+              <div className="p-2">
+                <span
+                  className="label-text text-md fw-bold ms-1
+                   "
+                >
+                  Address Line 2
+                </span>
+                <input
+                  {...register("permanentAddressLine2")}
+                  name="permanentAddressLine2"
+                  id="permanentAddressLine2"
+                  className="input form-control "
+                  type="text"
+                  placeholder="Enter address line 2"
+                />
+              </div>
+            </div>
+          </div>
+          {/* permanent  Address section end */}
+
           <div className="mb-3 ">
             <span className="label-text text-md fw-bold text-center ">
               Career Objective<span className="star">&#x2605;</span>
