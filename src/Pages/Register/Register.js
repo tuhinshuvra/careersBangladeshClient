@@ -15,6 +15,7 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
+    refetch,
   } = useForm();
   const { createUser, updateUser, setLoading } = useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
@@ -30,6 +31,7 @@ const Register = () => {
         const user = result.user;
         // console.log("User Info:", user)
         toast.success("User created and login successfully.");
+        refetch();
 
         const userInfo = {
           displayName: data?.name,
@@ -44,6 +46,7 @@ const Register = () => {
           });
         // form.reset();
         navigate("/");
+        refetch();
       })
       .catch((error) => {
         // console.log("Error : ", error)
@@ -119,9 +122,16 @@ const Register = () => {
                             Please Register
                           </h5>
 
+                          <div className=" d-flex justify-content-end">
+                            <p className="">
+                              <span className="star">&#x2605; </span>
+                              <b> field must be filled</b>
+                            </p>
+                          </div>
+
                           <div className="form-outline mb-4">
                             <label className="form-label" htmlFor="fullname">
-                              Full Name
+                              Full Name<span className="star">&#x2605;</span>
                             </label>
                             <input
                               type="name"
@@ -137,12 +147,13 @@ const Register = () => {
 
                           <div className="form-outline mb-4">
                             <label className="form-label" htmlFor="userType">
-                              Select Role
+                              Select Role <span className="star">&#x2605;</span>
                             </label>
                             <select
                               type="text"
                               {...register("userType")}
                               className="form-control"
+                              required
                             >
                               <option value="employer">Employer</option>
                               <option value="jobseeker" selected>
@@ -153,7 +164,7 @@ const Register = () => {
 
                           <div className="form-outline mb-4">
                             <label className="form-label" htmlFor="email">
-                              Email
+                              Email <span className="star">&#x2605;</span>
                             </label>
                             <input
                               type="email"
@@ -169,7 +180,7 @@ const Register = () => {
 
                           <div className="form-outline mb-4">
                             <label className="form-label" htmlFor="password">
-                              Password
+                              Password <span className="star">&#x2605;</span>
                             </label>
                             {/* <input type="password" id="password" className="form-control" placeholder='Enter password' /> */}
 

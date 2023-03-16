@@ -170,6 +170,7 @@ const JobSeekersExperienceManage = () => {
                 className="input form-control "
                 id="exprOneResp"
                 type="text"
+                maxLength={450}
               />
             </div>
           </div>
@@ -186,6 +187,7 @@ const JobSeekersExperienceManage = () => {
                 className="input form-control "
                 id="exprOneExpertise"
                 type="text"
+                maxLength={450}
               />
             </div>
           </div>
@@ -202,6 +204,7 @@ const JobSeekersExperienceManage = () => {
                 className="input form-control "
                 id="exprCompOneAddress"
                 type="text"
+                maxLength={450}
               />
             </div>
           </div>
@@ -325,6 +328,7 @@ const JobSeekersExperienceManage = () => {
                 id="exprTwoResp"
                 type="text"
                 placeholder="Enter Responsibilities"
+                maxLength={450}
               />
             </div>
           </div>
@@ -341,6 +345,7 @@ const JobSeekersExperienceManage = () => {
                 className="input form-control "
                 id="exprTwoExpertise"
                 type="text"
+                maxLength={450}
               />
             </div>
           </div>
@@ -357,6 +362,7 @@ const JobSeekersExperienceManage = () => {
                 className="input form-control"
                 id="exprCompTwoAddress"
                 type="text"
+                maxLength={450}
               />
             </div>
           </div>

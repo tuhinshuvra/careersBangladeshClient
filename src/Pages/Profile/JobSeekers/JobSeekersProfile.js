@@ -5,8 +5,7 @@ import { AuthContext } from "../../Authentication/AuthProvider";
 import "../JobSeekers/JobSeekersProfile.css";
 const JobSeekersProfile = () => {
   //const [jobSeekersData, setJobSeekersData] = useState([]);
-  const { user, jobSeekersData, setJobSeekersData, setLoading } =
-    useContext(AuthContext);
+  const { user, jobSeekersData, setJobSeekersData } = useContext(AuthContext);
   // setLoading(true);
   const email = user?.email;
   const componentRef = useRef(null);
@@ -53,8 +52,8 @@ const JobSeekersProfile = () => {
       </div>
       <hr />
 
-      <div ref={componentRef}>
-        <header className="resume-header p-5">
+      <div ref={componentRef} className="jsProFontSm">
+        <header className="resume-header px-5 pt-5">
           <div className="d-flex justify-content-evenly ">
             <div className="col-lg-9">
               <div className="row">
@@ -67,19 +66,22 @@ const JobSeekersProfile = () => {
                       <ul className="list-unstyled">
                         <li className="">
                           <b>Address:</b>{" "}
-                          <span>{jobSeekersData?.presentAddress}</span>{" "}
+                          <span className=" ">
+                            {jobSeekersData?.presentThana},
+                            {jobSeekersData?.presentDistrict}
+                          </span>{" "}
                         </li>
                         <li className="">
-                          <b>Phone:</b> {jobSeekersData?.phone}
+                          <b className=" ">Phone:</b> {jobSeekersData?.phone}
                         </li>
                         <li className="">
-                          <b>Email:</b> {jobSeekersData?.email}
+                          <b className=" ">Email:</b> {jobSeekersData?.email}
                         </li>
                         <li>
                           {" "}
                           <b> Portfolio: </b>{" "}
                           <a
-                            className=" text-decoration-none"
+                            className=" text-decoration-none  "
                             href={`${jobSeekersData?.empAggreAcademics?.portfolio}`}
                             rel="noreferrer"
                             target="_blank"
@@ -91,7 +93,7 @@ const JobSeekersProfile = () => {
                           {" "}
                           <b> Work Repository: </b>{" "}
                           <a
-                            className=" text-decoration-none"
+                            className=" text-decoration-none  "
                             href={`${jobSeekersData?.empAggreAcademics?.gitHubLink}`}
                             rel="noreferrer"
                             target="_blank"
@@ -125,7 +127,7 @@ const JobSeekersProfile = () => {
                             <span className="fa-container text-center">
                               <i className="fab fa-github-alt fa-fw"></i>
                             </span>
-                            {jobSeekersData?.linkOne}
+                            {jobSeekersData?.linkTwo}
                           </Link>
                         </li>
                         <li className="mb-3">
@@ -147,7 +149,11 @@ const JobSeekersProfile = () => {
             </div>
 
             <div className="col-lg-3 ">
-              <img className="profile_pic" src={jobSeekersData?.image} alt="" />
+              <img
+                className="profile_pic"
+                src={jobSeekersData?.image}
+                alt="profile_picture"
+              />
             </div>
           </div>
         </header>
@@ -155,22 +161,22 @@ const JobSeekersProfile = () => {
 
         {/* Resume Body start */}
         <div className="resume-body p-5">
-          <section className="resume-section summary-section mb-5">
-            <h5 className="resume-section-title text-uppercase text-decoration-underline">
-              Career Objective
+          <section className="mt-1 mb-4">
+            <h5 className=" fw-bold text-uppercase text-decoration-underline mb-3">
+              CAREER OBJECTIVE
             </h5>
-            <div className="resume-section-content">
+            <div className="resume-section-content  ">
               <p>{jobSeekersData?.careerObjective}</p>
             </div>
           </section>
 
           {jobSeekersData?.empAggreCareers?.specialQualification ? (
             <>
-              <section className="resume-section summary-section mb-5">
-                <h5 className="resume-section-title text-uppercase text-decoration-underline">
-                  Special Qualification
+              <section className="  my-3">
+                <h5 className=" fw-bold text-uppercase text-decoration-underline mb-3">
+                  SPECIAL QUALIFICATION
                 </h5>
-                <div className="resume-section-content">
+                <div className="resume-section-content  ">
                   <p>{jobSeekersData?.empAggreCareers?.specialQualification}</p>
                 </div>
               </section>
@@ -183,14 +189,14 @@ const JobSeekersProfile = () => {
 
           {jobSeekersData?.empAgrreExperience?.expOneCompanayName ? (
             <>
-              <section className="resume-section summary-section mb-5">
-                <h5 className="resume-section-title text-uppercase text-decoration-underline">
-                  History of Employment
+              <section className="resume-section summary-section my-3">
+                <h5 className=" fw-bold text-uppercase text-decoration-underline mb-3">
+                  HISTORY OF EMPLOYMENT
                 </h5>
                 <div className="resume-section-content">
                   <p className="my-3">
                     {" "}
-                    <b>Total Year of Experience :</b> 10.9 yrs{" "}
+                    {/* <b>Total Year of Experience :</b> 10.9 yrs{" "} */}
                   </p>
 
                   {/* Employment History Section One */}
@@ -199,7 +205,7 @@ const JobSeekersProfile = () => {
                       {" "}
                       <span> 1.</span>{" "}
                       {jobSeekersData?.empAgrreExperience?.expOneDesignation}{" "}
-                      <span>
+                      <span className=" ">
                         {" "}
                         ({
                           jobSeekersData?.empAgrreExperience?.exprOneWorkPeriod
@@ -207,32 +213,32 @@ const JobSeekersProfile = () => {
                         yr)
                       </span>
                     </p>
-                    <p className=" mb-0">
+                    <p className=" mb-0  ">
                       {jobSeekersData?.empAgrreExperience?.expOneFrom}
                       <span className=" mx-1">-</span>
                       {jobSeekersData?.empAgrreExperience?.expOneTo}
                     </p>
                     <p className="">
-                      <b>
+                      <b className=" ">
                         {" "}
                         {jobSeekersData?.empAgrreExperience?.expOneCompanayName}
                       </b>
                     </p>
                     <p className=" mb-0">
-                      <b>
+                      <b className=" ">
                         {jobSeekersData?.empAgrreExperience?.exprOneExpertise}
                       </b>
                     </p>
                     <p className=" mb-0">
                       <b>Area of Expertise</b>
                     </p>
-                    <p className=" mb-0">
+                    <p className=" mb-0  ">
                       {jobSeekersData?.empAgrreExperience?.exprOneExpertise}
                     </p>
                     <p className="mb-0">
                       <b>Duties/Responsibilities</b>
                     </p>
-                    <p className="mb-0">
+                    <p className="mb-0  ">
                       {jobSeekersData?.empAgrreExperience?.exprOneResp}
                     </p>
                   </div>
@@ -241,14 +247,14 @@ const JobSeekersProfile = () => {
                     <>
                       {/* Employment History Section Two */}
                       <div className=" mt-3">
-                        <p className="fw-bold mb-0 ">
+                        <p className="fw-bold mb-0   ">
                           {" "}
                           <span> 2.</span>{" "}
                           {
                             jobSeekersData?.empAgrreExperience
                               ?.expTwoDesignation
                           }
-                          <span>
+                          <span className=" ">
                             {" "}
                             (
                             {
@@ -258,13 +264,13 @@ const JobSeekersProfile = () => {
                             yr)
                           </span>
                         </p>
-                        <p className=" mb-0">
+                        <p className=" mb-0  ">
                           {jobSeekersData?.empAgrreExperience?.expTwoFrom}
                           <span className=" mx-1">-</span>
                           {jobSeekersData?.empAgrreExperience?.expTwoTo}
                         </p>
                         <p className="">
-                          <b>
+                          <b className=" ">
                             {" "}
                             {
                               jobSeekersData?.empAgrreExperience
@@ -273,7 +279,7 @@ const JobSeekersProfile = () => {
                           </b>
                         </p>
                         <p className=" mb-0">
-                          <b>
+                          <b className=" ">
                             {
                               jobSeekersData?.empAgrreExperience
                                 ?.exprTwoExpertise
@@ -283,13 +289,13 @@ const JobSeekersProfile = () => {
                         <p className=" mb-0">
                           <b>Area of Expertise</b>
                         </p>
-                        <p className=" mb-0">
+                        <p className=" mb-0  ">
                           {jobSeekersData?.empAgrreExperience?.exprTwoExpertise}
                         </p>
                         <p className="mb-0">
                           <b>Duties/Responsibilities</b>
                         </p>
-                        <p className="mb-0">
+                        <p className="mb-0  ">
                           {jobSeekersData?.empAgrreExperience?.exprTwoResp}
                         </p>
                       </div>
@@ -306,13 +312,13 @@ const JobSeekersProfile = () => {
           {/* History of Employment Section End */}
 
           {/* Academic Qualification Section Start */}
-          <section className=" my-5">
+          <section className=" my-5  ">
             <h5 className=" fw-bold text-uppercase text-decoration-underline mb-3">
-              Academic Qualification
+              ACADEMIC QUALIFICATION
             </h5>
 
             <div className="">
-              <table className="table table-bordered border-secondary">
+              <table className="table table-bordered border-secondary table-hover table-sm">
                 <thead>
                   <tr>
                     <th scope="col">SL</th>
@@ -413,7 +419,7 @@ const JobSeekersProfile = () => {
                     Training Summary
                   </h5>
                   <div>
-                    <table className="table table-bordered border-secondary">
+                    <table className="table table-bordered border-secondary table-hover table-sm">
                       <thead>
                         <tr>
                           <th scope="col">SL</th>
@@ -547,7 +553,7 @@ const JobSeekersProfile = () => {
               Career and Application Information
             </h5>
             <div>
-              <table className="table table-borderless table-sm">
+              <table className="table table-borderless table-sm table-hover">
                 <tbody>
                   <tr>
                     <th scope="row">Looking For</th>
@@ -603,7 +609,7 @@ const JobSeekersProfile = () => {
               Specialization
             </h5>
             <div>
-              <table className="table border my-2">
+              <table className="table border my-2 table-sm">
                 <thead className=" border">
                   <th className="border text-center col-md-3">
                     Fields of Specialization
@@ -672,10 +678,12 @@ const JobSeekersProfile = () => {
             </h5>
 
             <div className="">
-              <table className="table table-bordered border-secondary text-center">
+              <table className="table table-bordered border-secondary text-center table-hover table-sm">
                 <thead>
                   <tr>
-                    <th scope="col">SL</th>
+                    <th className=" text-center" scope="col">
+                      SL
+                    </th>
                     <th scope="col">Language</th>
                     <th scope="col">Reading</th>
                     <th scope="col">Writing</th>
@@ -690,20 +698,48 @@ const JobSeekersProfile = () => {
                     <td>{jobSeekersData?.empAggreReferences?.writingOne}</td>
                     <td>{jobSeekersData?.empAggreReferences?.speakingOne}</td>
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>{jobSeekersData?.empAggreReferences?.languTwo}</td>
-                    <td>{jobSeekersData?.empAggreReferences?.readingTwo}</td>
-                    <td>{jobSeekersData?.empAggreReferences?.writingTwo}</td>
-                    <td>{jobSeekersData?.empAggreReferences?.speakingTwo}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>{jobSeekersData?.empAggreReferences?.languThree}</td>
-                    <td>{jobSeekersData?.empAggreReferences?.readingThree}</td>
-                    <td>{jobSeekersData?.empAggreReferences?.writingThree}</td>
-                    <td>{jobSeekersData?.empAggreReferences?.speakingThree}</td>
-                  </tr>
+
+                  {jobSeekersData?.empAggreReferences?.languTwo ? (
+                    <>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>{jobSeekersData?.empAggreReferences?.languTwo}</td>
+                        <td>
+                          {jobSeekersData?.empAggreReferences?.readingTwo}
+                        </td>
+                        <td>
+                          {jobSeekersData?.empAggreReferences?.writingTwo}
+                        </td>
+                        <td>
+                          {jobSeekersData?.empAggreReferences?.speakingTwo}
+                        </td>
+                      </tr>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+
+                  {jobSeekersData?.empAggreReferences?.languThree ? (
+                    <>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>
+                          {jobSeekersData?.empAggreReferences?.languThree}
+                        </td>
+                        <td>
+                          {jobSeekersData?.empAggreReferences?.readingThree}
+                        </td>
+                        <td>
+                          {jobSeekersData?.empAggreReferences?.writingThree}
+                        </td>
+                        <td>
+                          {jobSeekersData?.empAggreReferences?.speakingThree}
+                        </td>
+                      </tr>
+                    </>
+                  ) : (
+                    <></>
+                  )}
                 </tbody>
               </table>
             </div>
@@ -716,7 +752,7 @@ const JobSeekersProfile = () => {
               Personal Details
             </h5>
             <div>
-              <table className="table table-borderless table-sm">
+              <table className="table table-borderless table-sm table-hover">
                 <tbody>
                   <tr>
                     <th scope="row">Father's Name</th>
@@ -752,19 +788,37 @@ const JobSeekersProfile = () => {
                     <th scope="row">National Id No.</th>
                     <td>: {jobSeekersData?.nationalId} </td>
                   </tr>
+
+                  <tr>
+                    <th scope="row">Passport No.</th>
+                    <td>: {jobSeekersData?.passportNo} </td>
+                  </tr>
+
                   <tr>
                     <th scope="row">Religion</th>
                     <td>: {jobSeekersData?.religion} </td>
                   </tr>
+
                   <tr>
-                    <th scope="row">Permanent Address</th>
-                    <td>: {jobSeekersData?.permanentAddress} </td>
+                    <th scope="row">Present Address</th>
+                    <td>
+                      : {jobSeekersData?.presentAddressLine2}, P.O:
+                      {jobSeekersData?.presentPostOffice}, Thana:
+                      {jobSeekersData?.presentThana}, District:
+                      {jobSeekersData?.presentDistrict}
+                    </td>
                   </tr>
 
                   <tr>
-                    <th scope="row">Current Location</th>
-                    <td>: {jobSeekersData?.presentAddress} </td>
+                    <th scope="row">Permanent Address</th>
+                    <td>
+                      : {jobSeekersData?.permanentAddressLine2}, P.O:
+                      {jobSeekersData?.permanentPostOffice}, Thana:
+                      {jobSeekersData?.permanentThana}, District:
+                      {jobSeekersData?.permanentDistrict}
+                    </td>
                   </tr>
+
                   {/* <tr>
                                     <th scope="row">Blood Group</th>
                                     <td>: {employeesData?.bloodGroup} </td>

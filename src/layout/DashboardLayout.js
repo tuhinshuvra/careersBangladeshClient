@@ -22,7 +22,7 @@ const DashboardLayout = () => {
   const [jobSeekersData, setJobSeekersData] = useState([]);
 
   //   console.log("employerData :", employerData);
-  console.log("jobSeekersData :", jobSeekersData);
+  // console.log("jobSeekersData :", jobSeekersData);
   //   const employer = useLoaderData();
   //   console.log("Employer : ", employer);
 

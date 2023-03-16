@@ -211,6 +211,7 @@ const EmployeesExperienceEntry = () => {
                 id="exprOneResp"
                 type="text"
                 placeholder="Enter Responsibilities"
+                maxLength={450}
               />
             </div>
           </div>
@@ -227,6 +228,7 @@ const EmployeesExperienceEntry = () => {
                 id="exprOneExpertise"
                 type="text"
                 placeholder="Enter Expertise"
+                maxLength={450}
               />
             </div>
           </div>
@@ -243,6 +245,7 @@ const EmployeesExperienceEntry = () => {
                 id="exprCompOneAddress"
                 type="text"
                 placeholder="Enter Company Address"
+                maxLength={150}
               />
             </div>
           </div>
@@ -362,6 +365,7 @@ const EmployeesExperienceEntry = () => {
                 id="exprTwoResp"
                 type="text"
                 placeholder="Enter Responsibilities"
+                maxLength={450}
               />
             </div>
           </div>
@@ -378,6 +382,7 @@ const EmployeesExperienceEntry = () => {
                 id="exprTwoExpertise"
                 type="text"
                 placeholder="Enter Expertise"
+                maxLength={450}
               />
             </div>
           </div>
@@ -394,6 +399,7 @@ const EmployeesExperienceEntry = () => {
                 id="exprCompTwoAddress"
                 type="text"
                 placeholder="Enter Company Address"
+                maxLength={150}
               />
             </div>
           </div>

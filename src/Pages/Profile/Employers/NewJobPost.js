@@ -317,6 +317,7 @@ const NewJobPost = () => {
               id="business_description"
               type="text"
               placeholder="Write Special Instruction for Job Seekers"
+              maxLength={350}
             />
           </div>
         </div>
@@ -328,6 +329,7 @@ const NewJobPost = () => {
           id="job_context"
           type="text"
           placeholder="Enter job Context"
+          maxLength={250}
         />
 
         <textarea
@@ -337,6 +339,7 @@ const NewJobPost = () => {
           id="job_respons"
           type="text"
           placeholder="Job Responsibilities"
+          maxLength={350}
         />
 
         <div className=" row my-lg-3">
@@ -401,6 +404,7 @@ const NewJobPost = () => {
           id="others"
           type="text"
           placeholder="Enter Others"
+          maxLength={450}
         />
 
         <div className=" my-lg-4">

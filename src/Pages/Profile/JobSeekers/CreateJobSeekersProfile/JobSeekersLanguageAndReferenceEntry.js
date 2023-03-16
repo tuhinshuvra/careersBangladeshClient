@@ -321,6 +321,7 @@ const JobSeekersLanguageAndReferenceEntry = () => {
                   id="ref_one_details"
                   type="text"
                   placeholder="Enter Refference One Details"
+                  maxLength={250}
                 />
               </div>
             </div>
@@ -352,6 +353,7 @@ const JobSeekersLanguageAndReferenceEntry = () => {
                     id="ref_two_details"
                     type="text"
                     placeholder="Enter Refference Two Details"
+                    maxLength={250}
                   />
                 </div>
               </div>
@@ -368,6 +370,7 @@ const JobSeekersLanguageAndReferenceEntry = () => {
               id="other"
               type="text"
               placeholder="Enter Other Relevant Information"
+              maxLength={250}
             />
           </div>
         </div>

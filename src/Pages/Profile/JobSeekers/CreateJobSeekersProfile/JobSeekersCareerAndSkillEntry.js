@@ -364,6 +364,7 @@ const JobSeekersCareerAndSkillEntry = () => {
               id="skillDesciption"
               type="text"
               placeholder="Enter skill desciption"
+              maxLength={450}
             />
           </div>
 
@@ -378,6 +379,7 @@ const JobSeekersCareerAndSkillEntry = () => {
               id="specialQualification"
               type="text"
               placeholder="Enter special qualification"
+              maxLength={450}
             />
           </div>
         </div>

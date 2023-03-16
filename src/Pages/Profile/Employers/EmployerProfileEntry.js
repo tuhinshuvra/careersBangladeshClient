@@ -186,6 +186,7 @@ const EmployerProfileEntry = () => {
             id="address-eng"
             type="text"
             placeholder="Write Company Address"
+            maxLength={450}
           />
         </div>
 
@@ -197,6 +198,7 @@ const EmployerProfileEntry = () => {
             id="address-bng"
             type="text"
             placeholder="কোম্পানির ঠিকানা বাংলায় লিখুন"
+            maxLength={450}
           />
         </div>
         <div>
@@ -207,6 +209,7 @@ const EmployerProfileEntry = () => {
             id="busi_description"
             type="text"
             placeholder="Business Description"
+            maxLength={450}
           />
         </div>
 

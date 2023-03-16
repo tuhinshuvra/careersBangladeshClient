@@ -346,6 +346,7 @@ const JobSeekersCareerAndSkillManage = () => {
               className="input form-control "
               id="skillDesciption"
               type="text"
+              maxLength={250}
             />
           </div>
 
@@ -360,6 +361,7 @@ const JobSeekersCareerAndSkillManage = () => {
               className="input form-control "
               id="specialQualification"
               type="text"
+              maxLength={450}
             />
           </div>
         </div>

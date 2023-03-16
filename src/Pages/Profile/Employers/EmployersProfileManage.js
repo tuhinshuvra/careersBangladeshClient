@@ -189,6 +189,7 @@ const EmployersProfileManage = () => {
             className="input form-control my-lg-3"
             id="address-eng"
             type="text"
+            maxLength={150}
           />
         </div>
 
@@ -204,6 +205,7 @@ const EmployersProfileManage = () => {
             className="input form-control my-lg-3"
             id="addressBng"
             type="text"
+            maxLength={150}
           />
         </div>
 
@@ -220,6 +222,7 @@ const EmployersProfileManage = () => {
               className="input form-control"
               id="busiDescription"
               type="text"
+              maxLength={350}
             />
           </div>
         </div>

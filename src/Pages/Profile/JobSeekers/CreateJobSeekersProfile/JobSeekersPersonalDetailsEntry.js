@@ -40,6 +40,7 @@ const JobSeekersPersonalDetailsEntry = () => {
             mothersName: data.mothers_name,
             nationality: data.nationality,
             nationalId: data.nationalId,
+            passportNo: data.passportNo,
             phone: data.phone,
             birthDate: data.birthDate,
             gender: data.gender,
@@ -103,6 +104,7 @@ const JobSeekersPersonalDetailsEntry = () => {
     let permanentAddressLine2 = document.getElementById(
       "permanentAddressLine2"
     );
+
     permanentDistrict.value = presentDistrict.value;
     permanentThana.value = presentThana.value;
     permanentPostOffice.value = presentPostOffice.value;
@@ -433,12 +435,19 @@ const JobSeekersPersonalDetailsEntry = () => {
               <span className="label-text text-md fw-bold ">
                 Permanent Address
               </span>
-              <button
-                onClick={handlePermanentAddress}
-                className=" btn btn-secondary btn-sm"
-              >
-                Same as Permanent
-              </button>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="handlePermanentAddress"
+                  onClick={handlePermanentAddress}
+                />
+                <label class="form-check-label fw-bold " for="flexCheckDefault">
+                  Same as Present Address
+                </label>
+              </div>
             </div>
 
             <div className=" row border border-secondary-subtel rounded-2">
@@ -579,6 +588,7 @@ const JobSeekersPersonalDetailsEntry = () => {
                 id="career_objective"
                 type="text"
                 placeholder="Enter Career Objective"
+                maxLength={250}
               />
             </div>
           </div>
