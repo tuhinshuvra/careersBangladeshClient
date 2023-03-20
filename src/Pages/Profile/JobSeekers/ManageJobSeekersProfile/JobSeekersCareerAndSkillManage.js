@@ -1,8 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
 import JobSeekersProfileManage from "./JobSeekersProfileManage";
 import "../../JobSeekers/JobSeekersProfile.css";
@@ -10,8 +8,7 @@ import Loader from "../../../Shared/Loader/Loader";
 
 const JobSeekersCareerAndSkillManage = () => {
   const { user, loading, setLoading } = useContext(AuthContext);
-  const [storedData,setStoredData] = useState('');
-  const [careersData, setCareersData] = useState(storedData);
+  const [storedData,setStoredData] = useState([]);
 
   
   const email=user?.email;
@@ -49,37 +46,36 @@ const JobSeekersCareerAndSkillManage = () => {
     <Loader></Loader>
   }
 
-  // const navigate = useNavigate();
 
-  // const handleUpdateCareersDoc = (event) => {
-  //   event.preventDefault();
+  const handleUpdateCareersDoc = (event) => {
+    event.preventDefault();
 
-  //   fetch(
-  //     `${process.env.REACT_APP_CABD_server_address}/jobseekersCareersSkill/${storedData._id}`,
-  //     {
-  //       method: "PUT",
-  //       headers: {
-  //         "content-type": "application/json",
-  //       },
-  //       body: JSON.stringify(careersData),
-  //     }
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log("Updatd Data: ", data);
-  //       if (data.modifiedCount > 0) {
-  //         toast.success("Data Updated Successfully.");
-  //       }
-  //     });
-  // };
+    fetch(
+      `${process.env.REACT_APP_CABD_server_address}/jobseekersCareersSkill/${storedData._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(storedData),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Updatd Data: ", data);
+        if (data.modifiedCount > 0) {
+          toast.success("Data Updated Successfully.");
+        }
+      });
+  };
 
   const handleInputChange = (event) => {
     const field = event.target.name;
     const value = event.target.value;
 
-    const newData = { ...careersData };
+    const newData = { ...storedData };
     newData[field] = value;
-    setCareersData(newData);
+    setStoredData(newData);
   };
 
   return (
@@ -90,8 +86,7 @@ const JobSeekersCareerAndSkillManage = () => {
       </h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
-      {/* <form onSubmit={handleUpdateCareersDoc}> */}
-      <form>
+      <form onSubmit={handleUpdateCareersDoc}>
         <div className=" d-flex justify-content-between my-2">
           <h4 className="label-text text-md fw-bold">
             Career and Application Information

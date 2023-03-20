@@ -51,6 +51,7 @@ import JobSeekersLanguageAndReferenceManage from "../../Profile/JobSeekers/Manag
 import JobSeekersProfile from "../../Profile/JobSeekers/JobSeekersProfile";
 import EmployersProfile from "../../Profile/Employers/EmployerProfile";
 import DisplayError from "../../Shared/ErrorDisplay/DisplayError";
+import UpdatePostedJob from "../../Profile/Employers/UpdatePostedJob";
 
 
 const router = createBrowserRouter([
@@ -119,7 +120,7 @@ const router = createBrowserRouter([
     children: [
       // job seeker dashboard section    
 
-      // ##################################### jobSeeker Profile Entry Section Wise Start ##############################################
+      // ##################################### jobSeeker Profile Entry Start ##############################################
       {
         path: "/dashboard/jobSeekerProfileEntry",
         element: <JobSeekerRoute>  <JobSeekersProfileEntry></JobSeekersProfileEntry></JobSeekerRoute> ,
@@ -158,11 +159,11 @@ const router = createBrowserRouter([
           <JobSeekerRoute>  <JobSeekersLanguageAndReferenceEntry></JobSeekersLanguageAndReferenceEntry> </JobSeekerRoute>
         ),
       },
-      // ##################################### jobseekers Profile Entry Section Wise End ##############################################
+      // ##################################### jobseekers Profile Entry  End ##############################################
 
 
 
-      // ##################################### jobseekers Profile Edit Section Wise Start #############################################
+      // ##################################### jobseekers Profile Edit Start #############################################
       {
         path: "/dashboard/jobSeekerProfileManage",
         element: <JobSeekerRoute><JobSeekersProfileManage></JobSeekersProfileManage></JobSeekerRoute>,
@@ -208,7 +209,7 @@ const router = createBrowserRouter([
             `${process.env.REACT_APP_CABD_server_address}/jobSeekersReferences/${params.email}`
           ),
       }, 
-      // ##################################### jobseeker Edit Section Wise End ##############################################
+      // ##################################### jobseeker Edit Section End ##############################################
 
       {
         path: "/dashboard/jobSeekerProfile",
@@ -237,7 +238,6 @@ const router = createBrowserRouter([
         <JobSeekerRoute>
           <SavedJobList></SavedJobList>,
         </JobSeekerRoute>
-        // loader: () => fetch('https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobseekersavedjobs')
       },
 
       /////////////////////////////// employer dashboard section///////////////////////////////////////
@@ -266,14 +266,17 @@ const router = createBrowserRouter([
         path: "/dashboard/jobs/:id",
         element: <PostedJobDetails></PostedJobDetails>,
         loader: async ({ params }) => await
-          fetch(
-            `${process.env.REACT_APP_CABD_server_address}/jobs/${params.id}`
-          ),
+          fetch(`${process.env.REACT_APP_CABD_server_address}/jobs/${params.id}`),
       },
 
       {
         path: "/dashboard/postedJobList",
         element: <PostedJobList></PostedJobList>,
+      },
+      {
+        path: "/dashboard/jobUpdate/:jobId",
+        element: <UpdatePostedJob></UpdatePostedJob> ,
+        loader: async ({params}) =>  fetch(`${process.env.REACT_APP_CABD_server_address}/jobs/${params.jobId}`)
       },
 
       {
@@ -281,7 +284,9 @@ const router = createBrowserRouter([
         element: <ApplicantList></ApplicantList>,
       },
 
-      // dashboard admin section
+
+
+      // ######################################### dashboard admin section ##################################3
 
       {
         path: "/dashboard/admin",

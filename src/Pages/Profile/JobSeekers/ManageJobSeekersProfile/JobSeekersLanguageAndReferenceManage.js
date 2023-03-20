@@ -11,8 +11,7 @@ import Loader from "../../../Shared/Loader/Loader";
 const JobSeekersLanguageAndReferenceManage = () => {
   
 const { user, loading, setLoading } = useContext(AuthContext);
-const [storedData,setStoredData] = useState('');
-const [referencesData, setReferencesData] = useState(storedData);
+const [storedData,setStoredData] = useState([]);
 
 const email=user?.email;
 
@@ -52,36 +51,37 @@ useEffect(()=>{
     },
   });
 
-  // const handleUpdateReferenceData = (event) => {
-  //   event.preventDefault();
-
-  //   fetch(
-  //     `${process.env.REACT_APP_CABD_server_address}/jobseekersLanguagesReferences/${storedData._id}`,
-  //     {
-  //       method: "PUT",
-  //       headers: {
-  //         "content-type": "application/json",
-  //       },
-  //       body: JSON.stringify(referencesData),
-  //     }
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log("Updatd Data: ", data);
-  //       if (data.modifiedCount > 0) {
-  //         toast.success("Data Updated Successfully.");
-  //       }
-  //     });
-  // };
-
   const handleInputChange = (event) => {
     const field = event.target.name;
     const value = event.target.value;
 
-    const newData = { ...referencesData };
+    const newData = { ...storedData};
     newData[field] = value;
-    setReferencesData(newData);
+    setStoredData(newData);
   };
+
+
+  const handleUpdateReferenceData = (event) => {
+    event.preventDefault();
+    fetch(
+      `${process.env.REACT_APP_CABD_server_address}/jobseekersLanguagesReferences/${storedData._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(storedData),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Updatd Data: ", data);
+        if (data.modifiedCount > 0) {
+          toast.success("Data Updated Successfully.");
+        }
+      });
+  };
+
 
   return (
     <div>
@@ -92,8 +92,7 @@ useEffect(()=>{
       </h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
-      {/* <form onSubmit={handleUpdateReferenceData}> */}
-      <form>
+      <form onSubmit={handleUpdateReferenceData}>
         <div>
           <div className=" d-flex justify-content-between">
             <h4 className="label-text text-md fw-bold">Language Proficiency</h4>
@@ -133,9 +132,9 @@ useEffect(()=>{
                 <option defaultValue={storedData.readingOne}>
                   {storedData.readingOne}
                 </option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </div>
 
@@ -152,9 +151,9 @@ useEffect(()=>{
                 <option defaultValue={storedData.writingOne}>
                   {storedData.writingOne}
                 </option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </div>
 
@@ -171,9 +170,9 @@ useEffect(()=>{
                 <option defaultValue={storedData.speakingOne}>
                   {storedData.speakingOne}
                 </option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </div>
           </div>
@@ -203,9 +202,9 @@ useEffect(()=>{
                 <option defaultValue={storedData.readingTwo}>
                   {storedData.readingTwo}
                 </option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </div>
 
@@ -220,9 +219,9 @@ useEffect(()=>{
                 <option defaultValue={storedData.writingTwo}>
                   {storedData.writingTwo}
                 </option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </div>
 
@@ -237,9 +236,9 @@ useEffect(()=>{
                 <option defaultValue={storedData.speakingTwo}>
                   {storedData.speakingTwo}
                 </option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </div>
           </div>
@@ -269,9 +268,9 @@ useEffect(()=>{
                 <option defaultValue={storedData.readingThree}>
                   {storedData.readingThree}
                 </option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </div>
 
@@ -287,9 +286,9 @@ useEffect(()=>{
                 <option defaultValue={storedData.writingThree}>
                   {storedData.writingThree}
                 </option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </div>
 
@@ -304,9 +303,9 @@ useEffect(()=>{
                 <option defaultValue={storedData.speakingThree}>
                   {storedData.speakingThree}
                 </option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </div>
           </div>
@@ -327,9 +326,9 @@ useEffect(()=>{
                 <input
                   onChange={handleInputChange}
                   defaultValue={storedData.refOneName}
-                  name="ref_one_name"
+                  name="refOneName"
+                  id="refOneName"
                   className="input form-control "
-                  id="ref_one_name"
                   type="text"
                 />
               </div>
@@ -341,9 +340,9 @@ useEffect(()=>{
                 <input
                   onChange={handleInputChange}
                   defaultValue={storedData.refOneDetails}
-                  name="ref_one_details"
+                  name="refOneDetails"
+                  id="refOneDetails"
                   className="input form-control "
-                  id="ref_one_details"
                   type="text"
                 />
               </div>
@@ -357,9 +356,9 @@ useEffect(()=>{
                 <input
                   onChange={handleInputChange}
                   defaultValue={storedData.refTwoName}
-                  name="ref_two_name"
+                  name="refTwoName"
+                  id="refTwoName"
                   className="input form-control "
-                  id="ref_two_name"
                   type="text"
                 />
               </div>
@@ -372,9 +371,9 @@ useEffect(()=>{
                   <input
                     onChange={handleInputChange}
                     defaultValue={storedData.refTwoDetails}
-                    name="ref_two_details"
+                    name="refTwoDetails"
+                    id="refTwoDetails"
                     className="input form-control "
-                    id="ref_two_details"
                     type="text"
                   />
                 </div>
@@ -389,8 +388,8 @@ useEffect(()=>{
               onChange={handleInputChange}
               defaultValue={storedData.other}
               name="other"
-              className="input form-control "
               id="other"
+              className="input form-control "
               type="text"
             />
           </div>

@@ -70,11 +70,11 @@ const PostedJobList = () => {
                   </Link>
                 </td>
                 <td>
-                  {/* <Link to={`/dashboard/jobUpdate/${job._id}`}>
+                  <Link to={`/dashboard/jobUpdate/${job._id}`}>
                                             <button className=' fw-bold btn-sm btn btn-primary mx-1'
                                                 onClick={() => handleJobsUpdate(job._id)}
                                             >Update</button>
-                                        </Link> */}
+                                        </Link>
 
                   {/* <button className=' btn btn-sm  btn-outline-danger'
                                             onClick={() => handleDelete(job)}

@@ -4,10 +4,10 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
-import EmployeesProfileEntry from "./JobSeekersProfileEntry";
+import JobSeekersProfileEntry from "./JobSeekersProfileEntry";
 import "../../JobSeekers/JobSeekersProfile.css";
 
-const EmployeesExperienceEntry = () => {
+const JobSeekersExperienceEntry = () => {
   const { user } = useContext(AuthContext);
 
   const {
@@ -73,7 +73,7 @@ const EmployeesExperienceEntry = () => {
 
   return (
     <div>
-      <EmployeesProfileEntry></EmployeesProfileEntry>
+      <JobSeekersProfileEntry></JobSeekersProfileEntry>
       <h2 className=" text-center fw-bold my-4">Enter Experience Data</h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
@@ -416,4 +416,4 @@ const EmployeesExperienceEntry = () => {
   );
 };
 
-export default EmployeesExperienceEntry;
+export default JobSeekersExperienceEntry;

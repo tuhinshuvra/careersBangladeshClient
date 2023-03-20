@@ -10,8 +10,7 @@ import JobSeekersProfileManage from "./JobSeekersProfileManage";
 const JobSeekersExperienceManage = () => {
 
 const { user, loading, setLoading } = useContext(AuthContext);
-  const [storedData,setStoredData] = useState('');
-  const [experienceData, setExperienceData] = useState(storedData);
+  const [storedData,setStoredData] = useState([]);
   const navigation = useNavigation();
   
   const email=user?.email;
@@ -41,35 +40,35 @@ const { user, loading, setLoading } = useContext(AuthContext);
   <Loader></Loader>
   }
 
-  // const handleUpdateExperiencesDoc = (event) => {
-  //   event.preventDefault();
+  const handleUpdateExperiencesDoc = (event) => {
+    event.preventDefault();
 
-  //   fetch(
-  //     `${process.env.REACT_APP_CABD_server_address}/jobSeekersExperiences/${storedData._id}`,
-  //     {
-  //       method: "PUT",
-  //       headers: {
-  //         "content-type": "application/json",
-  //       },
-  //       body: JSON.stringify(experienceData),
-  //     }
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log("Updatd Data: ", data);
-  //       if (data.modifiedCount > 0) {
-  //         toast.success("Data Updated Successfully.");
-  //       }
-  //     });
-  // };
+    fetch(
+      `${process.env.REACT_APP_CABD_server_address}/jobSeekersExperiences/${storedData._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(storedData),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Updatd Data: ", data);
+        if (data.modifiedCount > 0) {
+          toast.success("Data Updated Successfully.");
+        }
+      });
+  };
 
   const handleInputChange = (event) => {
     const field = event.target.name;
     const value = event.target.value;
 
-    const newData = { ...experienceData };
+    const newData = { ...storedData };
     newData[field] = value;
-    setExperienceData(newData);
+    setStoredData(newData);
   };
 
   return (
@@ -77,8 +76,7 @@ const { user, loading, setLoading } = useContext(AuthContext);
       <JobSeekersProfileManage></JobSeekersProfileManage>
       <h2 className=" text-center fw-bold my-3">Update Experience Data</h2>
 
-      {/* <form onSubmit={handleUpdateExperiencesDoc}> */}
-      <form>
+      <form onSubmit={handleUpdateExperiencesDoc}>
         <div className=" d-flex justify-content-between">
           <h5 className="label-text text-md fw-bold">Experience One</h5>
           {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b>(Red Star) denotes must be filled</b></p> */}

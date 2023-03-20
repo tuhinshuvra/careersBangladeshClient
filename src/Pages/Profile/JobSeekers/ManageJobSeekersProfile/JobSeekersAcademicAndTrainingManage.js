@@ -9,13 +9,13 @@ import JobSeekersProfileManage from "./JobSeekersProfileManage";
 const JobSeekersAcademicAndTrainingManage = () => {
 
   const { user, loading, setLoading } = useContext(AuthContext);
+  const [storedData,setStoredData] = useState([]);
   const email=user?.email;
   
   if(loading){
     <Loader></Loader>
   }
 
-  const [storedData,setStoredData] = useState('');
 
   useEffect(()=>{
     fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersAcademics/${email}`)
@@ -29,41 +29,39 @@ const JobSeekersAcademicAndTrainingManage = () => {
 
   // console.log("Academics And Training storedData : ", storedData);
 
-  const [academicsData, setAcademicsData] = useState(storedData);
 
 
-  // const navigate = useNavigate();
 
-  // const handleUdateAcademicsDoc = (event) => {
-  //   event.preventDefault();
+  const handleUdateAcademicsDoc = (event) => {
+    event.preventDefault();
 
-  //   fetch(
-  //     `${process.env.REACT_APP_CABD_server_address}/jobseekersAcademics/${storedData._id}`,
-  //     {
-  //       method: "PUT",
-  //       headers: {
-  //         "content-type": "application/json",
-  //       },
-  //       body: JSON.stringify(academicsData),
-  //     }
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log("Updated data :", data);
-  //       if (data.modifiedCount > 0) {
-  //         toast.success("Data Updated Successfully.");
-  //       }
-  //       setLoading(false);
-  //     });
-  // };
+    fetch(
+      `${process.env.REACT_APP_CABD_server_address}/jobseekersAcademics/${storedData._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(storedData),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Updated data :", data);
+        if (data.modifiedCount > 0) {
+          toast.success("Academics Data Updated Successfully.");
+        }
+        setLoading(false);
+      });
+  };
 
   const handleInputChange = (event) => {
     const field = event.target.name;
     const value = event.target.value;
 
-    const newData = { ...academicsData };
+    const newData = { ...storedData };
     newData[field] = value;
-    setAcademicsData(newData);
+    setStoredData(newData);
   };
 
   return (
@@ -74,8 +72,7 @@ const JobSeekersAcademicAndTrainingManage = () => {
       </h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
-      {/* <form onSubmit={handleUdateAcademicsDoc}> */}
-      <form>
+      <form onSubmit={handleUdateAcademicsDoc}>
         {/* Enter Educational Qualification One */}
         <div className=" d-flex justify-content-between">
           <h5 className="label-text text-md fw-bold ">Academic One</h5>

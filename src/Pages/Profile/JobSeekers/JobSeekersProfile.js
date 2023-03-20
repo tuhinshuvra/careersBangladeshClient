@@ -10,7 +10,7 @@ const JobSeekersProfile = () => {
   const email = user?.email;
   const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
+    content: () => componentRef.current
   });
   useEffect(() => {
     fetch(
@@ -21,13 +21,13 @@ const JobSeekersProfile = () => {
         // console.log("jobSeekersAllData : ", data[0])
         setJobSeekersData(data[0]);
       });
-  }, [email]);
+  }, [email,setJobSeekersData]);
 
-  // console.log("employerData : ", employeesData)
-  // console.log("empAgrreExperience : ", employeesData?.empAgrreExperience)
-  // console.log("empAggreAcademics : ", employeesData?.empAggreAcademics)
-  // console.log("empAggreCareers : ", employeesData?.empAggreCareers)
-  // console.log("empAggreReferences : ", employeesData?.empAggreReferences)
+  // console.log("employerData : ", jobSeekersData)
+  // console.log("empAgrreExperience : ", jobSeekersData?.empAgrreExperience)
+  // console.log("empAggreAcademics : ", jobSeekersData?.empAggreAcademics)
+  // console.log("empAggreCareers : ", jobSeekersData?.empAggreCareers)
+  // console.log("empAggreReferences : ", jobSeekersData?.empAggreReferences)
 
   return (
     <div className="resume-wrapper-inner mx-auto text-start bg-white shadow-lg">
@@ -64,13 +64,7 @@ const JobSeekersProfile = () => {
                         {jobSeekersData?.name}
                       </h2>
                       <ul className="list-unstyled">
-                        <li className="">
-                          <b>Address:</b>{" "}
-                          <span className=" ">
-                            {jobSeekersData?.presentThana},
-                            {jobSeekersData?.presentDistrict}
-                          </span>{" "}
-                        </li>
+                         
                         <li className="">
                           <b className=" ">Phone:</b> {jobSeekersData?.phone}
                         </li>
@@ -218,7 +212,7 @@ const JobSeekersProfile = () => {
                       <span className=" mx-1">-</span>
                       {jobSeekersData?.empAgrreExperience?.expOneTo}
                     </p>
-                    <p className="">
+                    <p className=" ">
                       <b className=" ">
                         {" "}
                         {jobSeekersData?.empAgrreExperience?.expOneCompanayName}
@@ -821,7 +815,7 @@ const JobSeekersProfile = () => {
 
                   {/* <tr>
                                     <th scope="row">Blood Group</th>
-                                    <td>: {employeesData?.bloodGroup} </td>
+                                    <td>: {jobSeekersData?.bloodGroup} </td>
                                 </tr> */}
                 </tbody>
               </table>

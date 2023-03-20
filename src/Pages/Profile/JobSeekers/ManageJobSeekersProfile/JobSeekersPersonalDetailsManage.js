@@ -1,16 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
+import Loader from "../../../Shared/Loader/Loader";
 import JobSeekersProfileManage from "./JobSeekersProfileManage";
 
 const JobSeekersPersonalDetailsManage = () => {
-  
-  const {user}=useContext(AuthContext);
+
+  const { user, loading, setLoading } = useContext(AuthContext);    
+  const [storedData, setStoredData] = useState([]);
   const email=user?.email;
 
-  const [storedData, setStoredData] = useState('');
+  // console.log("PersonalDetails Update :", storedData);
+
+  if(loading){
+  <Loader></Loader>
+}
 
   // const navigate = useNavigate();
   // const imageHostKey = process.env.REACT_APP_CABD_imagebb_hostKey;
@@ -19,44 +23,43 @@ const JobSeekersPersonalDetailsManage = () => {
     fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal/${email}`)
     .then(res=>res.json())
     .then(data=>{
-      console.log("jobSeekersPersonal Data",data); 
+      // console.log("jobSeekersPersonal Data",data); 
       setStoredData(data);
+      setLoading(false)
     })
-  },[email])
-
-
-  // const handleUpdatePersonalDoc = (event) => {
-  //   event.preventDefault();
-
-  //   console.log("personalDetails :", setStoredData);
-
-  //   fetch(
-  //     `${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal/${storedData._id}`,
-  //     {
-  //       method: "PUT",
-  //       headers: {
-  //         "content-type": "application/json",
-  //       },
-  //       body: JSON.stringify(setStoredData),
-  //     }
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log("Updated Data :", data);
-  //       if (data.modifiedCount > 0) {
-  //         toast.success("Data Updated Successfully.");
-  //       }
-  //     });
-  // };
+  },[email,setLoading])
 
   const handleInputChange = (event) => {
     const field = event.target.name;
     const value = event.target.value;
 
-    const newData = { ...setStoredData };
+    const newData = { ...storedData };
     newData[field] = value;
     setStoredData(newData);
   };
+
+  const handleUpdatePersonalDoc = (event) => {
+    event.preventDefault();
+
+    fetch(
+      `${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal/${storedData._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(storedData),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Updated Data :", data);
+        if (data.modifiedCount > 0) {
+          toast.success("Personal Details Data Updated Successfully.");
+        }
+      });
+  };
+
 
   const handlePermanentAddress = () => {
     console.log("I am clicked");
@@ -91,8 +94,7 @@ const JobSeekersPersonalDetailsManage = () => {
           </p>
         </div>
 
-        {/* <form onSubmit={handleUpdatePersonalDoc}> */}
-        <form>
+        <form onSubmit={handleUpdatePersonalDoc}>
           <div className="row ">
             <div className="col-md-6 mb-3 mb-3">
               <span className="label-text text-md fw-bold">
@@ -426,7 +428,6 @@ const JobSeekersPersonalDetailsManage = () => {
                   defaultValue={storedData.permanentDistrict}
                   name="permanentDistrict"
                   id="permanentDistrict"
-                  required
                   className="form-select select-bordered"
                 >
                   <option defaultValue={storedData.permanentDistrict}>
