@@ -1,15 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../../Home/Home";
-import Register from "../../Register/Register";
 import About from "../../About/About";
 import Contact from "../../Contact/Contact";
 import MainLayout from "../../../layout/MainLayout";
-import PostedJobList from "../../Profile/Employers/PostedJobList";
-import WrongRoute from "../../Shared/ErrorDisplay/WrongRoute";
 import Login from "../../Login/Login";
+import Register from "../../Register/Register";
+import AdminRoute from "./AdminRoute";
+import JobSeekerRoute from "./JobSeekersRoute";
+import WrongRoute from "../../Shared/ErrorDisplay/WrongRoute";
 
 import NewJobPost from "../../Profile/Employers/NewJobPost";
+import PostedJobList from "../../Profile/Employers/PostedJobList";
 import UserList from "../../Profile/Admin/AllUser";
 import UpdateUser from "../../Profile/Admin/UpdateUser";
 import EmployerList from "../../Profile/Admin/EmployerList";
@@ -20,7 +22,6 @@ import ELearning from "../../ELearning/ELearning";
 import JobCategoryEntry from "../../JobCategory/JobCategoryEntry";
 import JobCategoryList from "../../JobCategory/JobCategoryList";
 import ApplicantList from "../../Profile/Employers/ApplicantList";
-import CommonDashboard from "../../../layout/CommonDashboard";
 
 import FindJobsByCategory from "../../JobSearch/FindJobsByCategory";
 import FindAllJob from "../../JobSearch/FindAllJob";
@@ -48,13 +49,15 @@ import JobSeekersAcademicAndTrainingManage from "../../Profile/JobSeekers/Manage
 import JobSeekersCareerAndSkillManage from "../../Profile/JobSeekers/ManageJobSeekersProfile/JobSeekersCareerAndSkillManage";
 import JobSeekersLanguageAndReferenceManage from "../../Profile/JobSeekers/ManageJobSeekersProfile/JobSeekersLanguageAndReferenceManage";
 import JobSeekersProfile from "../../Profile/JobSeekers/JobSeekersProfile";
-import EmployersProfile from "../../Profile/Employers/EmployeersProfile";
-import AdminRoute from "./AdminRoutes";
+import EmployersProfile from "../../Profile/Employers/EmployerProfile";
+import DisplayError from "../../Shared/ErrorDisplay/DisplayError";
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <DisplayError></DisplayError>,
     children: [
       {
         path: "/",
@@ -71,10 +74,7 @@ const router = createBrowserRouter([
       {
         path: "/jobs/:categoryId",
         element: <FindJobsByCategory></FindJobsByCategory>,
-        loader: ({ params }) =>
-          fetch(
-            `${process.env.REACT_APP_CABD_server_address}/jobbycategory?category=${params.categoryId}`
-          ),
+        loader: async ({ params }) => await fetch(`${process.env.REACT_APP_CABD_server_address}/jobbycategory?category=${params.categoryId}`),
       },
 
       // {
@@ -85,10 +85,7 @@ const router = createBrowserRouter([
       {
         path: "/searchHomeResult/:search/:search2/:search3",
         element: <FindJobHomeResult></FindJobHomeResult>,
-        loader: ({ params }) =>
-          fetch(
-            `${process.env.REACT_APP_CABD_server_address}/jobSearch?${params.search}&${params.search2}&${params.search3}`
-          ),
+        // loader: async ({ params }) => await fetch(`${process.env.REACT_APP_CABD_server_address}/jobSearch?${params.search}&${params.search2}&${params.search3}`),
       },
 
       {
@@ -117,146 +114,108 @@ const router = createBrowserRouter([
 
   {
     path: "/dashboard",
-    element: (
-      <PrivateRoute>
-        <DashboardLayout></DashboardLayout>
-      </PrivateRoute>
-    ),
+    element: <PrivateRoute> <DashboardLayout></DashboardLayout> </PrivateRoute>,
+    
     children: [
-      // job seeker dashboard section
-      {
-        path: "/dashboard",
-        element: <CommonDashboard></CommonDashboard>,
-      },
+      // job seeker dashboard section    
 
-      // ##################################### employees Profile Entry Section Wise Start ##############################################
+      // ##################################### jobSeeker Profile Entry Section Wise Start ##############################################
       {
         path: "/dashboard/jobSeekerProfileEntry",
-        element: <JobSeekersProfileEntry></JobSeekersProfileEntry>,
+        element: <JobSeekerRoute>  <JobSeekersProfileEntry></JobSeekersProfileEntry></JobSeekerRoute> ,
       },
 
       {
         path: "/dashboard/jobSeekersPersonalDetailsEntry",
         element: (
-          <JobSeekersPersonalDetailsEntry></JobSeekersPersonalDetailsEntry>
+          <JobSeekerRoute>  <JobSeekersPersonalDetailsEntry></JobSeekersPersonalDetailsEntry>,
+          </JobSeekerRoute>
         ),
       },
 
       {
-        path: "/dashboard/employeesExperienceDataEntry",
-        element: <JobSeekersExperienceEntry></JobSeekersExperienceEntry>,
+        path: "/dashboard/jobSeekerExperienceDataEntry",
+        element: <JobSeekerRoute> <JobSeekersExperienceEntry></JobSeekersExperienceEntry></JobSeekerRoute>,
       },
 
       {
-        path: "/dashboard/employeesCareersAndSkillEntry",
+        path: "/dashboard/jobSeekerCareersAndSkillEntry",
         element: (
-          <JobSeekersCareerAndSkillEntry></JobSeekersCareerAndSkillEntry>
+          <JobSeekerRoute> <JobSeekersCareerAndSkillEntry></JobSeekersCareerAndSkillEntry></JobSeekerRoute>
         ),
       },
 
       {
-        path: "/dashboard/employeesAcademicAndTrainingEntry",
+        path: "/dashboard/jobSeekerAcademicAndTrainingEntry",
         element: (
-          <JobSeekersAcademicAndTrainingEntry></JobSeekersAcademicAndTrainingEntry>
+          <JobSeekerRoute>  <JobSeekersAcademicAndTrainingEntry></JobSeekersAcademicAndTrainingEntry></JobSeekerRoute>
         ),
       },
 
       {
-        path: "/dashboard/employeesLanguageAndReferenceEntry",
+        path: "/dashboard/jobSeekerLanguageAndReferenceEntry",
         element: (
-          <JobSeekersLanguageAndReferenceEntry></JobSeekersLanguageAndReferenceEntry>
+          <JobSeekerRoute>  <JobSeekersLanguageAndReferenceEntry></JobSeekersLanguageAndReferenceEntry> </JobSeekerRoute>
         ),
       },
+      // ##################################### jobseekers Profile Entry Section Wise End ##############################################
 
-      // ##################################### employees Profile Entry Section Wise End ##############################################
 
-      // ##################################### employees Profile Edit Section Wise Start #############################################
 
+      // ##################################### jobseekers Profile Edit Section Wise Start #############################################
       {
-        path: "/dashboard/employeesProfileManage",
-        element: <JobSeekersProfileManage></JobSeekersProfileManage>,
+        path: "/dashboard/jobSeekerProfileManage",
+        element: <JobSeekerRoute><JobSeekersProfileManage></JobSeekersProfileManage></JobSeekerRoute>,
       },
 
       {
-        path: "/dashboard/employeesPersonalDetails/:email",
+        path: "/dashboard/jobSeekersPersonalDetails",
+        element: <JobSeekerRoute>  <JobSeekersPersonalDetailsManage></JobSeekersPersonalDetailsManage></JobSeekerRoute>,
+        // loader: async ({ params }) => await fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal/${params.email}`),
+      },
+
+      {
+        path: "/dashboard/jobSeekerExperiences",
+        element:  <JobSeekerRoute><JobSeekersExperienceManage></JobSeekersExperienceManage></JobSeekerRoute>,
+        loader: async ({ params }) => await fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersExpriences/${params.email}`),
+      },
+      {
+        path: "/dashboard/jobSeekerAcademicsAndTraining",
+        element: <JobSeekerRoute><JobSeekersAcademicAndTrainingManage></JobSeekersAcademicAndTrainingManage></JobSeekerRoute>,
+        loader: ({ params }) => fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersAcademics/${params.email}`),
+      },
+
+      {
+        path: "/dashboard/jobSeekerCareersAndSkill",
         element: (
-          <JobSeekersPersonalDetailsManage></JobSeekersPersonalDetailsManage>
+          <JobSeekerRoute><JobSeekersCareerAndSkillManage></JobSeekersCareerAndSkillManage></JobSeekerRoute>
         ),
-        loader: ({ params }) =>
-          fetch(
-            `${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal/${params.email}`
-          ),
-      },
-
-      {
-        path: "/dashboard/employeesExperiences/:email",
-        element: <JobSeekersExperienceManage></JobSeekersExperienceManage>,
-        loader: ({ params }) =>
-          fetch(
-            `${process.env.REACT_APP_CABD_server_address}/jobSeekersExpriences/${params.email}`
-          ),
-      },
-      {
-        path: "/dashboard/employeesAcademicsAndTraining/:email",
-        element: (
-          <JobSeekersAcademicAndTrainingManage></JobSeekersAcademicAndTrainingManage>
-        ),
-        loader: ({ params }) =>
-          fetch(
-            `${process.env.REACT_APP_CABD_server_address}/jobSeekersAcademics/${params.email}`
-          ),
-      },
-
-      {
-        path: "/dashboard/employeesCareersAndSkill/:email",
-        element: (
-          <JobSeekersCareerAndSkillManage></JobSeekersCareerAndSkillManage>
-        ),
-        loader: ({ params }) =>
+       loader: async ({ params }) => await
           fetch(
             `${process.env.REACT_APP_CABD_server_address}/jobSeekersCareers/${params.email}`
           ),
       },
 
       {
-        path: "/dashboard/employeesLanguagesAndReferences/:email",
+        path: "/dashboard/jobSeekerLanguagesAndReferences",
         element: (
-          <JobSeekersLanguageAndReferenceManage></JobSeekersLanguageAndReferenceManage>
+          <JobSeekerRoute>
+            <JobSeekersLanguageAndReferenceManage></JobSeekersLanguageAndReferenceManage>
+          </JobSeekerRoute>
         ),
         loader: ({ params }) =>
           fetch(
             `${process.env.REACT_APP_CABD_server_address}/jobSeekersReferences/${params.email}`
           ),
-      },
-
-      {
-        path: "/dashboard/employeesExperienceEdit",
-        element: <JobSeekersExperienceManage></JobSeekersExperienceManage>,
-      },
-      {
-        path: "/dashboard/employeesAcademicAndTrainingEdit",
-        element: (
-          <JobSeekersAcademicAndTrainingManage></JobSeekersAcademicAndTrainingManage>
-        ),
-      },
-      {
-        path: "/dashboard/employeesCareerAndSkillEdit",
-        element: (
-          <JobSeekersCareerAndSkillManage></JobSeekersCareerAndSkillManage>
-        ),
-      },
-      {
-        path: "/dashboard/employeesLanguageAndReferenceEdit",
-        element: (
-          <JobSeekersLanguageAndReferenceManage></JobSeekersLanguageAndReferenceManage>
-        ),
-      },
-
+      }, 
       // ##################################### jobseeker Edit Section Wise End ##############################################
 
       {
         path: "/dashboard/jobSeekerProfile",
-        element: <JobSeekersProfile></JobSeekersProfile>,
+        element:
+        <JobSeekerRoute>
+        <JobSeekersProfile></JobSeekersProfile>,
+        </JobSeekerRoute>
       },
 
       {
@@ -266,12 +225,18 @@ const router = createBrowserRouter([
 
       {
         path: "/dashboard/appliedJobs",
-        element: <AppliedJobList></AppliedJobList>,
+        element: 
+        <JobSeekerRoute>
+          <AppliedJobList></AppliedJobList>,
+        </JobSeekerRoute>
       },
 
       {
         path: "/dashboard/savedJobs",
-        element: <SavedJobList></SavedJobList>,
+        element:  
+        <JobSeekerRoute>
+          <SavedJobList></SavedJobList>,
+        </JobSeekerRoute>
         // loader: () => fetch('https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobseekersavedjobs')
       },
 
@@ -287,7 +252,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/employerProfileManage/:email",
         element: <EmployersProfileManage></EmployersProfileManage>,
-        loader: ({ params }) =>
+        loader: async ({ params }) => await
           fetch(
             `${process.env.REACT_APP_CABD_server_address}/employer/${params.email}`
           ),
@@ -300,7 +265,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/jobs/:id",
         element: <PostedJobDetails></PostedJobDetails>,
-        loader: ({ params }) =>
+        loader: async ({ params }) => await
           fetch(
             `${process.env.REACT_APP_CABD_server_address}/jobs/${params.id}`
           ),
@@ -343,7 +308,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard/employeeList",
+        path: "/dashboard/jobSeekerList",
         element: (
           <AdminRoute>
             <EmployerList></EmployerList> ,
@@ -374,7 +339,7 @@ const router = createBrowserRouter([
             <UpdateUser></UpdateUser>{" "}
           </AdminRoute>
         ),
-        loader: ({ params }) =>
+        loader: async ({ params }) => await
           fetch(
             `${process.env.REACT_APP_CABD_server_address}/users/${params.id}`
           ),

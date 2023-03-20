@@ -37,7 +37,7 @@ const FindJobAndStatistics = () => {
   const totalJobNo = totalJobs.length + 10000;
   const totalCompanyNo = totalEmployers.length + 1000;
   const totalEmployersNo = totalEmployers.length + 2000;
-  console.log("totalJobs : ", totalJobNo);
+  // console.log("totalJobs : ", totalJobNo);
 
   // useEffect(() => {
   //     fetch(`${process.env.REACT_APP_CABD_server_address}/jobSearch?search=${search}`)

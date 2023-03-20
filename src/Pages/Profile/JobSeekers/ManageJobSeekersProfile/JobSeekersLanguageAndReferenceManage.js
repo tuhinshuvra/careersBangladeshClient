@@ -1,21 +1,43 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
 import JobSeekersProfileManage from "./JobSeekersProfileManage";
 import "../../JobSeekers/JobSeekersProfile.css";
+import Loader from "../../../Shared/Loader/Loader";
 
 const JobSeekersLanguageAndReferenceManage = () => {
-  const storedData = useLoaderData();
+  
+const { user, loading, setLoading } = useContext(AuthContext);
+const [storedData,setStoredData] = useState('');
+const [referencesData, setReferencesData] = useState(storedData);
+
+const email=user?.email;
+
+if(loading){
+  <Loader></Loader>
+}
+
+
+useEffect(()=>{
+  fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersReferences/${email}`)
+  .then(res=>res.json())
+  .then(data=>{
+    console.log("jobSeekersCareers Data",data); 
+    setStoredData(data);
+    setLoading(false)
+  })
+},[email,setLoading])
+
   console.log("Languages and references storedData : ", storedData);
 
-  const [referencesData, setReferencesData] = useState(storedData);
 
-  const { user } = useContext(AuthContext);
+  if(loading){
+    <Loader></Loader>
+  }
 
-  const navigate = useNavigate();
 
   // console.log("imageBBHostKey  : ", imageHostKey)
 
@@ -30,27 +52,27 @@ const JobSeekersLanguageAndReferenceManage = () => {
     },
   });
 
-  const handleUpdateReferenceData = (event) => {
-    event.preventDefault();
+  // const handleUpdateReferenceData = (event) => {
+  //   event.preventDefault();
 
-    fetch(
-      `${process.env.REACT_APP_CABD_server_address}/jobseekersLanguagesReferences/${storedData._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(referencesData),
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Updatd Data: ", data);
-        if (data.modifiedCount > 0) {
-          toast.success("Data Updated Successfully.");
-        }
-      });
-  };
+  //   fetch(
+  //     `${process.env.REACT_APP_CABD_server_address}/jobseekersLanguagesReferences/${storedData._id}`,
+  //     {
+  //       method: "PUT",
+  //       headers: {
+  //         "content-type": "application/json",
+  //       },
+  //       body: JSON.stringify(referencesData),
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log("Updatd Data: ", data);
+  //       if (data.modifiedCount > 0) {
+  //         toast.success("Data Updated Successfully.");
+  //       }
+  //     });
+  // };
 
   const handleInputChange = (event) => {
     const field = event.target.name;
@@ -70,7 +92,8 @@ const JobSeekersLanguageAndReferenceManage = () => {
       </h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
-      <form onSubmit={handleUpdateReferenceData}>
+      {/* <form onSubmit={handleUpdateReferenceData}> */}
+      <form>
         <div>
           <div className=" d-flex justify-content-between">
             <h4 className="label-text text-md fw-bold">Language Proficiency</h4>

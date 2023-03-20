@@ -1,11 +1,16 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigation } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
+import Loader from "../../../Shared/Loader/Loader";
 import "../JobSeekersProfile.css";
 
 const JobSeekersProfileManage = () => {
-  const { user } = useContext(AuthContext);
-  // console.log("User Id :", user.email)
+  const navigation = useNavigation();
+
+  if (navigation.state === "loading") {
+    return <Loader></Loader>
+}
+
 
   return (
     <div>
@@ -18,7 +23,7 @@ const JobSeekersProfileManage = () => {
         >
           <button type="button" className="btn  btn-outline-secondary">
             <Link
-              to={`/dashboard/employeesPersonalDetails/${user?.email}`}
+              to={`/dashboard/jobSeekersPersonalDetails`}
               className=" text-decoration-none"
             >
               Personal
@@ -26,7 +31,7 @@ const JobSeekersProfileManage = () => {
           </button>
           <button type="button" className="btn btn-outline-secondary">
             <Link
-              to={`/dashboard/employeesAcademicsAndTraining/${user?.email}`}
+              to={`/dashboard/jobSeekerAcademicsAndTraining`}
               className=" text-decoration-none"
             >
               Education/Training
@@ -34,7 +39,7 @@ const JobSeekersProfileManage = () => {
           </button>
           <button type="button" className="btn btn-outline-secondary">
             <Link
-              to={`/dashboard/employeesCareersAndSkill/${user?.email}`}
+              to={`/dashboard/jobSeekerCareersAndSkill`}
               className=" text-decoration-none"
             >
               {" "}
@@ -44,7 +49,7 @@ const JobSeekersProfileManage = () => {
 
           <button type="button" className="btn btn-outline-secondary">
             <Link
-              to={`/dashboard/employeesExperiences/${user?.email}`}
+              to={`/dashboard/jobSeekerExperiences`}
               className=" text-decoration-none"
             >
               Experience
@@ -53,7 +58,7 @@ const JobSeekersProfileManage = () => {
 
           <button type="button" className="btn btn-outline-secondary">
             <Link
-              to={`/dashboard/employeesLanguagesAndReferences/${user?.email}`}
+              to={`/dashboard/jobSeekerLanguagesAndReferences`}
               className=" text-decoration-none"
             >
               {" "}

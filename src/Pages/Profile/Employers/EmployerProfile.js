@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import ProfilePic from "../../../assets/job_company_logo/gbl-logo.png";
 import { AuthContext } from "../../Authentication/AuthProvider";
-import "./EmployeersProfile.css";
+import "./EmployeerProfile.css";
 
 const EmployersProfile = () => {
   const [employerData, setEmployerData] = useState([]);

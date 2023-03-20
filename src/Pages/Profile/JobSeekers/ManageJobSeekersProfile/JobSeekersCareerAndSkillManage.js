@@ -1,19 +1,38 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
 import JobSeekersProfileManage from "./JobSeekersProfileManage";
 import "../../JobSeekers/JobSeekersProfile.css";
+import Loader from "../../../Shared/Loader/Loader";
 
 const JobSeekersCareerAndSkillManage = () => {
-  const storedData = useLoaderData();
-
+  const { user, loading, setLoading } = useContext(AuthContext);
+  const [storedData,setStoredData] = useState('');
   const [careersData, setCareersData] = useState(storedData);
 
+  
+  const email=user?.email;
+  
+  if(loading){
+    <Loader></Loader>
+  }
+
+
+  useEffect(()=>{
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersCareers/${email}`)
+    .then(res=>res.json())
+    .then(data=>{
+      console.log("jobSeekersCareers Data",data); 
+      setStoredData(data);
+      setLoading(false)
+    })
+  },[email,setLoading])
+
+
   // console.log("Careers and Skill storedData :", storedData);
-  // const { user } = useContext(AuthContext)
 
   const { data: categories, isLoading } = useQuery({
     queryKey: ["category"],
@@ -26,29 +45,33 @@ const JobSeekersCareerAndSkillManage = () => {
     },
   });
 
+  if(loading){
+    <Loader></Loader>
+  }
+
   // const navigate = useNavigate();
 
-  const handleUpdateCareersDoc = (event) => {
-    event.preventDefault();
+  // const handleUpdateCareersDoc = (event) => {
+  //   event.preventDefault();
 
-    fetch(
-      `${process.env.REACT_APP_CABD_server_address}/jobseekersCareersSkill/${storedData._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(careersData),
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Updatd Data: ", data);
-        if (data.modifiedCount > 0) {
-          toast.success("Data Updated Successfully.");
-        }
-      });
-  };
+  //   fetch(
+  //     `${process.env.REACT_APP_CABD_server_address}/jobseekersCareersSkill/${storedData._id}`,
+  //     {
+  //       method: "PUT",
+  //       headers: {
+  //         "content-type": "application/json",
+  //       },
+  //       body: JSON.stringify(careersData),
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log("Updatd Data: ", data);
+  //       if (data.modifiedCount > 0) {
+  //         toast.success("Data Updated Successfully.");
+  //       }
+  //     });
+  // };
 
   const handleInputChange = (event) => {
     const field = event.target.name;
@@ -67,7 +90,8 @@ const JobSeekersCareerAndSkillManage = () => {
       </h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
-      <form onSubmit={handleUpdateCareersDoc}>
+      {/* <form onSubmit={handleUpdateCareersDoc}> */}
+      <form>
         <div className=" d-flex justify-content-between my-2">
           <h4 className="label-text text-md fw-bold">
             Career and Application Information

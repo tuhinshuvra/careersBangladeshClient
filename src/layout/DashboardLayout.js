@@ -40,7 +40,7 @@ const DashboardLayout = () => {
         setEmployerData(data);
         setLoading(false);
       });
-  }, [email]);
+  }, [email,setLoading]);
 
   //   jobseekers data show
   useEffect(() => {
@@ -53,7 +53,7 @@ const DashboardLayout = () => {
         setJobSeekersData(data[0]);
         setLoading(false);
       });
-  }, [email]);
+  }, [email,setLoading]);
 
   return (
     <div className="container mx-auto">
@@ -75,7 +75,7 @@ const DashboardLayout = () => {
                   </Link>
                 </li>
                 <li className="list-group-item  my-1">
-                  <Link className=" nav_btn" to="/dashboard/employeeList">
+                  <Link className=" nav_btn" to="/dashboard/jobSeekerList">
                     Employers List
                   </Link>
                 </li>
@@ -176,7 +176,7 @@ const DashboardLayout = () => {
                     <li className="list-group-item ">
                       <Link
                         className=" nav_btn"
-                        to="/dashboard/employeesProfileManage"
+                        to="/dashboard/jobSeekerProfileManage"
                       >
                         Manage Profile
                       </Link>

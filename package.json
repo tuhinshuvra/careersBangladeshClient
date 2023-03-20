@@ -2,6 +2,7 @@
   "name": "careers-bangladesh",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://developershuvra.com",
   "dependencies": {
     "@bangladeshi/bangladesh-address": "^1.0.4",
     "@fortawesome/fontawesome-svg-core": "^6.2.1",

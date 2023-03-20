@@ -18,11 +18,8 @@ const Home = () => {
             <JobCategory></JobCategory>
             <HotJobs></HotJobs>
             <NewJobs></NewJobs>
-
             {/* <ELearning></ELearning> */}
             <Subscriber></Subscriber>
-            {/* <PracticePurpose></PracticePurpose> */}
-            {/* <AllUser></AllUser> */}
         </div>
     );
 };

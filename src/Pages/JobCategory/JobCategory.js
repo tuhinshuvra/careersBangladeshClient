@@ -1,14 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import JobCategoryDisplay from "./JobCategoryDisplay";
 import { FaCompass, FaCompressArrowsAlt, FaHotjar } from "react-icons/fa";
 import "./JobCategory.css";
+import { AuthContext } from "../Authentication/AuthProvider";
+import Loader from "../Shared/Loader/Loader";
 
 const JobCategory = () => {
+  
+  const { user, loading, setLoading } = useContext(AuthContext);
+
   const [categories, setCategories] = useState([]);
 
   const [showAll, setShowAll] = useState(false);
 
   const sliceCategories = categories.slice(0, 16);
+
+  if(loading){
+    <Loader></Loader>
+  }
 
   const handleShowAllCategories = () => {
     setShowAll(true);
@@ -24,9 +33,10 @@ const JobCategory = () => {
       .then((response) => response.json())
       .then((data) => {
         setCategories(data);
+        setLoading(false);
         // console.log("Product Data:", data)
       });
-  }, []);
+  }, [setLoading]);
 
   return (
     <div className="category_bg">

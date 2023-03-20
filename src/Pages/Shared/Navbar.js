@@ -144,7 +144,7 @@ const Navbar = () => {
                           <li className="list-group-item">
                             <Link
                               className=" nav_btn"
-                              to="/dashboard/employeeList"
+                              to="/dashboard/jobSeekerList"
                             >
                               All Employer
                             </Link>
@@ -188,7 +188,7 @@ const Navbar = () => {
                               <li className="list-group-item ">
                                 <Link
                                   className=" nav_btn"
-                                  to="/dashboard/employeesProfileManage"
+                                  to="/dashboard/jobSeekerProfileManage"
                                 >
                                   Manage Profile
                                 </Link>

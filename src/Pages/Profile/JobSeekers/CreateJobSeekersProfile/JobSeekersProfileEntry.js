@@ -21,7 +21,7 @@ const JobSeekersProfileEntry = () => {
 
                     <button type="button" className="btn btn-outline-secondary">
                         <Link
-                            to="/dashboard/employeesAcademicAndTrainingEntry"
+                            to="/dashboard/jobSeekerAcademicAndTrainingEntry"
                             className=' text-decoration-none'
                         >Education/Training
                         </Link>
@@ -29,7 +29,7 @@ const JobSeekersProfileEntry = () => {
 
                     <button type="button" className="btn btn-outline-secondary">
                         <Link
-                            to="/dashboard/employeesCareersAndSkillEntry"
+                            to="/dashboard/jobSeekerCareersAndSkillEntry"
                             className=' text-decoration-none'
                         > Career and Skilll
                         </Link>
@@ -37,7 +37,7 @@ const JobSeekersProfileEntry = () => {
 
                     <button type="button" className="btn btn-outline-secondary">
                         <Link
-                            to="/dashboard/employeesExperienceDataEntry"
+                            to="/dashboard/jobSeekerExperienceDataEntry"
                             className=' text-decoration-none'
                         >Experience
                         </Link>
@@ -45,7 +45,7 @@ const JobSeekersProfileEntry = () => {
 
                     <button type="button" className="btn btn-outline-secondary">
                         <Link
-                            to="/dashboard/employeesLanguageAndReferenceEntry"
+                            to="/dashboard/jobSeekerLanguageAndReferenceEntry"
                             className=' text-decoration-none'
                         > Language and Reference
                         </Link>

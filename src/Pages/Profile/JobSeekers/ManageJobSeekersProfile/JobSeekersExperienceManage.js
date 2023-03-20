@@ -1,40 +1,67 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate, useNavigation } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
+import Loader from "../../../Shared/Loader/Loader";
 import "../../JobSeekers/JobSeekersProfile.css";
 import JobSeekersProfileManage from "./JobSeekersProfileManage";
 
 const JobSeekersExperienceManage = () => {
-  const storedData = useLoaderData();
+
+const { user, loading, setLoading } = useContext(AuthContext);
+  const [storedData,setStoredData] = useState('');
   const [experienceData, setExperienceData] = useState(storedData);
+  const navigation = useNavigation();
+  
+  const email=user?.email;
+  
+  if(loading){
+    <Loader></Loader>
+  }
+
+
+  useEffect(()=>{
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersExpriences/${email}`)
+    .then(res=>res.json())
+    .then(data=>{
+      console.log("jobSeekersCareers Data",data); 
+      setStoredData(data);
+      setLoading(false)
+    })
+  },[email,setLoading])
+
+
 
   // console.log("Job Seeker StoredData : ", storedData);
 
   // const navigate = useNavigate();
 
-  const handleUpdateExperiencesDoc = (event) => {
-    event.preventDefault();
+  if(navigation.state === 'loading'){
+  <Loader></Loader>
+  }
 
-    fetch(
-      `${process.env.REACT_APP_CABD_server_address}/jobSeekersExperiences/${storedData._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(experienceData),
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Updatd Data: ", data);
-        if (data.modifiedCount > 0) {
-          toast.success("Data Updated Successfully.");
-        }
-      });
-  };
+  // const handleUpdateExperiencesDoc = (event) => {
+  //   event.preventDefault();
+
+  //   fetch(
+  //     `${process.env.REACT_APP_CABD_server_address}/jobSeekersExperiences/${storedData._id}`,
+  //     {
+  //       method: "PUT",
+  //       headers: {
+  //         "content-type": "application/json",
+  //       },
+  //       body: JSON.stringify(experienceData),
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log("Updatd Data: ", data);
+  //       if (data.modifiedCount > 0) {
+  //         toast.success("Data Updated Successfully.");
+  //       }
+  //     });
+  // };
 
   const handleInputChange = (event) => {
     const field = event.target.name;
@@ -50,7 +77,8 @@ const JobSeekersExperienceManage = () => {
       <JobSeekersProfileManage></JobSeekersProfileManage>
       <h2 className=" text-center fw-bold my-3">Update Experience Data</h2>
 
-      <form onSubmit={handleUpdateExperiencesDoc}>
+      {/* <form onSubmit={handleUpdateExperiencesDoc}> */}
+      <form>
         <div className=" d-flex justify-content-between">
           <h5 className="label-text text-md fw-bold">Experience One</h5>
           {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b>(Red Star) denotes must be filled</b></p> */}

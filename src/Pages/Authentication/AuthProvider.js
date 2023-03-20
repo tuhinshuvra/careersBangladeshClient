@@ -10,7 +10,6 @@ import React, { createContext, useEffect, useState } from "react";
 import app from "../../firebase/firebase.config";
 
 export const AuthContext = createContext();
-
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
@@ -22,6 +21,7 @@ const AuthProvider = ({ children }) => {
   const [searchOrganizationData, setSearchOrganizationData] = useState("");
   const [searchLocationtionData, setSearchLocationtionData] = useState("");
   const [jobSeekersData, setJobSeekersData] = useState([]);
+  
   const signIn = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);

@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import HotJobsDisplay from "./HotJobsDisplay";
 import { FaHotjar } from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
 import "./HotJobs.css";
+import { AuthContext } from "../Authentication/AuthProvider";
+import Loader from "../Shared/Loader/Loader";
 
 const HotJobs = () => {
+  
+  const { user, loading, setLoading } = useContext(AuthContext);
+
   const [showAll, setShowAll] = useState(false);
 
   const handleShowAll = () => {
@@ -15,13 +20,15 @@ const HotJobs = () => {
     setShowAll(false);
   };
 
+  if(loading){
+    <Loader></Loader>
+  }
+
   const { data: jobs = [], refetch } = useQuery({
     queryKey: ["jobs"],
     queryFn: async () => {
-      const respone = await fetch(
-        `${process.env.REACT_APP_CABD_server_address}/jobs`
-      );
-      const data = respone.json();
+      const respone = await fetch(`${process.env.REACT_APP_CABD_server_address}/jobs`);
+      const data = respone.json();        
       return data;
     },
   });

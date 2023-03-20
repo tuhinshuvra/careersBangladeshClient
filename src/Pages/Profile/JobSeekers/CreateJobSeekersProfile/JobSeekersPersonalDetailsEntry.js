@@ -436,15 +436,15 @@ const JobSeekersPersonalDetailsEntry = () => {
                 Permanent Address
               </span>
 
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="checkbox"
                   value=""
                   id="handlePermanentAddress"
                   onClick={handlePermanentAddress}
                 />
-                <label class="form-check-label fw-bold " for="flexCheckDefault">
+                <label className="form-check-label fw-bold " for="flexCheckDefault">
                   Same as Present Address
                 </label>
               </div>

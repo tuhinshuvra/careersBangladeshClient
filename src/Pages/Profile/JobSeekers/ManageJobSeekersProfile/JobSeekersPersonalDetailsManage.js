@@ -1,51 +1,61 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
 import JobSeekersProfileManage from "./JobSeekersProfileManage";
 
 const JobSeekersPersonalDetailsManage = () => {
-  // const { user } = useContext(AuthContext)
+  
+  const {user}=useContext(AuthContext);
+  const email=user?.email;
 
-  const storedData = useLoaderData();
-  const [personalDetails, setPersonalDetails] = useState(storedData);
+  const [storedData, setStoredData] = useState('');
 
   // const navigate = useNavigate();
-
   // const imageHostKey = process.env.REACT_APP_CABD_imagebb_hostKey;
 
-  const handleUpdatePersonalDoc = (event) => {
-    event.preventDefault();
+  useEffect(()=>{
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal/${email}`)
+    .then(res=>res.json())
+    .then(data=>{
+      console.log("jobSeekersPersonal Data",data); 
+      setStoredData(data);
+    })
+  },[email])
 
-    console.log("personalDetails :", personalDetails);
 
-    fetch(
-      `${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal/${storedData._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(personalDetails),
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Updated Data :", data);
-        if (data.modifiedCount > 0) {
-          toast.success("Data Updated Successfully.");
-        }
-      });
-  };
+  // const handleUpdatePersonalDoc = (event) => {
+  //   event.preventDefault();
+
+  //   console.log("personalDetails :", setStoredData);
+
+  //   fetch(
+  //     `${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal/${storedData._id}`,
+  //     {
+  //       method: "PUT",
+  //       headers: {
+  //         "content-type": "application/json",
+  //       },
+  //       body: JSON.stringify(setStoredData),
+  //     }
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log("Updated Data :", data);
+  //       if (data.modifiedCount > 0) {
+  //         toast.success("Data Updated Successfully.");
+  //       }
+  //     });
+  // };
 
   const handleInputChange = (event) => {
     const field = event.target.name;
     const value = event.target.value;
 
-    const newData = { ...personalDetails };
+    const newData = { ...setStoredData };
     newData[field] = value;
-    setPersonalDetails(newData);
+    setStoredData(newData);
   };
 
   const handlePermanentAddress = () => {
@@ -58,9 +68,7 @@ const JobSeekersPersonalDetailsManage = () => {
     let permanentDistrict = document.getElementById("permanentDistrict");
     let permanentThana = document.getElementById("permanentThana");
     let permanentPostOffice = document.getElementById("permanentPostOffice");
-    let permanentAddressLine2 = document.getElementById(
-      "permanentAddressLine2"
-    );
+    let permanentAddressLine2 = document.getElementById("permanentAddressLine2");
 
     permanentDistrict.value = presentDistrict.value;
     permanentThana.value = presentThana.value;
@@ -73,11 +81,7 @@ const JobSeekersPersonalDetailsManage = () => {
       <JobSeekersProfileManage></JobSeekersProfileManage>
 
       <div>
-        {/* <h2>Personal Details</h2> */}
-
-        <h2 className=" text-center fw-bold my-4">
-          Update Personal Details Data
-        </h2>
+        <h2 className=" text-center fw-bold my-4"> Update Personal Details Data </h2>
 
         <div className=" d-flex justify-content-end">
           <p className="">
@@ -87,7 +91,8 @@ const JobSeekersPersonalDetailsManage = () => {
           </p>
         </div>
 
-        <form onSubmit={handleUpdatePersonalDoc}>
+        {/* <form onSubmit={handleUpdatePersonalDoc}> */}
+        <form>
           <div className="row ">
             <div className="col-md-6 mb-3 mb-3">
               <span className="label-text text-md fw-bold">
