@@ -15,7 +15,6 @@ const PostedJobList = () => {
   const { data: jobs = [], refetch } = useQuery({
     queryKey: ["jobs"],
     queryFn: async () => {
-      // const respone = await fetch('https://careers-bangladesh-server-tuhinshuvra.vercel.app/jobs');
       const respone = await fetch(
         `${process.env.REACT_APP_CABD_server_address}/postedjob?email=${email}`
       );
@@ -30,7 +29,7 @@ const PostedJobList = () => {
 
   return (
     <div>
-      <h2 className=" text-center font-bold my-3  ">Posted Job List</h2>
+      <h2 className=" text-center font-bold my-3">Posted Job List</h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
@@ -57,7 +56,7 @@ const PostedJobList = () => {
                   </Link>
                 </td>
                 <td>{job.organization}</td>
-                <td>{job.postDate}</td>
+                <td>{job.postDate}</td> 
                 <td>{job.deadLine}</td>
                 <td>
                   <Link to={`/dashboard/applicantList`}>
@@ -70,11 +69,9 @@ const PostedJobList = () => {
                   </Link>
                 </td>
                 <td>
-                  <Link to={`/dashboard/jobUpdate/${job._id}`}>
-                                            <button className=' fw-bold btn-sm btn btn-primary mx-1'
-                                                onClick={() => handleJobsUpdate(job._id)}
-                                            >Update</button>
-                                        </Link>
+                     <Link className="fw-bold btn-sm btn btn-primary mx-1" to={`/dashboard/jobUpdate/${job._id}`}>
+                      Update
+                    </Link>
 
                   {/* <button className=' btn btn-sm  btn-outline-danger'
                                             onClick={() => handleDelete(job)}

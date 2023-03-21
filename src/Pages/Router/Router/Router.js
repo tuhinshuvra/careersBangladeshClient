@@ -52,6 +52,7 @@ import JobSeekersProfile from "../../Profile/JobSeekers/JobSeekersProfile";
 import EmployersProfile from "../../Profile/Employers/EmployerProfile";
 import DisplayError from "../../Shared/ErrorDisplay/DisplayError";
 import UpdatePostedJob from "../../Profile/Employers/UpdatePostedJob";
+import ApplicantProfile from "../../Profile/Employers/ApplicantProfile";
 
 
 const router = createBrowserRouter([
@@ -213,10 +214,7 @@ const router = createBrowserRouter([
 
       {
         path: "/dashboard/jobSeekerProfile",
-        element:
-        <JobSeekerRoute>
-        <JobSeekersProfile></JobSeekersProfile>,
-        </JobSeekerRoute>
+        element: <JobSeekersProfile></JobSeekersProfile>,        
       },
 
       {
@@ -282,6 +280,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/applicantList",
         element: <ApplicantList></ApplicantList>,
+      },
+      {
+        path: "/dashboard/applicantProfile",
+        element: <ApplicantProfile></ApplicantProfile> ,        
       },
 
 

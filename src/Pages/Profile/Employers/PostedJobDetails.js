@@ -1,26 +1,31 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { Button } from "react-bootstrap";
 import { toast } from "react-hot-toast";
-import {
-  FaBookmark,
-  FaBriefcase,
-  FaBuilding,
-  FaCalculator,
-} from "react-icons/fa";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import {  FaBookmark,  FaBriefcase,  FaBuilding,  FaCalculator} from "react-icons/fa";
+import { Form, Link, useLoaderData, useNavigate } from "react-router-dom";
 import useEmployer from "../../../hooks/useEmployer";
 import useJobSeeker from "../../../hooks/useJobSeeker";
 import { AuthContext } from "../../Authentication/AuthProvider";
+import Loader from "../../Shared/Loader/Loader";
 import "./PostedJobDetails.css";
 
 const PostedJobDetails = () => {
+
+const { setJobId } = useContext(AuthContext);
+const {loading, setLoading}=useContext(AuthContext);
+
   const jobdetails = useLoaderData();
   // const [applications, setApplications] = useState([]);
   const [expectedSalary, setExpectedSalary] = useState("0");
+  const [savedJob, setSavedJob] = useState([]);
+  const [appliedJob, setAppliedJob] = useState([]);
+
+if(loading){
+  <Loader></Loader>
+}
+  console.log("savedJob List",savedJob);
 
   // console.log(applyStatus, applications);
-
-  const navigate = useNavigate();
 
   // console.log("jobdetails : ", jobdetails)
   const [jobPosts, setJobPosts] = useState([]);
@@ -36,33 +41,9 @@ const PostedJobDetails = () => {
   // console.log("Employer : ", employer)
 
   const {
-    _id,
-    postersName,
-    email,
-    jobTitle,
-    companyLogo,
-    organization,
-    vacancies,
-    category,
-    deadLine,
-    education,
-    experience,
-    postDate,
-    applyStatus,
-    employmentStatus,
-    businessDescription,
-    jobLevel,
-    workPlace,
-    jobContext,
-    jobResponst,
-    location,
-    salaryFrom,
-    salaryTo,
-    yearlyBonus,
-    salaryReview,
-    status,
-    others,
-  } = jobdetails;
+    _id, postersName, email, jobTitle,companyLogo,organization,vacancies,  category,  deadLine,  education, experience,  postDate, applyStatus, 
+    employmentStatus, businessDescription,  jobLevel,  workPlace,  jobContext,  jobResponst,  location,  salaryFrom,  salaryTo, 
+     yearlyBonus, salaryReview,status, others } = jobdetails;
 
   console.log("jobsData : ", jobPosts);
 
@@ -83,7 +64,8 @@ const PostedJobDetails = () => {
       applicationDate: applicationDate,
     };
     console.log("Job Apply Data :", jobApply);
-
+    
+    setLoading(true);
     fetch(`${process.env.REACT_APP_CABD_server_address}/applications`, {
       method: "POST",
       headers: {
@@ -96,6 +78,7 @@ const PostedJobDetails = () => {
         console.log(data);
         if (data.acknowledged) {
           toast.success("Post the application successfully");
+          setLoading(false);
           // navigate("/findAllJob");
         } else {
           toast.error(data.message);
@@ -105,7 +88,7 @@ const PostedJobDetails = () => {
 
   // save a job to apply future
 
-  const handleJobSave = (data) => {
+  const handleJobSave = () => {
     console.log("Saved Job Details :", jobdetails);
     const savedJob = {
       jobId: _id,
@@ -115,11 +98,11 @@ const PostedJobDetails = () => {
       jobTitle: jobTitle,
       organization: organization,
       category: category,
-      savedDate: applicationDate,
+      savedDate: applicationDate,      
     };
 
     // console.log("Saved Job Data :", savedJob);
-
+    setLoading(true);
     fetch(`${process.env.REACT_APP_CABD_server_address}/savedjobs`, {
       method: "POST",
       headers: {
@@ -132,11 +115,8 @@ const PostedJobDetails = () => {
         console.log(data);
         if (data.acknowledged) {
           toast.success("The Job Saved Successfully");
-          navigate("/dashboard/savedJobs");
-        } else {
-          toast.error(data.message);
-          navigate("/dashboard/savedJobs");
-        }
+          setLoading(false);
+        }         
       });
   };
 
@@ -145,23 +125,42 @@ const PostedJobDetails = () => {
     setExpectedSalary(expSalary);
   };
 
-  //////////// show all saved job by user email/////////////////////
+  
+  //###################### show all saved job by user email ##################################
+  useEffect(()=>{
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobseekersavedjobs?email=${userEmail}`)
+    .then(res=>res.json())
+    .then(data=> {
+      // console.log("All jobseeker saved jobs" ,data)
+      setSavedJob(data);
+    })
+  },[userEmail])
 
-  // useEffect(() => {
-  //   fetch(
-  //     `${process.env.REACT_APP_CABD_server_address}/jobseekersavedjobs?email=${user?.email}`,
-  //     {
-  //       headers: {},
-  //     }
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => setApplications(data));
-  // }, [user?.email]);
+  const isSaved= savedJob.find(data=>data.jobId===_id);
+  // console.log("isSaved : ",isSaved);
+
+
+
+  //###################### show all Applied job by user email ##################################
+  useEffect(()=>{
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobseekerapply?email=${userEmail}`)
+    .then(res=>res.json())
+    .then(data=> {
+      // console.log("All jobseeker applied jobs", data)
+      setAppliedJob(data);
+    })
+  },[userEmail])
+
+  const isApplied= appliedJob.find(data=>data.jobId===_id);
+  // console.log("isApplied : ",isApplied);
+
 
   return (
     <div>
       <div className="card">
         <div>
+        {/* <Link className="fw-bold btn-sm btn btn-primary mx-1" to={`/dashboard/jobUpdate/${_id}`}>Update Job</Link> */}
+
           <div className="float-end">
             {isEmployer && (
               <p className="fw-bold me-3 mt-2">Job Status : {status} </p>
@@ -183,12 +182,17 @@ const PostedJobDetails = () => {
                 {jobTitle}, {location}, (On Site)
               </h5>
 
+            { isSaved ? 
+               <FaBookmark className="fs-5 mx-1 float-end fs-2 text-success disabled  "></FaBookmark>
+             : <>
               {isJobSeeker && (
-                <Link onClick={() => handleJobSave(jobdetails)} to="/">
-                  {" "}
-                  <FaBookmark className="fs-5 mx-1 float-end fs-2 text-info "></FaBookmark>{" "}
+                <Link onClick={() => handleJobSave()}>
+                  <FaBookmark className="fs-5 mx-1 float-end fs-2 text-info "></FaBookmark>
                 </Link>
               )}
+            </>  
+            }
+            
             </div>
           </div>
 
@@ -310,6 +314,18 @@ const PostedJobDetails = () => {
             careersbangladesh.com Online Job Posting.
           </p>
 
+          <div className=" text-center">
+            <Link className="fw-bold custom_btn text-decoration-none" to={`/dashboard/jobUpdate/${_id}`}>Update Job</Link>
+          <Link className="fw-bold custom_btn text-decoration-none" to={`/dashboard/applicantList`} onClick={() => setJobId(_id)}> ApplicatList</Link>
+            </div>
+
+          { isApplied ? 
+          
+          <div className="d-flex justify-content-center">
+          <button className="btn btn-secondary fw-bold  disabled"> Already Applied </button>
+          </div>          
+          : <>
+          
           {isJobSeeker && (
             <div className="d-flex justify-content-center">
               <button
@@ -321,7 +337,10 @@ const PostedJobDetails = () => {
                 Apply Now
               </button>
             </div>
-          )}
+          )}          
+          
+          </> }
+
 
           <div
             className="modal fade"
@@ -334,7 +353,7 @@ const PostedJobDetails = () => {
               <div className="modal-content">
                 <div className="modal-header">
                   <h1 className="modal-title fs-5" id="confirmationModalLabel">
-                    Apply Online
+                      Apply Online
                   </h1>
                 </div>
                 <div className="modal-body d-flex justify-content-center align-items-center">

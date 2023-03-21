@@ -4,15 +4,15 @@ import { useReactToPrint } from "react-to-print";
 import { AuthContext } from "../../Authentication/AuthProvider";
 import "../JobSeekers/JobSeekersProfile.css";
 
-const JobSeekersProfile = () => {
-  //const [jobSeekersData, setJobSeekersData] = useState([]);
-  const { user, jobSeekersData, setJobSeekersData } = useContext(AuthContext);
-  // setLoading(true);
-  const email = user?.email;
+const ApplicantProfile = () => {
+  const { jobSeekersData,applicantShow, setJobSeekersData } = useContext(AuthContext);
+  const email = applicantShow;
+  
   const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => componentRef.current
   });
+  
   useEffect(() => {
     fetch(
       `${process.env.REACT_APP_CABD_server_address}/jobSeekersAllData/${email}`
@@ -22,13 +22,7 @@ const JobSeekersProfile = () => {
         // console.log("jobSeekersAllData : ", data[0])
         setJobSeekersData(data[0]);
       });
-  }, [email,setJobSeekersData]);
-
-  // console.log("employerData : ", jobSeekersData)
-  // console.log("empAgrreExperience : ", jobSeekersData?.empAgrreExperience)
-  // console.log("empAggreAcademics : ", jobSeekersData?.empAggreAcademics)
-  // console.log("empAggreCareers : ", jobSeekersData?.empAggreCareers)
-  // console.log("empAggreReferences : ", jobSeekersData?.empAggreReferences)
+  }, [email,setJobSeekersData]); 
 
   return (
     <div className="resume-wrapper-inner mx-auto text-start bg-white shadow-lg">
@@ -830,4 +824,4 @@ const JobSeekersProfile = () => {
   );
 };
 
-export default JobSeekersProfile;
+export default ApplicantProfile;

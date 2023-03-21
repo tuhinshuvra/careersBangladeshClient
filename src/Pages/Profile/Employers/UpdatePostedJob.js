@@ -8,14 +8,14 @@ const UpdatePostedJob = () => {
   const { user, loading, setLoading } = useContext(AuthContext);  
   const storedData=useLoaderData();
 
-  console.log("storedData :",storedData);
+  // console.log("storedData :",storedData);
 
-  const {email,postersName,category,jobTitle,companyLogo,organization,
-    orgaType,location,vacancies,education,experience,companySize,postDate,deadLine,
-    applyStatus,employmentStatus,businessDescription,jobLevel,workPlace,jobContext,jobResponst,
-    salaryFrom,salaryTo,yearlyBonus,salaryReview,status,others}=storedData;
+  // const {email,postersName,category,jobTitle,companyLogo,organization,
+  //   orgaType,location,vacancies,education,experience,companySize,postDate,deadLine,
+  //   applyStatus,employmentStatus,businessDescription,jobLevel,workPlace,jobContext,jobResponst,
+  //   salaryFrom,salaryTo,yearlyBonus,salaryReview,status,others}=storedData;
 
-  const [updatedData, setUpdatedData]=useState([]);
+  const [updatedData, setUpdatedData]=useState(storedData);
 
   // const imageHostKey = process.env.REACT_APP_CABD_imagebb_hostKey;
 
@@ -33,20 +33,36 @@ const UpdatePostedJob = () => {
   const jobPostDate = new Date().toJSON().slice(0, 10);
 
 
-
-  
+console.log("Posted Job Updated Data :",updatedData);  
 
   const handleInputChange=(event)=>{
     const field= event.target.name;
     const value= event.target.value;
+
     const newData= {...updatedData};
     newData[field]=value;
     
     setUpdatedData(newData);
   }
 
-  const handleJobUpdate=()=>{
-    console.log("I am handleJobUpdate clicked");
+  const handleJobUpdate=(event)=>{
+    event.preventDefault();
+    fetch(`${process.env.REACT_APP_CABD_server_address}/postedJobUpdate/${storedData._id}`,{
+      method:"PUT",
+      headers:{
+        "content-type":"application/json",        
+      },
+      body: JSON.stringify(updatedData),
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log("Updated Data : ",data);
+      if (data.modifiedCount > 0) {
+        toast.success("Job's Data Updated Successfully.");
+      }
+    });
+
+    // console.log("I am handleJobUpdate clicked");
   }
 
   return (
@@ -54,18 +70,38 @@ const UpdatePostedJob = () => {
       <h2 className=" text-center fw-bold my-3">Update Job Information</h2>
 
       <form onSubmit={handleJobUpdate}>
+      <div className=" my-3">
+          <div className="d-flex justify-content-end">
+            <div>
+              <label className="label">
+                <span className=" fw-bold me-lg-2 ">Job Status</span>
+              </label>
+              <select
+                onChange={handleInputChange}                  
+                name="status"
+                id="status"
+                className=" form-select"                
+                >
+                <option defaultValue={storedData?.status}>{storedData?.status}</option>
+                <option value={"Active"}>Active</option>
+                <option value={"Inactive"}>Inactive</option>
+                <option value={"Close"}>Close</option>
+              </select>
+              </div>
+            </div>
+        </div> 
         <div className=" row">
           <div className=" col-md-6 my-2">
             <label className="label">
               <span className="label-text fw-bold">Company Name</span>{" "}
             </label>
-            <input              
-              defaultValue={storedData?.organization}
-              name="organization"
-              className="input form-control"
-              id="organization"
-              type="text"
+            <input
               onChange={handleInputChange}
+              name="organization"
+              id="organization"
+              className="input form-control"
+              type="text"
+              defaultValue={storedData?.organization}
             />
           </div>
 
@@ -73,8 +109,10 @@ const UpdatePostedJob = () => {
             <label htmlFor="company_logo">
               <b> Company Type</b>
             </label>
-            <select              
+            <select 
+              onChange={handleInputChange}             
               name="orgaType"
+              id="orgaType"
               className="form-select"
             >
               <option defaultValue={storedData?.orgaType}>{storedData?.orgaType}</option>
@@ -94,7 +132,7 @@ const UpdatePostedJob = () => {
               <span className="label-text fw-bold">Company Logo</span>{" "}
             </label>
             <input   
-                     
+              // onChange={handleInputChange}        
               name="company_logo"
               className="input form-control"
               id="company_logo"
@@ -103,50 +141,52 @@ const UpdatePostedJob = () => {
           </div>
         </div>
         
-        <div>
+        <div className=" my-3">
           <label className="label" htmlFor="category">
             <span className="label-text fw-bold">Job Category</span>{" "}
           </label>
-          <select            
+          <select 
+            onChange={handleInputChange}            
             name="category"
             type="text"
             className="form-select"
           >
+            <option defaultValue={storedData.category}>{storedData.category}</option>
             {categories &&
-              categories.map((category, index) => (
-                <option key={index} value={category._id}>
-                  {category.name}
-                </option>
+              categories.map((category, index) => (                
+                <option key={index} value={category.name}>{category.name}</option>
               ))}
           </select>
         </div>
 
         
 
-        <div className="row">
-          <div className=" col-md-6 my-2 ">
+        <div className="row my-3">
+          <div className=" col-md-6  ">
             <label className="label">
               <span className="label-text fw-bold">Job Title</span>{" "}
             </label>
             <input  
-            defaultValue={storedData?.jobTitle}            
+              onChange={handleInputChange}             
               name="jobTitle"
-              className="input form-control"
               id="jobTitle"
+              className="input form-control"
               type="text"
-              placeholder="Enter Job Title"
+              defaultValue={storedData?.jobTitle}              
             />
           </div>
-          <div className=" col-md-6 my-2 ">
+
+          <div className=" col-md-6">
             <label className="label">
               <span className="label-text fw-bold">Location</span>{" "}
             </label>
-            <input 
+            <input
+            onChange={handleInputChange} 
+            name="location"
+            id="location"
+            className="input form-control"
+            type="text"
             defaultValue={storedData?.location}             
-              name="location"
-              className="input form-control"
-              id="location"
-              type="text"
             />
           </div>
         </div>
@@ -158,10 +198,11 @@ const UpdatePostedJob = () => {
           <label className="label">
               <span className="label-text fw-bold">Vacancies</span>{" "}
             </label>
-            <input              
+            <input
+              onChange={handleInputChange}              
               name="vacancies"
-              className="input form-control"
               id="vacancies"
+              className="input form-control"
               type="text"
               defaultValue={storedData?.vacancies}
             />
@@ -171,8 +212,10 @@ const UpdatePostedJob = () => {
           <label className="label">
               <span className="label-text fw-bold">Job Level</span>{" "}
             </label>
-            <select              
-              name="job_level"
+            <select
+              onChange={handleInputChange}              
+              name="jobLevel"
+              id="jobLevel"
               className="form-select"
             >
               <option defaultValue={storedData?.jobLevel}>{storedData?.jobLevel}</option>
@@ -186,8 +229,10 @@ const UpdatePostedJob = () => {
           <label className="label">
               <span className="label-text fw-bold">Work Place</span>{" "}
             </label>
-            <select              
-              name="work_place"
+            <select
+            onChange={handleInputChange}              
+              name="workPlace"
+              id="workPlace"
               className="form-select"
             >
               <option defaultValue={storedData?.workPlace}>{storedData?.workPlace}</option>
@@ -203,8 +248,10 @@ const UpdatePostedJob = () => {
           <label className="label">
               <span className="label-text fw-bold">Employment Status</span>{" "}
             </label>
-            <select              
-              name="employment_status"
+            <select
+            onChange={handleInputChange}              
+              name="employmentStatus"
+              id="employmentStatus"
               className=" form-select "
             >
              <option defaultValue={storedData?.employmentStatus}>{storedData?.employmentStatus}</option>
@@ -220,13 +267,13 @@ const UpdatePostedJob = () => {
             <label className="label">
               <span className="label-text fw-bold">Dead Line</span>{" "}
             </label>
-              <input 
-              defaultValue={storedData?.deadLine}               
-                name="deadline"
-                className="input form-control ms-1"
-                id="deadline"
-                type="date"
-                
+              <input
+              onChange={handleInputChange} 
+              name="deadLine"
+              id="deadLine"
+              className="input form-control ms-1"
+              type="date"
+              defaultValue={storedData?.deadLine}                               
               />
           </div>
 
@@ -235,7 +282,9 @@ const UpdatePostedJob = () => {
               <span className="label-text fw-bold">Dead Line</span>{" "}
             </label>
             <select
-              name="apply_status"              
+              onChange={handleInputChange}
+              name="applyStatus"              
+              id="applyStatus"              
               className=" form-select"
             >
               <option  defaultValue={storedData?.applyStatus}>{storedData?.applyStatus}</option>
@@ -250,25 +299,27 @@ const UpdatePostedJob = () => {
           <label className="label">
             <span className="label-text fw-bold">Education Qualification</span>{" "}
           </label>
-          <input            
-            defaultValue={storedData?.education}
-            name="education"
-            className="input form-control ms-1"
-            id="education"
-            type="text"
+          <input
+          onChange={handleInputChange}            
+          name="education"
+          className="input form-control ms-1"
+          id="education"
+          type="text"
+          defaultValue={storedData?.education}
           />
         </div>
 
-        <div className="my-2 ">
+        <div className="my-3">
           <label className="label">
             <span className="label-text fw-bold">Experience</span>{" "}
           </label>
-          <input            
-            defaultValue={storedData?.experience}
+          <input
+            onChange={handleInputChange}            
             name="experience"
             className="input form-control ms-1"
             id="experience"
             type="text"
+            defaultValue={storedData?.experience}
           />
         </div>
 
@@ -279,42 +330,56 @@ const UpdatePostedJob = () => {
             </span>
           </label>
           <div>
-            <textarea  
+            <textarea
+            onChange={handleInputChange}  
+            name="businessDescription"
+            id="businessDescription"
+            className="input form-control"
+            type="text"
+            maxLength={350}
             defaultValue={storedData?.businessDescription}            
-              name="business_description"
-              className="input form-control"
-              id="business_description"
-              type="text"
-              maxLength={350}
             />
           </div>
         </div>
-
-        <textarea          
-          defaultValue={storedData?.jobContext}    
-          name="job_context"
-          className="input form-control my-lg-3"
-          id="job_context"
-          type="text"
-          maxLength={250}
-        />
-
+     
+     <div className="my-lg-2">
+       <label className="label">
+                <span className=" fw-bold me-lg-2 ">Job Context</span>
+          </label>
         <textarea
+        defaultValue={storedData?.jobContext}    
+        onChange={handleInputChange}          
+        name="jobContext"
+        className="input form-control "
+        id="jobContext"
+        type="text"
+        maxLength={250}
+          />
+          </div>
+        
+        <div className="my-lg-3">
+          <label className="label">
+                <span className=" fw-bold me-lg-2 ">Job responsibility</span>
+          </label>
+        <textarea
+        onChange={handleInputChange}  
           defaultValue={storedData?.jobResponst}   
-          name="job_respons"          
-          className="input form-control my-lg-3"
-          id="job_respons"
+          name="jobResponst"          
+          className="input form-control "
+          id="jobResponst"
           type="text"
           maxLength={350}
-        />
+          />
+          </div>
 
         <div className=" row my-lg-3">
           <div className=" col-lg-4">
-            <div className="d-flex justify-content-between align-items-center">
-              <label className="label">
+          <label className="label">
                 <span className=" fw-bold me-lg-2 ">Salary</span>
-              </label>
-              <input            
+          </label>
+            <div className="d-flex justify-content-between align-items-center">              
+              <input 
+              onChange={handleInputChange}             
               defaultValue={storedData?.salaryFrom}    
                 name="salary_from"
                 type="text"
@@ -334,7 +399,11 @@ const UpdatePostedJob = () => {
 
           <div className=" col-lg-4 ">
             <div>
-              <select                
+              <label className="label">
+                <span className=" fw-bold me-lg-2 ">Yearly Bonus</span>
+              </label>
+              <select 
+              onChange={handleInputChange}                 
                 name="yearly_bonus"
                 className=" form-select"
               >
@@ -347,72 +416,44 @@ const UpdatePostedJob = () => {
           </div>
 
           <div className=" col-lg-4">
-            <select              
+          <label className="label">
+                <span className=" fw-bold me-lg-2 ">Salary Review</span>
+              </label>
+            <select 
+            onChange={handleInputChange}               
               name="salary_review"
               className="form-select"
             >
-              <option defaultValue={salaryReview}>{salaryReview}</option>
+              <option defaultValue={storedData?.salaryReview}>{storedData?.salaryReview}</option>
               <option value={"Yearly"}>Yearly</option>
               <option value={"Half Yearly"}>Half Yearly</option>
             </select>
           </div>
         </div>
 
-        <textarea          
+        <div className="my-lg-2">    
+        <div className="">
+        <label className="label">
+                <span className=" fw-bold me-lg-2">Others Information</span>
+         </label>
+        <textarea
+        onChange={handleInputChange}            
           defaultValue={storedData?.others}
           name="others"
-          className="input form-control my-lg-3"
+          className="input form-control "
           id="others"
           type="text"
           maxLength={450}
-        />
-
-        <div className=" my-lg-4">
-          <div className="form-check form-check-inline">
-            <input              
-              className="form-check-input"
-              type="radio"
-              name="status"
-              id="Active"
-              value="active"
-              checked
-            />
-            <label className="form-check-label" for="Active">
-              Active
-            </label>
+          />
           </div>
-          <div className="form-check form-check-inline">
-            <input              
-              className="form-check-input"
-              type="radio"
-              name="status"
-              id="Inactive"
-              value="inactive"
-            />
-            <label className="form-check-label" for="Inactive">
-              Inactive
-            </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input              
-              className="form-check-input"
-              type="radio"
-              name="status"
-              id="Close"
-              value="close"
-            />
-            <label className="form-check-label" for="Close">
-              Close
-            </label>
-          </div>  
-        </div> 
+        </div>
 
+      
         <div className=" d-flex justify-content-between my-lg-3">
           <button className="btn btn-warning fw-bold">Cancel</button>
-          <button type="submit" name="submit" className="custom_btn">
-            Save
-          </button>
+          <button type="submit" name="submit" className="custom_btn">Save</button>
         </div>
+
       </form>
     </div>
   );

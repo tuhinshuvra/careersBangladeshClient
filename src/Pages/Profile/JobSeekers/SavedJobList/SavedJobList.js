@@ -4,8 +4,10 @@ import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
 import ConfirmatinModal from "../../../Shared/ConfirmationModal/ConfirmationModal";
+import Loader from "../../../Shared/Loader/Loader";
 
 const SavedJobList = () => {
+  const {loading, setLoading}=useContext(AuthContext);
   const [deletingSavedJob, setDeletingSavedJob] = useState(null);
   const { user } = useContext(AuthContext);
 
@@ -15,7 +17,11 @@ const SavedJobList = () => {
     setDeletingSavedJob(null);
   };
 
-  const { data = [], isLoading, refetch } = useQuery({});
+
+  if(loading){
+    <Loader></Loader>
+  }
+
 
   useEffect(() => {
     fetch(
@@ -25,26 +31,14 @@ const SavedJobList = () => {
       }
     )
       .then((res) => res.json())
-      .then((data) => setApplications(data));
-  }, [user?.email]);
-
-  // const { data: subscribers = [], isLoading, refetch } = useQuery({
-  //     queryKey: ['users'],
-  //     queryFn: async () => {
-  //         try {
-  //             const respone = await fetch(`${process.env.REACT_APP_CABD_server_address}/jobseekersavedjobs?email=${user?.email}`);
-  //             const data = respone.json();
-  //             return data;
-  //         }
-  //         catch (error) {
-  //             console.log(error)
-  //         }
-  //     }
-  // })
-
-  // console.log("applications : ", applications)
+      .then((data) => {
+        setApplications(data)},
+        setLoading(false)
+        );
+  }, [user?.email,setLoading]);
 
   const handleDelete = (jobs) => {
+    setLoading(true)
     fetch(`${process.env.REACT_APP_CABD_server_address}/savedjob/${jobs._id}`, {
       method: "DELETE",
     })
@@ -53,8 +47,8 @@ const SavedJobList = () => {
         console.log(data);
         if (data.deletedCount > 0) {
           toast.success("The saved job deleted successfully");
+          setLoading(false)
         }
-        refetch();
       });
   };
 

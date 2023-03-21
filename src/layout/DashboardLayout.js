@@ -21,13 +21,10 @@ const DashboardLayout = () => {
   const [employerData, setEmployerData] = useState([]);
   const [jobSeekersData, setJobSeekersData] = useState([]);
 
-  //   console.log("employerData :", employerData);
-  // console.log("jobSeekersData :", jobSeekersData);
-  //   const employer = useLoaderData();
-  //   console.log("Employer : ", employer);
+   
 
   if (loading) {
-    <Loader></Loader>;
+    <Loader></Loader>
   }
 
   //   employerData show
@@ -36,7 +33,7 @@ const DashboardLayout = () => {
     fetch(`${process.env.REACT_APP_CABD_server_address}/employer/${email}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log("Employee Data:", data);
+        // console.log("Employee Data:", data);
         setEmployerData(data);
         setLoading(false);
       });

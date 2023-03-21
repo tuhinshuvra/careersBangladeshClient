@@ -11,12 +11,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "react-bootstrap";
 
 const Register = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    refetch,
-  } = useForm();
+  const {register,handleSubmit,formState: { errors },refetch} = useForm();
   const { createUser, updateUser, setLoading } = useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
   const [createdUserEmail, setCreatedUserEmail] = useState("");
@@ -156,9 +151,7 @@ const Register = () => {
                               required
                             >
                               <option value="employer">Employer</option>
-                              <option value="jobseeker" selected>
-                                Job Seeker
-                              </option>
+                              <option value="jobseeker" selected>Job Seeker</option>
                             </select>
                           </div>
 

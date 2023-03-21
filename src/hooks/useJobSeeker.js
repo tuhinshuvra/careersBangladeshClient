@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const useJobSeeker = email => {
 
-  console.log("JobSeekers Email : ", email);
+  // console.log("JobSeekers Email : ", email);
   const [isJobSeeker, setIsJobSeeker] = useState(false);
   const [isJobSeekerLoading, setIsJobSeekerLoading] = useState(true);
 

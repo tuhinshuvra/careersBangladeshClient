@@ -21,15 +21,10 @@ const ApplicantList = () => {
       });
   }, [jobId]);
 
-  const handleShowApplicant = (job) => {};
-
-  const handleStatus = (job) => {
-    // console.log(user._id);
-  };
-
+  
   return (
     <div>
-      <h2 className=" text-center font-bold my-3  ">All Applicant</h2>
+      <h2 className="text-center font-bold my-3">All Applicant</h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
@@ -39,24 +34,18 @@ const ApplicantList = () => {
               <th>Applied</th>
               <th>Expected Salary</th>
               <th>Profile</th>
-              <th>Action</th>
+              {/* <th>Action</th> */}
             </tr>
           </thead>
           <tbody>
             {applicants.map((applicant, index) => (
               <tr key={applicant._id} className="">
                 <td>{index + 1}</td>
-                <td>{applicant.name}</td>
-                {/* <td>
-                                        <Link className=' text-decoration-none text-primary ' to={`/dashboard/jobs/${applicant._id}`}>
-                                        <b>{applicant.jobTitle}</b>
-                                        </Link>
-                                    </td> */}
+                <td>{applicant.name}</td>            
                 <td>{applicant.applicationDate}</td>
                 <td>{applicant.expectedSalary}</td>
                 <td>
-                  {/* <Link to="/dashboard/applicantProfile"> */}
-                  <Link to="/dashboard/jobSeekerProfile">
+                  <Link to="/dashboard/applicantProfile">
                     <button
                       className="fw-bold btn-sm btn btn-primary "
                       onClick={() => setApplicatShow(applicant.email)}
@@ -65,14 +54,14 @@ const ApplicantList = () => {
                     </button>
                   </Link>
                 </td>
-                <td>
+                {/* <td>
                   <button
                     className=" btn btn-sm  btn-outline-danger"
                     onClick={() => handleStatus(applicant)}
                   >
                     Status
                   </button>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>

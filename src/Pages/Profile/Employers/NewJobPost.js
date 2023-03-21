@@ -19,9 +19,7 @@ const NewJobPost = () => {
   const { data: categories, isLoading } = useQuery({
     queryKey: ["category"],
     queryFn: async () => {
-      const res = await fetch(
-        `${process.env.REACT_APP_CABD_server_address}/jobCategories`
-      );
+      const res = await fetch(`${process.env.REACT_APP_CABD_server_address}/jobCategories`);
       const data = await res.json();
       return data;
     },
@@ -67,8 +65,8 @@ const NewJobPost = () => {
             salaryTo: data.salary_to,
             yearlyBonus: data.yearly_bonus,
             salaryReview: data.salary_review,
-            status: data.status,
             others: data.others,
+            status: data.jobStatus,
           };
           // console.log("Job Post Data :", jobPost);
 
@@ -156,7 +154,7 @@ const NewJobPost = () => {
           >
             {categories &&
               categories.map((category, index) => (
-                <option key={index} value={category._id}>
+                <option key={index} value={category.name}>
                   {category.name}
                 </option>
               ))}
@@ -211,9 +209,9 @@ const NewJobPost = () => {
               className="form-select"
             >
               <option>Select Job Level</option>
-              <option value={0}>Entry</option>
-              <option value={1}>Mid</option>
-              <option value={2}>Top</option>
+              <option value={"Entry"}>Entry</option>
+              <option value={"Mid"}>Mid</option>
+              <option value={"Top"}>Top</option>
             </select>
           </div>
 
@@ -239,11 +237,11 @@ const NewJobPost = () => {
               className=" form-select "
             >
               <option>Employment Status</option>
-              <option value={0}>Full Time</option>
-              <option value={1}>Part Time</option>
-              <option value={2}>Contactual Time</option>
-              <option value={3}>Internship</option>
-              <option value={4}>Freelance</option>
+              <option value={"Full Time"}>Full Time</option>
+              <option value={"Part Time"}>Part Time</option>
+              <option value={"Contactual Time"}>Contactual Time</option>
+              <option value={"Internship"}>Internship</option>
+              <option value={"Freelance"}>Freelance</option>
             </select>
           </div>
 
@@ -377,9 +375,9 @@ const NewJobPost = () => {
                 className=" form-select"
               >
                 <option>Yearly Bonus</option>
-                <option value={0}>2</option>
-                <option value={1}>3</option>
-                <option value={2}>4</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
               </select>
             </div>
           </div>
@@ -397,57 +395,46 @@ const NewJobPost = () => {
           </div>
         </div>
 
-        <textarea
+        <div className="my-lg-2">       
+        
+        <div className="row">
+        <div className=" col-lg-10">
+        <label className="label">
+                <span className=" fw-bold me-lg-2 ">Others Information</span>
+         </label>
+        <textarea          
           {...register("others")}
           name="others"
-          className="input form-control my-lg-3"
+          className="input form-control "
           id="others"
           type="text"
-          placeholder="Enter Others"
           maxLength={450}
-        />
+          />
+          </div>
 
-        <div className=" my-lg-4">
-          <div className="form-check form-check-inline">
-            <input
-              {...register("status")}
-              className="form-check-input"
-              type="radio"
-              name="status"
-              id="Active"
-              value="active"
-              checked
-            />
-            <label className="form-check-label" for="Active">
-              Active
-            </label>
+          <div className=" col-lg-2  ">
+          <div className=" d-flex justify-content-end">
+            <div>
+              <label className="label">
+                <span className=" fw-bold me-lg-2 ">Job Status</span>
+              </label>
+              <select   
+               {...register("status")}             
+                name="status"
+                className="form-select"                
+                >
+                {/* <option>Select Job Status</option> */}
+                <option selected value={"Active"}>Active</option>
+                <option value={"Inactive"}>Inactive</option>
+                <option value={"Close"}>Close</option>
+              </select>
+              </div>
+            </div>
+        </div>   
           </div>
-          <div className="form-check form-check-inline">
-            <input
-              {...register("status")}
-              className="form-check-input"
-              type="radio"
-              name="status"
-              id="Inactive"
-              value="inactive"
-            />
-            <label className="form-check-label" for="Inactive">
-              Inactive
-            </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input
-              {...register("status")}
-              className="form-check-input"
-              type="radio"
-              name="status"
-              id="Close"
-              value="close"
-            />
-            <label className="form-check-label" for="Close">
-              Close
-            </label>
-          </div>
+          
+
+
         </div>
 
         <div className=" d-flex justify-content-between my-lg-3">
