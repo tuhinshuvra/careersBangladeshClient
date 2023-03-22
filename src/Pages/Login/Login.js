@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LoginLogo from "../../assets/logo/carriers-bangladesh-logo.png";
 import { FaFacebook, FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -7,16 +7,18 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../Authentication/AuthProvider";
 import useTitle from "../../hooks/useTitle";
 import "./Login.css";
+import useAdmin from "../../hooks/useAdmin";
+import useEmployer from "../../hooks/useEmployer";
+import useJobSeeker from "../../hooks/useJobSeeker";
 
 const Login = () => {
   useTitle("Login");
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
 
+  const {user}=useContext(AuthContext);
+  const { register, handleSubmit,formState: { errors },  } = useForm();
+  
   const { signIn } = useContext(AuthContext);
+
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -28,7 +30,8 @@ const Login = () => {
     signIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        toast.success("User Login Successfully.");
+        // toast.success("User Login Successfully.");
+        toast.success("User Login Successfully",{duration:1000, position:'top-left',icon:'👏'});
         navigate(from, { replace: true });
         // console.log(user);
         // setLoginUserEmail(data.email);
@@ -41,6 +44,12 @@ const Login = () => {
     // console.log(data);
   };
 
+  
+  
+
+
+  // const userType = allUser.find((user)=> user.email === loginUser.email )
+
   const handleShowPassword = () => {
     let x = document.getElementById("password");
     if (x.type === "password") {
@@ -49,6 +58,8 @@ const Login = () => {
       x.type = "password";
     }
   };
+
+
 
   return (
     <div>

@@ -1,57 +1,57 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
-import { toast } from "react-hot-toast";
 import {  FaBookmark,  FaBriefcase,  FaBuilding,  FaCalculator} from "react-icons/fa";
-import { Form, Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLoaderData, useLocation } from "react-router-dom";
 import useEmployer from "../../../hooks/useEmployer";
 import useJobSeeker from "../../../hooks/useJobSeeker";
 import { AuthContext } from "../../Authentication/AuthProvider";
+import { toast } from "react-hot-toast";
 import Loader from "../../Shared/Loader/Loader";
 import "./PostedJobDetails.css";
 
 const PostedJobDetails = () => {
-
-const { setJobId } = useContext(AuthContext);
-const {loading, setLoading}=useContext(AuthContext);
+  
+  const { setJobId } = useContext(AuthContext);
+  const {loading, setLoading}=useContext(AuthContext);
+  const fromLocation = useLocation();
 
   const jobdetails = useLoaderData();
   // const [applications, setApplications] = useState([]);
   const [expectedSalary, setExpectedSalary] = useState("0");
   const [savedJob, setSavedJob] = useState([]);
   const [appliedJob, setAppliedJob] = useState([]);
-
-if(loading){
-  <Loader></Loader>
-}
-  console.log("savedJob List",savedJob);
-
+  
+  if(loading){
+    <Loader></Loader>
+  }
+  // console.log("savedJob List",savedJob);
+  
   // console.log(applyStatus, applications);
-
+  
   // console.log("jobdetails : ", jobdetails)
   const [jobPosts, setJobPosts] = useState([]);
   const { user } = useContext(AuthContext);
-
+  
   const [isEmployer] = useEmployer(user?.email);
   const [isJobSeeker] = useJobSeeker(user?.email);
-
+  
   const userEmail = user?.email;
-
+  
   const employer = useLoaderData();
-
+  
   // console.log("Employer : ", employer)
 
-  const {
-    _id, postersName, email, jobTitle,companyLogo,organization,vacancies,  category,  deadLine,  education, experience,  postDate, applyStatus, 
-    employmentStatus, businessDescription,  jobLevel,  workPlace,  jobContext,  jobResponst,  location,  salaryFrom,  salaryTo, 
+  const {_id, postersName, email, jobTitle,companyLogo,organization,vacancies,  category,  deadLine,  education, experience,  postDate,
+     applyStatus, employmentStatus, businessDescription,  jobLevel,  workPlace,  jobContext,  jobResponst,  location,  salaryFrom,  salaryTo, 
      yearlyBonus, salaryReview,status, others } = jobdetails;
+     
+  // console.log("jobsData : ", jobPosts);
 
-  console.log("jobsData : ", jobPosts);
-
-  const applicationDate = new Date().toJSON().slice(0, 10);
+  const today = new Date().toJSON().slice(0, 10);
 
   // appply job
   const handleApply = (data) => {
     // console.log("Applied jobdetails :", jobdetails);
+    setLoading(true);
     const jobApply = {
       jobId: _id,
       email: user.email,
@@ -61,11 +61,11 @@ if(loading){
       jobTitle: jobTitle,
       organization: organization,
       category: category,
-      applicationDate: applicationDate,
+      jobPostDate: postDate,
+      applicationDate: today,
     };
     console.log("Job Apply Data :", jobApply);
     
-    setLoading(true);
     fetch(`${process.env.REACT_APP_CABD_server_address}/applications`, {
       method: "POST",
       headers: {
@@ -73,8 +73,8 @@ if(loading){
       },
       body: JSON.stringify(jobApply),
     })
-      .then((response) => response.json())
-      .then((data) => {
+    .then((response) => response.json())
+    .then((data) => {
         console.log(data);
         if (data.acknowledged) {
           toast.success("Post the application successfully");
@@ -84,11 +84,12 @@ if(loading){
           toast.error(data.message);
         }
       });
-  };
-
-  // save a job to apply future
-
-  const handleJobSave = () => {
+    };
+    
+    // save a job to apply future
+    
+    const handleJobSave = () => {
+    setLoading(true);
     console.log("Saved Job Details :", jobdetails);
     const savedJob = {
       jobId: _id,
@@ -97,29 +98,32 @@ if(loading){
       postersEmail: email,
       jobTitle: jobTitle,
       organization: organization,
-      category: category,
-      savedDate: applicationDate,      
+      category: category,      
+      jobPostDate: postDate,
+      savedDate: today,      
+      applicationDeadLine: deadLine,      
     };
-
+    
     // console.log("Saved Job Data :", savedJob);
-    setLoading(true);
-    fetch(`${process.env.REACT_APP_CABD_server_address}/savedjobs`, {
+    fetch(`${process.env.REACT_APP_CABD_server_address}/savedjobs`,
+     {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(savedJob),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        if (data.acknowledged) {
-          toast.success("The Job Saved Successfully");
-          setLoading(false);
-        }         
-      });
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      if (data.acknowledged) {
+        // toast.success("The Job Saved Successfully");
+        toast.success("The saved job deleted successfully",{duration:1000, position:'top-left'});
+        setLoading(false);
+      }         
+    });
   };
-
+  
   const getExpectedSalary = (event) => {
     const expSalary = event.target.value;
     setExpectedSalary(expSalary);
@@ -135,12 +139,12 @@ if(loading){
       setSavedJob(data);
     })
   },[userEmail])
-
+  
   const isSaved= savedJob.find(data=>data.jobId===_id);
   // console.log("isSaved : ",isSaved);
-
-
-
+  
+  
+  
   //###################### show all Applied job by user email ##################################
   useEffect(()=>{
     fetch(`${process.env.REACT_APP_CABD_server_address}/jobseekerapply?email=${userEmail}`)
@@ -150,14 +154,19 @@ if(loading){
       setAppliedJob(data);
     })
   },[userEmail])
-
+  
   const isApplied= appliedJob.find(data=>data.jobId===_id);
   // console.log("isApplied : ",isApplied);
-
-
+  
+  // const handleApplyState=()=>{
+  //   console.log("I amd handleApplyState");
+  //   <Navigate to="/login" state={{ from: fromLocation }} replace></Navigate>
+  // }
+  
+  
   return (
     <div>
-      <div className="card">
+      <div className="card jobDetails">
         <div>
         {/* <Link className="fw-bold btn-sm btn btn-primary mx-1" to={`/dashboard/jobUpdate/${_id}`}>Update Job</Link> */}
 
@@ -314,10 +323,13 @@ if(loading){
             careersbangladesh.com Online Job Posting.
           </p>
 
-          <div className=" text-center">
-            <Link className="fw-bold custom_btn text-decoration-none" to={`/dashboard/jobUpdate/${_id}`}>Update Job</Link>
-          <Link className="fw-bold custom_btn text-decoration-none" to={`/dashboard/applicantList`} onClick={() => setJobId(_id)}> ApplicatList</Link>
-            </div>
+          {
+           isEmployer && 
+           <div className=" text-center">
+             <Link className="fw-bold custom_btn text-decoration-none" to={`/dashboard/jobUpdate/${_id}`}>Update Job</Link>
+             <Link className="fw-bold custom_btn text-decoration-none" to={`/dashboard/applicantList`} onClick={() => setJobId(_id)}> ApplicatList</Link>
+           </div>          
+          }
 
           { isApplied ? 
           
@@ -340,6 +352,22 @@ if(loading){
           )}          
           
           </> }
+
+          { 
+          
+          (isJobSeeker || isEmployer) ? 
+            <>
+            </> 
+          :
+            <>
+            <div className=" text-center">
+              <Link to="/login" className=" btn custom_btn text-decoration-none">
+                Apply Now
+              </Link>
+            </div>
+            </>
+          }
+ 
 
 
           <div
@@ -409,6 +437,8 @@ if(loading){
           </div>
         </div>
       </div>
+
+     
     </div>
   );
 };

@@ -53,6 +53,7 @@ import EmployersProfile from "../../Profile/Employers/EmployerProfile";
 import DisplayError from "../../Shared/ErrorDisplay/DisplayError";
 import UpdatePostedJob from "../../Profile/Employers/UpdatePostedJob";
 import ApplicantProfile from "../../Profile/Employers/ApplicantProfile";
+import NonUserRoute from "./NonUserRoute";
 
 
 const router = createBrowserRouter([
@@ -108,6 +109,13 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
+        // path: "/dashboard/jobs/:id",
+        path: "/jobDetails/:jobId",
+        // element:<NonUserRoute><PostedJobDetails></PostedJobDetails></NonUserRoute>,
+        element:<PostedJobDetails></PostedJobDetails>,
+        loader: async ({ params }) => await fetch(`${process.env.REACT_APP_CABD_server_address}/jobs/${params.jobId}`)},
+
+      {
         path: "/termsAndConditions",
         element: <TermsAndConditions></TermsAndConditions>,
       },
@@ -124,7 +132,7 @@ const router = createBrowserRouter([
       // ##################################### jobSeeker Profile Entry Start ##############################################
       {
         path: "/dashboard/jobSeekerProfileEntry",
-        element: <JobSeekerRoute>  <JobSeekersProfileEntry></JobSeekersProfileEntry></JobSeekerRoute> ,
+        element: <JobSeekerRoute>  <JobSeekersProfileEntry></JobSeekersProfileEntry></JobSeekerRoute>
       },
 
       {
@@ -189,13 +197,8 @@ const router = createBrowserRouter([
 
       {
         path: "/dashboard/jobSeekerCareersAndSkill",
-        element: (
-          <JobSeekerRoute><JobSeekersCareerAndSkillManage></JobSeekersCareerAndSkillManage></JobSeekerRoute>
-        ),
-       loader: async ({ params }) => await
-          fetch(
-            `${process.env.REACT_APP_CABD_server_address}/jobSeekersCareers/${params.email}`
-          ),
+        element: <JobSeekerRoute><JobSeekersCareerAndSkillManage></JobSeekersCareerAndSkillManage></JobSeekerRoute>,
+        loader: async ({ params }) => await fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersCareers/${params.email}`),
       },
 
       {
@@ -260,12 +263,7 @@ const router = createBrowserRouter([
         element: <NewJobPost></NewJobPost>,
       },
 
-      {
-        path: "/dashboard/jobs/:id",
-        element: <PostedJobDetails></PostedJobDetails>,
-        loader: async ({ params }) => await
-          fetch(`${process.env.REACT_APP_CABD_server_address}/jobs/${params.id}`),
-      },
+    
 
       {
         path: "/dashboard/postedJobList",

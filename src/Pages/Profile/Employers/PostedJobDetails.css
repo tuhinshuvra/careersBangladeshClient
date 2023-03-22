@@ -2,3 +2,17 @@
     width: 60px;
 }
  
+
+
+@media (min-width: 1200px) {
+    
+    .jobDetails{
+        margin: 10px 190px;
+    }
+  }
+  
+  @media (min-width: 1024px) and (max-width: 1439px) {
+
+
+  }
+ 

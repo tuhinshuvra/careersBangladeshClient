@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import JobCategoryDisplay from "./JobCategoryDisplay";
 import { FaCompass, FaCompressArrowsAlt, FaHotjar } from "react-icons/fa";
-import "./JobCategory.css";
 import { AuthContext } from "../Authentication/AuthProvider";
 import Loader from "../Shared/Loader/Loader";
+import "./JobCategory.css";
 
 const JobCategory = () => {
   

@@ -134,7 +134,6 @@ const DashboardLayout = () => {
                     New Job Post
                   </Link>
                 </li>
-                {/* <li className='list-group-item my-1'><Link className=' nav_btn' to='/dashboard/postedJobDetails'>Posted Job Details</Link></li> */}
                 <li className="list-group-item my-1">
                   <Link className=" nav_btn" to="/dashboard/postedJobList">
                     Posted Job List
@@ -145,7 +144,6 @@ const DashboardLayout = () => {
 
             {isJobSeeker && (
               <>
-                {/* {jobSeekersData.empAggreAcademics === 0 && ( */}
                 {jobSeekersData === undefined && (
                   <>
                     <li className="list-group-item">

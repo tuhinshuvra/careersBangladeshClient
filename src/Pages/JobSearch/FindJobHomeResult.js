@@ -242,7 +242,7 @@ const FindJobHomeResult = ({ jobList }) => {
                             <td className="fw-bold">
                               <Link
                                 className=" text-decoration-none text-primary "
-                                to={`/dashboard/jobs/${job._id}`}
+                                to={`/jobDetails/${job._id}`}
                               >
                                 {job.jobTitle}
                               </Link>

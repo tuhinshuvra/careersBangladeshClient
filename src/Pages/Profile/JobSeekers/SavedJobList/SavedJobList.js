@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { icon } from "@fortawesome/fontawesome-svg-core";
 import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
@@ -7,11 +7,13 @@ import ConfirmatinModal from "../../../Shared/ConfirmationModal/ConfirmationModa
 import Loader from "../../../Shared/Loader/Loader";
 
 const SavedJobList = () => {
+  const { user } = useContext(AuthContext);
   const {loading, setLoading}=useContext(AuthContext);
   const [deletingSavedJob, setDeletingSavedJob] = useState(null);
-  const { user } = useContext(AuthContext);
+  
+  const [savedJobs, setSavedJobs] = useState([]);
+  // const [displaySavedJobs, setDisplaySavedJob]=useState(savedJobs);
 
-  const [applications, setApplications] = useState([]);
 
   const closeModal = () => {
     setDeletingSavedJob(null);
@@ -32,7 +34,7 @@ const SavedJobList = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        setApplications(data)},
+        setSavedJobs(data)},
         setLoading(false)
         );
   }, [user?.email,setLoading]);
@@ -46,7 +48,10 @@ const SavedJobList = () => {
       .then((data) => {
         console.log(data);
         if (data.deletedCount > 0) {
-          toast.success("The saved job deleted successfully");
+          const remainingSavedJobs= savedJobs.filter(sj=>sj.jobId !== jobs._id)
+          setSavedJobs(remainingSavedJobs);
+          toast.success("The saved job deleted successfully",{duration:1000, position:'top-left'});
+          
           setLoading(false)
         }
       });
@@ -56,30 +61,27 @@ const SavedJobList = () => {
     <div>
       <h2 className=" text-center font-bold my-3">Saved Job List</h2>
       <div className="overflow-x-auto">
-        {/* <table className="table w-full"> */}
         <table className="table table-striped table-hover">
           <thead>
             <tr className="">
               <th>SL</th>
               <th>Position</th>
               <th>Institution</th>
-              {/* <th>Organizaiton Type</th> */}
               <th>Saved Date</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {applications.map((app, index) => (
+            {savedJobs.map((app, index) => (
               <tr key={app._id}>
                 <td>{index + 1}</td>
                 <td>{app.jobTitle}</td>
                 <td>{app.organization}</td>
-                {/* <td>{app.orgType}</td> */}
                 <td>{app.savedDate}</td>
                 <td className=" fw-bold">
                   <Link
                     className=" text-decoration-none"
-                    to={`/dashboard/jobs/${app.jobId}`}
+                    to={`/jobDetails/${app.jobId}`}
                   >
                     Details
                   </Link>

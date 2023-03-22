@@ -18,6 +18,20 @@ const Navbar = () => {
   const [employerData, setEmployerData] = useState([]);
   const [jobSeekersData, setJobSeekersData] = useState([]);
 
+
+  // if(isAdmin){
+  //   toast.success('Admin user successfully logged in');
+  // }
+  // if(isEmployer){
+  //     toast.success('Employer user successfully logged in');
+  // }
+  // if(isJobSeeker){
+  //     toast.success('Jobseeker user successfully logged in');
+  // }
+
+
+
+
   const navigate = useNavigate();
 
   // Employer data show

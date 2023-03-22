@@ -9,7 +9,7 @@ const NewJobsDisplay = ({ job }) => {
     <div>
       <div className="card animate_top ">
         <Link
-          to={`/dashboard/jobs/${_id}`}
+          to={`/jobDetails/${_id}`}
           className=" fw-bold text-decoration-none  category_link"
         >
           <div className=" d-flex">
@@ -17,7 +17,6 @@ const NewJobsDisplay = ({ job }) => {
 
             <div className="card-body">
               <p>{organization} </p>
-              {/* to={`/dashboard/jobs/${job._id}`} */}
               <p>&#10148;{jobTitle} </p>
             </div>
           </div>
