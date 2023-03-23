@@ -12,11 +12,7 @@ const FindAllJob = () => {
   const searchRef = useRef();
   const [showJobs, setShowJobs] = useState([]);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const {    register,    handleSubmit,    formState: { errors },  } = useForm();
   //pagnation work code
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
@@ -197,9 +193,7 @@ const FindAllJob = () => {
 
               {/* <div className="col-md-9 mt-md-0 mt-5"> */}
               <div className=" mt-md-0 mt-5 mx-auto">
-                <h2>
-                  <FaFile></FaFile> Result
-                </h2>
+                <h2 className=" text-center fw-bold"> Find the Job Yor Want </h2>
                 <hr />
 
                 <div className="input-group">
@@ -224,11 +218,11 @@ const FindAllJob = () => {
                   </span>
                 </div>
 
-                <p className=" fw-bold">Showing search result</p>
+                <h4 className=" text-center fw-bold my-3">Showing Search Results</h4>
 
                 <div className="padding"></div>
 
-                <div className="row">
+                {/* <div className="row">
                   <div className="col-9">
                     <select className="form-select">
                       <option>Order By</option>
@@ -254,10 +248,10 @@ const FindAllJob = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="table-responsive">
-                  <table className="table table-hover">
+                  <table className="table table-hover table-secondary table-striped-columns">
                     <thead>
                       <tr>
                         <th>SL</th>
@@ -298,15 +292,11 @@ const FindAllJob = () => {
                     <ul className="pagination">
                       {page === 0 ? (
                         <li className="page-item disabled">
-                          <button>
-                            <span className="page-link">Previous</span>
-                          </button>
+                          <button className=" btn btn-success btn-sm">Previous</button>
                         </li>
                       ) : (
                         <li className="page-item ">
-                          <button onClick={() => setPage(page - 1)}>
-                            <span className="page-link">Previous</span>
-                          </button>
+                          <button onClick={() => setPage(page - 1)} className="btn btn-success btn-sm">Previous</button>
                         </li>
                       )}
                       {[...Array(pageCount)?.keys()]?.map((number) => (
@@ -315,18 +305,14 @@ const FindAllJob = () => {
                           aria-current="page"
                           key={number}
                         >
-                          <button onClick={() => setPage(number)}>
-                            <span className="page-link">
-                              {parseInt(number + 1)}
-                            </span>
+                          <button onClick={() => setPage(number)}className="btn btn-outline-secondary btn-sm mx-4 fw-bold">                            
+                              {parseInt(number + 1)}                            
                           </button>
                         </li>
                       ))}
 
                       <li className="page-item">
-                        <button onClick={() => setPage(page + 1)}>
-                          <span className="page-link">Next</span>
-                        </button>
+                        <button onClick={() => setPage(page + 1)}className="btn btn-success btn-sm">Next</button>
                       </li>
                     </ul>
                   </nav>

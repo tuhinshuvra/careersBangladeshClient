@@ -32,7 +32,7 @@ const UserList = () => {
   });
 
   const handleMakeAdmin = (email) => {
-    fetch(`${process.env.REACT_APP_CABD_server_address}/users/admin/${email}`, {
+    fetch(`${process.env.REACT_APP_CABD_server_address}/makeAdminUser/${email}`, {
       method: "PUT",
       headers: {},
     })

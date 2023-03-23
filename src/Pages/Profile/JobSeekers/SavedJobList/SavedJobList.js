@@ -61,9 +61,10 @@ const SavedJobList = () => {
     <div>
       <h2 className=" text-center font-bold my-3">Saved Job List</h2>
       <div className="overflow-x-auto">
-        <table className="table table-striped table-hover">
+        {/* <table className="table table-striped table-hover"> */}
+        <table className="table table-hover table-secondary table-striped-columns">
           <thead>
-            <tr className="">
+            <tr className=" text-center">
               <th>SL</th>
               <th>Position</th>
               <th>Institution</th>
@@ -74,11 +75,11 @@ const SavedJobList = () => {
           <tbody>
             {savedJobs.map((app, index) => (
               <tr key={app._id}>
-                <td>{index + 1}</td>
+                <td className=" text-center">{index + 1}</td>
                 <td>{app.jobTitle}</td>
                 <td>{app.organization}</td>
-                <td>{app.savedDate}</td>
-                <td className=" fw-bold">
+                <td className=" text-center">{app.savedDate}</td>
+                <td className=" fw-bold text-center">
                   <Link
                     className=" text-decoration-none"
                     to={`/jobDetails/${app.jobId}`}
@@ -89,7 +90,7 @@ const SavedJobList = () => {
                     onClick={() => setDeletingSavedJob(app)}
                     data-bs-toggle="modal"
                     data-bs-target="#confirmationModal"
-                    className=" btn btn-sm  btn-outline-danger ms-1"
+                    className=" btn btn-sm  btn-outline-danger ms-3"
                   >
                     Delete
                   </button>

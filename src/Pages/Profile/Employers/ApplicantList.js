@@ -26,7 +26,8 @@ const ApplicantList = () => {
     <div>
       <h2 className="text-center font-bold my-3">All Applicant</h2>
       <div className="overflow-x-auto">
-        <table className="table w-full">
+        {/* <table className="table w-full"> */}
+        <table className="table table-hover table-secondary table-striped-columns">
           <thead>
             <tr className="">
               <th>SL</th>

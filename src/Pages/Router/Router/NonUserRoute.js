@@ -24,12 +24,16 @@ const NonUserRoute = ({children}) => {
     return children;
   }
   
-  // if(!isJobSeeker){
-    return children;
+  else{
+    return {
+      children
+      //  <Navigate to="/login" state={{ from: location }} replace></Navigate>
+    }
+
+  }
   // }
 
 
-  // return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
   
 };
 

@@ -24,9 +24,10 @@ const AppliedJobList = () => {
     <div>
       <h2 className=" text-center font-bold my-3 ">Applied Job List</h2>
       <div className="overflow-x-auto">
-        <table className="table table-striped table-hover">
+        {/* <table className="table table-striped table-hover"> */}
+        <table className="table table-hover table-secondary table-striped-columns">
           <thead>
-            <tr className="">
+            <tr className="text-center">
               <th>SL</th>
               <th>Position</th>
               <th>Organizaiton</th>
@@ -37,11 +38,11 @@ const AppliedJobList = () => {
           <tbody>
             {applications.map((app, index) => (
               <tr>
-                <td>{index + 1}</td>
+                <td className=" text-center">{index + 1}</td>
                 <td>{app.jobTitle}</td>
                 <td>{app.organization}</td>
-                <td>{app.applicationDate}</td>
-                <td className=" fw-bold">
+                <td className=" text-center">{app.applicationDate}</td>
+                <td className=" fw-bold text-center">
                   <Link
                     className=" text-decoration-none"
                     to={`/jobDetails/${app.jobId}`}

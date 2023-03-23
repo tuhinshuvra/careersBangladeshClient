@@ -1,29 +1,15 @@
 import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import {
-  FaFile,
-  FaFilter,
-  FaList,
-  FaSearch,
-  FaStar,
-  FaTh,
-} from "react-icons/fa";
-import "./FindJob.css";
+import {  FaFile,  FaFilter,  FaList,  FaSearch,  FaStar,  FaTh,} from "react-icons/fa";
 import useTitle from "../../hooks/useTitle";
-import { useQuery } from "@tanstack/react-query";
-import { toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../Authentication/AuthProvider";
+import "./FindJob.css";
 
 const FindJobsByCategory = () => {
-  useTitle("FindJob");
+  useTitle("Category Job");
 
   const jobs = useLoaderData();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const {    register,    handleSubmit,    formState: { errors },  } = useForm();
 
   const findJobsNo = jobs.length;
 
@@ -140,12 +126,9 @@ const FindJobsByCategory = () => {
 
               {/* <div className="col-md-9 mt-md-0 mt-5"> */}
               <div className="mt-md-0 mt-5 ">
-                <h2>
-                  <FaFile></FaFile> Result
-                </h2>
-                <hr />
+               
 
-                <div className="input-group">
+                {/* <div className="input-group">
                   <input
                     type="text"
                     className="form-control"
@@ -157,13 +140,13 @@ const FindJobsByCategory = () => {
                       Search
                     </button>
                   </span>
-                </div>
-
-                <p className=" fw-bold">Showing search result</p>
+                </div> */}
+                
+                { findJobsNo > 0 ? <> <h2 className=" text-center fw-bold">All Job in this Category</h2>  </>:<></>  }
 
                 <div className="padding"></div>
 
-                <div className="row">
+                {/* <div className="row">
                   <div className="col-9">
                     <select className="form-select">
                       <option>Order By</option>
@@ -189,10 +172,10 @@ const FindJobsByCategory = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="table-responsive">
-                  <table className="table table-hover">
+                <table className="table table-hover table-secondary table-striped-columns">
                     {findJobsNo > 0 ? (
                       <>
                         <thead>
@@ -254,7 +237,7 @@ const FindJobsByCategory = () => {
                       </>
                     )}
 
-                    <div className=" d-flex justify-content-center">
+                    {/* <div className=" d-flex justify-content-center">
                       <nav aria-label="..." className=" ">
                         <ul className="pagination">
                           <li className="page-item disabled">
@@ -295,7 +278,7 @@ const FindJobsByCategory = () => {
                           </li>
                         </ul>
                       </nav>
-                    </div>
+                    </div> */}
                   </>
                 ) : (
                   <></>

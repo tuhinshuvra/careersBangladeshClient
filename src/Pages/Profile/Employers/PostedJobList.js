@@ -31,22 +31,23 @@ const PostedJobList = () => {
     <div>
       <h2 className=" text-center font-bold my-3">Posted Job List</h2>
       <div className="overflow-x-auto">
-        <table className="table w-full">
+        {/* <table className="table w-full"> */}
+        <table className="table table-hover table-secondary table-striped-columns">
           <thead>
-            <tr className="">
+            <tr className=" text-center">
               <th>SL</th>
               <th>Title</th>
               <th>Organization</th>
               <th>Posted</th>
               <th>Deadline</th>
               <th>All Applicant</th>
-              {/* <th>Action</th> */}
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {jobs.map((job, index) => (
               <tr key={job._id} className="">
-                <td>{index + 1}</td>
+                <td className=" text-center">{index + 1}</td>
                 <td>
                   <Link
                     className=" text-decoration-none text-primary "

@@ -13,33 +13,22 @@ const FindJobHomeResult = ({ jobList }) => {
   const [search, setSearch] = useState("");
   const [showJobs, setShowJobs] = useState([]);
   const searchRef = useRef();
-  const {
-    searchData,
-    searchOrganizationData,
-    searchLocationtionData,
-    setSearchData,
-    setSearchLocationtionData,
-    setSearchOrganizationData,
-  } = useContext(AuthContext);
+  const {searchData, searchOrganizationData, searchLocationtionData,setSearchData,setSearchLocationtionData,setSearchOrganizationData} = useContext(AuthContext);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const {    register,    handleSubmit,    formState: { errors },  } = useForm();
 
-  useEffect(() => {
-    fetch(
-      `${process.env.REACT_APP_CABD_server_address}/jobSearch/${searchData.jobTitle}/${searchLocationtionData.location}/${searchOrganizationData.orgaType}`
-    )
+  const foundJobs= showJobs.length;
+  console.log("FindJobHomeResult foundJobs :",foundJobs);
+
+  useEffect(() => {fetch(`${process.env.REACT_APP_CABD_server_address}/homeJobSearch/${searchData.jobTitle}/${searchLocationtionData.location}/${searchOrganizationData.orgaType}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(" Home Job Search Result :", data);
+        // console.log(" Home Job Search Result :", data);
         setShowJobs(data);
-         setSearchData("");
+        setSearchData("");
         setSearchLocationtionData("");
-         setSearchOrganizationData("");
-        console.log(" Home Job Search Result22 :", data);
+        setSearchOrganizationData("");
+        // console.log(" Home Job Search Result22 :", data);
       });
   }, []);
 
@@ -189,9 +178,9 @@ const FindJobHomeResult = ({ jobList }) => {
                                     </span>
                                 </div> */}
 
-                <p className=" fs-4 fw-bold">
-                  Showing Job Search Result of word {searchData}
-                </p>
+                <h2 className=" fs-4 fw-bold text-center">
+                  {foundJobs ? <> Showing Job Search Result</> : <></> }
+                </h2>
 
                 <div className="padding"></div>
 
@@ -218,8 +207,14 @@ const FindJobHomeResult = ({ jobList }) => {
                                     </div>
                                 </div> */}
 
-                <div className="table-responsive">
-                  <table className="table table-hover">
+
+{/*#####################33 job search result table #############################*/}
+
+{
+foundJobs ? 
+<>
+<div className="table-responsive">
+                  <table className="table table-hover table-secondary table-striped-columns">
                     <thead>
                       <tr>
                         <th>SL</th>
@@ -259,6 +254,76 @@ const FindJobHomeResult = ({ jobList }) => {
                     </tbody>
                   </table>
                 </div>
+</>
+:
+<>
+<h3 className=" text-center fw-bold">No job is found, please fill at least one search field</h3>
+</>}
+
+               
+
+                {foundJobs > 0 ? (
+                  <>
+                    {foundJobs > 1 ? (
+                      <>
+                        <p className=" fs-5 text-success   text-center fw-bold">
+                          {foundJobs} jobs found in this category
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <p className=" fs-5 text-success   text-center fw-bold">
+                          {foundJobs} job found in this category
+                        </p>
+                      </>
+                    )}
+
+                    {/* <div className=" d-flex justify-content-center">
+                      <nav aria-label="..." className=" ">
+                        <ul className="pagination">
+                          <li className="page-item disabled">
+                            <span className="page-link">Previous</span>
+                          </li>
+                          <li className="page-item active" aria-current="page">
+                            <span className="page-link">1</span>
+                          </li>
+                          <li className="page-item">
+                            <Link className="page-link" to="#">
+                              2
+                            </Link>
+                          </li>
+                          <li className="page-item">
+                            <Link className="page-link" to="#">
+                              3
+                            </Link>
+                          </li>
+                          <li className="page-item">
+                            <Link className="page-link" to="#">
+                              4
+                            </Link>
+                          </li>
+                          <li className="page-item">
+                            <Link className="page-link" to="#">
+                              5
+                            </Link>
+                          </li>
+                          <li className="page-item">
+                            <Link className="page-link" to="#">
+                              6
+                            </Link>
+                          </li>
+                          <li className="page-item">
+                            <Link className="page-link" to="#">
+                              Next
+                            </Link>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div> */}
+                  </>
+                ) : (
+                  <></>
+                )}
 
                 {/* <div className=' d-flex justify-content-center'>
                                     <nav aria-label="..." className=' '>

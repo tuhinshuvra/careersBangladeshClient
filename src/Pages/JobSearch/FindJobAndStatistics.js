@@ -83,8 +83,8 @@ const FindJobAndStatistics = () => {
             onChange={getSearchKeyword}
             name="jobTitle"
             type="text"
-            id="jobTitle"
-            placeholder="Search with keyword"
+            id="jobTitle"            
+            placeholder="Search with keyword"            
             className=" form-control w-75  w-md-25  mx-auto"
           />
 
@@ -110,7 +110,7 @@ const FindJobAndStatistics = () => {
             type="text"
             id="location"
             placeholder="Location"
-            className="form-control  w-75 w-md-25 mx-auto "
+            className="form-control  w-75 w-md-25 mx-auto"
           />
 
           <Link

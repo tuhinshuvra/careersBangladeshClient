@@ -7,10 +7,7 @@ const JobCategoryDisplay = ({ category }) => {
 
   return (
     <div className="card animate_top">
-      <Link
-        to={`/jobs/${_id}`}
-        className=" fw-bold text-decoration-none  category_link"
-      >
+      <Link  to={`/jobs/${_id}`}  className=" fw-bold text-decoration-none  category_link" > 
         <div className="card-body cateNameText"> &#10148; {name} </div>
       </Link>
     </div>

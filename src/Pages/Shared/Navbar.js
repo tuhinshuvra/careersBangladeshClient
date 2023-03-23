@@ -19,19 +19,6 @@ const Navbar = () => {
   const [jobSeekersData, setJobSeekersData] = useState([]);
 
 
-  // if(isAdmin){
-  //   toast.success('Admin user successfully logged in');
-  // }
-  // if(isEmployer){
-  //     toast.success('Employer user successfully logged in');
-  // }
-  // if(isJobSeeker){
-  //     toast.success('Jobseeker user successfully logged in');
-  // }
-
-
-
-
   const navigate = useNavigate();
 
   // Employer data show
@@ -58,7 +45,7 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        toast("User logout successfully!");
+        toast("User logout successfully!",{position:'top-right',});
         navigate("/");
       })
       .catch((error) => {
@@ -111,7 +98,7 @@ const Navbar = () => {
                 >
                   AboutUs
                 </Link>
-              </li>
+              </li>            
 
               {user?.uid ? (
                 <>
