@@ -13,14 +13,15 @@ const FindJobHomeResult = ({ jobList }) => {
   const [search, setSearch] = useState("");
   const [showJobs, setShowJobs] = useState([]);
   const searchRef = useRef();
-  const {searchData, searchOrganizationData, searchLocationtionData,setSearchData,setSearchLocationtionData,setSearchOrganizationData} = useContext(AuthContext);
+  const { searchData, searchOrganizationData, searchLocationtionData, setSearchData, setSearchLocationtionData, setSearchOrganizationData } = useContext(AuthContext);
 
-  const {    register,    handleSubmit,    formState: { errors },  } = useForm();
+  const { register, handleSubmit, formState: { errors }, } = useForm();
 
-  const foundJobs= showJobs.length;
-  console.log("FindJobHomeResult foundJobs :",foundJobs);
+  const foundJobs = showJobs.length;
+  console.log("FindJobHomeResult foundJobs :", foundJobs);
 
-  useEffect(() => {fetch(`${process.env.REACT_APP_CABD_server_address}/homeJobSearch/${searchData.jobTitle}/${searchLocationtionData.location}/${searchOrganizationData.orgaType}`)
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_CABD_server_address}/homeJobSearch/${searchData.jobTitle}/${searchLocationtionData.location}/${searchOrganizationData.orgaType}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log(" Home Job Search Result :", data);
@@ -179,7 +180,7 @@ const FindJobHomeResult = ({ jobList }) => {
                                 </div> */}
 
                 <h2 className=" fs-4 fw-bold text-center">
-                  {foundJobs ? <> Showing Job Search Result</> : <></> }
+                  {foundJobs ? <> Showing Job Search Result</> : <></>}
                 </h2>
 
                 <div className="padding"></div>
@@ -208,59 +209,59 @@ const FindJobHomeResult = ({ jobList }) => {
                                 </div> */}
 
 
-{/*#####################33 job search result table #############################*/}
+                {/*#####################33 job search result table #############################*/}
 
-{
-foundJobs ? 
-<>
-<div className="table-responsive">
-                  <table className="table table-hover table-secondary table-striped-columns">
-                    <thead>
-                      <tr>
-                        <th>SL</th>
-                        <th>Job Title</th>
-                        <th>Institution</th>
-                        <th>Organization Type</th>
-                        <th>Work Place</th>
-                        <th>Posted</th>
-                        <th>DeadLine</th>
-                        <th>Salary</th>
-                      </tr>
-                    </thead>
+                {
+                  foundJobs ?
+                    <>
+                      <div className="table-responsive">
+                        <table className="table table-hover  table-bordered">
+                          <thead>
+                            <tr className="table-secondary text-center">
+                              <th>SL</th>
+                              <th>Job Title</th>
+                              <th>Institution</th>
+                              <th>Organization Type</th>
+                              <th>Work Place</th>
+                              <th>Posted</th>
+                              <th>DeadLine</th>
+                              <th>Salary</th>
+                            </tr>
+                          </thead>
 
-                    <tbody>
-                      {
-                        // jobs.map((job, index) =>
-                        showJobs.map((job, index) => (
-                          <tr key={job._id} className="">
-                            <td>{index + 1}</td>
-                            <td className="fw-bold">
-                              <Link
-                                className=" text-decoration-none text-primary "
-                                to={`/jobDetails/${job._id}`}
-                              >
-                                {job.jobTitle}
-                              </Link>
-                            </td>
-                            <td>{job.organization}</td>
-                            <td>{job.orgaType}</td>
-                            <td>{job.location}</td>
-                            <td>{job.postDate}</td>
-                            <td>{job.deadLine}</td>
-                            <td>৳{job.salaryTo}</td>
-                          </tr>
-                        ))
-                      }
-                    </tbody>
-                  </table>
-                </div>
-</>
-:
-<>
-<h3 className=" text-center fw-bold">No job is found, please fill at least one search field</h3>
-</>}
+                          <tbody>
+                            {
+                              // jobs.map((job, index) =>
+                              showJobs.map((job, index) => (
+                                <tr key={job._id} className="">
+                                  <td>{index + 1}</td>
+                                  <td className="fw-bold">
+                                    <Link
+                                      className=" text-decoration-none text-primary "
+                                      to={`/jobDetails/${job._id}`}
+                                    >
+                                      {job.jobTitle}
+                                    </Link>
+                                  </td>
+                                  <td>{job.organization}</td>
+                                  <td>{job.orgaType}</td>
+                                  <td>{job.location}</td>
+                                  <td>{job.postDate}</td>
+                                  <td>{job.deadLine}</td>
+                                  <td>৳{job.salaryTo}</td>
+                                </tr>
+                              ))
+                            }
+                          </tbody>
+                        </table>
+                      </div>
+                    </>
+                    :
+                    <>
+                      <h3 className=" text-center fw-bold">No job is found, please fill at least one search field</h3>
+                    </>}
 
-               
+
 
                 {foundJobs > 0 ? (
                   <>

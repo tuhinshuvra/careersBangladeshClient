@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import {  FaFile,  FaFilter,  FaList,  FaSearch,  FaStar,  FaTh,} from "react-icons/fa";
+import { FaFile, FaFilter, FaList, FaSearch, FaStar, FaTh, } from "react-icons/fa";
 import useTitle from "../../hooks/useTitle";
 import { useForm } from "react-hook-form";
 import "./FindJob.css";
@@ -9,7 +9,7 @@ const FindJobsByCategory = () => {
   useTitle("Category Job");
 
   const jobs = useLoaderData();
-  const {    register,    handleSubmit,    formState: { errors },  } = useForm();
+  const { register, handleSubmit, formState: { errors }, } = useForm();
 
   const findJobsNo = jobs.length;
 
@@ -126,7 +126,7 @@ const FindJobsByCategory = () => {
 
               {/* <div className="col-md-9 mt-md-0 mt-5"> */}
               <div className="mt-md-0 mt-5 ">
-               
+
 
                 {/* <div className="input-group">
                   <input
@@ -141,8 +141,8 @@ const FindJobsByCategory = () => {
                     </button>
                   </span>
                 </div> */}
-                
-                { findJobsNo > 0 ? <> <h2 className=" text-center fw-bold">All Job in this Category</h2>  </>:<></>  }
+
+                {findJobsNo > 0 ? <> <h2 className=" text-center fw-bold">All Job in this Category</h2>  </> : <></>}
 
                 <div className="padding"></div>
 
@@ -175,11 +175,11 @@ const FindJobsByCategory = () => {
                 </div> */}
 
                 <div className="table-responsive">
-                <table className="table table-hover table-secondary table-striped-columns">
+                  <table className="table table-hover  table-bordered">
                     {findJobsNo > 0 ? (
                       <>
                         <thead>
-                          <tr>
+                          <tr className="table-secondary text-center">
                             <th>SL</th>
                             <th>Title</th>
                             <th>Organization</th>
@@ -193,7 +193,7 @@ const FindJobsByCategory = () => {
                         <tbody>
                           {jobs.map((job, index) => (
                             <tr key={job._id} className="">
-                              <td>{index + 1}</td>
+                              <td className=" text-center">{index + 1}</td>
                               <td className="fw-bold">
                                 <Link
                                   className=" text-decoration-none text-primary "
@@ -204,9 +204,9 @@ const FindJobsByCategory = () => {
                               </td>
                               <td>{job.organization}</td>
                               <td>{job.location}</td>
-                              <td>{job.postDate}</td>
-                              <td>{job.deadLine}</td>
-                              <td>৳{job.salaryTo}</td>
+                              <td className=" text-center">{job.postDate}</td>
+                              <td className=" text-center">{job.deadLine}</td>
+                              <td className=" text-center">৳{job.salaryTo}</td>
                             </tr>
                           ))}
                         </tbody>

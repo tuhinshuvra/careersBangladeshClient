@@ -21,15 +21,15 @@ const ApplicantList = () => {
       });
   }, [jobId]);
 
-  
+
   return (
     <div>
       <h2 className="text-center font-bold my-3">All Applicant</h2>
       <div className="overflow-x-auto">
         {/* <table className="table w-full"> */}
-        <table className="table table-hover table-secondary table-striped-columns">
+        <table className="table table-hover table-bordered">
           <thead>
-            <tr className="">
+            <tr className="table-secondary">
               <th>SL</th>
               <th>Name</th>
               <th>Applied</th>
@@ -42,7 +42,7 @@ const ApplicantList = () => {
             {applicants.map((applicant, index) => (
               <tr key={applicant._id} className="">
                 <td>{index + 1}</td>
-                <td>{applicant.name}</td>            
+                <td>{applicant.name}</td>
                 <td>{applicant.applicationDate}</td>
                 <td>{applicant.expectedSalary}</td>
                 <td>

@@ -12,7 +12,7 @@ const FindAllJob = () => {
   const searchRef = useRef();
   const [showJobs, setShowJobs] = useState([]);
 
-  const {    register,    handleSubmit,    formState: { errors },  } = useForm();
+  const { register, handleSubmit, formState: { errors }, } = useForm();
   //pagnation work code
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
@@ -251,9 +251,9 @@ const FindAllJob = () => {
                 </div> */}
 
                 <div className="table-responsive">
-                  <table className="table table-hover table-secondary table-striped-columns">
+                  <table className="table table-hover  table-bordered">
                     <thead>
-                      <tr>
+                      <tr className="table-secondary text-center">
                         <th>SL</th>
                         <th>Title</th>
                         <th>Organization</th>
@@ -267,7 +267,7 @@ const FindAllJob = () => {
                     <tbody>
                       {showJobs.map((job, index) => (
                         <tr key={job._id} className="">
-                          <td>{index + 1}</td>
+                          <td className=" text-center">{index + 1}</td>
                           <td className="fw-bold">
                             <Link
                               className=" text-decoration-none text-primary "
@@ -278,9 +278,9 @@ const FindAllJob = () => {
                           </td>
                           <td>{job.organization}</td>
                           <td>{job.location}</td>
-                          <td>{job.postDate}</td>
-                          <td>{job.deadLine}</td>
-                          <td>৳{job.salaryTo}</td>
+                          <td className=" text-center">{job.postDate}</td>
+                          <td className=" text-center">{job.deadLine}</td>
+                          <td className=" text-center">৳{job.salaryTo}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -305,14 +305,14 @@ const FindAllJob = () => {
                           aria-current="page"
                           key={number}
                         >
-                          <button onClick={() => setPage(number)}className="btn btn-outline-secondary btn-sm mx-4 fw-bold">                            
-                              {parseInt(number + 1)}                            
+                          <button onClick={() => setPage(number)} className="btn btn-outline-secondary btn-sm mx-4 fw-bold">
+                            {parseInt(number + 1)}
                           </button>
                         </li>
                       ))}
 
                       <li className="page-item">
-                        <button onClick={() => setPage(page + 1)}className="btn btn-success btn-sm">Next</button>
+                        <button onClick={() => setPage(page + 1)} className="btn btn-success btn-sm">Next</button>
                       </li>
                     </ul>
                   </nav>

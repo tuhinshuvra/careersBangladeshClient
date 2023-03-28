@@ -21,7 +21,7 @@ const DashboardLayout = () => {
   const [employerData, setEmployerData] = useState([]);
   const [jobSeekersData, setJobSeekersData] = useState([]);
 
-   
+
 
   if (loading) {
     <Loader></Loader>
@@ -37,7 +37,7 @@ const DashboardLayout = () => {
         setEmployerData(data);
         setLoading(false);
       });
-  }, [email,setLoading]);
+  }, [email, setLoading]);
 
   //   jobseekers data show
   useEffect(() => {
@@ -50,7 +50,7 @@ const DashboardLayout = () => {
         setJobSeekersData(data[0]);
         setLoading(false);
       });
-  }, [email,setLoading]);
+  }, [email, setLoading]);
 
   return (
     <div className="container mx-auto">
@@ -59,37 +59,26 @@ const DashboardLayout = () => {
       <div className="row">
         <div className=" col-lg-3 mt-md-5">
           <ul className=" list-group">
+
             {isAdmin && (
               <>
                 <li className="list-group-item ">
-                  <Link className=" nav_btn" to="/dashboard/admin">
-                    All User
-                  </Link>
+                  <Link className=" nav_btn" to="/dashboard/admin">  All User </Link>
                 </li>
                 <li className="list-group-item ">
-                  <Link className=" nav_btn" to="/dashboard/jobseekerList">
-                    Job Seeker List
-                  </Link>
+                  <Link className=" nav_btn" to="/dashboard/jobseekerList">Job Seeker List</Link>
                 </li>
                 <li className="list-group-item  my-1">
-                  <Link className=" nav_btn" to="/dashboard/jobSeekerList">
-                    Employers List
-                  </Link>
+                  <Link className=" nav_btn" to="/dashboard/jobSeekerList">Employers List</Link>
                 </li>
                 <li className="list-group-item  my-1">
-                  <Link className=" nav_btn" to="/dashboard/subscriberList">
-                    Subscriber List
-                  </Link>
+                  <Link className=" nav_btn" to="/dashboard/subscriberList">Subscriber List</Link>
                 </li>
                 <li className="list-group-item ">
-                  <Link className=" nav_btn" to="/dashboard/JobCategoryEntry">
-                    Job Category Entry
-                  </Link>
+                  <Link className=" nav_btn" to="/dashboard/JobCategoryEntry">Job Category Entry</Link>
                 </li>
                 <li className="list-group-item ">
-                  <Link className=" nav_btn" to="/dashboard/JobCategoryList">
-                    Job Category List
-                  </Link>
+                  <Link className=" nav_btn" to="/dashboard/JobCategoryList">Job Category List</Link>
                 </li>
               </>
             )}
@@ -99,12 +88,7 @@ const DashboardLayout = () => {
                 {employerData.length === 0 && (
                   <>
                     <li className="list-group-item">
-                      <Link
-                        className=" nav_btn"
-                        to="/dashboard/employerProfileEntry"
-                      >
-                        Entry Profile
-                      </Link>
+                      <Link className=" nav_btn" to="/dashboard/employerProfileEntry"  > Entry Profile</Link>
                     </li>
                   </>
                 )}
@@ -112,32 +96,18 @@ const DashboardLayout = () => {
                 {employerData.length !== 0 && (
                   <>
                     <li className="list-group-item my-1">
-                      <Link
-                        className=" nav_btn"
-                        to="/dashboard/employerProfile"
-                      >
-                        Company Profile
-                      </Link>
+                      <Link className=" nav_btn" to="/dashboard/employerProfile">Company Profile</Link>
                     </li>
                     <li className="list-group-item">
-                      <Link
-                        className=" nav_btn"
-                        to={`/dashboard/employerProfileManage/${user?.email}`}
-                      >
-                        Manage Profile
-                      </Link>
+                      <Link className=" nav_btn" to={`/dashboard/employerProfileManage/${user?.email}`}>Manage Profile</Link>
                     </li>
                   </>
                 )}
                 <li className="list-group-item my-1">
-                  <Link className=" nav_btn" to="/dashboard/newJobPost">
-                    New Job Post
-                  </Link>
+                  <Link className=" nav_btn" to="/dashboard/newJobPost">New Job Post</Link>
                 </li>
                 <li className="list-group-item my-1">
-                  <Link className=" nav_btn" to="/dashboard/postedJobList">
-                    Posted Job List
-                  </Link>
+                  <Link className=" nav_btn" to="/dashboard/postedJobList">Posted Job List</Link>
                 </li>
               </>
             )}
@@ -147,12 +117,7 @@ const DashboardLayout = () => {
                 {jobSeekersData === undefined && (
                   <>
                     <li className="list-group-item">
-                      <Link
-                        className="nav_btn"
-                        to="/dashboard/jobSeekerProfileEntry"
-                      >
-                        Create Profile
-                      </Link>
+                      <Link className="nav_btn" to="/dashboard/jobSeekerProfileEntry" > Create Profile </Link>
                     </li>
                   </>
                 )}
@@ -161,33 +126,19 @@ const DashboardLayout = () => {
                 {jobSeekersData !== undefined && (
                   <>
                     <li className="list-group-item ">
-                      <Link
-                        className=" nav_btn"
-                        to="/dashboard/jobSeekerProfile"
-                      >
-                        My Profile
-                      </Link>
+                      <Link className=" nav_btn" to="/dashboard/jobSeekerProfile" >My Profile</Link>
                     </li>
                     <li className="list-group-item ">
-                      <Link
-                        className=" nav_btn"
-                        to="/dashboard/jobSeekerProfileManage"
-                      >
-                        Manage Profile
-                      </Link>
+                      <Link className=" nav_btn" to="/dashboard/jobSeekerProfileManage" >Manage Profile </Link>
                     </li>
                   </>
                 )}
 
                 <li className="list-group-item ">
-                  <Link className=" nav_btn" to="/dashboard/savedJobs">
-                    Saved Job List
-                  </Link>
+                  <Link className=" nav_btn" to="/dashboard/savedJobs">Saved Job List</Link>
                 </li>
                 <li className="list-group-item ">
-                  <Link className=" nav_btn" to="/dashboard/appliedJobs">
-                    Applied Job List
-                  </Link>
+                  <Link className=" nav_btn" to="/dashboard/appliedJobs">Applied Job List</Link>
                 </li>
               </>
             )}

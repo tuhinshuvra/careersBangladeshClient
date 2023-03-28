@@ -31,10 +31,9 @@ const PostedJobList = () => {
     <div>
       <h2 className=" text-center font-bold my-3">Posted Job List</h2>
       <div className="overflow-x-auto">
-        {/* <table className="table w-full"> */}
-        <table className="table table-hover table-secondary table-striped-columns">
+        <table className="table table-hover  table-bordered">
           <thead>
-            <tr className=" text-center">
+            <tr className="table-secondary text-center">
               <th>SL</th>
               <th>Title</th>
               <th>Organization</th>
@@ -57,7 +56,7 @@ const PostedJobList = () => {
                   </Link>
                 </td>
                 <td>{job.organization}</td>
-                <td>{job.postDate}</td> 
+                <td>{job.postDate}</td>
                 <td>{job.deadLine}</td>
                 <td>
                   <Link to={`/dashboard/applicantList`}>
@@ -70,9 +69,9 @@ const PostedJobList = () => {
                   </Link>
                 </td>
                 <td>
-                     <Link className="fw-bold btn-sm btn btn-primary mx-1" to={`/dashboard/jobUpdate/${job._id}`}>
-                      Update
-                    </Link>
+                  <Link className="fw-bold btn-sm btn btn-primary mx-1" to={`/dashboard/jobUpdate/${job._id}`}>
+                    Update
+                  </Link>
 
                   {/* <button className=' btn btn-sm  btn-outline-danger'
                                             onClick={() => handleDelete(job)}

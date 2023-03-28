@@ -12,14 +12,14 @@ const useEmployer = (email) => {
         .then((response) => response.json())
         .then((data) => {
           // console.log(data);
-          if(isEmployer){
-            toast.success('Employer user login successfully.')
-          }
+          // if(isEmployer){
+          //   toast.success('Employer user login successfully.')
+          // }
           setIsEmployer(data.isEmployer);
           setIsEmployerLoading(false);
         });
     }
-  }, [email,isEmployer]);
+  }, [email, isEmployer]);
 
   return [isEmployer, isEmployerLoading];
 };

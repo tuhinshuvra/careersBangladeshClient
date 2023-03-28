@@ -8,9 +8,9 @@ import Loader from "../../../Shared/Loader/Loader";
 
 const SavedJobList = () => {
   const { user } = useContext(AuthContext);
-  const {loading, setLoading}=useContext(AuthContext);
+  const { loading, setLoading } = useContext(AuthContext);
   const [deletingSavedJob, setDeletingSavedJob] = useState(null);
-  
+
   const [savedJobs, setSavedJobs] = useState([]);
   // const [displaySavedJobs, setDisplaySavedJob]=useState(savedJobs);
 
@@ -20,7 +20,7 @@ const SavedJobList = () => {
   };
 
 
-  if(loading){
+  if (loading) {
     <Loader></Loader>
   }
 
@@ -34,10 +34,11 @@ const SavedJobList = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        setSavedJobs(data)},
+        setSavedJobs(data)
+      },
         setLoading(false)
-        );
-  }, [user?.email,setLoading]);
+      );
+  }, [user?.email, setLoading]);
 
   const handleDelete = (jobs) => {
     setLoading(true)
@@ -48,10 +49,10 @@ const SavedJobList = () => {
       .then((data) => {
         console.log(data);
         if (data.deletedCount > 0) {
-          const remainingSavedJobs= savedJobs.filter(sj=>sj.jobId !== jobs._id)
+          const remainingSavedJobs = savedJobs.filter(sj => sj.jobId !== jobs._id)
           setSavedJobs(remainingSavedJobs);
-          toast.success("The saved job deleted successfully",{duration:1000, position:'top-left'});
-          
+          toast.success("The saved job deleted successfully", { duration: 1000, position: 'top-left' });
+
           setLoading(false)
         }
       });
@@ -61,10 +62,9 @@ const SavedJobList = () => {
     <div>
       <h2 className=" text-center font-bold my-3">Saved Job List</h2>
       <div className="overflow-x-auto">
-        {/* <table className="table table-striped table-hover"> */}
-        <table className="table table-hover table-secondary table-striped-columns">
+        <table className="table table-hover  table-bordered">
           <thead>
-            <tr className=" text-center">
+            <tr className=" text-center table-secondary">
               <th>SL</th>
               <th>Position</th>
               <th>Institution</th>

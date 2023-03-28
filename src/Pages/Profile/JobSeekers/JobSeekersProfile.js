@@ -22,7 +22,7 @@ const JobSeekersProfile = () => {
         // console.log("jobSeekersAllData : ", data[0])
         setJobSeekersData(data[0]);
       });
-  }, [email,setJobSeekersData]);
+  }, [email, setJobSeekersData]);
 
   // console.log("employerData : ", jobSeekersData)
   // console.log("empAgrreExperience : ", jobSeekersData?.empAgrreExperience)
@@ -65,7 +65,7 @@ const JobSeekersProfile = () => {
                         {jobSeekersData?.name}
                       </h2>
                       <ul className="list-unstyled">
-                         
+
                         <li className="">
                           <b className=" ">Phone:</b> {jobSeekersData?.phone}
                         </li>
@@ -313,9 +313,9 @@ const JobSeekersProfile = () => {
             </h5>
 
             <div className="">
-              <table className="table table-bordered border-secondary table-hover table-sm">
+              <table className="table text-center table-bordered table-sm">
                 <thead>
-                  <tr>
+                  <tr className="table-secondary ">
                     <th scope="col">SL</th>
                     <th scope="col">Exam Title</th>
                     <th scope="col">Concentration/Major</th>
@@ -414,9 +414,9 @@ const JobSeekersProfile = () => {
                     Training Summary
                   </h5>
                   <div>
-                    <table className="table table-bordered border-secondary table-hover table-sm">
+                    <table className="table table-bordered  table-hover table-sm">
                       <thead>
-                        <tr>
+                        <tr className=" text-center">
                           <th scope="col">SL</th>
                           <th scope="col">Exam Title</th>
                           <th scope="col">Concentration/Major</th>
@@ -675,8 +675,8 @@ const JobSeekersProfile = () => {
             <div className="">
               <table className="table table-bordered border-secondary text-center table-hover table-sm">
                 <thead>
-                  <tr>
-                    <th className=" text-center" scope="col">
+                  <tr className=" table-secondary text-center">
+                    <th scope="col">
                       SL
                     </th>
                     <th scope="col">Language</th>

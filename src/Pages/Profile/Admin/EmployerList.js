@@ -54,9 +54,9 @@ const EmployerList = () => {
     <div>
       <h2 className="text-center  fw-bold  my-4">All Employer</h2>
       <div className="overflow-x-auto">
-        <table className="table w-full">
+        <table className="table table-hover  table-bordered">
           <thead>
-            <tr className="">
+            <tr className="table-secondary text-center">
               <th>SL</th>
               <th>Name</th>
               <th>User Type</th>
@@ -75,7 +75,7 @@ const EmployerList = () => {
                   <Link to={`/dashboard/userUpdate/${user._id}`}>
                     <button
                       className=" fw-bold btn-sm btn btn-primary mx-1"
-                      // onClick={() => handleUserUpdate(user._id)}
+                    // onClick={() => handleUserUpdate(user._id)}
                     >
                       Update
                     </button>

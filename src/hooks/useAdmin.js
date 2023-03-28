@@ -10,13 +10,14 @@ const useAdmin = (email) => {
         .then((res) => res.json())
         .then((data) => {
           // console.log(data);
-          if(isAdmin){
-            toast.success('Admin user login successfully.')
-          }
+          // if(isAdmin){
+          //   toast.success('Admin user login successfully.')
+          // }
           setIsAdmin(data.isAdmin);
           setIsAdminLoading(false);
         });
-    }}, [email,isAdmin]);
+    }
+  }, [email, isAdmin]);
   return [isAdmin, isAdminLoading];
 };
 export default useAdmin;

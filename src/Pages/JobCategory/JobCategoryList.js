@@ -40,9 +40,9 @@ const JobCategoryList = () => {
     <div>
       <h2 className="text-center  fw-bold  my-4">All Categories</h2>
       <div className="overflow-x-auto">
-        <table className="table w-full">
+        <table className="table table-hover  table-bordered">
           <thead>
-            <tr className="">
+            <tr className="table-secondary text-center">
               <th>SL</th>
               <th>Category Name</th>
               <th>Action</th>

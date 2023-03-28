@@ -24,10 +24,9 @@ const AppliedJobList = () => {
     <div>
       <h2 className=" text-center font-bold my-3 ">Applied Job List</h2>
       <div className="overflow-x-auto">
-        {/* <table className="table table-striped table-hover"> */}
-        <table className="table table-hover table-secondary table-striped-columns">
+        <table className="table table-hover table-bordered">
           <thead>
-            <tr className="text-center">
+            <tr className="text-center table-secondary">
               <th>SL</th>
               <th>Position</th>
               <th>Organizaiton</th>

@@ -6,18 +6,19 @@ const useJobSeeker = (email) => {
   const [isJobSeekerLoading, setIsJobSeekerLoading] = useState(true);
 
   useEffect(() => {
-    if(email){
+    if (email) {
       fetch(`${process.env.REACT_APP_CABD_server_address}/jobseekerUser/${email}`)
         .then((response) => response.json())
         .then((data) => {
           // console.log(data);
-          if(isJobSeeker){
-            toast.success('JobSeeker user login successfully.')
-          }
+          // if(isJobSeeker){
+          //   toast.success('JobSeeker user login successfully.')
+          // }
           setIsJobSeeker(data.isJobSeeker);
           setIsJobSeekerLoading(false);
         });
-    }}, [email,isJobSeeker]);
+    }
+  }, [email, isJobSeeker]);
   return [isJobSeeker, isJobSeekerLoading];
 };
 

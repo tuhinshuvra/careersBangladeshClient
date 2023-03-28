@@ -5,14 +5,14 @@ import { AuthContext } from "../../Authentication/AuthProvider";
 import "../JobSeekers/JobSeekersProfile.css";
 
 const ApplicantProfile = () => {
-  const { jobSeekersData,applicantShow, setJobSeekersData } = useContext(AuthContext);
+  const { jobSeekersData, applicantShow, setJobSeekersData } = useContext(AuthContext);
   const email = applicantShow;
-  
+
   const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => componentRef.current
   });
-  
+
   useEffect(() => {
     fetch(
       `${process.env.REACT_APP_CABD_server_address}/jobSeekersAllData/${email}`
@@ -22,7 +22,7 @@ const ApplicantProfile = () => {
         // console.log("jobSeekersAllData : ", data[0])
         setJobSeekersData(data[0]);
       });
-  }, [email,setJobSeekersData]); 
+  }, [email, setJobSeekersData]);
 
   return (
     <div className="resume-wrapper-inner mx-auto text-start bg-white shadow-lg">
@@ -59,7 +59,7 @@ const ApplicantProfile = () => {
                         {jobSeekersData?.name}
                       </h2>
                       <ul className="list-unstyled">
-                         
+
                         <li className="">
                           <b className=" ">Phone:</b> {jobSeekersData?.phone}
                         </li>
@@ -307,9 +307,9 @@ const ApplicantProfile = () => {
             </h5>
 
             <div className="">
-              <table className="table table-bordered border-secondary table-hover table-sm">
+              <table className="table table-bordered table-sm">
                 <thead>
-                  <tr>
+                  <tr className=" table-secondary text-center">
                     <th scope="col">SL</th>
                     <th scope="col">Exam Title</th>
                     <th scope="col">Concentration/Major</th>
@@ -408,9 +408,9 @@ const ApplicantProfile = () => {
                     Training Summary
                   </h5>
                   <div>
-                    <table className="table table-bordered border-secondary table-hover table-sm">
+                    <table className="table table-bordered table-hover table-sm">
                       <thead>
-                        <tr>
+                        <tr className=" table-secondary">
                           <th scope="col">SL</th>
                           <th scope="col">Exam Title</th>
                           <th scope="col">Concentration/Major</th>

@@ -60,9 +60,9 @@ const SubscriberList = () => {
     <div>
       <h2 className="text-center  fw-bold  my-4">All Subscriber</h2>
       <div className="overflow-x-auto">
-        <table className="table w-full">
+        <table className="table table-bordered table-hover">
           <thead>
-            <tr className="">
+            <tr className=" table-secondary">
               <th>SL</th>
               <th>Name</th>
               <th>Email</th>
