@@ -66,14 +66,13 @@ const JobSeekersPersonalDetailsEntry = () => {
           // console.log("Job Seeker Data :", data);
 
           fetch(
-            `${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal`,
-            {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(jobSeekersPersonal),
-            }
+            `${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(jobSeekersPersonal),
+          }
           )
             .then((response) => response.json())
             .then((data) => {
@@ -101,9 +100,7 @@ const JobSeekersPersonalDetailsEntry = () => {
     let permanentDistrict = document.getElementById("permanentDistrict");
     let permanentThana = document.getElementById("permanentThana");
     let permanentPostOffice = document.getElementById("permanentPostOffice");
-    let permanentAddressLine2 = document.getElementById(
-      "permanentAddressLine2"
-    );
+    let permanentAddressLine2 = document.getElementById("permanentAddressLine2");
 
     permanentDistrict.value = presentDistrict.value;
     permanentThana.value = presentThana.value;

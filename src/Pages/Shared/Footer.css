@@ -1,6 +1,5 @@
 .footer_bg {
-  background-color: rgba(135, 207, 235, 0.467);
-  /* height: 36vh; */
+  background-color: rgba(135, 207, 235, 0.233);
   margin-bottom: 0px;
 }
 
@@ -8,20 +7,34 @@
   width: 120px;
 }
 
-.social_icon {
-  color: #a51e67;
-  font-size: 30px;
-  margin: 0 7px;
-}
-
-.social_icon:hover {
-  color: black;
-  font-size: 30.3px;
-  /* font-size: 10px; */
-  /* margin: 0 10px; */
-}
-
 .appStore {
   width: 130px;
   height: 40px;
+}
+
+
+.footer_btn {
+  color: #625c5c;
+  text-decoration: none;
+  border-radius: 10px;
+  border: 0;
+}
+
+.footer_btn:hover {
+  color: white;
+  background-color: rgba(153, 150, 150, 0.476);
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.copyright_text {
+  color: #3e3b3b;
+}
+
+
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .footer_logo {
+    width: 200px;
+  }
+
 }

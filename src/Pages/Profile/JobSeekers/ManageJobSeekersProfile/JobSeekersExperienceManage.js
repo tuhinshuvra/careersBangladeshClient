@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { useLoaderData, useNavigate, useNavigation } from "react-router-dom";
+import { useNavigation } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
 import Loader from "../../../Shared/Loader/Loader";
 import "../../JobSeekers/JobSeekersProfile.css";
@@ -9,26 +8,26 @@ import JobSeekersProfileManage from "./JobSeekersProfileManage";
 
 const JobSeekersExperienceManage = () => {
 
-const { user, loading, setLoading } = useContext(AuthContext);
-  const [storedData,setStoredData] = useState([]);
+  const { user, loading, setLoading } = useContext(AuthContext);
+  const [storedData, setStoredData] = useState([]);
   const navigation = useNavigation();
-  
-  const email=user?.email;
-  
-  if(loading){
+
+  const email = user?.email;
+
+  if (loading) {
     <Loader></Loader>
   }
 
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersExpriences/${email}`)
-    .then(res=>res.json())
-    .then(data=>{
-      console.log("jobSeekersCareers Data",data); 
-      setStoredData(data);
-      setLoading(false)
-    })
-  },[email,setLoading])
+      .then(res => res.json())
+      .then(data => {
+        console.log("jobSeekersCareers Data", data);
+        setStoredData(data);
+        setLoading(false)
+      })
+  }, [email, setLoading])
 
 
 
@@ -36,8 +35,8 @@ const { user, loading, setLoading } = useContext(AuthContext);
 
   // const navigate = useNavigate();
 
-  if(navigation.state === 'loading'){
-  <Loader></Loader>
+  if (navigation.state === 'loading') {
+    <Loader></Loader>
   }
 
   const handleUpdateExperiencesDoc = (event) => {
