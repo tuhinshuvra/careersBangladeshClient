@@ -23,65 +23,80 @@ const PostedJobList = () => {
     },
   });
 
-  const handleJobsUpdate = (job) => {
-    //     console.log("Selected to Update Job : ", job._id)
-  };
+  const jobNum = jobs.length;
+  console.log("Posted Job Num : ", jobNum);
+
 
   return (
     <div>
-      <h2 className=" text-center font-bold my-3">Posted Job List</h2>
-      <div className="overflow-x-auto">
-        <table className="table table-hover  table-bordered">
-          <thead>
-            <tr className="table-secondary text-center">
-              <th>SL</th>
-              <th>Title</th>
-              <th>Organization</th>
-              <th>Posted</th>
-              <th>Deadline</th>
-              <th>All Applicant</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {jobs.map((job, index) => (
-              <tr key={job._id} className="">
-                <td className=" text-center">{index + 1}</td>
-                <td>
-                  <Link
-                    className=" text-decoration-none text-primary "
-                    to={`/jobDetails/${job._id}`}
-                  >
-                    <b>{job.jobTitle}</b>
-                  </Link>
-                </td>
-                <td>{job.organization}</td>
-                <td>{job.postDate}</td>
-                <td>{job.deadLine}</td>
-                <td>
-                  <Link to={`/dashboard/applicantList`}>
-                    <button
-                      className=" fw-bold btn-sm btn btn-primary mx-1"
-                      onClick={() => setJobId(job._id)}
-                    >
-                      ApplicatList
-                    </button>
-                  </Link>
-                </td>
-                <td>
-                  <Link className="fw-bold btn-sm btn btn-primary mx-1" to={`/dashboard/jobUpdate/${job._id}`}>
-                    Update
-                  </Link>
+      {
+        jobNum === 0 ?
+          <div className=" text-center my-5">
+            <h2 className=" fw-bold">You have not posted any jobs yet!</h2>
+          </div>
+          :
 
-                  {/* <button className=' btn btn-sm  btn-outline-danger'
+          <div>
+            <div className=" text-center fw-bold my-3">
+              <h3 className="">You Have Posted {jobNum} jobs</h3>
+              <h4 className="">Your Posted Job List</h4>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="table table-hover  table-bordered">
+                <thead>
+                  <tr className="table-secondary text-center">
+                    <th>SL</th>
+                    <th>Title</th>
+                    <th>Organization</th>
+                    <th>Posted</th>
+                    <th>Deadline</th>
+                    <th>All Applicant</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {jobs.map((job, index) => (
+                    <tr key={job._id} className="">
+                      <td className=" text-center">{index + 1}</td>
+                      <td>
+                        <Link
+                          className=" text-decoration-none text-primary "
+                          to={`/jobDetails/${job._id}`}
+                        >
+                          <b>{job.jobTitle}</b>
+                        </Link>
+                      </td>
+                      <td>{job.organization}</td>
+                      <td>{job.postDate}</td>
+                      <td>{job.deadLine}</td>
+                      <td>
+                        <Link to={`/dashboard/applicantList`}>
+                          <button
+                            className=" fw-bold btn-sm btn btn-primary mx-1"
+                            onClick={() => setJobId(job._id)}
+                          >
+                            ApplicatList
+                          </button>
+                        </Link>
+                      </td>
+                      <td>
+                        <Link className="fw-bold btn-sm btn btn-primary mx-1" to={`/dashboard/jobUpdate/${job._id}`}>
+                          Update
+                        </Link>
+
+                        {/* <button className=' btn btn-sm  btn-outline-danger'
                                             onClick={() => handleDelete(job)}
                                         >Delete</button> */}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+      }
     </div>
   );
 };

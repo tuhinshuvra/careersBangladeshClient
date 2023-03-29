@@ -348,6 +348,8 @@ const PostedJobDetails = () => {
             </div>
             : <>
 
+
+
               {
                 (isJobSeeker && jobSeekersData?.email)
                   ?
@@ -366,7 +368,9 @@ const PostedJobDetails = () => {
                   </>
                   :
                   <div className=" text-center">
-                    <Link to="/dashboard/jobSeekerProfileEntry" className=" custom_btn text-decoration-none">Complete Your Profile</Link>
+                    {isJobSeeker &&
+                      <Link to="/dashboard/jobSeekerProfileEntry" className=" custom_btn text-decoration-none">Complete Your Profile</Link>
+                    }
                   </div>
 
               }

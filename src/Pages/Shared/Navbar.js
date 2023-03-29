@@ -21,7 +21,7 @@ const Navbar = () => {
 
   const navigate = useNavigate();
 
-  // Employer data show
+  // ########################################  Employer data show #############################################
   useEffect(() => {
     fetch(`${process.env.REACT_APP_CABD_server_address}/employer/${email}`)
       .then((response) => response.json())
@@ -31,7 +31,8 @@ const Navbar = () => {
       });
   }, [email]);
 
-  //   jobseekers data show
+
+  //  ################################ jobseekers data show   ############################################3
   useEffect(() => {
     fetch(
       `${process.env.REACT_APP_CABD_server_address}/jobSeekersAllData/${email}`
@@ -42,6 +43,8 @@ const Navbar = () => {
       });
   }, [email]);
 
+
+  // #################################  handle logout funtion  ###############################################
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -52,6 +55,7 @@ const Navbar = () => {
         console.log("Error : ", error);
       });
   };
+
 
   return (
     <div>
@@ -110,6 +114,7 @@ const Navbar = () => {
                     >
                       {user?.displayName}
                     </Link>
+
                     <ul className="dropdown-menu">
                       {isAdmin && (
                         <>
@@ -166,54 +171,29 @@ const Navbar = () => {
                           {jobSeekersData === undefined && (
                             <>
                               <li className="list-group-item ">
-                                <Link
-                                  onClick={() => setShowPersonalData(true)}
-                                  to="/dashboard/jobSeekerProfileEntry"
-                                  className=" nav_btn"
-                                >
-                                  Create Profile
-                                </Link>
+                                <Link onClick={() => setShowPersonalData(true)} to="/dashboard/jobSeekerProfileEntry" className=" nav_btn">Create Profile</Link>
                               </li>
                             </>
                           )}
 
                           {jobSeekersData !== undefined && (
                             <>
-                              <li className="list-group-item   my-1">
-                                <Link
-                                  className=" nav_btn"
-                                  to="/dashboard/jobSeekerProfile"
-                                >
-                                  My Profile
-                                </Link>
+                              <li className="list-group-item my-1">
+                                <Link className=" nav_btn" to="/dashboard/jobSeekerProfile">My Profile</Link>
                               </li>
+
                               <li className="list-group-item ">
-                                <Link
-                                  onClick={() => setShowPersonalData(true)}
-                                  to="/dashboard/jobSeekerProfileManage"
-                                  className=" nav_btn"
-                                >
-                                  Manage Profile
-                                </Link>
+                                <Link onClick={() => setShowPersonalData(true)} to="/dashboard/jobSeekerProfileManage" className=" nav_btn">Manage Profile</Link>
+                              </li>
+
+                              <li className="list-group-item my-1">
+                                <Link className=" nav_btn" to="/dashboard/appliedJobs">Applied Job List</Link>
                               </li>
                             </>
                           )}
 
                           <li className="list-group-item my-1">
-                            <Link
-                              className=" nav_btn"
-                              to="/dashboard/savedJobs"
-                            >
-                              Saved Job List
-                            </Link>
-                          </li>
-                          <li className="list-group-item my-1">
-                            <Link
-                              className=" nav_btn"
-                              to="/dashboard/appliedJobs"
-                            >
-                              Applied Job List
-                            </Link>
+                            <Link className=" nav_btn" to="/dashboard/savedJobs">Saved Job List</Link>
                           </li>
                         </>
                       )}
@@ -222,60 +202,36 @@ const Navbar = () => {
                           {employerData.length === 0 && (
                             <>
                               <li className="list-group-item">
-                                <Link
-                                  className=" nav_btn"
-                                  to="/dashboard/employerProfileEntry"
-                                >
-                                  Entry Profile
-                                </Link>
+                                <Link className=" nav_btn" to="/dashboard/employerProfileEntry">Entry Profile</Link>
                               </li>
                             </>
                           )}
                           {employerData.length !== 0 && (
                             <>
                               <li className="list-group-item my-1">
-                                <Link
-                                  className=" nav_btn"
-                                  to="/dashboard/employerProfile"
-                                >
-                                  Company Profile
-                                </Link>
+                                <Link className=" nav_btn" to="/dashboard/employerProfile">Company Profile</Link>
                               </li>
+
                               <li className="list-group-item">
-                                <Link
-                                  className=" nav_btn"
-                                  to={`/dashboard/employerProfileManage/${user?.email}`}
-                                >
-                                  Manage Profile
-                                </Link>
+                                <Link className=" nav_btn" to={`/dashboard/employerProfileManage/${user?.email}`}>Manage Profile</Link>
+                              </li>
+
+                              <li className="list-group-item my-1">
+                                <Link className=" nav_btn" to="/dashboard/newJobPost">New Job Post</Link>
+                              </li>
+
+                              <li className="list-group-item my-1">
+                                <Link className=" nav_btn" to="/dashboard/postedJobList">Posted Job List</Link>
                               </li>
                             </>
                           )}
 
-                          <li className="list-group-item my-1">
-                            <Link
-                              className=" nav_btn"
-                              to="/dashboard/newJobPost"
-                            >
-                              New Job Post
-                            </Link>
-                          </li>
-                          <li className="list-group-item my-1">
-                            <Link
-                              className=" nav_btn"
-                              to="/dashboard/postedJobList"
-                            >
-                              Posted Job List
-                            </Link>
-                          </li>
+
                         </>
                       )}
 
                       <li className="nav-item  border-0  mx-lg-1  fw-bold mb-2 ">
-                        {" "}
-                        <Link className="nav_btn" onClick={handleLogOut}>
-                          Logout
-                        </Link>
+                        <Link className="nav_btn" onClick={handleLogOut}>Logout</Link>
                       </li>
                     </ul>
                   </li>
@@ -286,10 +242,7 @@ const Navbar = () => {
 
                 <>
                   <li className=" border-0  mx-lg-1  fw-bold mb-2 ">
-                    {" "}
-                    <Link className=" nav_btn" aria-current="page" to="/login">
-                      Login
-                    </Link>
+                    <Link className=" nav_btn" aria-current="page" to="/login">Login</Link>
                   </li>
                 </>
               )}

@@ -385,8 +385,8 @@ const NewJobPost = () => {
               className="form-select"
             >
               <option>Salary Review</option>
-              <option value={0}>Yearly</option>
-              <option value={1}>Halt Yearly</option>
+              <option value="Yearly">Yearly</option>
+              <option value="Half Yearly">Halt Yearly</option>
             </select>
           </div>
         </div>
