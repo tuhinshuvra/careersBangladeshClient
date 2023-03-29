@@ -17,7 +17,7 @@ const ApplicantList = () => {
       .then((response) => response.json())
       .then((data) => {
         setApplicants(data);
-        console.log(" ApplicantList ApplicantList :", data);
+        // console.log(" ApplicantList ApplicantList :", data);
       });
   }, [jobId]);
 

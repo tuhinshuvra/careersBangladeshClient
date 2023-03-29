@@ -6,28 +6,28 @@ import JobSeekersProfileManage from "./JobSeekersProfileManage";
 
 const JobSeekersPersonalDetailsManage = () => {
 
-  const { user, loading, setLoading } = useContext(AuthContext);    
+  const { user, loading, setLoading } = useContext(AuthContext);
   const [storedData, setStoredData] = useState([]);
-  const email=user?.email;
+  const email = user?.email;
 
   // console.log("PersonalDetails Update :", storedData);
 
-  if(loading){
-  <Loader></Loader>
-}
+  if (loading) {
+    <Loader></Loader>
+  }
 
   // const navigate = useNavigate();
   // const imageHostKey = process.env.REACT_APP_CABD_imagebb_hostKey;
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal/${email}`)
-    .then(res=>res.json())
-    .then(data=>{
-      // console.log("jobSeekersPersonal Data",data); 
-      setStoredData(data);
-      setLoading(false)
-    })
-  },[email,setLoading])
+      .then(res => res.json())
+      .then(data => {
+        // console.log("jobSeekersPersonal Data",data); 
+        setStoredData(data);
+        setLoading(false)
+      })
+  }, [email, setLoading])
 
   const handleInputChange = (event) => {
     const field = event.target.name;
@@ -53,7 +53,7 @@ const JobSeekersPersonalDetailsManage = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log("Updated Data :", data);
+        // console.log("Updated Data :", data);
         if (data.modifiedCount > 0) {
           toast.success("Personal Details Data Updated Successfully.");
         }
@@ -406,15 +406,15 @@ const JobSeekersPersonalDetailsManage = () => {
                 Permanent Address
               </span>
 
-              <div class="form-check">
+              <div className="form-check">
                 {/* <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="checkbox"
                   value=""
                   id="handlePermanentAddress"
                   onClick={handlePermanentAddress}
                 />
-                <label class="form-check-label fw-bold " for="flexCheckDefault">
+                <label className="form-check-label fw-bold " for="flexCheckDefault">
                   Same as Present Address
                 </label> */}
               </div>

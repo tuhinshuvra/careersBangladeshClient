@@ -27,9 +27,6 @@ const About = () => {
           <div className=" col-lg-11 mx-auto">
             <GridCarousol></GridCarousol>
           </div>
-
-
-
         </div>
       </div>
     </div>

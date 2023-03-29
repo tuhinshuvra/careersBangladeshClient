@@ -21,7 +21,8 @@ const AuthProvider = ({ children }) => {
   const [searchOrganizationData, setSearchOrganizationData] = useState("");
   const [searchLocationtionData, setSearchLocationtionData] = useState("");
   const [jobSeekersData, setJobSeekersData] = useState([]);
-  
+  const [showPersonalData, setShowPersonalData] = useState(true);
+
   const signIn = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
@@ -74,6 +75,8 @@ const AuthProvider = ({ children }) => {
     logOut,
     jobSeekersData,
     setJobSeekersData,
+    showPersonalData,
+    setShowPersonalData,
   };
 
   return (

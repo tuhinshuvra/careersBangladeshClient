@@ -6,7 +6,7 @@ import Loader from "../Shared/Loader/Loader";
 import "./JobCategory.css";
 
 const JobCategory = () => {
-  
+
   const { user, loading, setLoading } = useContext(AuthContext);
 
   const [categories, setCategories] = useState([]);
@@ -15,7 +15,7 @@ const JobCategory = () => {
 
   const sliceCategories = categories.slice(0, 16);
 
-  if(loading){
+  if (loading) {
     <Loader></Loader>
   }
 
@@ -40,9 +40,7 @@ const JobCategory = () => {
 
   return (
     <div className="category_bg">
-      <h2 className=" careers_title_one">
-        <FaCompressArrowsAlt className=""></FaCompressArrowsAlt>JOB CATEGORIES
-      </h2>
+      <h2 className=" careers_title_one"><FaCompressArrowsAlt className=""></FaCompressArrowsAlt>JOB CATEGORIES</h2>
       <div className=" job-category m-4">
         {!showAll &&
           sliceCategories.map((category) => (
@@ -62,21 +60,11 @@ const JobCategory = () => {
       </div>
       <div className=" text-center my-3">
         {!showAll && (
-          <button
-            onClick={() => handleShowAllCategories()}
-            className="custom_btn"
-          >
-            View More
-          </button>
+          <button onClick={() => handleShowAllCategories()} className="custom_btn">View More</button>
         )}
 
         {showAll && (
-          <button
-            onClick={() => handleShowLessCategories()}
-            className="custom_btn"
-          >
-            View Less
-          </button>
+          <button onClick={() => handleShowLessCategories()} className="custom_btn">View Less</button>
         )}
       </div>
     </div>

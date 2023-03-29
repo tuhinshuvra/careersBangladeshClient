@@ -9,7 +9,7 @@ import useJobSeeker from "../../hooks/useJobSeeker";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, setShowPersonalData } = useContext(AuthContext);
   const email = user?.email;
 
   const [isAdmin] = useAdmin(user?.email);
@@ -45,7 +45,7 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        toast("User logout successfully!",{position:'top-right',});
+        toast("User logout successfully!", { position: 'top-right', });
         navigate("/");
       })
       .catch((error) => {
@@ -88,7 +88,7 @@ const Navbar = () => {
 
               {/* <li className="nav-item mb-2">
                                 <Link className=" border-0  mx-lg-1  fw-bold nav_btn" aria-current="page" to="/elearning">Elearning</Link>
-                            </li> */}
+              </li> */}
 
               <li className="nav-item mb-2">
                 <Link
@@ -98,7 +98,7 @@ const Navbar = () => {
                 >
                   AboutUs
                 </Link>
-              </li>            
+              </li>
 
               {user?.uid ? (
                 <>
@@ -167,8 +167,9 @@ const Navbar = () => {
                             <>
                               <li className="list-group-item ">
                                 <Link
-                                  className=" nav_btn"
+                                  onClick={() => setShowPersonalData(true)}
                                   to="/dashboard/jobSeekerProfileEntry"
+                                  className=" nav_btn"
                                 >
                                   Create Profile
                                 </Link>
@@ -188,8 +189,9 @@ const Navbar = () => {
                               </li>
                               <li className="list-group-item ">
                                 <Link
-                                  className=" nav_btn"
+                                  onClick={() => setShowPersonalData(true)}
                                   to="/dashboard/jobSeekerProfileManage"
+                                  className=" nav_btn"
                                 >
                                   Manage Profile
                                 </Link>

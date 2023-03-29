@@ -11,7 +11,7 @@ import Loader from "../Pages/Shared/Loader/Loader";
 
 const DashboardLayout = () => {
   useTitle("My Jobs");
-  const { user, loading, setLoading } = useContext(AuthContext);
+  const { user, loading, setLoading, setShowPersonalData } = useContext(AuthContext);
   const email = user?.email;
 
   const [isAdmin] = useAdmin(user?.email);
@@ -20,7 +20,6 @@ const DashboardLayout = () => {
 
   const [employerData, setEmployerData] = useState([]);
   const [jobSeekersData, setJobSeekersData] = useState([]);
-
 
 
   if (loading) {
@@ -51,6 +50,7 @@ const DashboardLayout = () => {
         setLoading(false);
       });
   }, [email, setLoading]);
+
 
   return (
     <div className="container mx-auto">
@@ -98,9 +98,11 @@ const DashboardLayout = () => {
                     <li className="list-group-item my-1">
                       <Link className=" nav_btn" to="/dashboard/employerProfile">Company Profile</Link>
                     </li>
+
                     <li className="list-group-item">
                       <Link className=" nav_btn" to={`/dashboard/employerProfileManage/${user?.email}`}>Manage Profile</Link>
                     </li>
+
                   </>
                 )}
                 <li className="list-group-item my-1">
@@ -117,7 +119,7 @@ const DashboardLayout = () => {
                 {jobSeekersData === undefined && (
                   <>
                     <li className="list-group-item">
-                      <Link className="nav_btn" to="/dashboard/jobSeekerProfileEntry" > Create Profile </Link>
+                      <Link onClick={() => setShowPersonalData(true)} className="nav_btn" to="/dashboard/jobSeekerProfileEntry" > Create Profile </Link>
                     </li>
                   </>
                 )}
@@ -129,7 +131,7 @@ const DashboardLayout = () => {
                       <Link className=" nav_btn" to="/dashboard/jobSeekerProfile" >My Profile</Link>
                     </li>
                     <li className="list-group-item ">
-                      <Link className=" nav_btn" to="/dashboard/jobSeekerProfileManage" >Manage Profile </Link>
+                      <Link onClick={() => setShowPersonalData(true)} className=" nav_btn" to="/dashboard/jobSeekerProfileManage">Manage Profile</Link>
                     </li>
                   </>
                 )}

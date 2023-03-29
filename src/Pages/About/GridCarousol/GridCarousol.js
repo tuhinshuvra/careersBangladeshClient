@@ -29,7 +29,7 @@ const GridCarousol = () => {
 							imgThree={Banglalink}
 
 							titleOne="Grameenphone"
-							titleTwo="Bangladeshbank"
+							titleTwo="Bangladesh Bank"
 							titleThree="Banglalink"
 						></GridCarousolItem>
 					</div>
@@ -41,7 +41,7 @@ const GridCarousol = () => {
 							imgThree={Aritel}
 
 							titleOne="Bankasia"
-							titleTwo="Janatabank"
+							titleTwo="Janata Bank"
 							titleThree="Aritel"
 						></GridCarousolItem>
 					</div>
@@ -52,8 +52,8 @@ const GridCarousol = () => {
 							imgThree={Sonalibank}
 
 							titleOne="Robi"
-							titleTwo="Rupalibank"
-							titleThree="Sonalibank"
+							titleTwo="Rupali Bank"
+							titleThree="Sonali Bank"
 						></GridCarousolItem>
 					</div>
 

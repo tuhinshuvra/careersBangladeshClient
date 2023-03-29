@@ -193,29 +193,27 @@ const FindAllJob = () => {
 
               {/* <div className="col-md-9 mt-md-0 mt-5"> */}
               <div className=" mt-md-0 mt-5 mx-auto">
-                <h2 className=" text-center fw-bold"> Find the Job Yor Want </h2>
-                <hr />
+                <h2 className=" text-center fw-bold"> Find the Job Your Want </h2>
+                {/* <hr /> */}
 
-                <div className="input-group">
-                  <input
-                    ref={searchRef}
-                    name="inputSearch"
-                    id="inputSearch"
-                    type="text"
-                    className="form-control"
-                    placeholder="input search data"
-                  />
+                <div className="col-md-6 mx-auto">
+                  <div className="input-group">
+                    <input
+                      ref={searchRef}
+                      name="inputSearch"
+                      id="inputSearch"
+                      type="text"
+                      className="form-control"
+                      placeholder="input search data"
+                    />
 
-                  <span className="input-group-btn">
-                    <button
-                      onClick={() => handleSearch()}
-                      className="custom_btn"
-                      type="button"
-                    >
-                      <FaSearch className="" />
-                      Search
-                    </button>
-                  </span>
+                    <span className="input-group-btn">
+                      <button onClick={() => handleSearch()} className="custom_btn" type="button" >
+                        <FaSearch className="" />
+                        Search
+                      </button>
+                    </span>
+                  </div>
                 </div>
 
                 <h4 className=" text-center fw-bold my-3">Showing Search Results</h4>
@@ -267,12 +265,9 @@ const FindAllJob = () => {
                     <tbody>
                       {showJobs.map((job, index) => (
                         <tr key={job._id} className="">
-                          <td className=" text-center">{index + 1}</td>
+                          <td className=" fw-bold text-center">{index + 1}</td>
                           <td className="fw-bold">
-                            <Link
-                              className=" text-decoration-none text-primary "
-                              to={`/jobDetails/${job._id}`}
-                            >
+                            <Link className="text-decoration-none text-primary" to={`/jobDetails/${job._id}`}>
                               {job.jobTitle}
                             </Link>
                           </td>

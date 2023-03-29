@@ -31,11 +31,11 @@ const Footer = () => {
 
                 <ul className="nav flex-column ">
                   <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">Home</Link></li>
-                  <li className="mb-2 text-center"><Link to="/products" className="  footer_btn fw-bold">Terms & Conditions</Link></li>
-                  <li className="mb-2 text-center"><Link to="/services" className="  footer_btn fw-bold">Abotut us</Link></li>
-                  <li className="mb-2 text-center"><Link to="/about" className="  footer_btn fw-bold"> Partners</Link></li>
-                  <li className="mb-2 text-center"><Link to="/about" className="  footer_btn fw-bold"> Services</Link></li>
-                  <li className="mb-2 text-center"><Link to="/about" className="  footer_btn fw-bold"> Privacy Policy</Link></li>
+                  <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">Terms & Conditions</Link></li>
+                  <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">Abotut us</Link></li>
+                  <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold"> Partners</Link></li>
+                  <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold"> Services</Link></li>
+                  <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold"> Privacy Policy</Link></li>
                 </ul>
               </div>
             </div>
@@ -44,11 +44,11 @@ const Footer = () => {
               <h5 className='text-center '>Job Seekers</h5>
               <ul className="nav flex-column">
                 <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">Create Account</Link></li>
-                <li className="mb-2 text-center"><Link to="/products" className="  footer_btn fw-bold">Edit Resume</Link></li>
-                <li className="mb-2 text-center"><Link to="/services" className="  footer_btn fw-bold">Video Resume</Link></li>
-                <li className="mb-2 text-center"><Link to="/about" className="  footer_btn fw-bold">About</Link></li>
-                <li className="mb-2 text-center"><Link to="/about" className="  footer_btn fw-bold">My Jobs Panel</Link></li>
-                <li className="mb-2 text-center"><Link to="/about" className="  footer_btn fw-bold">List of Features</Link></li>
+                <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">Edit Resume</Link></li>
+                <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">Video Resume</Link></li>
+                <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">About</Link></li>
+                <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">My Jobs Panel</Link></li>
+                <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">List of Features</Link></li>
               </ul>
             </div>
 
@@ -56,11 +56,11 @@ const Footer = () => {
               <h5 className='text-center'>Employers</h5>
               <ul className="nav flex-column">
                 <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">Create Account</Link></li>
-                <li className="mb-2 text-center"><Link to="/products" className="  footer_btn fw-bold">Product</Link></li>
-                <li className="mb-2 text-center"><Link to="/services" className="  footer_btn fw-bold">Sevices</Link></li>
-                <li className="mb-2 text-center"><Link to="/about" className="  footer_btn fw-bold">Pricing</Link></li>
-                <li className="mb-2 text-center"><Link to="/about" className="  footer_btn fw-bold">FAQ</Link></li>
-                <li className="mb-2 text-center"><Link to="/about" className="  footer_btn fw-bold">About</Link></li>
+                <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">Product</Link></li>
+                <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">Sevices</Link></li>
+                <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">Pricing</Link></li>
+                <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">FAQ</Link></li>
+                <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">About</Link></li>
               </ul>
             </div>
 
@@ -68,8 +68,8 @@ const Footer = () => {
               <h5 className=' text-center'>Tools & Media</h5>
               <ul className="nav flex-column">
                 <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">Media</Link></li>
-                <li className="mb-2 text-center"><Link to="/products" className="  footer_btn fw-bold">Product</Link></li>
-                <li className="mb-2 text-center"><Link to="/services" className="  footer_btn fw-bold">Sevices</Link></li>
+                <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">Product</Link></li>
+                <li className="mb-2 text-center"><Link to="/" className="  footer_btn fw-bold">Sevices</Link></li>
                 <li className=" text-center">
                   <div className="">
                     <a
@@ -105,8 +105,8 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className=" ">
-            <p className=' text-center mb-0 copyright_text'> <small>Copyright @ 2023, All right reserved by Careersbangladesh.com</small></p>
+          <div>
+            <p className='text-center mb-0 copyright_text'> <small>Copyright @ 2023, All right reserved by Careersbangladesh.com</small></p>
           </div>
         </footer >
       </div >
