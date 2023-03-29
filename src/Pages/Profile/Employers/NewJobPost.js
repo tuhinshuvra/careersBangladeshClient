@@ -7,11 +7,7 @@ import { AuthContext } from "../../Authentication/AuthProvider";
 
 const NewJobPost = () => {
   const { user } = useContext(AuthContext);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors }, } = useForm();
   const navigate = useNavigate();
 
   const imageHostKey = process.env.REACT_APP_CABD_imagebb_hostKey;
@@ -395,44 +391,44 @@ const NewJobPost = () => {
           </div>
         </div>
 
-        <div className="my-lg-2">       
-        
-        <div className="row">
-        <div className=" col-lg-10">
-        <label className="label">
-                <span className=" fw-bold me-lg-2 ">Others Information</span>
-         </label>
-        <textarea          
-          {...register("others")}
-          name="others"
-          className="input form-control "
-          id="others"
-          type="text"
-          maxLength={450}
-          />
-          </div>
+        <div className="my-lg-2">
 
-          <div className=" col-lg-2  ">
-          <div className=" d-flex justify-content-end">
-            <div>
+          <div className="row">
+            <div className=" col-lg-10">
               <label className="label">
-                <span className=" fw-bold me-lg-2 ">Job Status</span>
+                <span className=" fw-bold me-lg-2 ">Others Information</span>
               </label>
-              <select   
-               {...register("status")}             
-                name="status"
-                className="form-select"                
-                >
-                {/* <option>Select Job Status</option> */}
-                <option selected value={"Active"}>Active</option>
-                <option value={"Inactive"}>Inactive</option>
-                <option value={"Close"}>Close</option>
-              </select>
+              <textarea
+                {...register("others")}
+                name="others"
+                className="input form-control "
+                id="others"
+                type="text"
+                maxLength={450}
+              />
+            </div>
+
+            <div className=" col-lg-2  ">
+              <div className=" d-flex justify-content-end">
+                <div>
+                  <label className="label">
+                    <span className=" fw-bold me-lg-2 ">Job Status</span>
+                  </label>
+                  <select
+                    {...register("status")}
+                    name="status"
+                    className="form-select"
+                  >
+                    {/* <option>Select Job Status</option> */}
+                    <option selected value={"Active"}>Active</option>
+                    <option value={"Inactive"}>Inactive</option>
+                    <option value={"Close"}>Close</option>
+                  </select>
+                </div>
               </div>
             </div>
-        </div>   
           </div>
-          
+
 
 
         </div>

@@ -24,24 +24,8 @@ const EmployersProfile = () => {
 
   // console.log("employerData : ", employerData)
 
-  const {
-    _id,
-    name,
-    companyNameEn,
-    companyLogo,
-    companyNameBn,
-    estdYear,
-    companySize,
-    addressEng,
-    addressBng,
-    busiDescription,
-    tradeLicense,
-    websiteURL,
-    contactPersonName,
-    contactPersonDesignation,
-    contactPersonEmail,
-    contactPersonPhone,
-  } = employerData;
+  const { id, name, companyNameEn, companyLogo, companyNameBn, estdYear, companySize, addressEng, addressBng, busiDescription, tradeLicense, websiteURL,
+    contactPersonName, contactPersonDesignation, contactPersonEmail, contactPersonPhone, } = employerData;
 
   return (
     <div>
@@ -60,19 +44,10 @@ const EmployersProfile = () => {
                         {/* <h1 className="name mt-0 mb-1 text-uppercase">{name}</h1> */}
                         <h2 className="title fw-bold">{companyNameEn}</h2>
                         <p className="title fw-bold">{addressEng}</p>
-                        <p className=" fw-bold">
-                          Estd: {estdYear},{" "}
-                          <span> No of Empoyee: {companySize} + </span>
-                        </p>
-                        <div className="title mb-3">
-                          <b>Trade License:</b> {tradeLicense}
-                        </div>
-                        <div className="title mb-3">
-                          <b>Email :</b> {email}
-                        </div>
-                        <div className="title mb-3">
-                          <b>Website :</b> {websiteURL}
-                        </div>
+                        <p className=" fw-bold">Estd: {estdYear}, <span> No of Empoyee: {companySize} + </span></p>
+                        <div className="title mb-3"><b>Trade License:</b> {tradeLicense}</div>
+                        <div className="title mb-3"><b>Email :</b> {email}</div>
+                        <div className="title mb-3"><b>Website :</b> {websiteURL}</div>
                       </div>
                     </div>
                   </div>

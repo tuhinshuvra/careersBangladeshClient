@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigation, redirect, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
 import Loader from "../../../Shared/Loader/Loader";
 import "../JobSeekersProfile.css";

@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "react-bootstrap";
 
 const Register = () => {
-  const {register,handleSubmit,formState: { errors },refetch} = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const { createUser, updateUser, setLoading } = useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
   const [createdUserEmail, setCreatedUserEmail] = useState("");
@@ -26,7 +26,6 @@ const Register = () => {
         const user = result.user;
         // console.log("User Info:", user)
         toast.success("User created and login successfully.");
-        refetch();
 
         const userInfo = {
           displayName: data?.name,
@@ -41,7 +40,6 @@ const Register = () => {
           });
         // form.reset();
         navigate("/");
-        refetch();
       })
       .catch((error) => {
         // console.log("Error : ", error)

@@ -10,13 +10,13 @@ const JobSeekersProfile = () => {
   // setLoading(true);
   const email = user?.email;
   const componentRef = useRef(null);
+
   const handlePrint = useReactToPrint({
     content: () => componentRef.current
   });
+
   useEffect(() => {
-    fetch(
-      `${process.env.REACT_APP_CABD_server_address}/jobSeekersAllData/${email}`
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersAllData/${email}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log("jobSeekersAllData : ", data[0])
@@ -34,7 +34,7 @@ const JobSeekersProfile = () => {
     <div className="resume-wrapper-inner mx-auto text-start bg-white shadow-lg">
       {/* Header Section Start */}
 
-      <div className=" d-flex justify-content-between   mx-5   ">
+      <div className=" d-flex justify-content-between mx-5">
         <h1 className=" text-center mt-4 "> RESUME</h1>
         <div className="mt-4">
           <button
