@@ -2,6 +2,18 @@
     margin: 100px 0;
 }
 
+.carosolImg {
+    width: 100px !important;
+}
+
+.preIcon {
+    margin: 0 0 0 -200px !important;
+}
+
+.nextIcon {
+    margin: 0 -200px 0 0 !important;
+}
+
 
 
 
@@ -10,8 +22,31 @@
 }
 
 
-@media (min-width: 320px) and (max-width: 992px) {
-    .popular-location {
-        margin: 50px 0;
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .carosolImg {
+        width: 85px !important;
+    }
+}
+
+@media (min-width: 425px) and (max-width: 768px) {
+
+    .carosolImg {
+        width: 75px !important;
+    }
+}
+
+@media (min-width: 319.98px) and (max-width: 425px) {
+
+    .carosolImg {
+        width: 65px !important;
+    }
+
+    .preIcon {
+        margin: 0 0 0 -80px !important;
+    }
+
+    .nextIcon {
+        margin: 0 -80px 0 0 !important;
     }
 }

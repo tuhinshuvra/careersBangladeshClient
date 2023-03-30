@@ -2,36 +2,66 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './GridCarousolItem.css';
 
-const GridCarousolItem = ({ imgOne, imgTwo, imgThree, titleOne, titleTwo, titleThree }) => {
+const GridCarousolItem = ({ imgOne, imgTwo, imgThree, imgFour, imgFive, imgSix, titleOne, titleTwo, titleThree, titleFour, titleFive, titleSix }) => {
     return (
-        <div className="row">
-            <div className="col-lg-4  col-sm-6">
-                <div className="card mb-2 mx-md-0 mx-2">
-                    <img className="card-img-top" src={imgOne} alt="Card_image_cap" />
+        <div className="row ">
+
+            <div className="col-xl-2 col-md-3 col-6  mt-1 ">
+                <div className="card mb-2 mx-md-0 ">
+                    <img className="card-img-top carosolImg mx-auto" src={imgOne} alt="Card_image_cap" />
 
                     <div className=" my-2 mx-1">
-                        <h5 className="card-title fw-bold text-center">{titleOne}</h5>
+                        <p className="card-title text-center"> <small>{titleOne}</small> </p>
                     </div>
 
                 </div>
             </div>
 
-            <div className="col-lg-4 col-sm-6 clearfix d-none d-md-block">
-                <div className="card mb-2 mx-md-0 mx-3">
-                    <img className="card-img-top" src={imgTwo} alt="Card_image_cap" />
+            <div className="col-xl-2 col-md-3 col-6 mt-1">
+                <div className="card mb-2 mx-md-0 ">
+                    <img className="card-img-top carosolImg mx-auto" src={imgTwo} alt="Card_image_cap" />
 
                     <div className=" my-2 mx-1">
-                        <h5 className="card-title fw-bold text-center">{titleTwo}</h5>
+                        <p className="card-title text-center"> <small>{titleTwo}</small></p>
                     </div>
                 </div>
             </div>
 
-            <div className="col-lg-4 col-sm-6  clearfix d-none d-lg-block">
-                <div className="card mb-2 mx-md-0 mx-3">
-                    <img className="card-img-top" src={imgThree} alt="Card_image_cap" />
+            <div className="col-xl-2 col-md-3 col-6  mt-1  clearfix d-none d-md-block">
+                <div className="card mb-2 mx-md-0 ">
+                    <img className="card-img-top carosolImg mx-auto" src={imgThree} alt="Card_image_cap" />
 
                     <div className=" my-2 mx-1">
-                        <h5 className="card-title fw-bold text-center">{titleThree}</h5>
+                        <p className="card-title text-center"><small>{titleThree}</small></p>
+                    </div>
+                </div>
+            </div>
+            <div className="col-xl-2 col-md-3 col-6  mt-1  clearfix d-none d-md-block">
+                <div className="card mb-2 mx-md-0 ">
+                    <img className="card-img-top carosolImg mx-auto" src={imgFour} alt="Card_image_cap" />
+
+                    <div className=" my-2 mx-1">
+                        <p className="card-title text-center"><small>{titleFour}</small></p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="col-xl-2 col-md-3 col-6  mt-1 clearfix d-none d-xl-block">
+                <div className="card mb-2 mx-md-0 ">
+                    <img className="card-img-top carosolImg mx-auto" src={imgFive} alt="Card_image_cap" />
+
+                    <div className=" my-2 mx-1">
+                        <p className="card-title text-center"><small>{titleFive}</small></p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="col-xl-2 col-md-3 col-6  mt-1 clearfix d-none d-xl-block">
+                <div className="card mb-2 mx-md-0 ">
+                    <img className="card-img-top carosolImg mx-auto" src={imgSix} alt="Card_image_cap" />
+
+                    <div className=" my-2 mx-1">
+                        <p className="card-title text-center"><small>{titleSix}</small></p>
                     </div>
                 </div>
             </div>

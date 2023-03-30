@@ -28,3 +28,10 @@
 .carousel-inner .carousel-item-start {
   transform: translateX(0);
 }
+
+.customShadow {
+  box-shadow: 1px -1px 196px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px -1px 196px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px -1px 196px 0px rgba(0, 0, 0, 0.75);
+
+}

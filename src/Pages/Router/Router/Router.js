@@ -88,7 +88,6 @@ const router = createBrowserRouter([
       {
         path: "/searchHomeResult/:search/:search2/:search3",
         element: <FindJobHomeResult></FindJobHomeResult>,
-        // loader: async ({ params }) => await fetch(`${process.env.REACT_APP_CABD_server_address}/jobSearch?${params.search}&${params.search2}&${params.search3}`),
       },
 
       {
@@ -111,7 +110,7 @@ const router = createBrowserRouter([
       {
         // path: "/dashboard/jobs/:id",
         path: "/jobDetails/:jobId",
-        // element:<NonUserRoute><PostedJobDetails></PostedJobDetails></NonUserRoute>,
+        // element: <NonUserRoute><PostedJobDetails></PostedJobDetails></NonUserRoute>,
         element: <PostedJobDetails></PostedJobDetails>,
         loader: async ({ params }) => await fetch(`${process.env.REACT_APP_CABD_server_address}/jobs/${params.jobId}`)
       },

@@ -10,7 +10,8 @@ import "./PostedJobDetails.css";
 
 const PostedJobDetails = () => {
 
-  const { user, setJobId, loading, setLoading, jobSeekersData, setJobSeekersData } = useContext(AuthContext);
+  const { user, setJobId, jobSeekersData, setJobSeekersData } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
 
   const fromLocation = useLocation();
   const jobdetails = useLoaderData();
@@ -23,10 +24,9 @@ const PostedJobDetails = () => {
     <Loader></Loader>
   }
   // console.log("savedJob List",savedJob);
-
   // console.log(applyStatus, applications);
-
   // console.log("jobdetails : ", jobdetails)
+
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersAllData/${user?.email}`)
@@ -58,7 +58,8 @@ const PostedJobDetails = () => {
 
   const today = new Date().toJSON().slice(0, 10);
 
-  // appply job
+
+  // ################################# appply job #####################################
   const handleApply = (data) => {
     // console.log("Applied jobdetails :", jobdetails);
     setLoading(true);
@@ -96,8 +97,8 @@ const PostedJobDetails = () => {
       });
   };
 
-  // save a job to apply future
 
+  // #################### save a job to apply future#####################3
   const handleJobSave = () => {
     setLoading(true);
     console.log("Saved Job Details :", jobdetails);
@@ -461,7 +462,6 @@ const PostedJobDetails = () => {
           </div>
         </div>
       </div>
-
 
     </div>
   );

@@ -8,13 +8,17 @@ const JobSeekersPersonalDetailsManage = () => {
 
   const { user, loading, setLoading } = useContext(AuthContext);
   const [storedData, setStoredData] = useState([]);
-  const [resetData, setResetData] = useState(false);
   const email = user?.email;
 
   // console.log("PersonalDetails Update :", storedData);
 
   if (loading) {
     <Loader></Loader>
+  }
+
+
+  const handleReset = (event) => {
+    event.target.reset();
   }
 
   // const navigate = useNavigate();
@@ -561,7 +565,7 @@ const JobSeekersPersonalDetailsManage = () => {
           </div>
 
           <div className=" d-flex justify-content-between my-lg-5">
-            <button className="btn btn-warning fw-bold">Cancel</button>
+            <button type="button" onClick={() => handleReset} className="btn btn-warning fw-bold">Cancel</button>
             <button type="submit" name="submit" className="custom_btn">Save</button>
           </div>
         </form>
