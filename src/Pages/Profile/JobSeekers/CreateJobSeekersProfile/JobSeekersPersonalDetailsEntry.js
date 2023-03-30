@@ -3,19 +3,20 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
+import Loader from "../../../Shared/Loader/Loader";
 import JobSeekersProfileEntry from "./JobSeekersProfileEntry";
 
 const JobSeekersPersonalDetailsEntry = () => {
-  const { user } = useContext(AuthContext);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { user, loading, setLoading } = useContext(AuthContext);
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
 
   // const address = require("@bangladeshi/bangladesh-address");
   // console.log("address allUpazila: ", address.allUpazila());
+
+  if (loading) {
+    <Loader></Loader>
+  }
 
   const imageHostKey = process.env.REACT_APP_CABD_imagebb_hostKey;
 
@@ -65,12 +66,9 @@ const JobSeekersPersonalDetailsEntry = () => {
 
           // console.log("Job Seeker Data :", data);
 
-          fetch(
-            `${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal`, {
+          fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal`, {
             method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
+            headers: { "content-type": "application/json", },
             body: JSON.stringify(jobSeekersPersonal),
           }
           )
@@ -78,9 +76,8 @@ const JobSeekersPersonalDetailsEntry = () => {
             .then((data) => {
               if (data.acknowledged) {
                 console.log(data);
-                toast.success(
-                  `${user.displayName} Profile Data Saved Successfully`
-                );
+                toast.success(`${user.displayName} Profile Data Saved Successfully`);
+                setLoading(false);
                 navigate("/dashboard/jobSeekerProfileEntry");
               } else {
                 toast.error(data.message);

@@ -76,7 +76,7 @@ const PostedJobList = () => {
                             className=" fw-bold btn-sm btn btn-primary mx-1"
                             onClick={() => setJobId(job._id)}
                           >
-                            ApplicatList
+                            Applicant List
                           </button>
                         </Link>
                       </td>

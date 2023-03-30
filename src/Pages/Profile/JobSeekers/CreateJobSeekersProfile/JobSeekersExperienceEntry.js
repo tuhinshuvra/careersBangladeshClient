@@ -1,21 +1,21 @@
-import { useQuery } from "@tanstack/react-query";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
 import JobSeekersProfileEntry from "./JobSeekersProfileEntry";
+import Loader from "../../../Shared/Loader/Loader";
 import "../../JobSeekers/JobSeekersProfile.css";
 
 const JobSeekersExperienceEntry = () => {
-  const { user } = useContext(AuthContext);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { user, loading, setLoading } = useContext(AuthContext);
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
+
+
+  if (loading) {
+    <Loader></Loader>
+  }
 
   const handleJobSeekerExperience = (data) => {
     const jobseekerProfile = {
@@ -48,22 +48,20 @@ const JobSeekersExperienceEntry = () => {
     // console.log("Job Seeker Data :", data);
 
     fetch(
-      `${process.env.REACT_APP_CABD_server_address}/jobSeekersExperiences`,
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(jobseekerProfile),
-      }
+      `${process.env.REACT_APP_CABD_server_address}/jobSeekersExperiences`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(jobseekerProfile),
+    }
     )
       .then((response) => response.json())
       .then((data) => {
         if (data.acknowledged) {
           console.log(data);
-          toast.success(
-            `${user.displayName} Experience Data Saved Successfully`
-          );
+          toast.success(`${user.displayName} Experience Data Saved Successfully`);
+          setLoading(false);
           navigate("/dashboard/jobSeekerProfileEntry");
         } else {
           toast.error(data.message);

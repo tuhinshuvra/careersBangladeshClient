@@ -337,7 +337,7 @@ const PostedJobDetails = () => {
             isEmployer &&
             <div className=" text-center">
               <Link className="fw-bold custom_btn text-decoration-none" to={`/dashboard/jobUpdate/${_id}`}>Update Job</Link>
-              <Link className="fw-bold custom_btn text-decoration-none" to={`/dashboard/applicantList`} onClick={() => setJobId(_id)}> ApplicatList</Link>
+              <Link className="fw-bold custom_btn text-decoration-none" to={`/dashboard/applicantList`} onClick={() => setJobId(_id)}> Applicant List</Link>
             </div>
           }
 

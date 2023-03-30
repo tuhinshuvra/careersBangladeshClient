@@ -42,15 +42,13 @@ const JobSeekersExperienceManage = () => {
   const handleUpdateExperiencesDoc = (event) => {
     event.preventDefault();
 
-    fetch(
-      `${process.env.REACT_APP_CABD_server_address}/jobSeekersExperiences/${storedData._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(storedData),
-      }
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersExperiences/${storedData._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(storedData),
+    }
     )
       .then((response) => response.json())
       .then((data) => {
@@ -58,6 +56,7 @@ const JobSeekersExperienceManage = () => {
         if (data.modifiedCount > 0) {
           toast.success("Data Updated Successfully.");
         }
+        setLoading(false);
       });
   };
 

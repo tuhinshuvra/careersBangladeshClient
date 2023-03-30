@@ -9,23 +9,23 @@ import JobSeekersProfileManage from "./JobSeekersProfileManage";
 const JobSeekersAcademicAndTrainingManage = () => {
 
   const { user, loading, setLoading } = useContext(AuthContext);
-  const [storedData,setStoredData] = useState([]);
-  const email=user?.email;
-  
-  if(loading){
+  const [storedData, setStoredData] = useState([]);
+  const email = user?.email;
+
+  if (loading) {
     <Loader></Loader>
   }
 
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersAcademics/${email}`)
-    .then(res=>res.json())
-    .then(data=>{
-      console.log("jobSeekersPersonal Data",data); 
-      setStoredData(data);
-      setLoading(false)
-    })
-  },[email,setLoading])
+      .then(res => res.json())
+      .then(data => {
+        console.log("jobSeekersPersonal Data", data);
+        setStoredData(data);
+        setLoading(false)
+      })
+  }, [email, setLoading])
 
   // console.log("Academics And Training storedData : ", storedData);
 
@@ -35,19 +35,15 @@ const JobSeekersAcademicAndTrainingManage = () => {
   const handleUdateAcademicsDoc = (event) => {
     event.preventDefault();
 
-    fetch(
-      `${process.env.REACT_APP_CABD_server_address}/jobseekersAcademics/${storedData._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(storedData),
-      }
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobseekersAcademics/${storedData._id}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json", },
+      body: JSON.stringify(storedData),
+    }
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log("Updated data :", data);
+        console.log("jobseekersAcademics Updated data :", data);
         if (data.modifiedCount > 0) {
           toast.success("Academics Data Updated Successfully.");
         }
@@ -67,9 +63,7 @@ const JobSeekersAcademicAndTrainingManage = () => {
   return (
     <div>
       <JobSeekersProfileManage></JobSeekersProfileManage>
-      <h2 className=" text-center fw-bold my-3">
-        Update Academic and Training Data
-      </h2>
+      <h2 className=" text-center fw-bold my-3">Update Academic and Training Data</h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
       <form onSubmit={handleUdateAcademicsDoc}>
@@ -77,7 +71,6 @@ const JobSeekersAcademicAndTrainingManage = () => {
         <div className=" d-flex justify-content-between">
           <h5 className="label-text text-md fw-bold ">Academic One</h5>
           <p className=" float-end ">
-            {" "}
             <span className="star">&#x2605; </span>{" "}
             <b>(Red Star) denotes must be filled</b>
           </p>
@@ -995,9 +988,7 @@ const JobSeekersAcademicAndTrainingManage = () => {
 
         <div className=" d-flex justify-content-between my-lg-5">
           <button className="btn btn-warning fw-bold">Cancel</button>
-          <button type="submit" name="submit" className="custom_btn">
-            Save
-          </button>
+          <button type="submit" name="submit" className="custom_btn">Save</button>
         </div>
       </form>
     </div>

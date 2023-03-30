@@ -8,25 +8,25 @@ import Loader from "../../../Shared/Loader/Loader";
 
 const JobSeekersCareerAndSkillManage = () => {
   const { user, loading, setLoading } = useContext(AuthContext);
-  const [storedData,setStoredData] = useState([]);
+  const [storedData, setStoredData] = useState([]);
 
-  
-  const email=user?.email;
-  
-  if(loading){
+
+  const email = user?.email;
+
+  if (loading) {
     <Loader></Loader>
   }
 
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersCareers/${email}`)
-    .then(res=>res.json())
-    .then(data=>{
-      console.log("jobSeekersCareers Data",data); 
+    .then(res => res.json())
+    .then(data => {
+      console.log("jobSeekersCareers Data", data);
       setStoredData(data);
       setLoading(false)
     })
-  },[email,setLoading])
+  }, [email, setLoading])
 
 
   // console.log("Careers and Skill storedData :", storedData);
@@ -42,7 +42,7 @@ const JobSeekersCareerAndSkillManage = () => {
     },
   });
 
-  if(loading){
+  if (loading) {
     <Loader></Loader>
   }
 

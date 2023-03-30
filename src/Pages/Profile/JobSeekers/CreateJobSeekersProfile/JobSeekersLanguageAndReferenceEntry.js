@@ -4,18 +4,20 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
+import Loader from "../../../Shared/Loader/Loader";
 import "../../JobSeekers/JobSeekersProfile.css";
 import JobSeekersProfileEntry from "./JobSeekersProfileEntry";
 
 const JobSeekersLanguageAndReferenceEntry = () => {
-  const { user } = useContext(AuthContext);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { user, loading, setLoading } = useContext(AuthContext);
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
+
+
+  if (loading) {
+    <Loader></Loader>
+  }
 
   // console.log("imageBBHostKey  : ", imageHostKey)
 
@@ -69,10 +71,9 @@ const JobSeekersLanguageAndReferenceEntry = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.acknowledged) {
-          console.log(data);
-          toast.success(
-            `${user.displayName} Language and Reference Data Saved Successfully`
-          );
+          // console.log(data);
+          toast.success(`${user.displayName} Language and Reference Data Saved Successfully`);
+          setLoading(false);
           navigate("/dashboard/jobSeekerProfileEntry");
         } else {
           toast.error(data.message);

@@ -8,6 +8,7 @@ const JobSeekersPersonalDetailsManage = () => {
 
   const { user, loading, setLoading } = useContext(AuthContext);
   const [storedData, setStoredData] = useState([]);
+  const [resetData, setResetData] = useState(false);
   const email = user?.email;
 
   // console.log("PersonalDetails Update :", storedData);
@@ -41,15 +42,11 @@ const JobSeekersPersonalDetailsManage = () => {
   const handleUpdatePersonalDoc = (event) => {
     event.preventDefault();
 
-    fetch(
-      `${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal/${storedData._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(storedData),
-      }
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersPersonal/${storedData._id}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json", },
+      body: JSON.stringify(storedData),
+    }
     )
       .then((res) => res.json())
       .then((data) => {
@@ -57,6 +54,7 @@ const JobSeekersPersonalDetailsManage = () => {
         if (data.modifiedCount > 0) {
           toast.success("Personal Details Data Updated Successfully.");
         }
+        setLoading(false);
       });
   };
 
@@ -88,8 +86,7 @@ const JobSeekersPersonalDetailsManage = () => {
 
         <div className=" d-flex justify-content-end">
           <p className="">
-            {" "}
-            <span className="star">&#x2605; </span>{" "}
+            <span className="star">&#x2605; </span>
             <b>(Red Star) denotes must be filled</b>
           </p>
         </div>
@@ -565,9 +562,7 @@ const JobSeekersPersonalDetailsManage = () => {
 
           <div className=" d-flex justify-content-between my-lg-5">
             <button className="btn btn-warning fw-bold">Cancel</button>
-            <button type="submit" name="submit" className="custom_btn">
-              Save
-            </button>
+            <button type="submit" name="submit" className="custom_btn">Save</button>
           </div>
         </form>
       </div>

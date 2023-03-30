@@ -9,33 +9,28 @@ import "../../JobSeekers/JobSeekersProfile.css";
 import Loader from "../../../Shared/Loader/Loader";
 
 const JobSeekersLanguageAndReferenceManage = () => {
-  
-const { user, loading, setLoading } = useContext(AuthContext);
-const [storedData,setStoredData] = useState([]);
 
-const email=user?.email;
+  const { user, loading, setLoading } = useContext(AuthContext);
+  const [storedData, setStoredData] = useState([]);
 
-if(loading){
-  <Loader></Loader>
-}
+  const email = user?.email;
 
-
-useEffect(()=>{
-  fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersReferences/${email}`)
-  .then(res=>res.json())
-  .then(data=>{
-    console.log("jobSeekersCareers Data",data); 
-    setStoredData(data);
-    setLoading(false)
-  })
-},[email,setLoading])
-
-  console.log("Languages and references storedData : ", storedData);
-
-
-  if(loading){
+  if (loading) {
     <Loader></Loader>
   }
+
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobSeekersReferences/${email}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log("jobSeekersCareers Data", data);
+        setStoredData(data);
+        setLoading(false)
+      })
+  }, [email, setLoading])
+
+  console.log("Languages and references storedData : ", storedData);
 
 
   // console.log("imageBBHostKey  : ", imageHostKey)
@@ -55,7 +50,7 @@ useEffect(()=>{
     const field = event.target.name;
     const value = event.target.value;
 
-    const newData = { ...storedData};
+    const newData = { ...storedData };
     newData[field] = value;
     setStoredData(newData);
   };
@@ -63,20 +58,18 @@ useEffect(()=>{
 
   const handleUpdateReferenceData = (event) => {
     event.preventDefault();
-    fetch(`${process.env.REACT_APP_CABD_server_address}/jobseekersLanguagesReferences/${storedData._id}`,{
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(storedData),
-      }
-    )
+    fetch(`${process.env.REACT_APP_CABD_server_address}/jobseekersLanguagesReferences/${storedData._id}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json", },
+      body: JSON.stringify(storedData),
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log("Updated Data: ", data);
         if (data.modifiedCount > 0) {
           toast.success("Data Updated Successfully.");
         }
+        setLoading(false);
       });
   };
 
@@ -95,8 +88,7 @@ useEffect(()=>{
           <div className=" d-flex justify-content-between">
             <h4 className="label-text text-md fw-bold">Language Proficiency</h4>
             <p className=" float-end ">
-              {" "}
-              <span className="star">&#x2605; </span>{" "}
+              <span className="star">&#x2605; </span>
               <b>(Red Star) denotes must be filled</b>
             </p>
           </div>

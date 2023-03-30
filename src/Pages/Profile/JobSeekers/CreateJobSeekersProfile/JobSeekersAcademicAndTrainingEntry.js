@@ -6,16 +6,16 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
 import JobSeekersProfileEntry from "./JobSeekersProfileEntry";
 import "../../JobSeekers/JobSeekersProfile.css";
+import Loader from "../../../Shared/Loader/Loader";
 
 const JobSeekersAcademicAndTrainingEntry = () => {
-  const { user } = useContext(AuthContext);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { user, loading, setLoading } = useContext(AuthContext);
+  const { register, handleSubmit, formState: { errors }, } = useForm();
   const navigate = useNavigate();
+
+  if (loading) {
+    <Loader></Loader>
+  }
 
   const handleJobSeekerProfile = (data) => {
     const emplyeesAcademics = {
@@ -81,10 +81,9 @@ const JobSeekersAcademicAndTrainingEntry = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.acknowledged) {
-          console.log(data);
-          toast.success(
-            `${user.displayName} Academic and Training Data Saved Successfully`
-          );
+          // console.log(data);
+          toast.success(`${user.displayName} Academic and Training Data Saved Successfully`);
+          setLoading(false);
           navigate("/dashboard/jobSeekerProfileEntry");
         } else {
           toast.error(data.message);
@@ -95,9 +94,7 @@ const JobSeekersAcademicAndTrainingEntry = () => {
   return (
     <div>
       <JobSeekersProfileEntry></JobSeekersProfileEntry>
-      <h2 className=" text-center fw-bold my-4">
-        Enter Academic and Training Data
-      </h2>
+      <h2 className="text-center fw-bold my-4">Enter Academic and Training Data</h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
       <form onSubmit={handleSubmit(handleJobSeekerProfile)}>
@@ -105,7 +102,6 @@ const JobSeekersAcademicAndTrainingEntry = () => {
         <div className=" d-flex justify-content-between">
           <h5 className="label-text text-md fw-bold ">Academic One</h5>
           <p className=" float-end ">
-            {" "}
             <span className="star">&#x2605; </span>{" "}
             <b>(Red Star) denotes must be filled</b>
           </p>

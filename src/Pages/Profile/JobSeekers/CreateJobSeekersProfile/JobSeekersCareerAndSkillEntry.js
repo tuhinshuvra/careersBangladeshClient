@@ -6,27 +6,27 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/AuthProvider";
 import JobSeekersProfileEntry from "./JobSeekersProfileEntry";
 import "../JobSeekersProfile.css";
+import Loader from "../../../Shared/Loader/Loader";
 
 const JobSeekersCareerAndSkillEntry = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading, setLoading } = useContext(AuthContext);
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate();
+
+
+  if (loading) {
+    <Loader></Loader>
+  }
 
   const { data: categories, isLoading } = useQuery({
     queryKey: ["category"],
     queryFn: async () => {
-      const res = await fetch(
-        `${process.env.REACT_APP_CABD_server_address}/jobCategories`
-      );
+      const res = await fetch(`${process.env.REACT_APP_CABD_server_address}/jobCategories`);
       const data = await res.json();
       return data;
     },
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const navigate = useNavigate();
 
   const handleJobSeekerProfile = (data) => {
     const jobseekerProfile = {
@@ -68,9 +68,8 @@ const JobSeekersCareerAndSkillEntry = () => {
       .then((data) => {
         if (data.acknowledged) {
           console.log(data);
-          toast.success(
-            `${user.displayName} Career and Skill Data Saved Successfully`
-          );
+          toast.success(`${user.displayName} Career and Skill Data Saved Successfully`);
+          setLoading(false);
           navigate("/dashboard/jobSeekerProfileEntry");
         } else {
           toast.error(data.message);
@@ -80,23 +79,16 @@ const JobSeekersCareerAndSkillEntry = () => {
 
   return (
     <div>
-      <div>
-        <JobSeekersProfileEntry></JobSeekersProfileEntry>
-      </div>
+      <div><JobSeekersProfileEntry></JobSeekersProfileEntry></div>
 
-      <h2 className=" text-center fw-bold my-4">
-        Enter Careers and Skill Data
-      </h2>
+      <h2 className=" text-center fw-bold my-4">Enter Careers and Skill Data</h2>
 
       {/* <p className=' float-end '> <span className="star">&#x2605; </span> <b> denodes must be filled</b></p> */}
       <form onSubmit={handleSubmit(handleJobSeekerProfile)}>
         <div className=" d-flex justify-content-between my-2">
-          <h4 className="label-text text-md fw-bold">
-            Career and Application Information
-          </h4>
+          <h4 className="label-text text-md fw-bold">Career and Application Information</h4>
           <p className=" float-end ">
-            {" "}
-            <span className="star">&#x2605; </span>{" "}
+            <span className="star">&#x2605; </span>
             <b>(Red Star) denotes must be filled</b>
           </p>
         </div>

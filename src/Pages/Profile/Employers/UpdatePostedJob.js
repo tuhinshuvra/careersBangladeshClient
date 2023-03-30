@@ -22,9 +22,7 @@ const UpdatePostedJob = () => {
   const { data: categories, isLoading } = useQuery({
     queryKey: ["category"],
     queryFn: async () => {
-      const res = await fetch(
-        `${process.env.REACT_APP_CABD_server_address}/jobCategories`
-      );
+      const res = await fetch(`${process.env.REACT_APP_CABD_server_address}/jobCategories`);
       const data = await res.json();
       return data;
     },
@@ -450,7 +448,9 @@ const UpdatePostedJob = () => {
 
 
         <div className=" d-flex justify-content-between my-lg-3">
-          <button className="btn btn-warning fw-bold">Cancel</button>
+          <button type="button" className="btn btn-warning fw-bold">Cancel</button>
+          {/* <button type="cancel" onclick="window.location='/';return false;">Cancel</button> */}
+
           <button type="submit" name="submit" className="custom_btn">Save</button>
         </div>
 

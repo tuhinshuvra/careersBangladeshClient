@@ -14,7 +14,7 @@ const JobSeekersProfileManage = () => {
 
 
   useEffect(() => {
-    console.log("showPersonalData : ", showPersonalData);
+    // console.log("showPersonalData : ", showPersonalData);
     if (showPersonalData) {
       navigate('/dashboard/jobSeekersPersonalDetails')
     }
